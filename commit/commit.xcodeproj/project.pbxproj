@@ -56,6 +56,8 @@
 		717F944426774ED400D11C58 /* commit */ = {
 			isa = PBXGroup;
 			children = (
+				717F945A26774FE800D11C58 /* Common */,
+				717F945926774F7A00D11C58 /* Modules */,
 				717F944526774ED400D11C58 /* AppDelegate.swift */,
 				717F944726774ED400D11C58 /* SceneDelegate.swift */,
 				717F944926774ED400D11C58 /* ContentView.swift */,
@@ -73,6 +75,124 @@
 				717F944E26774EE200D11C58 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		717F945926774F7A00D11C58 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				717F945F2677501000D11C58 /* SettingsModule */,
+				717F945E2677500400D11C58 /* SpreadSheetAddModule */,
+				717F945D26774FFF00D11C58 /* TodoAddModule */,
+				717F945C26774FF700D11C58 /* TodoDetailModule */,
+				717F945B26774FF200D11C58 /* TodoListModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		717F945A26774FE800D11C58 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				717F9467267751D400D11C58 /* WebAPI */,
+				717F9466267751BE00D11C58 /* Protocol */,
+				717F94612677505C00D11C58 /* Repository */,
+				717F94602677505600D11C58 /* Entity */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		717F945B26774FF200D11C58 /* TodoListModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TodoListModule;
+			sourceTree = "<group>";
+		};
+		717F945C26774FF700D11C58 /* TodoDetailModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TodoDetailModule;
+			sourceTree = "<group>";
+		};
+		717F945D26774FFF00D11C58 /* TodoAddModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TodoAddModule;
+			sourceTree = "<group>";
+		};
+		717F945E2677500400D11C58 /* SpreadSheetAddModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SpreadSheetAddModule;
+			sourceTree = "<group>";
+		};
+		717F945F2677501000D11C58 /* SettingsModule */ = {
+			isa = PBXGroup;
+			children = (
+				717F94652677508400D11C58 /* Router */,
+				717F94642677507700D11C58 /* Interactor */,
+				717F94632677507400D11C58 /* Presenter */,
+				717F94622677507200D11C58 /* View */,
+			);
+			path = SettingsModule;
+			sourceTree = "<group>";
+		};
+		717F94602677505600D11C58 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		717F94612677505C00D11C58 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		717F94622677507200D11C58 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		717F94632677507400D11C58 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		717F94642677507700D11C58 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		717F94652677508400D11C58 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		717F9466267751BE00D11C58 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		717F9467267751D400D11C58 /* WebAPI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WebAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
