@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -216,7 +216,6 @@
 				5E4FB42827C619E28A3CD34C /* Pods-commit.debug.xcconfig */,
 				BBC617FED296126FD17B4FE3 /* Pods-commit.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -233,6 +232,7 @@
 				717F944026774ED400D11C58 /* Resources */,
 				DBE705E25D036EAFB6F752FF /* [CP] Embed Pods Frameworks */,
 				274DE0F38B60AA7FE473AE4E /* [CP] Copy Pods Resources */,
+				717F9468267757B300D11C58 /* Swift Lint Script */,
 			);
 			buildRules = (
 			);
@@ -327,6 +327,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		717F9468267757B300D11C58 /* Swift Lint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		DBE705E25D036EAFB6F752FF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -496,6 +514,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"commit/Preview Content\"";
+				DEVELOPMENT_TEAM = L4RQ287Q4R;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = commit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -517,6 +536,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"commit/Preview Content\"";
+				DEVELOPMENT_TEAM = L4RQ287Q4R;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = commit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
