@@ -31,6 +31,11 @@ class Mock {
 		let tags: [DisplayTag]
 	}
 	
+	struct NormalTodo {
+		let id: String
+		let content: Todo
+	}
+	
 	struct DisplayTag {
 		let tagId: String
 	}
