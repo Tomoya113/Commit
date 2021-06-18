@@ -13,6 +13,9 @@
 		715C2F1426791F7700DA66F3 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F1326791F7700DA66F3 /* Tag.swift */; };
 		715C2F16267921A700DA66F3 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F15267921A700DA66F3 /* Preset.swift */; };
 		715C2F192679244F00DA66F3 /* SpreadSheetHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F182679244F00DA66F3 /* SpreadSheetHistory.swift */; };
+		715C2F1C2679AB5500DA66F3 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F1B2679AB5500DA66F3 /* Mock.swift */; };
+		715C2F1E2679B1DB00DA66F3 /* TodoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F1D2679B1DB00DA66F3 /* TodoMock.swift */; };
+		715C2F20267B64E700DA66F3 /* ListMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F1F267B64E700DA66F3 /* ListMock.swift */; };
 		717F944626774ED400D11C58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F944526774ED400D11C58 /* AppDelegate.swift */; };
 		717F944826774ED400D11C58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F944726774ED400D11C58 /* SceneDelegate.swift */; };
 		717F944A26774ED400D11C58 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F944926774ED400D11C58 /* ContentView.swift */; };
@@ -32,6 +35,9 @@
 		715C2F1326791F7700DA66F3 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		715C2F15267921A700DA66F3 /* Preset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
 		715C2F182679244F00DA66F3 /* SpreadSheetHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetHistory.swift; sourceTree = "<group>"; };
+		715C2F1B2679AB5500DA66F3 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
+		715C2F1D2679B1DB00DA66F3 /* TodoMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMock.swift; sourceTree = "<group>"; };
+		715C2F1F267B64E700DA66F3 /* ListMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMock.swift; sourceTree = "<group>"; };
 		717F944226774ED400D11C58 /* commit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = commit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		717F944526774ED400D11C58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		717F944726774ED400D11C58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +76,16 @@
 				71AF451926790DA70084364A /* Todo.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		715C2F1A2679AA9300DA66F3 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				715C2F1B2679AB5500DA66F3 /* Mock.swift */,
+				715C2F1D2679B1DB00DA66F3 /* TodoMock.swift */,
+				715C2F1F267B64E700DA66F3 /* ListMock.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		717F943926774ED400D11C58 = {
@@ -129,6 +145,7 @@
 		717F945A26774FE800D11C58 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				715C2F1A2679AA9300DA66F3 /* Mock */,
 				717F9467267751D400D11C58 /* WebAPI */,
 				717F9466267751BE00D11C58 /* Protocol */,
 				717F94612677505C00D11C58 /* Repository */,
@@ -399,16 +416,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				715C2F1C2679AB5500DA66F3 /* Mock.swift in Sources */,
 				715C2F1426791F7700DA66F3 /* Tag.swift in Sources */,
 				715C2F16267921A700DA66F3 /* Preset.swift in Sources */,
 				717F944626774ED400D11C58 /* AppDelegate.swift in Sources */,
 				717F944826774ED400D11C58 /* SceneDelegate.swift in Sources */,
+				715C2F1E2679B1DB00DA66F3 /* TodoMock.swift in Sources */,
 				715C2F102679181400DA66F3 /* SpreadSheetTodo.swift in Sources */,
 				717F944A26774ED400D11C58 /* ContentView.swift in Sources */,
 				715C2F0C2679178D00DA66F3 /* List.swift in Sources */,
 				71AF451A26790DA70084364A /* Todo.swift in Sources */,
 				715C2F122679182000DA66F3 /* NormalTodo.swift in Sources */,
 				715C2F192679244F00DA66F3 /* SpreadSheetHistory.swift in Sources */,
+				715C2F20267B64E700DA66F3 /* ListMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

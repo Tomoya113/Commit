@@ -34,4 +34,3 @@ class SheetColumn: EmbeddedObject {
 	@objc dynamic var end: String = ""
 }
 
-

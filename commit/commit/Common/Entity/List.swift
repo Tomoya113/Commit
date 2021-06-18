@@ -13,6 +13,7 @@ class List: Object {
 }
 
 class Section: Object {
+	@objc dynamic var title: String = ""
 	@objc dynamic var typeRawValue: String = SectionType.undefined.rawValue
 	
 	var type: SectionType {
