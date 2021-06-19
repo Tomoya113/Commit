@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class SpreadSheetTodo: Object {
+class SpreadSheetTodo: Object, ObjectKeyIdentifiable {
 	@objc dynamic var id: String = UUID().uuidString
 	@objc dynamic var presetId: String = ""
 	@objc dynamic var content: Todo?
@@ -17,4 +17,14 @@ class SpreadSheetTodo: Object {
 	override static func primaryKey() -> String? {
 		return "id"
 	}
+	
+	convenience init(id: String, presetId: String, content: Todo, row: String, column: String) {
+		self.init()
+		self.id = id
+		self.presetId = presetId
+		self.content = content
+		self.row = row
+		self.column = column
+	}
+	
 }

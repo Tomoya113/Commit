@@ -7,7 +7,14 @@
 
 import RealmSwift
 
-class SpreadSheetHistory: Object {
+class SpreadSheetHistory: Object, ObjectKeyIdentifiable {
 	@objc dynamic var spreadSheetId: String = ""
 	@objc dynamic var title: String = ""
+	
+	convenience init(spreadSheetId: String, title: String) {
+		self.init()
+		self.spreadSheetId = spreadSheetId
+		self.title = title
+	}
+	
 }

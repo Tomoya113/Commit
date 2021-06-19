@@ -8,7 +8,7 @@
 import Foundation
 
 class ListMock {
-	static let section1 = Mock.Section(title: "家", type: .normal)
-	static let section2 = Mock.Section(title: "学校", type: .normal)
-	static let list = Mock.List(title: "General", sections: [section1, section2])
+	static let section1 = SectionRealm(title: "家庭", sectionType: .normal)
+	static let section2 = SectionRealm(title: "学校", sectionType: .normal)
+	static let list = ListRealm(title: "General", sections: [section1, section2])
 }
