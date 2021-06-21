@@ -28,6 +28,7 @@
 		717F944C26774EE200D11C58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 717F944B26774EE200D11C58 /* Assets.xcassets */; };
 		717F944F26774EE200D11C58 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 717F944E26774EE200D11C58 /* Preview Assets.xcassets */; };
 		717F945226774EE200D11C58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 717F945026774EE200D11C58 /* LaunchScreen.storyboard */; };
+		71A190A12680C9B000C6D6E8 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A190A02680C9B000C6D6E8 /* UseCase.swift */; };
 		71AF451A26790DA70084364A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF451926790DA70084364A /* Todo.swift */; };
 		E3758B71D6FE159FFC52A291 /* Pods_commit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0835348644A36A67576936 /* Pods_commit.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		717F944E26774EE200D11C58 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		717F945126774EE200D11C58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		717F945326774EE200D11C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71A190A02680C9B000C6D6E8 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		71AF451926790DA70084364A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		BBC617FED296126FD17B4FE3 /* Pods-commit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-commit.release.xcconfig"; path = "Target Support Files/Pods-commit/Pods-commit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -263,6 +265,7 @@
 		717F9466267751BE00D11C58 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				71A190A02680C9B000C6D6E8 /* UseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				715C2F1426791F7700DA66F3 /* Tag.swift in Sources */,
 				715C2F16267921A700DA66F3 /* Preset.swift in Sources */,
 				717F944626774ED400D11C58 /* AppDelegate.swift in Sources */,
+				71A190A12680C9B000C6D6E8 /* UseCase.swift in Sources */,
 				715C2F27267CDFDE00DA66F3 /* TodoListView.swift in Sources */,
 				717F944826774ED400D11C58 /* SceneDelegate.swift in Sources */,
 				716E8EC4267E5E470088A04D /* TodoListRow.swift in Sources */,
