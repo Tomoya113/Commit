@@ -29,9 +29,9 @@ struct TodoListView: View {
 	}
 }
 
-struct TodoListView_Previews: PreviewProvider {
-	static var previews: some View {
-		TodoListView(list: ListMock.list, todos: TodoMock.Alltodo)
-			.environment(\.locale, Locale(identifier: "ja_JP"))
-	}
-}
+//struct TodoListView_Previews: PreviewProvider {
+//	static var previews: some View {
+//		TodoListView(list: ListMock.list, todos: TodoMock.Alltodo)
+//			.environment(\.locale, Locale(identifier: "ja_JP"))
+//	}
+//}

@@ -14,7 +14,7 @@ protocol UseCase where Failure: Error {
 	
 	func execute(
 		_ parameters: Parameters,
-		completion: ( (Result<Success, Failure>) -> () )?
+		completion: ( (Result<Success, Failure>) -> Void )?
 	)
 	
 	func cancel()
@@ -31,7 +31,7 @@ final class AnyUseCase<Parameters, Success, Failure: Error>: UseCase {
 		box = UseCaseBox<T>(base)
 	}
 	
-	func execute(_ parameters: Parameters, completion: ((Result<Success, Failure>) -> ())?) {
+	func execute(_ parameters: Parameters, completion: ((Result<Success, Failure>) -> Void )?) {
 		box.execute(parameters, completion: completion)
 	}
 	
@@ -39,7 +39,6 @@ final class AnyUseCase<Parameters, Success, Failure: Error>: UseCase {
 		box.cancel()
 	}
 }
-
 
 // AnyUseCaseさえ知っていればいい女王なためprivate extensionとしている
 private extension AnyUseCase {
@@ -49,8 +48,7 @@ private extension AnyUseCase {
 	class AnyUseCaseBox<Parameters, Success, Failure: Error> {
 		func execute(
 			_ parameters: Parameters,
-			completion: (( Result<Success, Failure> ) -> () )? )
-		{
+			completion: (( Result<Success, Failure> ) -> Void )? ) {
 			fatalError()
 		}
 		
@@ -68,8 +66,7 @@ private extension AnyUseCase {
 			self.base = base
 		}
 		
-		override func execute(_ parameters: T.Parameters, completion: ((Result<T.Success, T.Failure>) -> ())?)
-		{
+		override func execute(_ parameters: T.Parameters, completion: ((Result<T.Success, T.Failure>) -> Void )?) {
 			base.execute(parameters, completion: completion)
 		}
 		

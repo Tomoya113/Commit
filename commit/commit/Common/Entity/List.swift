@@ -20,6 +20,7 @@ class ListRealm: Object, ObjectKeyIdentifiable {
 }
 
 class SectionRealm: Object, ObjectKeyIdentifiable {
+	@objc dynamic var id: String = UUID().uuidString
 	@objc dynamic var title: String = ""
 	@objc dynamic var typeRawValue: String = SectionType.undefined.rawValue
 	

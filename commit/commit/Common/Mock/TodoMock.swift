@@ -74,7 +74,7 @@ class TodoMock {
 		todoB3
 	]
 	
-	static let Alltodo = [
+	static let allTodo = [
 		todosA,
 		todosB
 	]
