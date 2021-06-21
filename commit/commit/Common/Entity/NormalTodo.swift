@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class NormalTodo: Object, ObjectKeyIdentifiable {
+class NormalTodo: Object, TodoProtocol, ObjectKeyIdentifiable {
 	@objc dynamic var id: String = UUID().uuidString
 	@objc dynamic var content: Todo?
 	

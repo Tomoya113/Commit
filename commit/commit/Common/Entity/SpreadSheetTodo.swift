@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class SpreadSheetTodo: Object, ObjectKeyIdentifiable {
+class SpreadSheetTodo: Object, TodoProtocol, ObjectKeyIdentifiable {
 	@objc dynamic var id: String = UUID().uuidString
 	@objc dynamic var presetId: String = ""
 	@objc dynamic var content: Todo?
