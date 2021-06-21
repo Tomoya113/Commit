@@ -34,6 +34,7 @@
 		71AA3DC02680DEC2005D1CCC /* TodoListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBF2680DEC2005D1CCC /* TodoListRepository.swift */; };
 		71AA3DC32680DEF3005D1CCC /* SampleTodoListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC22680DEF3005D1CCC /* SampleTodoListRepository.swift */; };
 		71AA3DC526813AEF005D1CCC /* TodoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC426813AEF005D1CCC /* TodoProtocol.swift */; };
+		71AA3DC726814B95005D1CCC /* SpreadSheetTodoAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC626814B95005D1CCC /* SpreadSheetTodoAttribute.swift */; };
 		71AF451A26790DA70084364A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF451926790DA70084364A /* Todo.swift */; };
 		E3758B71D6FE159FFC52A291 /* Pods_commit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0835348644A36A67576936 /* Pods_commit.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		71AA3DBF2680DEC2005D1CCC /* TodoListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListRepository.swift; sourceTree = "<group>"; };
 		71AA3DC22680DEF3005D1CCC /* SampleTodoListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTodoListRepository.swift; sourceTree = "<group>"; };
 		71AA3DC426813AEF005D1CCC /* TodoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoProtocol.swift; sourceTree = "<group>"; };
+		71AA3DC626814B95005D1CCC /* SpreadSheetTodoAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetTodoAttribute.swift; sourceTree = "<group>"; };
 		71AF451926790DA70084364A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		BBC617FED296126FD17B4FE3 /* Pods-commit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-commit.release.xcconfig"; path = "Target Support Files/Pods-commit/Pods-commit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,7 +99,6 @@
 		715C2F0E2679180200DA66F3 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				71AF451926790DA70084364A /* Todo.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -225,6 +226,7 @@
 		717F94602677505600D11C58 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				71AF451926790DA70084364A /* Todo.swift */,
 				715C2F0E2679180200DA66F3 /* Base */,
 				715C2F0B2679178D00DA66F3 /* List.swift */,
 				715C2F0F2679181400DA66F3 /* SpreadSheetTodo.swift */,
@@ -232,6 +234,7 @@
 				715C2F1326791F7700DA66F3 /* Tag.swift */,
 				715C2F15267921A700DA66F3 /* Preset.swift */,
 				715C2F182679244F00DA66F3 /* SpreadSheetHistory.swift */,
+				71AA3DC626814B95005D1CCC /* SpreadSheetTodoAttribute.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				71A190A32680CC5B00C6D6E8 /* TodoListSearchInteractor.swift in Sources */,
 				715C2F27267CDFDE00DA66F3 /* TodoListView.swift in Sources */,
 				71AA3DC526813AEF005D1CCC /* TodoProtocol.swift in Sources */,
+				71AA3DC726814B95005D1CCC /* SpreadSheetTodoAttribute.swift in Sources */,
 				717F944826774ED400D11C58 /* SceneDelegate.swift in Sources */,
 				71AA3DC02680DEC2005D1CCC /* TodoListRepository.swift in Sources */,
 				716E8EC4267E5E470088A04D /* TodoListRow.swift in Sources */,
