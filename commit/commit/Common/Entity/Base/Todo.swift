@@ -43,7 +43,3 @@ class Todo: EmbeddedObject {
 	}
 
 }
-
-protocol TodoProtocol {
-	var content: Todo? { get set }
-}

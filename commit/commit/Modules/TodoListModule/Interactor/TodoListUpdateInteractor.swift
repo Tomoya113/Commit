@@ -8,6 +8,12 @@
 import Foundation
 
 class TodoListUpdateInteractor: UseCase {
+	let repository: Repository
+	
+	init(repository: Repository) {
+		self.repository = repository
+	}
+	
 	func execute(_ parameters: Void, completion: ((Result<Void, Never>) -> Void )?) {
 		
 	}

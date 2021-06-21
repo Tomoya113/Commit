@@ -16,6 +16,8 @@ class TodoListPresenter: ObservableObject {
 	
 	@Published var lists: [ListRealm] = []
 	@Published var todos: [[TodoProtocol]] = []
+	@Published var currentList: ListRealm?
+	@Published var currentSection: [SectionRealm] = []
 	
 	private let dependency: Dependency
 	
@@ -26,11 +28,13 @@ class TodoListPresenter: ObservableObject {
 	func onAppear() {
 		dependency.listSearchInteractor.execute(()) { [weak self] result in
 			switch result {
-			case .success(let lists):
-				self?.lists = lists
-				for section in lists[0].sections {
-					self?.fetchTodo(id: section.id)
-				}
+				case .success(let lists):
+					self?.lists = lists
+					self?.currentList = lists[0]
+					self?.currentSection = Array(lists[0].sections)
+					for section in lists[0].sections {
+						self?.fetchTodo(id: section.id)
+					}
 			}
 		}
 	}

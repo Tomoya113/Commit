@@ -8,21 +8,25 @@
 import SwiftUI
 
 struct TodoListView: View {
-	let list: ListRealm
-	let todos: [[NormalTodo]]
+	@ObservedObject var presenter: TodoListPresenter
 	var body: some View {
 		ZStack {
 			NavigationView {
 				List {
-					ForEach(list.sections.indices) { i in
-						Section(header: Text(list.sections[i].title)) {
-							ForEach(todos[i]) { todo in
-								TodoListRow(todo: todo.content!, finished: todo.content!.status!.finished)
-							}
-						}
-					}
+//					ForEach(presenter.currentSection.indices) { i in
+//						Section(header: Text(presenter.currentSection[i].title)) {
+//							ForEach(presenter.todos)
+//						}
+//					}
+//					ForEach(presenter.currentSection, id: \.id) { section in
+//						Section(header: Text(section.title)) {
+//							ForEach(presenter.todos[i]) { todo in
+//								TodoListRow(todo: todo.content!, finished: todo.content!.status!.finished)
+//							}
+//						}
+//					}
 				}
-				.navigationTitle(list.title)
+				.navigationTitle(presenter.lists[0].title)
 			}
 		}
 		
@@ -30,6 +34,8 @@ struct TodoListView: View {
 }
 
 //struct TodoListView_Previews: PreviewProvider {
+//	let dependency = de
+//	let presenter = TodoListPresenter(dependency: <#T##TodoListPresenter.Dependency#>)
 //	static var previews: some View {
 //		TodoListView(list: ListMock.list, todos: TodoMock.Alltodo)
 //			.environment(\.locale, Locale(identifier: "ja_JP"))

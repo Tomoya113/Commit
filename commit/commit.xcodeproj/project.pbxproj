@@ -33,6 +33,7 @@
 		71AA3DBE2680D576005D1CCC /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBD2680D576005D1CCC /* Repository.swift */; };
 		71AA3DC02680DEC2005D1CCC /* TodoListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBF2680DEC2005D1CCC /* TodoListRepository.swift */; };
 		71AA3DC32680DEF3005D1CCC /* SampleTodoListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC22680DEF3005D1CCC /* SampleTodoListRepository.swift */; };
+		71AA3DC526813AEF005D1CCC /* TodoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC426813AEF005D1CCC /* TodoProtocol.swift */; };
 		71AF451A26790DA70084364A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF451926790DA70084364A /* Todo.swift */; };
 		E3758B71D6FE159FFC52A291 /* Pods_commit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0835348644A36A67576936 /* Pods_commit.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		71AA3DBD2680D576005D1CCC /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		71AA3DBF2680DEC2005D1CCC /* TodoListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListRepository.swift; sourceTree = "<group>"; };
 		71AA3DC22680DEF3005D1CCC /* SampleTodoListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTodoListRepository.swift; sourceTree = "<group>"; };
+		71AA3DC426813AEF005D1CCC /* TodoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoProtocol.swift; sourceTree = "<group>"; };
 		71AF451926790DA70084364A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		BBC617FED296126FD17B4FE3 /* Pods-commit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-commit.release.xcconfig"; path = "Target Support Files/Pods-commit/Pods-commit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -275,6 +277,7 @@
 			children = (
 				71A190A02680C9B000C6D6E8 /* UseCase.swift */,
 				71AA3DBD2680D576005D1CCC /* Repository.swift */,
+				71AA3DC426813AEF005D1CCC /* TodoProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				71AA3DBE2680D576005D1CCC /* Repository.swift in Sources */,
 				71A190A32680CC5B00C6D6E8 /* TodoListSearchInteractor.swift in Sources */,
 				715C2F27267CDFDE00DA66F3 /* TodoListView.swift in Sources */,
+				71AA3DC526813AEF005D1CCC /* TodoProtocol.swift in Sources */,
 				717F944826774ED400D11C58 /* SceneDelegate.swift in Sources */,
 				71AA3DC02680DEC2005D1CCC /* TodoListRepository.swift in Sources */,
 				716E8EC4267E5E470088A04D /* TodoListRow.swift in Sources */,
