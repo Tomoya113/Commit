@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		715C2F0C2679178D00DA66F3 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F0B2679178D00DA66F3 /* List.swift */; };
-		715C2F102679181400DA66F3 /* SpreadSheetTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F0F2679181400DA66F3 /* SpreadSheetTodo.swift */; };
-		715C2F122679182000DA66F3 /* NormalTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F112679182000DA66F3 /* NormalTodo.swift */; };
 		715C2F1426791F7700DA66F3 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F1326791F7700DA66F3 /* Tag.swift */; };
 		715C2F16267921A700DA66F3 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F15267921A700DA66F3 /* Preset.swift */; };
 		715C2F192679244F00DA66F3 /* SpreadSheetHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F182679244F00DA66F3 /* SpreadSheetHistory.swift */; };
@@ -42,8 +40,6 @@
 		3D0835348644A36A67576936 /* Pods_commit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_commit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E4FB42827C619E28A3CD34C /* Pods-commit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-commit.debug.xcconfig"; path = "Target Support Files/Pods-commit/Pods-commit.debug.xcconfig"; sourceTree = "<group>"; };
 		715C2F0B2679178D00DA66F3 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
-		715C2F0F2679181400DA66F3 /* SpreadSheetTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetTodo.swift; sourceTree = "<group>"; };
-		715C2F112679182000DA66F3 /* NormalTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalTodo.swift; sourceTree = "<group>"; };
 		715C2F1326791F7700DA66F3 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		715C2F15267921A700DA66F3 /* Preset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
 		715C2F182679244F00DA66F3 /* SpreadSheetHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetHistory.swift; sourceTree = "<group>"; };
@@ -219,8 +215,6 @@
 			children = (
 				71AF451926790DA70084364A /* Todo.swift */,
 				715C2F0B2679178D00DA66F3 /* List.swift */,
-				715C2F0F2679181400DA66F3 /* SpreadSheetTodo.swift */,
-				715C2F112679182000DA66F3 /* NormalTodo.swift */,
 				715C2F1326791F7700DA66F3 /* Tag.swift */,
 				715C2F15267921A700DA66F3 /* Preset.swift */,
 				715C2F182679244F00DA66F3 /* SpreadSheetHistory.swift */,
@@ -499,11 +493,9 @@
 				715C2F1E2679B1DB00DA66F3 /* TodoMock.swift in Sources */,
 				715C2F2D267CE0A800DA66F3 /* TodoListRouter.swift in Sources */,
 				71AA3DC32680DEF3005D1CCC /* SampleTodoListRepository.swift in Sources */,
-				715C2F102679181400DA66F3 /* SpreadSheetTodo.swift in Sources */,
 				717F944A26774ED400D11C58 /* ContentView.swift in Sources */,
 				715C2F0C2679178D00DA66F3 /* List.swift in Sources */,
 				71AF451A26790DA70084364A /* Todo.swift in Sources */,
-				715C2F122679182000DA66F3 /* NormalTodo.swift in Sources */,
 				715C2F29267CE07F00DA66F3 /* TodoListPresenter.swift in Sources */,
 				715C2F192679244F00DA66F3 /* SpreadSheetHistory.swift in Sources */,
 				715C2F2F267CE37900DA66F3 /* NormalTodoRepository.swift in Sources */,
