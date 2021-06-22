@@ -8,58 +8,53 @@
 import Foundation
 
 class TodoMock {
-	static let todoA1 = NormalTodo(
-		todo: Todo(
-			sectionId: "1",
-			title: "銀行に振り込み",
-			detail: "2000円",
-			displayTag: [DisplayTag(tagId: "1")]
-		)
+	static let todoA1 = Todo(
+		sectionId: "1",
+		title: "銀行に振り込み",
+		detail: "2000円",
+		displayTag: [DisplayTag(tagId: "1")],
+		todoType: .normal
 	)
 	
-	static let todoA2 = NormalTodo(
-		todo: Todo(
+	static let todoA2 =
+		Todo(
 			sectionId: "1",
 			title: "課題終わらせる",
 			detail: "1時間程度",
-			displayTag: [DisplayTag(tagId: "2")]
+			displayTag: [DisplayTag(tagId: "2")],
+			todoType: .normal
 		)
+	
+	static let todoA3 = Todo(
+		sectionId: "1",
+		title: "部屋の掃除する",
+		detail: "1時間程度",
+		displayTag: [DisplayTag(tagId: "3")],
+		todoType: .normal
 	)
 	
-	static let todoA3 = NormalTodo(
-		todo: Todo(
-			sectionId: "1",
-			title: "部屋の掃除する",
-			detail: "1時間程度",
-			displayTag: [DisplayTag(tagId: "3")]
-		)
+	static let todoB1 = Todo(
+		sectionId: "2",
+		title: "銀行に振り込み",
+		detail: "2000円",
+		displayTag: [DisplayTag(tagId: "1")],
+		todoType: .normal
 	)
 	
-	static let todoB1 = NormalTodo(
-		todo: Todo(
-			sectionId: "2",
-			title: "銀行に振り込み",
-			detail: "2000円",
-			displayTag: [DisplayTag(tagId: "1")]
-		)
+	static let todoB2 = Todo(
+		sectionId: "2",
+		title: "課題終わらせる",
+		detail: "1時間程度",
+		displayTag: [DisplayTag(tagId: "2")],
+		todoType: .normal
 	)
 	
-	static let todoB2 = NormalTodo(
-		todo: Todo(
-			sectionId: "2",
-			title: "課題終わらせる",
-			detail: "1時間程度",
-			displayTag: [DisplayTag(tagId: "2")]
-		)
-	)
-	
-	static let todoB3 = NormalTodo(
-		todo: Todo(
-			sectionId: "2",
-			title: "部屋の掃除する",
-			detail: "1時間程度",
-			displayTag: [DisplayTag(tagId: "3")]
-		)
+	static let todoB3 = Todo(
+		sectionId: "3",
+		title: "部屋の掃除する",
+		detail: "1時間程度",
+		displayTag: [DisplayTag(tagId: "3")],
+		todoType: .normal
 	)
 	
 	static let todosA = [
