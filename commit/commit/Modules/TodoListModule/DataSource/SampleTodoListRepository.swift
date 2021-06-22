@@ -11,7 +11,7 @@ import RealmSwift
 class SampleTodoRepository: Repository {
 	let realm = try! Realm()
 	
-	func findTodosById(_ id: String) -> [TodoProtocol] {
+	func findTodosById(_ id: String) -> [Todo] {
 		return TodoMock.todosA
 	}
 	

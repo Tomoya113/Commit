@@ -22,22 +22,11 @@ class ListRealm: Object, ObjectKeyIdentifiable {
 class SectionRealm: Object, ObjectKeyIdentifiable {
 	@objc dynamic var id: String = UUID().uuidString
 	@objc dynamic var title: String = ""
-	@objc dynamic var typeRawValue: String = SectionType.undefined.rawValue
-	
-	var type: SectionType {
-			get { return SectionType(rawValue: typeRawValue) ?? .undefined }
-			set { typeRawValue = newValue.rawValue }
-	}
-	
-	convenience init(title: String, sectionType: SectionType) {
+
+	convenience init(title: String) {
 		self.init()
 		self.title = title
-		self.type = sectionType
 	}
 }
 
-enum SectionType: String {
-	case normal
-	case googleSheets
-	case undefined
-}
+

@@ -10,12 +10,12 @@ import Foundation
 class TodoListPresenter: ObservableObject {
 	struct Dependency {
 		let listSearchInteractor: AnyUseCase<Void, [ListRealm], Never>
-		let todoSearchInteractor: AnyUseCase<String, [TodoProtocol], Never>
+		let todoSearchInteractor: AnyUseCase<String, [Todo], Never>
 		let todoListUpdateInteractor: AnyUseCase<Void, Void, Never>
 	}
 	
 	@Published var lists: [ListRealm] = []
-	@Published var todos: [[TodoProtocol]] = []
+	@Published var todos: [[Todo]] = []
 	@Published var currentList: ListRealm?
 	@Published var currentSection: [SectionRealm] = []
 	

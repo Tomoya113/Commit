@@ -48,8 +48,8 @@ struct TodoListRow: View {
 struct TodoListRow_Previews: PreviewProvider {
     static var previews: some View {
 		TodoListRow(
-			todo: TodoMock.todoA1.content!,
-			finished: TodoMock.todoA1.content!.status!.finished)
+			todo: TodoMock.todoA1,
+			finished: TodoMock.todoA1.status!.finished)
 			.padding()
     }
 }
