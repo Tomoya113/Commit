@@ -15,7 +15,8 @@ class TodoUpdateInteractor: UseCase {
 	}
 	
 	func execute(_ parameters: String, completion: ((Result<Void, Never>) -> Void )?) {
-		
+		repository.updateTodoStatusById(parameters)
+		completion?(.success(()))
 	}
 	
 	func cancel() {

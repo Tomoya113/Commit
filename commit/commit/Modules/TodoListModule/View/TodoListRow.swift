@@ -10,7 +10,7 @@ import RealmSwift
 
 struct TodoListRow: View {
 	@ObservedRealmObject var todo: Todo
-	let updateTodoById: ((String) -> Void)
+	let updateTodoStatus: ((String) -> Void)
     var body: some View {
 		HStack {
 			VStack(alignment: .leading, spacing: 8) {
@@ -29,7 +29,7 @@ struct TodoListRow: View {
 			}
 			Spacer()
 			Button(action: {
-				updateTodoById(todo.id)
+				updateTodoStatus(todo.id)
 			}, label: {
 				if todo.status!.finished {
 					Text(Image(systemName: "checkmark.square"))
@@ -51,7 +51,7 @@ struct TodoListRow_Previews: PreviewProvider {
 		print(id)
 	}
     static var previews: some View {
-		TodoListRow(todo: TodoMock.todoA1, updateTodoById: test)
+		TodoListRow(todo: TodoMock.todoA1, updateTodoStatus: test)
 			.padding()
     }
 }

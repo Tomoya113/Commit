@@ -19,6 +19,8 @@ class SampleTodoRepository: Repository {
 	}
 	
 	func updateTodoStatusById(_ id: String) {
-		print("updated")
+		for todo in TodoMock.todosA where todo.id == id {
+			todo.status?.finished.toggle()
+		}
 	}
 }
