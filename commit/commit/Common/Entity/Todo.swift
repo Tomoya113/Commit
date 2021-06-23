@@ -27,7 +27,7 @@ class TodoStatus: EmbeddedObject {
 	}
 }
 
-class Todo: Object {
+class Todo: Object, ObjectKeyIdentifiable {
 	@objc dynamic var id: String = UUID().uuidString
 	@objc dynamic var sectionId: String = ""
 	@objc dynamic var title: String = ""

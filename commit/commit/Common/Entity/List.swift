@@ -28,5 +28,3 @@ class SectionRealm: Object, ObjectKeyIdentifiable {
 		self.title = title
 	}
 }
-
-

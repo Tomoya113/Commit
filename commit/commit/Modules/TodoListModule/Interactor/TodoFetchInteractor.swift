@@ -7,16 +7,16 @@
 
 import Foundation
 
-class ListSearchInteractor: UseCase {
+class TodoFetchInteractor: UseCase {
 	let repository: Repository
 	
 	init(repository: Repository) {
 		self.repository = repository
 	}
 	
-	func execute(_ parameters: Void, completion: ((Result<[ListRealm], Never>) -> Void )?) {
-		let lists = repository.fetchLists()
-		completion?(.success(lists))
+	func execute(_ parameters: String, completion: ((Result<[Todo], Never>) -> Void )?) {
+		let todos = repository.findTodosById(parameters)
+		completion?(.success(todos))
 	}
 	
 	func cancel() {

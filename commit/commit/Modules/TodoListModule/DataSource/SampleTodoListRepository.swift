@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import RealmSwift
 
 class SampleTodoRepository: Repository {
-	let realm = try! Realm()
+//	let realm = try! Realm()
 	
 	func findTodosById(_ id: String) -> [Todo] {
 		return TodoMock.todosA
@@ -19,7 +18,7 @@ class SampleTodoRepository: Repository {
 		return ListMock.lists
 	}
 	
-	func updateNormalTodoStatusById(_ id: String) {
-		
+	func updateTodoStatusById(_ id: String) {
+		print("updated")
 	}
 }

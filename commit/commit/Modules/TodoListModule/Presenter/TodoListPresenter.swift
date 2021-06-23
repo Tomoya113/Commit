@@ -9,9 +9,9 @@ import Foundation
 
 class TodoListPresenter: ObservableObject {
 	struct Dependency {
-		let listSearchInteractor: AnyUseCase<Void, [ListRealm], Never>
-		let todoSearchInteractor: AnyUseCase<String, [Todo], Never>
-		let todoListUpdateInteractor: AnyUseCase<Void, Void, Never>
+		let listFetchInteractor: AnyUseCase<Void, [ListRealm], Never>
+		let todoFetchInteractor: AnyUseCase<String, [Todo], Never>
+		let todoUpdateInteractor: AnyUseCase<String, Void, Never>
 	}
 	
 	@Published var lists: [ListRealm] = []
@@ -26,7 +26,7 @@ class TodoListPresenter: ObservableObject {
 	}
 	
 	func onAppear() {
-		dependency.listSearchInteractor.execute(()) { [weak self] result in
+		dependency.listFetchInteractor.execute(()) { [weak self] result in
 			switch result {
 				case .success(let lists):
 					self?.lists = lists
@@ -39,17 +39,17 @@ class TodoListPresenter: ObservableObject {
 		}
 	}
 	
-	func updateTodoStatus() {
-		dependency.todoListUpdateInteractor.execute(()) { result in
+	func updateTodoStatus(id: String) {
+		dependency.todoUpdateInteractor.execute(id) { result in
 			switch result {
-			case .success:
-				break
+				case .success:
+					break
 			}
 		}
 	}
 	
 	private func fetchTodo(id: String) {
-		dependency.todoSearchInteractor.execute(id) { [weak self] result in
+		dependency.todoFetchInteractor.execute(id) { [weak self] result in
 			switch result {
 				case .success(let todos):
 					self?.todos.append(todos)
@@ -57,4 +57,18 @@ class TodoListPresenter: ObservableObject {
 		}
 	}
 	
+}
+
+extension TodoListPresenter {
+	static let sample: TodoListPresenter = {
+		let repository = SampleTodoRepository()
+		let listFetchInteractor = AnyUseCase(ListFetchInteractor(repository: repository))
+		let todoFetchInteractor = AnyUseCase(TodoFetchInteractor(repository: repository))
+		let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor(repository: repository))
+		let dependency = TodoListPresenter.Dependency(
+			listFetchInteractor: listFetchInteractor,
+			todoFetchInteractor: todoFetchInteractor,
+			todoUpdateInteractor: todoUpdateInteractor)
+		return TodoListPresenter(dependency: dependency)
+	}()
 }

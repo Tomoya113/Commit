@@ -7,14 +7,14 @@
 
 import Foundation
 
-class TodoListUpdateInteractor: UseCase {
+class TodoUpdateInteractor: UseCase {
 	let repository: Repository
 	
 	init(repository: Repository) {
 		self.repository = repository
 	}
 	
-	func execute(_ parameters: Void, completion: ((Result<Void, Never>) -> Void )?) {
+	func execute(_ parameters: String, completion: ((Result<Void, Never>) -> Void )?) {
 		
 	}
 	

@@ -5,6 +5,17 @@
 //  Created by Tomoya Tanaka on 2021/06/21.
 //
 
+// 1. associatedtypeのあるprotocolに準拠した変数を定義or仮引数にできない(コンパイルエラーになる)
+// 2. 具象型を宣言する必要がある(具象型はprotocolのassociatedtypeを確定させることができるから)
+// 3. 抽象型を扱う型(AnyUseCase)を定義する
+// AnyUseCase:
+//	- Interactorを利用する際のインターフェース
+//	- 内部にはAnyUseCaseBoxに保持してインターフェース経由で利用する
+// AnyUseCaseBox: 型パラメータ Parameters, SuccessをUseCaseプロトコルのassociatedtypeと合わせるために用いる
+// UseCaseBox: 内部にUseCaseプロトコルを具象化したインスタンスを保持して実行させる
+
+// UseCaseBoxの型の決定→AnyUseCaseBoxの連想型決定→AnyUseCaseの連想型決定
+
 import Foundation
 
 protocol UseCase where Failure: Error {
@@ -40,7 +51,7 @@ final class AnyUseCase<Parameters, Success, Failure: Error>: UseCase {
 	}
 }
 
-// AnyUseCaseさえ知っていればいい女王なためprivate extensionとしている
+// AnyUseCaseさえ知っていればいい情報なためprivate extensionとしている
 private extension AnyUseCase {
 	
 	// ジェネリクスの型パラメータParameters, Success, Failureを用いて、メソッドをUseCaseと合わせる。
@@ -59,6 +70,7 @@ private extension AnyUseCase {
 	
 	// ジェネリクスの型パラメータとしてT: UseCaseを持つクラスとして定義。
 	// AnyUseCaseBoxを継承してAnyUseCaseBoxのパラメータとUseCaseの型をあわせる
+	// generic型はwhereとかできないので、AnyUseCaseBoxが必要(?)
 	final class UseCaseBox<T: UseCase>: AnyUseCaseBox<T.Parameters, T.Success, T.Failure> {
 		private let base: T
 		

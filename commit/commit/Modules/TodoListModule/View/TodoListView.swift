@@ -13,31 +13,32 @@ struct TodoListView: View {
 		ZStack {
 			NavigationView {
 				List {
-//					ForEach(presenter.currentSection.indices) { i in
-//						Section(header: Text(presenter.currentSection[i].title)) {
-//							ForEach(presenter.todos)
-//						}
-//					}
-//					ForEach(presenter.currentSection, id: \.id) { section in
-//						Section(header: Text(section.title)) {
-//							ForEach(presenter.todos[i]) { todo in
-//								TodoListRow(todo: todo.content!, finished: todo.content!.status!.finished)
-//							}
-//						}
-//					}
+					// 初回に空の配列を渡すと、高さが確保されずに後の更新でも表示がうまくされなくなってしまうので、中身が生成された時点で初めてレンダーするように制御
+					if !presenter.currentSection.isEmpty {
+						ForEach(presenter.currentSection.indices) { i in
+							Section(header: Text(presenter.currentSection[i].title)) {
+								ForEach(presenter.todos[i]) { todo in
+									TodoListRow(todo: todo, updateTodoById: presenter.updateTodoStatus)
+								}
+							}
+						}
+					}
 				}
-				.navigationTitle(presenter.lists[0].title)
+// NOTE: こんな感じでout of rangeだったりするとエラーになる
+				.navigationTitle(presenter.currentList?.title ?? "")
+			}
+			.onAppear {
+				presenter.onAppear()
 			}
 		}
-		
+
 	}
 }
 
-//struct TodoListView_Previews: PreviewProvider {
-//	let dependency = de
-//	let presenter = TodoListPresenter(dependency: <#T##TodoListPresenter.Dependency#>)
-//	static var previews: some View {
-//		TodoListView(list: ListMock.list, todos: TodoMock.Alltodo)
-//			.environment(\.locale, Locale(identifier: "ja_JP"))
-//	}
-//}
+struct TodoListView_Previews: PreviewProvider {
+//	static var sample = TodoListPresenter.sample
+	static var previews: some View {
+		TodoListView(presenter: TodoListPresenter.sample)
+			.environment(\.locale, Locale(identifier: "ja_JP"))
+	}
+}

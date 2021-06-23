@@ -10,5 +10,5 @@ import Foundation
 protocol Repository {
 	func findTodosById(_ id: String) -> [Todo]
 	func fetchLists() -> [ListRealm]
-	func updateNormalTodoStatusById(_ id: String)
+	func updateTodoStatusById(_ id: String)
 }

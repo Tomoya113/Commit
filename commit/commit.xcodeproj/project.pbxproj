@@ -26,12 +26,13 @@
 		717F944F26774EE200D11C58 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 717F944E26774EE200D11C58 /* Preview Assets.xcassets */; };
 		717F945226774EE200D11C58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 717F945026774EE200D11C58 /* LaunchScreen.storyboard */; };
 		71A190A12680C9B000C6D6E8 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A190A02680C9B000C6D6E8 /* UseCase.swift */; };
-		71A190A32680CC5B00C6D6E8 /* TodoListSearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A190A22680CC5B00C6D6E8 /* TodoListSearchInteractor.swift */; };
-		71AA3DBC2680CE65005D1CCC /* TodoListUpdateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBB2680CE65005D1CCC /* TodoListUpdateInteractor.swift */; };
+		71A190A32680CC5B00C6D6E8 /* TodoFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A190A22680CC5B00C6D6E8 /* TodoFetchInteractor.swift */; };
+		71AA3DBC2680CE65005D1CCC /* TodoUpdateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */; };
 		71AA3DBE2680D576005D1CCC /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBD2680D576005D1CCC /* Repository.swift */; };
 		71AA3DC02680DEC2005D1CCC /* TodoListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBF2680DEC2005D1CCC /* TodoListRepository.swift */; };
 		71AA3DC32680DEF3005D1CCC /* SampleTodoListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC22680DEF3005D1CCC /* SampleTodoListRepository.swift */; };
 		71AA3DC726814B95005D1CCC /* SpreadSheetTodoAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC626814B95005D1CCC /* SpreadSheetTodoAttribute.swift */; };
+		71AA3DC92682E773005D1CCC /* ListFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC82682E773005D1CCC /* ListFetchInteractor.swift */; };
 		71AF451A26790DA70084364A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF451926790DA70084364A /* Todo.swift */; };
 		E3758B71D6FE159FFC52A291 /* Pods_commit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0835348644A36A67576936 /* Pods_commit.framework */; };
 /* End PBXBuildFile section */
@@ -60,12 +61,13 @@
 		717F945126774EE200D11C58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		717F945326774EE200D11C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71A190A02680C9B000C6D6E8 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
-		71A190A22680CC5B00C6D6E8 /* TodoListSearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListSearchInteractor.swift; sourceTree = "<group>"; };
-		71AA3DBB2680CE65005D1CCC /* TodoListUpdateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListUpdateInteractor.swift; sourceTree = "<group>"; };
+		71A190A22680CC5B00C6D6E8 /* TodoFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFetchInteractor.swift; sourceTree = "<group>"; };
+		71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUpdateInteractor.swift; sourceTree = "<group>"; };
 		71AA3DBD2680D576005D1CCC /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		71AA3DBF2680DEC2005D1CCC /* TodoListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListRepository.swift; sourceTree = "<group>"; };
 		71AA3DC22680DEF3005D1CCC /* SampleTodoListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTodoListRepository.swift; sourceTree = "<group>"; };
 		71AA3DC626814B95005D1CCC /* SpreadSheetTodoAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetTodoAttribute.swift; sourceTree = "<group>"; };
+		71AA3DC82682E773005D1CCC /* ListFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFetchInteractor.swift; sourceTree = "<group>"; };
 		71AF451926790DA70084364A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		BBC617FED296126FD17B4FE3 /* Pods-commit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-commit.release.xcconfig"; path = "Target Support Files/Pods-commit/Pods-commit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -303,8 +305,9 @@
 		71AA3DBA2680CE0C005D1CCC /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				71A190A22680CC5B00C6D6E8 /* TodoListSearchInteractor.swift */,
-				71AA3DBB2680CE65005D1CCC /* TodoListUpdateInteractor.swift */,
+				71A190A22680CC5B00C6D6E8 /* TodoFetchInteractor.swift */,
+				71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */,
+				71AA3DC82682E773005D1CCC /* ListFetchInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -484,7 +487,7 @@
 				717F944626774ED400D11C58 /* AppDelegate.swift in Sources */,
 				71A190A12680C9B000C6D6E8 /* UseCase.swift in Sources */,
 				71AA3DBE2680D576005D1CCC /* Repository.swift in Sources */,
-				71A190A32680CC5B00C6D6E8 /* TodoListSearchInteractor.swift in Sources */,
+				71A190A32680CC5B00C6D6E8 /* TodoFetchInteractor.swift in Sources */,
 				715C2F27267CDFDE00DA66F3 /* TodoListView.swift in Sources */,
 				71AA3DC726814B95005D1CCC /* SpreadSheetTodoAttribute.swift in Sources */,
 				717F944826774ED400D11C58 /* SceneDelegate.swift in Sources */,
@@ -496,10 +499,11 @@
 				717F944A26774ED400D11C58 /* ContentView.swift in Sources */,
 				715C2F0C2679178D00DA66F3 /* List.swift in Sources */,
 				71AF451A26790DA70084364A /* Todo.swift in Sources */,
+				71AA3DC92682E773005D1CCC /* ListFetchInteractor.swift in Sources */,
 				715C2F29267CE07F00DA66F3 /* TodoListPresenter.swift in Sources */,
 				715C2F192679244F00DA66F3 /* SpreadSheetHistory.swift in Sources */,
 				715C2F2F267CE37900DA66F3 /* NormalTodoRepository.swift in Sources */,
-				71AA3DBC2680CE65005D1CCC /* TodoListUpdateInteractor.swift in Sources */,
+				71AA3DBC2680CE65005D1CCC /* TodoUpdateInteractor.swift in Sources */,
 				715C2F20267B64E700DA66F3 /* ListMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,6 +555,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Sign To Run Locally ";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -612,6 +617,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Sign To Run Locally ";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -640,6 +646,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"commit/Preview Content\"";
 				DEVELOPMENT_TEAM = L4RQ287Q4R;
@@ -651,6 +658,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tt.commit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -662,6 +670,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"commit/Preview Content\"";
 				DEVELOPMENT_TEAM = L4RQ287Q4R;
@@ -673,6 +682,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tt.commit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
