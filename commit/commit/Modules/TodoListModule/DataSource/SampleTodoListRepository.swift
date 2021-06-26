@@ -6,21 +6,19 @@
 //
 
 import Foundation
+import RealmSwift
 
-//class SampleTodoRepository: Repository {
-////	let realm = try! Realm()
-//	
-//	func findTodosById(_ id: String) -> [Todo] {
-//		return TodoMock.todosA
-//	}
-//	
-//	func fetchLists() -> [ListRealm] {
-//		return ListMock.lists
-//	}
-//	
-//	func updateTodoStatusById(_ id: String) {
-//		for todo in TodoMock.todosA where todo.id == id {
-//			todo.status?.finished.toggle()
-//		}
-//	}
-//}
+class SampleTodoRepository: Repository {
+	let realm = try! Realm()
+	func findTodosById(_ id: String, completion: ((Result<[Todo], Never>) -> Void)?) {
+		completion?(.success(TodoMock.todosA))
+	}
+	
+	func fetchLists(completion: ((Result<[ListRealm], Never>) -> Void)?) {
+		completion?(.success(ListMock.lists))
+	}
+	
+	func updateTodoStatusById(_ id: String) {
+		print("updated")
+	}
+}

@@ -54,7 +54,7 @@ class TodoListPresenter: ObservableObject {
 			switch result {
 				case .success(let sectionTodos):
 					let sectionId = sectionTodos[0].sectionId
-					var index: Int? = nil
+					var index: Int?
 					// NOTE: 計算量うんこなので、もうちょっと方法考える
 					// Review: 変数名ゴミ
 					for todo in self!.todos where sectionId == todo[0].sectionId {
@@ -73,16 +73,18 @@ class TodoListPresenter: ObservableObject {
 	
 }
 
-//extension TodoListPresenter {
-//	static let sample: TodoListPresenter = {
-//		let repository = SampleTodoRepository()
-//		let listFetchInteractor = AnyUseCase(ListFetchInteractor(repository: repository))
-//		let todoFetchInteractor = AnyUseCase(TodoFetchInteractor(repository: repository))
-//		let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor(repository: repository))
-//		let dependency = TodoListPresenter.Dependency(
-//			listFetchInteractor: listFetchInteractor,
-//			todoFetchInteractor: todoFetchInteractor,
-//			todoUpdateInteractor: todoUpdateInteractor)
-//		return TodoListPresenter(dependency: dependency)
-//	}()
-//}
+#if DEBUG
+	extension TodoListPresenter {
+		static let sample: TodoListPresenter = {
+			let repository = SampleTodoRepository()
+			let listFetchInteractor = AnyUseCase(ListFetchInteractor(repository: repository))
+			let todoFetchInteractor = AnyUseCase(TodoFetchInteractor(repository: repository))
+			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor(repository: repository))
+			let dependency = TodoListPresenter.Dependency(
+				listFetchInteractor: listFetchInteractor,
+				todoFetchInteractor: todoFetchInteractor,
+				todoUpdateInteractor: todoUpdateInteractor)
+			return TodoListPresenter(dependency: dependency)
+		}()
+	}
+#endif

@@ -24,7 +24,7 @@ struct TodoListView: View {
 						}
 					}
 				}
-// NOTE: こんな感じでout of rangeだったりするとエラーになる
+				// NOTE: こんな感じでout of rangeだったりするとエラーになる
 				.navigationTitle(presenter.currentList?.title ?? "")
 			}
 			.onAppear {
