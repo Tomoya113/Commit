@@ -27,6 +27,11 @@ struct TodoDetailView: View {
 
 struct TodoDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoDetailView()
+		NavigationView {
+			TodoDetailView()
+				.navigationBarTitle("hoge", displayMode: .inline)
+				.navigationViewStyle(StackNavigationViewStyle())
+		}
+		
     }
 }
