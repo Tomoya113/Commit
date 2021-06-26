@@ -72,7 +72,7 @@ class TodoListPresenter: ObservableObject {
 		}
 	}
 	
-	func generateTodo(todo: Todo, updateTodoStatus: @escaping ((String) -> Void)) -> some View {
+	func generateTodoRow(todo: Todo, updateTodoStatus: @escaping ((String) -> Void)) -> some View {
 		TodoListRow(todo: todo, updateTodoStatus: updateTodoStatus)
 	}
 	
