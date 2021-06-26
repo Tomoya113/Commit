@@ -6,6 +6,7 @@ target 'commit' do
   use_frameworks!
 
   # Pods for commit
-  pod 'RealmSwift'
-  pod 'GoogleSignIn'
+  pod 'GoogleSignIn', '5.0.0'
+  pod 'RealmSwift', '10.7.3'
+
 end

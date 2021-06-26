@@ -15,9 +15,12 @@ class ListFetchInteractor: UseCase {
 	}
 	
 	func execute(_ parameters: Void, completion: ((Result<[ListRealm], Never>) -> Void )?) {
-		let lists: [ListRealm] = repository.fetchLists()
-		completion?(.success(lists))
-		
+		repository.fetchLists { result in
+			switch result {
+				case .success(let lists):
+					completion?(.success(lists))
+			}
+		}
 	}
 	
 	func cancel() {

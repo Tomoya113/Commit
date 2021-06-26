@@ -15,8 +15,12 @@ class TodoFetchInteractor: UseCase {
 	}
 	
 	func execute(_ parameters: String, completion: ((Result<[Todo], Never>) -> Void )?) {
-		let todos = repository.findTodosById(parameters)
-		completion?(.success(todos))
+		repository.findTodosById(parameters) { result in
+			switch result {
+				case .success(let todos):
+					completion?(.success(todos))
+			}
+		}
 	}
 	
 	func cancel() {
