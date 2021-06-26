@@ -35,10 +35,10 @@ struct TodoListView: View {
 	}
 }
 
-//struct TodoListView_Previews: PreviewProvider {
-////	static var sample = TodoListPresenter.sample
-//	static var previews: some View {
-//		TodoListView(presenter: TodoListPresenter.sample)
-//			.environment(\.locale, Locale(identifier: "ja_JP"))
-//	}
-//}
+struct TodoListView_Previews: PreviewProvider {
+	static var sample = TodoListPresenter.sample
+	static var previews: some View {
+		TodoListView(presenter: TodoListPresenter.sample)
+			.environment(\.locale, Locale(identifier: "ja_JP"))
+	}
+}
