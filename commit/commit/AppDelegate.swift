@@ -13,12 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		print("AppDelegate")
-//		try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
+		try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
 		// Override point for customization after application launch.
 		let realm = try! Realm()
 
 		print("Realm is located at:", realm.configuration.fileURL!)
-//		SampleDataGenerator.generateSampleData()
+		SampleDataGenerator.generateSampleData()
 		return true
 	}
 

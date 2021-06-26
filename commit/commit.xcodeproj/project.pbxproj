@@ -313,7 +313,6 @@
 		717F945B26774FF200D11C58 /* TodoListModule */ = {
 			isa = PBXGroup;
 			children = (
-				71AA3DC12680DED9005D1CCC /* DataSource */,
 				71AA3DBA2680CE0C005D1CCC /* Interactor */,
 				71AA3DB82680CE0C005D1CCC /* Presenter */,
 				71AA3DB92680CE0C005D1CCC /* Router */,
@@ -366,6 +365,7 @@
 		717F94602677505600D11C58 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				71AA3DC12680DED9005D1CCC /* DataSource */,
 				71AF451926790DA70084364A /* Todo.swift */,
 				715C2F0B2679178D00DA66F3 /* List.swift */,
 				715C2F1326791F7700DA66F3 /* Tag.swift */,

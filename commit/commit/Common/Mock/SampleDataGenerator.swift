@@ -72,6 +72,7 @@ struct SampleDataGenerator {
 			realm.add(todoB1)
 			realm.add(todoB2)
 			realm.add(todoB3)
+
 		}
 	}
 }
