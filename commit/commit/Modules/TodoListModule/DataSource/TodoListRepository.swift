@@ -62,28 +62,10 @@ class TodoListRepository: Repository {
 			print("todo not found")
 		}
 	}
+	
+	deinit {
+		notificationTokens.forEach { $0.invalidate() }
+	}
 }
 
-// Control ⌃ + Option ⌥ + Command ⌘ + F .
-//class ViewModel: ObservableObject {
-//	@Published var itemEntities: Results<ItemEntity> = ItemEntity.all()
-//	private var notificationTokens: [NotificationToken] = []
-//
-//	init() {
-//		// DBに変更があったタイミングでitemEntitiesの変数に値を入れ直す
-//		notificationTokens.append(itemEntities.observe { change in
-//			switch change {
-//			case let .initial(results):
-//				self.itemEntities = results
-//			case let .update(results, _, _, _):
-//				self.itemEntities = results
-//			case let .error(error):
-//				print(error.localizedDescription)
-//			}
-//		})
-//	}
-//
-//	deinit {
-//		notificationTokens.forEach { $0.invalidate() }
-//	}
-//}
+
