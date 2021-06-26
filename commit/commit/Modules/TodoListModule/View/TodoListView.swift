@@ -18,7 +18,7 @@ struct TodoListView: View {
 						ForEach(presenter.currentSection.indices) { i in
 							Section(header: Text(presenter.currentSection[i].title)) {
 								ForEach(presenter.todos[i]) { todo in
-									TodoListRow(todo: todo, updateTodoStatus: presenter.updateTodoStatus)
+									presenter.generateTodo(todo: todo, updateTodoStatus: presenter.updateTodoStatus)
 								}
 							}
 						}
@@ -27,11 +27,32 @@ struct TodoListView: View {
 				// NOTE: こんな感じでout of rangeだったりするとエラーになる
 				.navigationTitle(presenter.currentList?.title ?? "")
 			}
-			.onAppear {
-				presenter.onAppear()
+			VStack {
+				Spacer()
+				HStack {
+					Spacer()
+					Button(action: {
+						print("button pressed")
+					}, label: {
+						Image(systemName: "pencil")
+							.frame(width: 60, height: 60)
+							.imageScale(.large)
+							.background(Color.green)
+							.foregroundColor(.white)
+							.clipShape(Circle())
+					})
+					.padding(EdgeInsets(
+						top: 0,        // 上の余白
+						leading: 0,    // 左の余白
+						bottom: 0,     // 下の余白
+						trailing: 24    // 右の余白
+					))
+				}
 			}
+			
+		}.onAppear {
+			presenter.onAppear()
 		}
-
 	}
 }
 

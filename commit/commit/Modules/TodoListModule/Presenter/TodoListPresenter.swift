@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import SwiftUI
 
 class TodoListPresenter: ObservableObject {
 	struct Dependency {
@@ -69,6 +70,10 @@ class TodoListPresenter: ObservableObject {
 					}
 			}
 		}
+	}
+	
+	func generateTodo(todo: Todo, updateTodoStatus: @escaping ((String) -> Void)) -> some View {
+		TodoListRow(todo: todo, updateTodoStatus: updateTodoStatus)
 	}
 	
 }

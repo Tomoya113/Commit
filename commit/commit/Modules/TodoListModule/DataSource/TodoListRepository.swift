@@ -17,11 +17,9 @@ class TodoListRepository: Repository {
 		notificationTokens.append(todos.observe { change in
 			switch change {
 			case let .initial(results):
-				print("todo initial")
 				let todos = Array(results)
 				completion?(.success(todos))
 			case let .update(results, _, _, _):
-				print("todo update")
 				let todos = Array(results)
 				completion?(.success(todos))
 			case let .error(error):
@@ -35,11 +33,9 @@ class TodoListRepository: Repository {
 		notificationTokens.append(lists.observe { change in
 			switch change {
 			case let .initial(results):
-				print("ListRealm initial")
 				let lists = Array(results)
 				completion?(.success(lists))
 			case let .update(results, _, _, _):
-				print("ListRealm update")
 				let lists = Array(results)
 				completion?(.success(lists))
 			case let .error(error):
@@ -67,5 +63,3 @@ class TodoListRepository: Repository {
 		notificationTokens.forEach { $0.invalidate() }
 	}
 }
-
-
