@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TodoListView: View {
 	@ObservedObject var presenter: TodoListPresenter
+	@State private var isActionSheetPresented: Bool = false
 	var body: some View {
 		ZStack {
 			NavigationView {
@@ -18,7 +19,7 @@ struct TodoListView: View {
 						ForEach(presenter.currentSection.indices) { i in
 							Section(header: Text(presenter.currentSection[i].title)) {
 								ForEach(presenter.todos[i]) { todo in
-									presenter.generateTodo(todo: todo, updateTodoStatus: presenter.updateTodoStatus)
+									presenter.generateTodoRow(todo: todo, updateTodoStatus: presenter.updateTodoStatus)
 								}
 							}
 						}
@@ -32,27 +33,31 @@ struct TodoListView: View {
 				HStack {
 					Spacer()
 					Button(action: {
-						print("button pressed")
+						isActionSheetPresented = true
 					}, label: {
-						Image(systemName: "pencil")
-							.frame(width: 60, height: 60)
-							.imageScale(.large)
-							.background(Color.green)
-							.foregroundColor(.white)
-							.clipShape(Circle())
+						presenter.addTodoButtonImage()
 					})
-					.padding(EdgeInsets(
-						top: 0,        // 上の余白
-						leading: 0,    // 左の余白
-						bottom: 0,     // 下の余白
-						trailing: 24    // 右の余白
-					))
+					.padding(padding())
+					.actionSheet(isPresented: $isActionSheetPresented, content: {
+						presenter.actionSheet()
+					})
 				}
 			}
 			
 		}.onAppear {
 			presenter.onAppear()
 		}
+	}
+}
+
+extension TodoListView {
+	func padding() -> EdgeInsets {
+		EdgeInsets(
+			top: 0,
+			leading: 0,
+			bottom: 0,
+			trailing: 24
+		)
 	}
 }
 

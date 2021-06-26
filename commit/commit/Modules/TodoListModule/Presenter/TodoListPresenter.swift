@@ -76,6 +76,30 @@ class TodoListPresenter: ObservableObject {
 		TodoListRow(todo: todo, updateTodoStatus: updateTodoStatus)
 	}
 	
+	func addTodoButtonImage() -> some View {
+		Image(systemName: "pencil")
+			.frame(width: 60, height: 60)
+			.imageScale(.large)
+			.background(Color.green)
+			.foregroundColor(.white)
+			.clipShape(Circle())
+	}
+	
+	func actionSheet() -> ActionSheet {
+		ActionSheet(
+			title: Text("Todoの追加"),
+			message: Text("追加するTodoの種類を選んでください"),
+			buttons: [
+				.default(Text("Normal"), action: {
+					print("normal")
+				}),
+				.default(Text("SpreadSheetと連携"), action: {
+					print("SpreadSheet")
+				}),
+				.cancel(Text("キャンセル"))
+			]
+		)
+	}
 }
 
 #if DEBUG
