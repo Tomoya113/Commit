@@ -19,7 +19,9 @@ struct TodoListView: View {
 						ForEach(presenter.currentSection.indices) { i in
 							Section(header: Text(presenter.currentSection[i].title)) {
 								ForEach(presenter.todos[i]) { todo in
-									presenter.generateTodoRow(todo: todo, updateTodoStatus: presenter.updateTodoStatus)
+									presenter.linkBuilder(for: todo) {
+										presenter.generateTodoRow(todo: todo, updateTodoStatus: presenter.updateTodoStatus)
+									}
 								}
 							}
 						}

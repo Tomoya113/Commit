@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 				listFetchInteractor: listFetchInteractor,
 				todoFetchInteractor: todoFetchInteractor,
 				todoUpdateInteractor: todoUpdateInteractor)
-			return TodoListPresenter(dependency: dependency)
+			return TodoListPresenter(dependency: dependency, repository: repository)
 		}()
 		
 		let contentView = TodoListView(presenter: todoListPresenter)

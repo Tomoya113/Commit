@@ -8,12 +8,13 @@
 import Foundation
 
 class TodoFetchInteractor: UseCase {
-	let repository: Repository
+	let repository: TodoRepositoryProtocol
 	
-	init(repository: Repository) {
+	init(repository: TodoRepositoryProtocol) {
 		self.repository = repository
 	}
 	
+	// FIXME: Neverではないやろ絶対に
 	func execute(_ parameters: String, completion: ((Result<[Todo], Never>) -> Void )?) {
 		repository.findTodosById(parameters) { result in
 			switch result {

@@ -22,9 +22,13 @@ class TodoListPresenter: ObservableObject {
 	@Published var currentSection: [SectionRealm] = []
 	
 	private let dependency: Dependency
+	private let router = TodoListRouter()
+	// NOTE: 絶対個々に書くやつではない
+	private let repository: TodoRepositoryProtocol
 	
-	init(dependency: Dependency) {
+	init(dependency: Dependency, repository: TodoRepositoryProtocol) {
 		self.dependency = dependency
+		self.repository = repository
 	}
 	
 	func onAppear() {
@@ -57,7 +61,7 @@ class TodoListPresenter: ObservableObject {
 					let sectionId = sectionTodos[0].sectionId
 					var index: Int?
 					// NOTE: 計算量うんこなので、もうちょっと方法考える
-					// Review: 変数名ゴミ
+					// NOTE: 変数名ゴミ
 					for todo in self!.todos where sectionId == todo[0].sectionId {
 						index = self!.todos.firstIndex(of: todo)!
 						self!.todos.remove(at: index!)
@@ -100,12 +104,18 @@ class TodoListPresenter: ObservableObject {
 			]
 		)
 	}
+	
+	func linkBuilder<Content: View>(for todo: Todo, @ViewBuilder content: () -> Content) -> some View {
+		NavigationLink(destination: router.generateDetailView(for: todo, repository: repository)) {
+			content()
+		}
+	}
 }
 
 #if DEBUG
 	extension TodoListPresenter {
 		static let sample: TodoListPresenter = {
-			let repository = SampleTodoRepository()
+			let repository = MockTodoRepository()
 			let listFetchInteractor = AnyUseCase(ListFetchInteractor(repository: repository))
 			let todoFetchInteractor = AnyUseCase(TodoFetchInteractor(repository: repository))
 			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor(repository: repository))
@@ -113,7 +123,7 @@ class TodoListPresenter: ObservableObject {
 				listFetchInteractor: listFetchInteractor,
 				todoFetchInteractor: todoFetchInteractor,
 				todoUpdateInteractor: todoUpdateInteractor)
-			return TodoListPresenter(dependency: dependency)
+			return TodoListPresenter(dependency: dependency, repository: repository)
 		}()
 	}
 #endif

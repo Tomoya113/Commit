@@ -8,9 +8,9 @@
 import Foundation
 
 class TodoUpdateInteractor: UseCase {
-	let repository: Repository
+	let repository: TodoRepositoryProtocol
 	
-	init(repository: Repository) {
+	init(repository: TodoRepositoryProtocol = TodoListRepository()) {
 		self.repository = repository
 	}
 	

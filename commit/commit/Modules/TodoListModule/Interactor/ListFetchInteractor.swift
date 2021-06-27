@@ -8,9 +8,9 @@
 import Foundation
 
 class ListFetchInteractor: UseCase {
-	let repository: Repository
+	let repository: TodoRepositoryProtocol
 	
-	init(repository: Repository) {
+	init(repository: TodoRepositoryProtocol) {
 		self.repository = repository
 	}
 	
