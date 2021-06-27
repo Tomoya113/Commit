@@ -45,9 +45,9 @@
 		71A190A12680C9B000C6D6E8 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A190A02680C9B000C6D6E8 /* UseCase.swift */; };
 		71A190A32680CC5B00C6D6E8 /* TodoFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A190A22680CC5B00C6D6E8 /* TodoFetchInteractor.swift */; };
 		71AA3DBC2680CE65005D1CCC /* TodoUpdateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */; };
-		71AA3DBE2680D576005D1CCC /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBD2680D576005D1CCC /* Repository.swift */; };
+		71AA3DBE2680D576005D1CCC /* TodoRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */; };
 		71AA3DC02680DEC2005D1CCC /* TodoListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBF2680DEC2005D1CCC /* TodoListRepository.swift */; };
-		71AA3DC32680DEF3005D1CCC /* SampleTodoListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC22680DEF3005D1CCC /* SampleTodoListRepository.swift */; };
+		71AA3DC32680DEF3005D1CCC /* MockTodoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC22680DEF3005D1CCC /* MockTodoRepository.swift */; };
 		71AA3DC726814B95005D1CCC /* SpreadSheetTodoAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC626814B95005D1CCC /* SpreadSheetTodoAttribute.swift */; };
 		71AA3DC92682E773005D1CCC /* ListFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC82682E773005D1CCC /* ListFetchInteractor.swift */; };
 		71AF451A26790DA70084364A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF451926790DA70084364A /* Todo.swift */; };
@@ -97,9 +97,9 @@
 		71A190A02680C9B000C6D6E8 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		71A190A22680CC5B00C6D6E8 /* TodoFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFetchInteractor.swift; sourceTree = "<group>"; };
 		71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUpdateInteractor.swift; sourceTree = "<group>"; };
-		71AA3DBD2680D576005D1CCC /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepositoryProtocol.swift; sourceTree = "<group>"; };
 		71AA3DBF2680DEC2005D1CCC /* TodoListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListRepository.swift; sourceTree = "<group>"; };
-		71AA3DC22680DEF3005D1CCC /* SampleTodoListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTodoListRepository.swift; sourceTree = "<group>"; };
+		71AA3DC22680DEF3005D1CCC /* MockTodoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTodoRepository.swift; sourceTree = "<group>"; };
 		71AA3DC626814B95005D1CCC /* SpreadSheetTodoAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetTodoAttribute.swift; sourceTree = "<group>"; };
 		71AA3DC82682E773005D1CCC /* ListFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFetchInteractor.swift; sourceTree = "<group>"; };
 		71AF451926790DA70084364A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
@@ -365,7 +365,6 @@
 		717F94602677505600D11C58 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				71AA3DC12680DED9005D1CCC /* DataSource */,
 				71AF451926790DA70084364A /* Todo.swift */,
 				715C2F0B2679178D00DA66F3 /* List.swift */,
 				715C2F1326791F7700DA66F3 /* Tag.swift */,
@@ -379,6 +378,8 @@
 		717F94612677505C00D11C58 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				71AA3DC22680DEF3005D1CCC /* MockTodoRepository.swift */,
+				71AA3DBF2680DEC2005D1CCC /* TodoListRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -419,7 +420,7 @@
 			isa = PBXGroup;
 			children = (
 				71A190A02680C9B000C6D6E8 /* UseCase.swift */,
-				71AA3DBD2680D576005D1CCC /* Repository.swift */,
+				71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -465,15 +466,6 @@
 				716AC225268725500003A989 /* SpreadSheetTodoUpdateInteractor.swift */,
 			);
 			path = Interactor;
-			sourceTree = "<group>";
-		};
-		71AA3DC12680DED9005D1CCC /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				71AA3DBF2680DEC2005D1CCC /* TodoListRepository.swift */,
-				71AA3DC22680DEF3005D1CCC /* SampleTodoListRepository.swift */,
-			);
-			path = DataSource;
 			sourceTree = "<group>";
 		};
 		7601617007C297B650C3B68D /* Pods */ = {
@@ -643,7 +635,7 @@
 				717F944626774ED400D11C58 /* AppDelegate.swift in Sources */,
 				71A190A12680C9B000C6D6E8 /* UseCase.swift in Sources */,
 				716AC23B268726060003A989 /* TodoAddView.swift in Sources */,
-				71AA3DBE2680D576005D1CCC /* Repository.swift in Sources */,
+				71AA3DBE2680D576005D1CCC /* TodoRepositoryProtocol.swift in Sources */,
 				71A190A32680CC5B00C6D6E8 /* TodoFetchInteractor.swift in Sources */,
 				716AC2452687267F0003A989 /* SpreadSheetSearchInteractor.swift in Sources */,
 				715C2F27267CDFDE00DA66F3 /* TodoListView.swift in Sources */,
@@ -656,7 +648,7 @@
 				716AC25A268727B10003A989 /* SettingsInteractor.swift in Sources */,
 				715C2F1E2679B1DB00DA66F3 /* TodoMock.swift in Sources */,
 				715C2F2D267CE0A800DA66F3 /* TodoListRouter.swift in Sources */,
-				71AA3DC32680DEF3005D1CCC /* SampleTodoListRepository.swift in Sources */,
+				71AA3DC32680DEF3005D1CCC /* MockTodoRepository.swift in Sources */,
 				716AC258268727950003A989 /* SettingsView.swift in Sources */,
 				717F944A26774ED400D11C58 /* ContentView.swift in Sources */,
 				716AC254268727630003A989 /* SettingsPresenter.swift in Sources */,

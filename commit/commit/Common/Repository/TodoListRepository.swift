@@ -8,7 +8,8 @@
 import Foundation
 import RealmSwift
 
-class TodoListRepository: Repository {
+class TodoListRepository: TodoRepositoryProtocol {
+	
 	let realm = try! Realm()
 	private var notificationTokens: [NotificationToken] = []
 	
@@ -46,16 +47,27 @@ class TodoListRepository: Repository {
 	
 	func updateTodoStatusById(_ id: String) {
 		let todo = realm.object(ofType: Todo.self, forPrimaryKey: id)
+		// NOTE: guard節で書いたほうがよくない？
 		if let todo = todo {
 			do {
 				try realm.write {
 					todo.status!.finished.toggle()
 				}
 			} catch {
-				print(error)
+				print(error.localizedDescription)
 			}
 		} else {
 			print("todo not found")
+		}
+	}
+	
+	func updateTodo(_ todo: Todo) {
+		do {
+			try realm.write {
+				realm.add(todo, update: .modified)
+			}
+		} catch {
+			print(error.localizedDescription)
 		}
 	}
 	
