@@ -9,7 +9,6 @@ import Foundation
 
 class TodoMock {
 	static let todoA1 = Todo(
-		sectionId: "1",
 		title: "銀行に振り込み",
 		detail: "2000円",
 		displayTag: [DisplayTag(tagId: "1")],
@@ -18,7 +17,6 @@ class TodoMock {
 	
 	static let todoA2 =
 		Todo(
-			sectionId: "1",
 			title: "課題終わらせる",
 			detail: "1時間程度",
 			displayTag: [DisplayTag(tagId: "2")],
@@ -26,7 +24,6 @@ class TodoMock {
 		)
 	
 	static let todoA3 = Todo(
-		sectionId: "1",
 		title: "部屋の掃除する",
 		detail: "1時間程度",
 		displayTag: [DisplayTag(tagId: "3")],
@@ -34,7 +31,6 @@ class TodoMock {
 	)
 	
 	static let todoB1 = Todo(
-		sectionId: "2",
 		title: "銀行に振り込み",
 		detail: "2000円",
 		displayTag: [DisplayTag(tagId: "1")],
@@ -42,7 +38,6 @@ class TodoMock {
 	)
 	
 	static let todoB2 = Todo(
-		sectionId: "2",
 		title: "課題終わらせる",
 		detail: "1時間程度",
 		displayTag: [DisplayTag(tagId: "2")],
@@ -50,7 +45,6 @@ class TodoMock {
 	)
 	
 	static let todoB3 = Todo(
-		sectionId: "3",
 		title: "部屋の掃除する",
 		detail: "1時間程度",
 		displayTag: [DisplayTag(tagId: "3")],

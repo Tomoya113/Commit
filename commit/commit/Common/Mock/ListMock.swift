@@ -8,7 +8,7 @@
 import Foundation
 
 class ListMock {
-	static let section1 = SectionRealm(title: "家庭")
+	static let section1 = SectionRealm(title: "家庭", todos: TodoMock.todosA)
 	static let list1 = ListRealm(title: "General", sections: [section1])
 	static let lists = [
 		list1

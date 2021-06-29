@@ -14,13 +14,15 @@ struct TodoListView: View {
 		NavigationView {
 			ZStack {
 				List {
-					//　初回に空の配列を渡すと、高さが確保されずに後の更新でも表示がうまくされなくなってしまうので、中身が生成された時点で初めてレンダーするように制御
-					if !presenter.currentSection.isEmpty && !presenter.todos.isEmpty {
-						ForEach(presenter.currentSection.indices) { i in
-							Section(header: Text(presenter.currentSection[i].title)) {
-								ForEach(presenter.todos[i]) { todo in
+					if presenter.currentList != nil {
+						ForEach(presenter.currentList!.sections) { section in
+							Section(header: Text(section.title)) {
+								ForEach(section.todos) { todo in
 									presenter.linkBuilder(for: todo) {
-										presenter.generateTodoRow(todo: todo, updateTodoStatus: presenter.updateTodoStatus)
+										presenter.generateTodoRow(
+											todo: todo,
+											updateTodoStatus: presenter.updateTodoStatus
+										)
 									}
 								}
 							}

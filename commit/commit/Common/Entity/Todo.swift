@@ -29,7 +29,6 @@ class TodoStatus: EmbeddedObject {
 
 class Todo: Object, ObjectKeyIdentifiable {
 	@objc dynamic var id: String = UUID().uuidString
-	@objc dynamic var sectionId: String = ""
 	@objc dynamic var title: String = ""
 	@objc dynamic var subtitle: String = ""
 	@objc dynamic var status: TodoStatus?
@@ -41,9 +40,8 @@ class Todo: Object, ObjectKeyIdentifiable {
 		set { todoType = newValue.rawValue }
 	}
 	
-	convenience init(sectionId: String, title: String, detail: String = "", displayTag: [DisplayTag], todoType: TodoType) {
+	convenience init(title: String, detail: String = "", displayTag: [DisplayTag], todoType: TodoType) {
 		self.init()
-		self.sectionId = sectionId
 		self.title = title
 		self.subtitle = detail
 		self.status = TodoStatus(finished: false, detail: "")
