@@ -11,8 +11,8 @@ struct TodoListView: View {
 	@ObservedObject var presenter: TodoListPresenter
 	@State private var isActionSheetPresented: Bool = false
 	var body: some View {
-		ZStack {
-			NavigationView {
+		NavigationView {
+			ZStack {
 				List {
 					//　初回に空の配列を渡すと、高さが確保されずに後の更新でも表示がうまくされなくなってしまうので、中身が生成された時点で初めてレンダーするように制御
 					if !presenter.currentSection.isEmpty && !presenter.todos.isEmpty {
@@ -26,26 +26,25 @@ struct TodoListView: View {
 							}
 						}
 					}
-				}
-				// NOTE: こんな感じでout of rangeだったりするとエラーになる
-				.navigationTitle(presenter.currentList?.title ?? "")
-			}
-			VStack {
-				Spacer()
-				HStack {
+				}.listStyle(InsetGroupedListStyle())
+				VStack {
 					Spacer()
-					Button(action: {
-						isActionSheetPresented = true
-					}, label: {
-						presenter.addTodoButtonImage()
-					})
-					.padding(padding())
-					.actionSheet(isPresented: $isActionSheetPresented, content: {
-						presenter.actionSheet()
-					})
+					HStack {
+						Spacer()
+						Button(action: {
+							isActionSheetPresented = true
+						}, label: {
+							presenter.addTodoButtonImage()
+						})
+						.padding(padding())
+						.actionSheet(isPresented: $isActionSheetPresented, content: {
+							presenter.actionSheet()
+						})
+					}
 				}
 			}
-			
+			// NOTE: こんな感じでout of rangeだったりするとエラーになる
+			.navigationTitle(presenter.currentList?.title ?? "")
 		}.onAppear {
 			presenter.onAppear()
 		}
