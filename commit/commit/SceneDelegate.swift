@@ -23,11 +23,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		let todoListPresenter: TodoListPresenter = {
 			let repository = TodoListRepository()
 			let listFetchInteractor = AnyUseCase(ListFetchInteractor(repository: repository))
-			let todoFetchInteractor = AnyUseCase(TodoFetchInteractor(repository: repository))
 			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor(repository: repository))
 			let dependency = TodoListPresenter.Dependency(
 				listFetchInteractor: listFetchInteractor,
-				todoFetchInteractor: todoFetchInteractor,
 				todoUpdateInteractor: todoUpdateInteractor)
 			return TodoListPresenter(dependency: dependency, repository: repository)
 		}()
