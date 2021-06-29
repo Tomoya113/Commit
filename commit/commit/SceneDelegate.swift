@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 				todoUpdateInteractor: todoUpdateInteractor)
 			return TodoListPresenter(dependency: dependency, repository: repository)
 		}()
-		
+
 		let contentView = TodoListView(presenter: todoListPresenter)
 				.environment(\.locale, Locale(identifier: "ja_JP"))
 		

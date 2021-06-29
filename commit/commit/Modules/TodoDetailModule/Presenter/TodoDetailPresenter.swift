@@ -6,39 +6,20 @@
 //
 
 import Foundation
+import RealmSwift
 
 class TodoDetailPresenter: ObservableObject {
 	struct Dependency {
-		let updateTodoInteractor: AnyUseCase<Todo, Void, Never>
+//		let updateTodoInteractor: AnyUseCase<Todo, Void, Never>
 	}
 	
-	var todo: Todo?
-	@Published var title: String = ""
-	@Published var detail: String = ""
-	@Published var finished: Bool = false
-	
+	@ObservedRealmObject var todo: Todo
 	private let dependency: Dependency
 	
 	init(dependency: Dependency, todo: Todo) {
+		
 		self.dependency = dependency
 		self.todo = todo
-		self.title = todo.title
-		self.detail = todo.status!.detail
-		self.finished = todo.status!.finished
-	}
-
-	func updateTodo(completion: ((Result<Void, Error>) -> Void)? ) {
-		guard let todo = todo else {
-			return
-		}
-		todo.title = title
-//		todo.status!.detail =
-			dependency.updateTodoInteractor.execute(todo) { result in
-			switch result {
-				case .success:
-					completion?(.success(()))
-			}
-		}
 	}
 	
 }
@@ -46,11 +27,7 @@ class TodoDetailPresenter: ObservableObject {
 #if DEBUG
 extension TodoDetailPresenter {
 	static let sample: TodoDetailPresenter = {
-		let repository  = MockTodoRepository()
-		let updateTodoInteractor = AnyUseCase(UpdateTodoInteractor(repository: repository))
-		let dependency = TodoDetailPresenter.Dependency(
-			updateTodoInteractor: updateTodoInteractor
-		)
+		let dependency = TodoDetailPresenter.Dependency()
 		return TodoDetailPresenter(dependency: dependency, todo: TodoMock.todoA1)
 	}()
 }
