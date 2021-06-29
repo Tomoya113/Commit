@@ -9,7 +9,6 @@ import Foundation
 import RealmSwift
 
 protocol TodoRepositoryProtocol {
-	func findTodosById(_ id: String, completion: ((Result<[Todo], Never>) -> Void )?)
 	func fetchLists(completion: ((Result<[ListRealm], Never>) -> Void )?)
 	func updateTodoStatusById(_ id: String)
 	func updateTodo(_ todo: Todo)

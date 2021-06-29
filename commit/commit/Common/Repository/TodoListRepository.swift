@@ -13,22 +13,6 @@ class TodoListRepository: TodoRepositoryProtocol {
 	let realm = try! Realm()
 	private var notificationTokens: [NotificationToken] = []
 	
-	func findTodosById(_ id: String, completion: ((Result<[Todo], Never>) -> Void)?) {
-		let todos = realm.objects(Todo.self).filter("sectionId == %@", id)
-		notificationTokens.append(todos.observe { change in
-			switch change {
-			case let .initial(results):
-				let todos = Array(results)
-				completion?(.success(todos))
-			case let .update(results, _, _, _):
-				let todos = Array(results)
-				completion?(.success(todos))
-			case let .error(error):
-				print(error.localizedDescription)
-			}
-		})
-	}
-	
 	func fetchLists(completion: ((Result<[ListRealm], Never>) -> Void )?) {
 		let lists =  realm.objects(ListRealm.self)
 		notificationTokens.append(lists.observe { change in
