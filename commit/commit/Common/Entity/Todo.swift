@@ -31,6 +31,7 @@ class Todo: Object, ObjectKeyIdentifiable {
 	@objc dynamic var id: String = UUID().uuidString
 	@objc dynamic var sectionId: String = ""
 	@objc dynamic var title: String = ""
+	@objc dynamic var subtitle: String = ""
 	@objc dynamic var status: TodoStatus?
 	let tags = List<DisplayTag>()
 	@objc dynamic var todoType: String = TodoType.undefined.rawValue
@@ -44,7 +45,8 @@ class Todo: Object, ObjectKeyIdentifiable {
 		self.init()
 		self.sectionId = sectionId
 		self.title = title
-		self.status = TodoStatus(finished: false, detail: detail)
+		self.subtitle = detail
+		self.status = TodoStatus(finished: false, detail: "")
 		self.type = todoType
 		tags.append(objectsIn: displayTag)
 	}

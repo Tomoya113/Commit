@@ -18,12 +18,12 @@ struct TodoListRow: View {
 					Text(todo.title)
 						.strikethrough()
 						.foregroundColor(.gray)
-					Text(todo.status!.detail)
+					Text(todo.subtitle)
 						.strikethrough()
 						.font(.subheadline).foregroundColor(.gray)
 				} else {
 					Text(todo.title)
-					Text(todo.status!.detail)
+					Text(todo.subtitle)
 						.font(.subheadline).foregroundColor(.gray)
 				}
 			}

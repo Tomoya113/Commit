@@ -27,8 +27,13 @@ class TodoDetailPresenter: ObservableObject {
 		self.finished = todo.status!.finished
 	}
 
-	func updateTodo(todo: Todo, completion: ((Result<Void, Error>) -> Void)? ) {
-		dependency.updateTodoInteractor.execute(todo) { result in
+	func updateTodo(completion: ((Result<Void, Error>) -> Void)? ) {
+		guard let todo = todo else {
+			return
+		}
+		todo.title = title
+//		todo.status!.detail =
+			dependency.updateTodoInteractor.execute(todo) { result in
 			switch result {
 				case .success:
 					completion?(.success(()))

@@ -24,7 +24,9 @@ struct TodoDetailView: View {
 				}
 			}
 			Button(action: {
-				self.presentationMode.wrappedValue.dismiss()
+				self.presenter.updateTodo {_ in
+					self.presentationMode.wrappedValue.dismiss()
+				}
 			}, label: {
 				Text("更新")
 					.fontWeight(.bold)
