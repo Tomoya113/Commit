@@ -81,6 +81,14 @@ class TodoListPresenter: ObservableObject {
 			content()
 		}
 	}
+	
+//	func todoAddLinkBuidler<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+//		NavigationLink(destination:)
+//	}
+	
+//	func linkkBuilder<Content: View>(for todo: Todo, @ViewBuilder content: () -> Content) -> some View {
+//		NavigationLink(destination: <#T##_#>, isActive:)
+//	}
 }
 
 #if DEBUG

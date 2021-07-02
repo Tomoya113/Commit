@@ -13,35 +13,35 @@ struct TodoListView: View {
 	var body: some View {
 		NavigationView {
 			ZStack {
-				List {
-					if presenter.currentList != nil {
-						ForEach(presenter.currentList!.sections) { section in
-							Section(header: Text(section.title)) {
-								ForEach(section.todos) { todo in
-									presenter.linkBuilder(for: todo) {
-										presenter.generateTodoRow(
-											todo: todo,
-											updateTodoStatus: presenter.updateTodoStatus
-										)
+				VStack {
+					List {
+						if presenter.currentList != nil {
+							ForEach(presenter.currentList!.sections) { section in
+								Section(header: Text(section.title)) {
+									ForEach(section.todos) { todo in
+										presenter.linkBuilder(for: todo) {
+											presenter.generateTodoRow(
+												todo: todo,
+												updateTodoStatus: presenter.updateTodoStatus
+											)
+										}
 									}
 								}
 							}
 						}
-					}
-				}.listStyle(InsetGroupedListStyle())
+					}.listStyle(GroupedListStyle())
+				}
 				VStack {
 					Spacer()
 					HStack {
 						Spacer()
-						Button(action: {
-							isActionSheetPresented = true
-						}, label: {
-							presenter.addTodoButtonImage()
-						})
-						.padding(padding())
-						.actionSheet(isPresented: $isActionSheetPresented, content: {
-							presenter.actionSheet()
-						})
+						// NOTE: Routerに書けよ
+						NavigationLink(
+							destination: TodoAddView(presenter: TodoAddPresenter.sample),
+							label: {
+								presenter.addTodoButtonImage()
+							})
+							.padding()
 					}
 				}
 			}
