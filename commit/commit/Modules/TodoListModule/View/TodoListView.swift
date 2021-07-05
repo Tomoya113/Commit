@@ -36,12 +36,15 @@ struct TodoListView: View {
 					HStack {
 						Spacer()
 						// NOTE: Routerに書けよ
-						NavigationLink(
-							destination: TodoAddView(presenter: TodoAddPresenter.sample),
-							label: {
-								presenter.addTodoButtonImage()
-							})
-							.padding()
+						if presenter.currentList != nil {
+							NavigationLink(
+								destination: TodoAddView(presenter: todoAddPresenter(), sections:
+															sectionArray()),
+								label: {
+									presenter.addTodoButtonImage()
+								})
+								.padding()
+						}
 					}
 				}
 			}
@@ -50,6 +53,18 @@ struct TodoListView: View {
 		}.onAppear {
 			presenter.onAppear()
 		}
+	}
+	func sectionArray() -> [SectionRealm] {
+		let sections = presenter.currentList!.sections
+		return Array(sections)
+	}
+	
+	// NOTE: ここじゃない
+	func todoAddPresenter() -> TodoAddPresenter {
+		let repository = TodoListRepository()
+		let todoCreateInteractor = AnyUseCase(TodoCreateInteractor(repository: repository))
+		let dependency = TodoAddPresenter.Dependency(todoCreateInteractor: todoCreateInteractor)
+		return TodoAddPresenter(dependency: dependency)
 	}
 }
 
