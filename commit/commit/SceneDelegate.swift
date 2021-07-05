@@ -20,19 +20,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		// Create the SwiftUI view that provides the window contents.
 		
-//		let todoListPresenter: TodoListPresenter = {
-//			let repository = TodoListRepository()
-//			let listFetchInteractor = AnyUseCase(ListFetchInteractor(repository: repository))
-//			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor(repository: repository))
-//			let dependency = TodoListPresenter.Dependency(
-//				listFetchInteractor: listFetchInteractor,
-//				todoUpdateInteractor: todoUpdateInteractor)
-//			return TodoListPresenter(dependency: dependency, repository: repository)
-//		}()
+		let todoListPresenter: TodoListPresenter = {
+			let repository = TodoListRepository()
+			let listFetchInteractor = AnyUseCase(ListFetchInteractor(repository: repository))
+			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor(repository: repository))
+			let dependency = TodoListPresenter.Dependency(
+				listFetchInteractor: listFetchInteractor,
+				todoUpdateInteractor: todoUpdateInteractor)
+			return TodoListPresenter(dependency: dependency, repository: repository)
+		}()
 
-//		let contentView = TodoListView(presenter: todoListPresenter)
-//				.environment(\.locale, Locale(identifier: "ja_JP"))
-		let contentView = TodoAddView(presenter: TodoAddPresenter.sample)
+		let contentView = TodoListView(presenter: todoListPresenter)
+				.environment(\.locale, Locale(identifier: "ja_JP"))
+//		let contentView = TodoAddView(presenter: TodoAddPresenter.sample)
 		let realm = try! Realm()
 		print("Realm is located at:", realm.configuration.fileURL!)
 		

@@ -6,17 +6,18 @@
 //
 
 import UIKit
-//import RealmSwift
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		let realm = try! Realm()
+		print("Realm is located at:", realm.configuration.fileURL!)
 //		try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
 //		SampleDataGenerator.generateSampleData()
 		// Override point for customization after application launch.
-//		let realm = try! Realm()
-//		print("Realm is located at:", realm.configuration.fileURL!)
+
 		
 		return true
 	}
