@@ -9,26 +9,28 @@ import SwiftUI
 import RealmSwift
 
 struct TodoAddView: View {
+	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 	@ObservedObject var presenter: TodoAddPresenter
-	@State private var currentTodoType: Int = 0
-	@State private var text: String = ""
-	@State var todoType: TodoTypes = .normal
+	var sections: [SectionRealm]
+	@State private var currentTodoTypeIndex: Int = 0
 	var body: some View {
 		GeometryReader { geometry in
+			
 			VStack {
-				Picker("hoge", selection: $currentTodoType) {
+				Picker("hoge", selection: $currentTodoTypeIndex) {
 					ForEach(TodoTypes.allCases.indices) { i in
 						Text(TodoTypes.allCases[i].rawValue)
 					}
 				}
 				.pickerStyle(SegmentedPickerStyle())
 				.frame(width: geometry.size.width - 24)
-				if todoType == .normal {
+				if presenter.currentTodoType == .normal {
 					normalTodoForm
-				} else if todoType == .spreadSheet {
+				} else if presenter.currentTodoType == .spreadSheet {
 					spreadSheetTodoForm
 				}
 				Button(action: {
+					didTapSubmitButton()
 				}, label: {
 					Text("更新")
 						.fontWeight(.bold)
@@ -63,9 +65,9 @@ struct TodoAddView: View {
 			Section(header: Text("説明")) {
 				TextField("タスクの説明", text: $presenter.subtitle)
 			}
-			Picker(selection: $currentTodoType, label: Text("Type")) {
-				ForEach(TodoTypes.allCases.indices) { i in
-					Text(TodoTypes.allCases[i].rawValue)
+			Picker(selection: $presenter.currentSectionId, label: Text("Section")) {
+				ForEach(sections, id: \.id) { section in
+					Text(section.title)
 				}
 			}
 		}
@@ -85,24 +87,32 @@ struct TodoAddView: View {
 	private func didSwipe(_ value: DragGesture.Value) {
 		// 左にスワイプされたとき
 		if value.translation.width < -5 {
-			currentTodoType -= 1
-			if currentTodoType <= -1 {
-				currentTodoType = TodoTypes.allCases.count - 1
+			currentTodoTypeIndex -= 1
+			if currentTodoTypeIndex <= -1 {
+				currentTodoTypeIndex = TodoTypes.allCases.count - 1
 			}
-			todoType = TodoTypes.allCases[currentTodoType]
+			presenter.currentTodoType = TodoTypes.allCases[currentTodoTypeIndex]
 		}
 		// 右にスワイプされたとき
 		if value.translation.width > 5 {
-			currentTodoType += 1
-			if currentTodoType >= TodoTypes.allCases.count {
-				currentTodoType = 0
+			currentTodoTypeIndex += 1
+			if currentTodoTypeIndex >= TodoTypes.allCases.count {
+				currentTodoTypeIndex = 0
 			}
-			todoType = TodoTypes.allCases[currentTodoType]
+			presenter.currentTodoType = TodoTypes.allCases[currentTodoTypeIndex]
 		}
 	}
+	private func didTapSubmitButton() {
+		presentationMode.wrappedValue.dismiss()
+		presenter.createNewTodo()
+	}
+	
 }
 struct TodoAddView_Previews: PreviewProvider {
+	static var sections = ListMock.list1.sections
 	static var previews: some View {
-		TodoAddView(presenter: TodoAddPresenter.sample)
+		NavigationView {
+			TodoAddView(presenter: TodoAddPresenter.sample, sections: Array(sections))
+		}
 	}
 }
