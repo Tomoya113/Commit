@@ -25,7 +25,12 @@ struct TodoAddView: View {
 				.pickerStyle(SegmentedPickerStyle())
 				.frame(width: geometry.size.width - 24)
 				if presenter.currentTodoType == .normal {
-					normalTodoForm
+					NormalTodoForm(
+						title: $presenter.title,
+						subtitle: $presenter.subtitle,
+						sections: sections,
+						currentSectionId: $presenter.currentSectionId
+					)
 				} else if presenter.currentTodoType == .spreadSheet {
 					spreadSheetTodoForm
 				}
@@ -56,21 +61,6 @@ struct TodoAddView: View {
 						didSwipe(value)
 					}))
 		.navigationTitle("Todoを追加")
-	}
-	private var normalTodoForm: some View {
-		Form {
-			Section(header: Text("タスク名 - normal")) {
-				TextField("タスク名", text: $presenter.title)
-			}
-			Section(header: Text("説明")) {
-				TextField("タスクの説明", text: $presenter.subtitle)
-			}
-			Picker(selection: $presenter.currentSectionId, label: Text("Section")) {
-				ForEach(sections, id: \.id) { section in
-					Text(section.title)
-				}
-			}
-		}
 	}
 	
 	private var spreadSheetTodoForm: some View {

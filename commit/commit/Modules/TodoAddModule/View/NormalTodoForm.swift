@@ -8,13 +8,38 @@
 import SwiftUI
 
 struct NormalTodoForm: View {
+	@Binding var title: String
+	@Binding var subtitle: String
+	var sections: [SectionRealm]
+	@Binding var currentSectionId: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+		Form {
+			Section(header: Text("タスク名 - normal")) {
+				TextField("タスク名", text: $title)
+			}
+			Section(header: Text("説明")) {
+				TextField("タスクの説明", text: $subtitle)
+			}
+			Picker(selection: $currentSectionId, label: Text("Section")) {
+				ForEach(sections, id: \.id) { section in
+					Text(section.title)
+				}
+			}
+		}
     }
 }
 
 struct NormalTodoForm_Previews: PreviewProvider {
+	@State static var title = ""
+	@State static var subtitle = ""
+	@State static var currentSectionId = ""
+	@State static var sections = ListMock.list1.sections
     static var previews: some View {
-        NormalTodoForm()
+        NormalTodoForm(
+			title: $title,
+			subtitle: $subtitle,
+			sections: Array(sections),
+			currentSectionId: $currentSectionId
+		)
     }
 }
