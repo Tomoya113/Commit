@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct TodoDetailView: View {
-	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
 	@ObservedObject var presenter: TodoDetailPresenter
     var body: some View {
 		VStack {
