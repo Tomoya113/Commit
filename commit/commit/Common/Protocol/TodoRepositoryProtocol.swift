@@ -12,4 +12,5 @@ protocol TodoRepositoryProtocol {
 	func fetchLists(completion: ((Result<[ListRealm], Never>) -> Void )?)
 	func updateTodoStatusById(_ id: String)
 	func updateTodo(_ todo: Todo)
+	func createNewTodo(query: AddTodoQuery, completion: ((Result<Void, Never>) -> Void)?)
 }

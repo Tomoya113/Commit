@@ -55,6 +55,28 @@ class TodoListRepository: TodoRepositoryProtocol {
 		}
 	}
 	
+	func createNewTodo(todo: Todo, completion: ((Result<Void, Never>) -> Void)?) {
+		do {
+			try realm.write {
+				realm.add(todo)
+			}
+			completion?(.success(()))
+		} catch {
+			print(error.localizedDescription)
+		}
+	}
+	
+	func createNewTodo(query: AddTodoQuery, completion: ((Result<Void, Never>) -> Void)?) {
+		let section = realm.object(ofType: SectionRealm.self, forPrimaryKey: query.sectionId)!
+		do {
+			try realm.write {
+				section.todos.append(query.todo)
+			}
+			completion?(.success(()))
+		} catch {
+			print(error.localizedDescription)
+		}
+	}
 	deinit {
 		notificationTokens.forEach { $0.invalidate() }
 	}

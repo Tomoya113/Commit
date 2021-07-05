@@ -9,6 +9,11 @@ import Foundation
 import RealmSwift
 
 class MockTodoRepository: TodoRepositoryProtocol {
+
+	func createNewTodo(query: AddTodoQuery, completion: ((Result<Void, Never>) -> Void)?) {
+		print("updated")
+		completion?(.success(()))
+	}
 	
 	func fetchLists(completion: ((Result<[ListRealm], Never>) -> Void)?) {
 		completion?(.success(ListMock.lists))
@@ -21,4 +26,5 @@ class MockTodoRepository: TodoRepositoryProtocol {
 	func updateTodo(_ todo: Todo) {
 		print("updateTodo")
 	}
+
 }
