@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //		SampleDataGenerator.generateSampleData()
 		// Override point for customization after application launch.
 
-		
 		return true
 	}
 

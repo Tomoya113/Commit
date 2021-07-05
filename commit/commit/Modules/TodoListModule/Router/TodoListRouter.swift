@@ -13,4 +13,11 @@ class TodoListRouter {
 		let presenter = TodoDetailPresenter(dependency: dependency, todo: todo)
 		return TodoDetailView(presenter: presenter)
 	}
+	
+	func generateTodoAddView(sections: [SectionRealm], repository: TodoRepositoryProtocol) -> some View {
+		let todoCreateInteractor = AnyUseCase(TodoCreateInteractor(repository: repository))
+		let dependency = TodoAddPresenter.Dependency(todoCreateInteractor: todoCreateInteractor)
+		let presenter = TodoAddPresenter(dependency: dependency)
+		return TodoAddView(presenter: presenter, sections: sections)
+	}
 }

@@ -76,19 +76,19 @@ class TodoListPresenter: ObservableObject {
 		)
 	}
 	
-	func linkBuilder<Content: View>(for todo: Todo, @ViewBuilder content: () -> Content) -> some View {
+	func detailViewLinkBuilder<Content: View>(for todo: Todo, @ViewBuilder content: () -> Content) -> some View {
 		NavigationLink(destination: router.generateDetailView(for: todo, repository: repository)) {
 			content()
 		}
 	}
 	
-//	func todoAddLinkBuidler<Content: View>(@ViewBuilder content: () -> Content) -> some View {
-//		NavigationLink(destination:)
-//	}
-	
-//	func linkkBuilder<Content: View>(for todo: Todo, @ViewBuilder content: () -> Content) -> some View {
-//		NavigationLink(destination: <#T##_#>, isActive:)
-//	}
+	func todoAddLinkBuidler<Content: View>(sections: [SectionRealm], @ViewBuilder content: () -> Content) -> some View {
+		return (
+			NavigationLink(destination: router.generateTodoAddView(sections: sections, repository: repository)) {
+				content()
+			}
+		)
+	}
 }
 
 #if DEBUG

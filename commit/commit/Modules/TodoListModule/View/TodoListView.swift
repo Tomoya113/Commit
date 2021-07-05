@@ -10,6 +10,11 @@ import SwiftUI
 struct TodoListView: View {
 	@ObservedObject var presenter: TodoListPresenter
 	@State private var isActionSheetPresented: Bool = false
+	var sectionArray: [SectionRealm] {
+		let sections = presenter.currentList!.sections
+		return Array(sections)
+	}
+
 	var body: some View {
 		NavigationView {
 			ZStack {
@@ -19,7 +24,7 @@ struct TodoListView: View {
 							ForEach(presenter.currentList!.sections) { section in
 								Section(header: Text(section.title)) {
 									ForEach(section.todos) { todo in
-										presenter.linkBuilder(for: todo) {
+										presenter.detailViewLinkBuilder(for: todo) {
 											presenter.generateTodoRow(
 												todo: todo,
 												updateTodoStatus: presenter.updateTodoStatus
@@ -35,15 +40,11 @@ struct TodoListView: View {
 					Spacer()
 					HStack {
 						Spacer()
-						// NOTE: Routerに書けよ
 						if presenter.currentList != nil {
-							NavigationLink(
-								destination: TodoAddView(presenter: todoAddPresenter(), sections:
-															sectionArray()),
-								label: {
-									presenter.addTodoButtonImage()
-								})
-								.padding()
+							presenter.todoAddLinkBuidler(sections: sectionArray) {
+								presenter.addTodoButtonImage()
+									.padding()
+							}
 						}
 					}
 				}
@@ -53,18 +54,6 @@ struct TodoListView: View {
 		}.onAppear {
 			presenter.onAppear()
 		}
-	}
-	func sectionArray() -> [SectionRealm] {
-		let sections = presenter.currentList!.sections
-		return Array(sections)
-	}
-	
-	// NOTE: ここじゃない
-	func todoAddPresenter() -> TodoAddPresenter {
-		let repository = TodoListRepository()
-		let todoCreateInteractor = AnyUseCase(TodoCreateInteractor(repository: repository))
-		let dependency = TodoAddPresenter.Dependency(todoCreateInteractor: todoCreateInteractor)
-		return TodoAddPresenter(dependency: dependency)
 	}
 }
 
