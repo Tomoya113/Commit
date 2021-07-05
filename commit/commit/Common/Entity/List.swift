@@ -29,4 +29,7 @@ class SectionRealm: Object, ObjectKeyIdentifiable {
 		self.title = title
 		self.todos.append(objectsIn: todos)
 	}
+	override static func primaryKey() -> String? {
+		return "id"
+	}
 }
