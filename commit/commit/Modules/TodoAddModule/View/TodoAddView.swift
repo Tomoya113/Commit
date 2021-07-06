@@ -32,7 +32,7 @@ struct TodoAddView: View {
 						currentSectionId: $presenter.currentSectionId
 					)
 				} else if presenter.currentTodoType == .spreadSheet {
-					spreadSheetTodoForm
+					SpreadSheetTodoForm()
 				}
 				Button(action: {
 					didTapSubmitButton()
@@ -62,18 +62,7 @@ struct TodoAddView: View {
 					}))
 		.navigationTitle("Todoを追加")
 	}
-	
-	private var spreadSheetTodoForm: some View {
-		Form {
-			Section(header: Text("タスク名 - spreadSheet")) {
-				TextField("タスク名", text: $presenter.title)
-			}
-			Section(header: Text("説明")) {
-				TextField("タスクの説明", text: $presenter.subtitle)
-			}
-			
-		}
-	}
+
 	private func didSwipe(_ value: DragGesture.Value) {
 		// 左にスワイプされたとき
 		if value.translation.width < -5 {

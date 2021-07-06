@@ -7,18 +7,21 @@
 
 import UIKit
 import RealmSwift
+import GoogleSignIn
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+	
+	let googleAPIDelegate: GoogleAPIDelegate = GoogleAPIDelegate()
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		let realm = try! Realm()
-		print("Realm is located at:", realm.configuration.fileURL!)
-//		try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
-//		SampleDataGenerator.generateSampleData()
-		// Override point for customization after application launch.
-
+//		SampleDataGenerator.initializeSampleData()
+		googleAPIDelegate.restorePreviousSignIn()
+		
 		return true
+	}
+	
+	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+		return GIDSignIn.sharedInstance().handle(url)
 	}
 
 	// MARK: UISceneSession Lifecycle
