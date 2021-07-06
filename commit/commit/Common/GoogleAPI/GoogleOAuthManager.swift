@@ -8,7 +8,7 @@
 import Foundation
 import GoogleSignIn
 
-class GoogleAPIDelegate: NSObject, GIDSignInDelegate, ObservableObject {
+class GoogleOAuthManager: NSObject, GIDSignInDelegate, ObservableObject {
 	@Published var authenticated: Bool = false
 	@Published var token: String = ""
 	
@@ -17,6 +17,8 @@ class GoogleAPIDelegate: NSObject, GIDSignInDelegate, ObservableObject {
 		GIDSignIn.sharedInstance().clientID = GoogleAPIInfo.CLIENT_ID
 		GIDSignIn.sharedInstance().scopes = GoogleAPIInfo.scopes
 		GIDSignIn.sharedInstance().delegate = self
+		// NOTE: ここで良いかは怪しい
+		restorePreviousSignIn()
 	}
 	
 	func restorePreviousSignIn() {

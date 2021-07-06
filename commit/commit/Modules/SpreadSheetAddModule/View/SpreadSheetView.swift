@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SpreadSheetView: View {
+//	@EnvironmentObject var GoogleAuth: GameSettings
 	@State var text: String = ""
 	var body: some View {
 		Form {

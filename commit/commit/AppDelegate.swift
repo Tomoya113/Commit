@@ -11,11 +11,8 @@ import GoogleSignIn
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-	
-	let googleAPIDelegate: GoogleAPIDelegate = GoogleAPIDelegate()
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 //		SampleDataGenerator.initializeSampleData()
-		googleAPIDelegate.restorePreviousSignIn()
 		
 		return true
 	}
