@@ -9,6 +9,13 @@ import Foundation
 import RealmSwift
 
 struct SampleDataGenerator {
+	static func initializeSampleData() {
+		let realm = try! Realm()
+		print("Realm is located at:", realm.configuration.fileURL!)
+		try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
+		SampleDataGenerator.generateSampleData()
+	}
+	
 	static func generateSampleData() {
 		let realm = try! Realm()
 		try! realm.write {
@@ -57,7 +64,7 @@ struct SampleDataGenerator {
 			let section1 = SectionRealm(title: "家庭", todos: [todoA1, todoA2, todoA3])
 			let section2 = SectionRealm(title: "学校", todos: [todoB1, todoB2, todoB3])
 			let list1 = ListRealm(title: "General", sections: [section1, section2])
-	
+			
 			realm.add(list1)
 			
 		}
