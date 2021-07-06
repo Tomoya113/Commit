@@ -42,7 +42,6 @@
 		717D0F342694731300BD4655 /* GoogleAPIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D0F332694731300BD4655 /* GoogleAPIDelegate.swift */; };
 		717F944626774ED400D11C58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F944526774ED400D11C58 /* AppDelegate.swift */; };
 		717F944826774ED400D11C58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F944726774ED400D11C58 /* SceneDelegate.swift */; };
-		717F944A26774ED400D11C58 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F944926774ED400D11C58 /* ContentView.swift */; };
 		717F944C26774EE200D11C58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 717F944B26774EE200D11C58 /* Assets.xcassets */; };
 		717F944F26774EE200D11C58 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 717F944E26774EE200D11C58 /* Preview Assets.xcassets */; };
 		717F945226774EE200D11C58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 717F945026774EE200D11C58 /* LaunchScreen.storyboard */; };
@@ -98,7 +97,6 @@
 		717F944226774ED400D11C58 /* commit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = commit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		717F944526774ED400D11C58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		717F944726774ED400D11C58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		717F944926774ED400D11C58 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		717F944B26774EE200D11C58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		717F944E26774EE200D11C58 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		717F945126774EE200D11C58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -272,6 +270,37 @@
 			path = GoogleAPI;
 			sourceTree = "<group>";
 		};
+		717D0F3626947D2300BD4655 /* RootModule */ = {
+			isa = PBXGroup;
+			children = (
+				717D0F3926947D6B00BD4655 /* Router */,
+				717D0F3826947D6700BD4655 /* View */,
+				717D0F3726947D6300BD4655 /* Presenter */,
+			);
+			path = RootModule;
+			sourceTree = "<group>";
+		};
+		717D0F3726947D6300BD4655 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		717D0F3826947D6700BD4655 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		717D0F3926947D6B00BD4655 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		717F943926774ED400D11C58 = {
 			isa = PBXGroup;
 			children = (
@@ -297,7 +326,6 @@
 				717F945926774F7A00D11C58 /* Modules */,
 				717F944526774ED400D11C58 /* AppDelegate.swift */,
 				717F944726774ED400D11C58 /* SceneDelegate.swift */,
-				717F944926774ED400D11C58 /* ContentView.swift */,
 				717F944B26774EE200D11C58 /* Assets.xcassets */,
 				717F945026774EE200D11C58 /* LaunchScreen.storyboard */,
 				717F945326774EE200D11C58 /* Info.plist */,
@@ -317,6 +345,7 @@
 		717F945926774F7A00D11C58 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				717D0F3626947D2300BD4655 /* RootModule */,
 				716AC23C2687262A0003A989 /* SpreadSheetSearchModule */,
 				717F945F2677501000D11C58 /* SettingsModule */,
 				717F945E2677500400D11C58 /* SpreadSheetAddModule */,
@@ -691,7 +720,6 @@
 				715C2F2D267CE0A800DA66F3 /* TodoListRouter.swift in Sources */,
 				71AA3DC32680DEF3005D1CCC /* MockTodoRepository.swift in Sources */,
 				716AC258268727950003A989 /* SettingsView.swift in Sources */,
-				717F944A26774ED400D11C58 /* ContentView.swift in Sources */,
 				716AC254268727630003A989 /* SettingsPresenter.swift in Sources */,
 				716AC232268725B70003A989 /* UpdateTodoInteractor.swift in Sources */,
 				716AC24A268727310003A989 /* SpreadSheetRegisterInteractor.swift in Sources */,
