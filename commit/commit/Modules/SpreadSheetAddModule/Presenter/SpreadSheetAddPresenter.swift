@@ -8,12 +8,40 @@
 import Foundation
 import GoogleSignIn
 
+
+class Column: ObservableObject {
+	@Published var start: String = ""
+	@Published var end: String = ""
+}
+// NOTE: 命名微妙じゃない？
+class SpreadSheetPreset: ObservableObject {
+	@Published var spreadSheetId: String = ""
+	@Published var title: String = ""
+	@Published var tabName: String = ""
+	@Published var column: Column = Column()
+	@Published var row: String = ""
+}
+
+class UserResources: ObservableObject {
+	// NOTE: Stringではなく、別のEntityになる予定(てか作れよ)
+	@Published var spreadSheetList: [String] = []
+	@Published var sheetList: [String] = []
+}
+
 class SpreadSheetAddPresenter: ObservableObject {
-	@Published var authenticated: Bool = GoogleOAuthManager.shared.authenticated
-	@Published var token: String = GoogleOAuthManager.shared.token
+	
+	@Published var authenticated: Bool = false
+	@Published var token: String = ""
+	@Published var spreadSheetPresetConfig = SpreadSheetPreset()
+	@Published var userResources = UserResources()
 	
 	func googleOAuth() {
 		GIDSignIn.sharedInstance()?.signIn()
+	}
+	
+	func onAppear() {
+		authenticated = GoogleOAuthManager.shared.authenticated
+		token = GoogleOAuthManager.shared.token
 	}
 	
 }

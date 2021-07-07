@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7146C70A268C961900ACD588 /* TodoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146C709268C961900ACD588 /* TodoType.swift */; };
+		7146C70A268C961900ACD588 /* TodoTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146C709268C961900ACD588 /* TodoTypes.swift */; };
 		7146C70C268CE44F00ACD588 /* TodoAddTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146C70B268CE44F00ACD588 /* TodoAddTextField.swift */; };
 		715C2F0C2679178D00DA66F3 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F0B2679178D00DA66F3 /* List.swift */; };
 		715C2F1426791F7700DA66F3 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F1326791F7700DA66F3 /* Tag.swift */; };
@@ -50,6 +50,8 @@
 		717F945226774EE200D11C58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 717F945026774EE200D11C58 /* LaunchScreen.storyboard */; };
 		718818A82690D2580078319F /* TodoCreateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718818A72690D2580078319F /* TodoCreateInteractor.swift */; };
 		718818AB2690D4410078319F /* AddTodoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718818AA2690D4410078319F /* AddTodoQuery.swift */; };
+		71931A99269601D800BB404F /* SpreadSheetFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931A98269601D800BB404F /* SpreadSheetFormView.swift */; };
+		71931A9B26960DB000BB404F /* SheetColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931A9A26960DB000BB404F /* SheetColumn.swift */; };
 		71A190A12680C9B000C6D6E8 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A190A02680C9B000C6D6E8 /* UseCase.swift */; };
 		71AA3DBC2680CE65005D1CCC /* TodoUpdateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */; };
 		71AA3DBE2680D576005D1CCC /* TodoRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */; };
@@ -64,7 +66,7 @@
 /* Begin PBXFileReference section */
 		0A28657290E5C6EB7881A125 /* Pods-commit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-commit.release.xcconfig"; path = "Target Support Files/Pods-commit/Pods-commit.release.xcconfig"; sourceTree = "<group>"; };
 		3C4194718BA40140F9EF0C2D /* Pods_commit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_commit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7146C709268C961900ACD588 /* TodoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoType.swift; sourceTree = "<group>"; };
+		7146C709268C961900ACD588 /* TodoTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTypes.swift; sourceTree = "<group>"; };
 		7146C70B268CE44F00ACD588 /* TodoAddTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAddTextField.swift; sourceTree = "<group>"; };
 		715C2F0B2679178D00DA66F3 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		715C2F1326791F7700DA66F3 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
@@ -109,6 +111,8 @@
 		717F945326774EE200D11C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		718818A72690D2580078319F /* TodoCreateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCreateInteractor.swift; sourceTree = "<group>"; };
 		718818AA2690D4410078319F /* AddTodoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoQuery.swift; sourceTree = "<group>"; };
+		71931A98269601D800BB404F /* SpreadSheetFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetFormView.swift; sourceTree = "<group>"; };
+		71931A9A26960DB000BB404F /* SheetColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetColumn.swift; sourceTree = "<group>"; };
 		71A190A02680C9B000C6D6E8 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUpdateInteractor.swift; sourceTree = "<group>"; };
 		71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -143,7 +147,8 @@
 		7146C708268C960D00ACD588 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
-				7146C709268C961900ACD588 /* TodoType.swift */,
+				7146C709268C961900ACD588 /* TodoTypes.swift */,
+				71931A9A26960DB000BB404F /* SheetColumn.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				716AC24B2687273B0003A989 /* SpreadSheetAddView.swift */,
+				71931A98269601D800BB404F /* SpreadSheetFormView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -725,6 +731,7 @@
 				71AA3DC02680DEC2005D1CCC /* TodoListRepository.swift in Sources */,
 				716E8EC4267E5E470088A04D /* TodoListRow.swift in Sources */,
 				716AC25A268727B10003A989 /* SettingsInteractor.swift in Sources */,
+				71931A99269601D800BB404F /* SpreadSheetFormView.swift in Sources */,
 				715C2F1E2679B1DB00DA66F3 /* TodoMock.swift in Sources */,
 				715C2F2D267CE0A800DA66F3 /* TodoListRouter.swift in Sources */,
 				71AA3DC32680DEF3005D1CCC /* MockTodoRepository.swift in Sources */,
@@ -736,11 +743,12 @@
 				716AC241268726500003A989 /* SpreadSheetSearchView.swift in Sources */,
 				717D0F3E26947FCC00BD4655 /* AppView.swift in Sources */,
 				71AF451A26790DA70084364A /* Todo.swift in Sources */,
-				7146C70A268C961900ACD588 /* TodoType.swift in Sources */,
+				7146C70A268C961900ACD588 /* TodoTypes.swift in Sources */,
 				716AC226268725500003A989 /* SpreadSheetTodoUpdateInteractor.swift in Sources */,
 				717D0F3C26947FC100BD4655 /* AppRouter.swift in Sources */,
 				716AC220268593CE0003A989 /* SampleDataGenerator.swift in Sources */,
 				716AC2432687265C0003A989 /* SpreadSheetSearchPresenter.swift in Sources */,
+				71931A9B26960DB000BB404F /* SheetColumn.swift in Sources */,
 				71AA3DC92682E773005D1CCC /* ListFetchInteractor.swift in Sources */,
 				715C2F29267CE07F00DA66F3 /* TodoListPresenter.swift in Sources */,
 				717D0F4026947FD700BD4655 /* AppPresenter.swift in Sources */,
