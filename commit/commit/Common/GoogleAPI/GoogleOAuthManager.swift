@@ -11,18 +11,18 @@ import GoogleSignIn
 class GoogleOAuthManager: NSObject, GIDSignInDelegate, ObservableObject {
 	@Published var authenticated: Bool = false
 	@Published var token: String = ""
+	static let shared = GoogleOAuthManager()
 	
 	override init() {
 		super.init()
 		GIDSignIn.sharedInstance().clientID = GoogleAPIInfo.CLIENT_ID
 		GIDSignIn.sharedInstance().scopes = GoogleAPIInfo.scopes
 		GIDSignIn.sharedInstance().delegate = self
+		GIDSignIn.sharedInstance().presentingViewController = UIApplication.shared.windows.first?.rootViewController
 		// NOTE: ここで良いかは怪しい
-		restorePreviousSignIn()
-	}
-	
-	func restorePreviousSignIn() {
-		GIDSignIn.sharedInstance().restorePreviousSignIn()
+		if GIDSignIn.sharedInstance().hasPreviousSignIn() {
+			GIDSignIn.sharedInstance().restorePreviousSignIn()
+		}
 	}
 	
 	func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {

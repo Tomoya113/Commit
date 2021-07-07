@@ -29,9 +29,9 @@
 		716AC241268726500003A989 /* SpreadSheetSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC240268726500003A989 /* SpreadSheetSearchView.swift */; };
 		716AC2432687265C0003A989 /* SpreadSheetSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC2422687265C0003A989 /* SpreadSheetSearchPresenter.swift */; };
 		716AC2452687267F0003A989 /* SpreadSheetSearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC2442687267F0003A989 /* SpreadSheetSearchInteractor.swift */; };
-		716AC24A268727310003A989 /* SpreadSheetRegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC249268727310003A989 /* SpreadSheetRegisterInteractor.swift */; };
-		716AC24C2687273B0003A989 /* SpreadSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC24B2687273B0003A989 /* SpreadSheetView.swift */; };
-		716AC24E268727430003A989 /* SpreadSheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC24D268727430003A989 /* SpreadSheetPresenter.swift */; };
+		716AC24A268727310003A989 /* SpreadSheetAddRegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC249268727310003A989 /* SpreadSheetAddRegisterInteractor.swift */; };
+		716AC24C2687273B0003A989 /* SpreadSheetAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC24B2687273B0003A989 /* SpreadSheetAddView.swift */; };
+		716AC24E268727430003A989 /* SpreadSheetAddPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC24D268727430003A989 /* SpreadSheetAddPresenter.swift */; };
 		716AC2502687274E0003A989 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC24F2687274E0003A989 /* SettingsRouter.swift */; };
 		716AC254268727630003A989 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC253268727630003A989 /* SettingsPresenter.swift */; };
 		716AC258268727950003A989 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC257268727950003A989 /* SettingsView.swift */; };
@@ -86,9 +86,9 @@
 		716AC240268726500003A989 /* SpreadSheetSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetSearchView.swift; sourceTree = "<group>"; };
 		716AC2422687265C0003A989 /* SpreadSheetSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetSearchPresenter.swift; sourceTree = "<group>"; };
 		716AC2442687267F0003A989 /* SpreadSheetSearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetSearchInteractor.swift; sourceTree = "<group>"; };
-		716AC249268727310003A989 /* SpreadSheetRegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetRegisterInteractor.swift; sourceTree = "<group>"; };
-		716AC24B2687273B0003A989 /* SpreadSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetView.swift; sourceTree = "<group>"; };
-		716AC24D268727430003A989 /* SpreadSheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetPresenter.swift; sourceTree = "<group>"; };
+		716AC249268727310003A989 /* SpreadSheetAddRegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetAddRegisterInteractor.swift; sourceTree = "<group>"; };
+		716AC24B2687273B0003A989 /* SpreadSheetAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetAddView.swift; sourceTree = "<group>"; };
+		716AC24D268727430003A989 /* SpreadSheetAddPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetAddPresenter.swift; sourceTree = "<group>"; };
 		716AC24F2687274E0003A989 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsRouter.swift; path = commit/Modules/SpreadSheetAddModule/Presenter/SettingsRouter.swift; sourceTree = SOURCE_ROOT; };
 		716AC253268727630003A989 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsPresenter.swift; path = commit/Modules/SpreadSheetAddModule/Presenter/SettingsPresenter.swift; sourceTree = SOURCE_ROOT; };
 		716AC257268727950003A989 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = commit/Modules/SpreadSheetAddModule/Presenter/SettingsView.swift; sourceTree = SOURCE_ROOT; };
@@ -246,7 +246,7 @@
 		716AC2462687268B0003A989 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				716AC249268727310003A989 /* SpreadSheetRegisterInteractor.swift */,
+				716AC249268727310003A989 /* SpreadSheetAddRegisterInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -254,7 +254,7 @@
 		716AC247268726D00003A989 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				716AC24B2687273B0003A989 /* SpreadSheetView.swift */,
+				716AC24B2687273B0003A989 /* SpreadSheetAddView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -262,7 +262,7 @@
 		716AC248268726D30003A989 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				716AC24D268727430003A989 /* SpreadSheetPresenter.swift */,
+				716AC24D268727430003A989 /* SpreadSheetAddPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -731,7 +731,7 @@
 				716AC258268727950003A989 /* SettingsView.swift in Sources */,
 				716AC254268727630003A989 /* SettingsPresenter.swift in Sources */,
 				716AC232268725B70003A989 /* UpdateTodoInteractor.swift in Sources */,
-				716AC24A268727310003A989 /* SpreadSheetRegisterInteractor.swift in Sources */,
+				716AC24A268727310003A989 /* SpreadSheetAddRegisterInteractor.swift in Sources */,
 				715C2F0C2679178D00DA66F3 /* List.swift in Sources */,
 				716AC241268726500003A989 /* SpreadSheetSearchView.swift in Sources */,
 				717D0F3E26947FCC00BD4655 /* AppView.swift in Sources */,
@@ -746,10 +746,10 @@
 				717D0F4026947FD700BD4655 /* AppPresenter.swift in Sources */,
 				715C2F192679244F00DA66F3 /* SpreadSheetHistory.swift in Sources */,
 				7146C70C268CE44F00ACD588 /* TodoAddTextField.swift in Sources */,
-				716AC24E268727430003A989 /* SpreadSheetPresenter.swift in Sources */,
+				716AC24E268727430003A989 /* SpreadSheetAddPresenter.swift in Sources */,
 				71AA3DBC2680CE65005D1CCC /* TodoUpdateInteractor.swift in Sources */,
 				717D0F342694731300BD4655 /* GoogleOAuthManager.swift in Sources */,
-				716AC24C2687273B0003A989 /* SpreadSheetView.swift in Sources */,
+				716AC24C2687273B0003A989 /* SpreadSheetAddView.swift in Sources */,
 				716AC2502687274E0003A989 /* SettingsRouter.swift in Sources */,
 				716AC239268725FA0003A989 /* TodoAddPresenter.swift in Sources */,
 				715C2F20267B64E700DA66F3 /* ListMock.swift in Sources */,
