@@ -14,24 +14,7 @@ struct SpreadSheetAddView: View {
 	@State var text: String = ""
 	var body: some View {
 		if presenter.authenticated {
-			Form {
-				Section(header: Text("スプレッドシート名")) {
-					TextField("タスク名", text: $text)
-				}
-				Section(header: Text("シート名")) {
-					TextField("シート名", text: $text)
-				}
-				Section(header: Text("セクション名")) {
-					TextField("セクション名", text: $text)
-				}
-				Section(header: Text("行")) {
-					TextField("行", text: $text)
-				}
-				Section(header: Text("列")) {
-					TextField("最初", text: $text)
-					TextField("最後", text: $text)
-				}
-			}
+			SpreadSheetFormView()
 		} else {
 			VStack {
 				Button(action: {
