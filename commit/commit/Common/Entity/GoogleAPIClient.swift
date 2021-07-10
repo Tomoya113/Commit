@@ -74,7 +74,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		return request
 	}
 	
-	func fetchSpreadSheetFiles(contains sheetName: String?, completion: @escaping (Result<[SpreadSheetFile], Error>) -> ()) {
+	func fetchSpreadSheetFiles(contains sheetName: String?, completion: @escaping (Result<[SpreadSheetFile], Error>) -> Void) {
 		let queries = DriveAPIManager.generateSpreadSheetSearchQueries(sheetName)
 		let components = createBaseURLComponents(
 			requestType: .drive,
@@ -108,16 +108,95 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		task?.resume()
 	}
 	
-	func fetchSpreadSheetCells(_ query: FetchSpreadSheetCellsQuery, completion: @escaping (Result<[Cells], Error>) -> ()) {
-		<#code#>
+	func fetchSpreadSheetCells(_ query: FetchSpreadSheetCellsQuery, completion: @escaping (Result<[String], Error>) -> Void) {
+		let startRange = "\(query.column.start):\(query.row)"
+		let endRange = "\(query.column.end):\(query.row)"
+		let path = "\(query.spreadSheetId)/values/\(query.sheetName)!\(startRange):\(endRange)"
+		let components = createBaseURLComponents(
+			requestType: .spreadSheet,
+			queries: [:],
+			path: path
+		)
+		let request = createBaseURLRequest(httpMethod: .GET, components)
+		task = URLSession.shared.dataTask(with: request) { data, response, error in
+			if let error = error {
+				print("クライアントエラー: \(error.localizedDescription) \n")
+				return
+			}
+			
+			guard let data = data else {
+				print("data not found")
+				return
+			}
+			let decoder = JSONDecoder()
+			
+			do {
+//				let jsonstr: String = String(data: data, encoding: .utf8)!
+				let response = try decoder.decode(Cells.self, from: data)
+				DispatchQueue.main.async {
+					completion(.success(response.values[0]))
+				}
+			} catch {
+				print(error.localizedDescription)
+				completion(.failure(error))
+			}
+		}
+		task?.resume()
+		
 	}
 	
-	func fetchSpreadSheetInfo(id: String, completion: @escaping (Result<SpreadSheetInfo, Error>) -> ()) {
-		<#code#>
+	func fetchSpreadSheetInfo(id: String, completion: @escaping (Result<[Sheet], Error>) -> Void) {
+		let components = createBaseURLComponents(
+			requestType: .spreadSheet,
+			queries: [:],
+			path: "/\(id)"
+		)
+		let request = createBaseURLRequest(httpMethod: .GET, components)
+		task = URLSession.shared.dataTask(with: request) { data, response, error in
+			if let error = error {
+				print("クライアントエラー: \(error.localizedDescription) \n")
+				return
+			}
+			
+			guard let data = data else {
+				print("data not found")
+				return
+			}
+			let decoder = JSONDecoder()
+			
+			do {
+//				let jsonstr: String = String(data: data, encoding: .utf8)!
+				let response = try decoder.decode(SpreadSheetInfo.self, from: data)
+				DispatchQueue.main.async {
+					completion(.success(response.sheets))
+				}
+			} catch {
+				print(error.localizedDescription)
+				completion(.failure(error))
+			}
+		}
+		task?.resume()
 	}
 	
 	func updateSpreadSheetCell(_ query: UpdateSpreadSheetCellQuery) {
-		
+		let queries: [String: String] = SheetsAPIManager.generateSpreadSheetUpdateQueries()
+		let path: String =  "/\(query.spreadsheetId)/values/\(query.sheetName)!\(query.column)\(query.row)"
+		let components = createBaseURLComponents(
+			requestType: .spreadSheet,
+			queries: queries,
+			path: path
+		)
+		var request = createBaseURLRequest(httpMethod: .PUT, components)
+		// 別のところにかけたら良さそう
+		let body: [String: Any] = ["values": [[query.text]]]
+		request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+		task = URLSession.shared.dataTask(with: request) { _, _, error in
+			if let error = error {
+				print("クライアントエラー: \(error.localizedDescription) \n")
+				return
+			}
+		}
+		task?.resume()
 	}
 	
 	func cancel() {

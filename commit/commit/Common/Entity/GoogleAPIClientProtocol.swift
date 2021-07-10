@@ -8,8 +8,8 @@
 import Foundation
 
 protocol GoogleAPIClientProtocol {
-	func fetchSpreadSheetFiles(contains sheetName: String?, completion: @escaping (Result<[SpreadSheetFile], Error>) -> ())
-	func fetchSpreadSheetCells(_ query: FetchSpreadSheetCellsQuery, completion: @escaping (Result<[Cells], Error>) -> ())
-	func fetchSpreadSheetInfo(id: String, completion: @escaping (Result<SpreadSheetInfo, Error>) -> ())
-	func updateSpreadSheetCell(_ query: UpdateSpreadSheetCellQuery) -> Void
+	func fetchSpreadSheetFiles(contains sheetName: String?, completion: @escaping (Result<[SpreadSheetFile], Error>) -> Void)
+	func fetchSpreadSheetCells(_ query: FetchSpreadSheetCellsQuery, completion: @escaping (Result<[String], Error>) -> Void)
+	func fetchSpreadSheetInfo(id: String, completion: @escaping (Result<[Sheet], Error>) -> Void)
+	func updateSpreadSheetCell(_ query: UpdateSpreadSheetCellQuery)
 }
