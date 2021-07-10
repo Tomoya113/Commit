@@ -18,11 +18,11 @@ struct UpdateSpreadSheetCellQuery {
 struct FetchSpreadSheetCellsQuery {
 	let sheetName: String
 	let spreadSheetId: String
-	let column: String
-	let row: QueryRow
+	let column: QueryColumn
+	let row: String
 }
 
-struct QueryRow {
+struct QueryColumn {
 	let start: String
 	let end: String
 }
