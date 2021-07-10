@@ -10,7 +10,7 @@ import Foundation
 struct SheetsAPIManager {
 	static func generateSpreadSheetUpdateQueries() -> [String: String] {
 		return [
-			"valueInputOption": "RAW",
+			"valueInputOption": "RAW"
 		]
 	}
 }
