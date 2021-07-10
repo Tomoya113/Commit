@@ -24,7 +24,7 @@ class SpreadSheetPreset: ObservableObject {
 
 class UserResources: ObservableObject {
 	// NOTE: Stringではなく、別のEntityになる予定(てか作れよ)
-	@Published var spreadSheetList: [String] = []
+	@Published var spreadSheetList: [SpreadSheetFile] = []
 	@Published var sheetList: [String] = []
 }
 
@@ -32,7 +32,7 @@ class SpreadSheetAddPresenter: ObservableObject {
 	
 	@Published var authenticated: Bool = false
 	@Published var token: String = ""
-	@Published var spreadSheetPresetConfig = SpreadSheetPreset()
+	@Published var spreadSheetPreset = SpreadSheetPreset()
 	@Published var userResources = UserResources()
 	
 	func googleOAuth() {

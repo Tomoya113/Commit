@@ -17,7 +17,7 @@ struct TodoAddView: View {
 		GeometryReader { geometry in
 			
 			VStack {
-				Picker("hoge", selection: $currentTodoTypeIndex) {
+				Picker("Current todo type", selection: $currentTodoTypeIndex) {
 					ForEach(TodoTypes.allCases.indices) { i in
 						Text(TodoTypes.allCases[i].rawValue)
 					}

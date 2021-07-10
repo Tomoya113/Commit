@@ -14,7 +14,7 @@ struct SpreadSheetAddView: View {
 	@State var text: String = ""
 	var body: some View {
 		if presenter.authenticated {
-			SpreadSheetFormView()
+			SpreadSheetFormView(spreadSheetPreset: $presenter.spreadSheetPreset, spreadSheetList: presenter.userResources.spreadSheetList)
 		} else {
 			VStack {
 				Button(action: {

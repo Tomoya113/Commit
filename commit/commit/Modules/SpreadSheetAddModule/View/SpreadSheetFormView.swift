@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct SpreadSheetFormView: View {
-	@State private var text: String = ""
 	@Binding var spreadSheetPreset: SpreadSheetPreset
+	var spreadSheetList: [SpreadSheetFile]
     var body: some View {
 		Form {
 			Section(header: Text("プリセット名"), footer: Text("セクション名になります")) {
@@ -17,7 +17,9 @@ struct SpreadSheetFormView: View {
 			}
 			Section(header: Text("スプレッドシート名")) {
 				Picker("Spread Sheet Id", selection: $spreadSheetPreset.spreadSheetId) {
-					
+					ForEach(spreadSheetList, id: \.id) { file in
+						Text(file.name)
+					}
 				}
 			}
 			Section(header: Text("シート名")) {
@@ -28,17 +30,26 @@ struct SpreadSheetFormView: View {
 			}
 			Section(header: Text("列")) {
 				// NOTE: A~Cなど
-				TextField("何列目から", text: $spreadSheetPreset.column.start)
-				TextField("何列目まで", text: $spreadSheetPreset.column.end)
+				Picker("Spread Sheet Column", selection: $spreadSheetPreset.column.start) {
+					ForEach(SheetColumnEnum.allCases, id: \.self) { column in
+						Text(column.rawValue)
+					}
+				}
+				Picker("Spread Sheet Column", selection: $spreadSheetPreset.column.end) {
+					ForEach(SheetColumnEnum.allCases, id: \.self) { column in
+						Text(column.rawValue)
+					}
+				}
 			}
 		}
     }
 }
 
 struct SpreadSheetFromView_Previews: PreviewProvider {
+	@State static var spreadSheetPreset = SpreadSheetPreset()
     static var previews: some View {
 		NavigationView {
-			SpreadSheetFormView()
+			SpreadSheetFormView(spreadSheetPreset: $spreadSheetPreset, spreadSheetList: [])
 		}
     }
 }

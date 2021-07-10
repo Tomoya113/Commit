@@ -52,6 +52,13 @@
 		718818AB2690D4410078319F /* AddTodoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718818AA2690D4410078319F /* AddTodoQuery.swift */; };
 		71931A99269601D800BB404F /* SpreadSheetFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931A98269601D800BB404F /* SpreadSheetFormView.swift */; };
 		71931A9B26960DB000BB404F /* SheetColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931A9A26960DB000BB404F /* SheetColumn.swift */; };
+		71931AA12697473000BB404F /* SpreadSheetResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AA02697473000BB404F /* SpreadSheetResponses.swift */; };
+		71931AA326974C4000BB404F /* GoogleAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AA226974C4000BB404F /* GoogleAPIClient.swift */; };
+		71931AA526974FFE00BB404F /* GoogleAPIClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AA426974FFE00BB404F /* GoogleAPIClientProtocol.swift */; };
+		71931AA826975EE600BB404F /* GoogleAPIQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AA726975EE600BB404F /* GoogleAPIQueries.swift */; };
+		71931AAA2699B93300BB404F /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AA92699B93200BB404F /* HTTPMethod.swift */; };
+		71931AAC2699BC7D00BB404F /* DriveAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AAB2699BC7D00BB404F /* DriveAPIManager.swift */; };
+		71931AAE2699BFF800BB404F /* SheetsAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AAD2699BFF800BB404F /* SheetsAPIManager.swift */; };
 		71A190A12680C9B000C6D6E8 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A190A02680C9B000C6D6E8 /* UseCase.swift */; };
 		71AA3DBC2680CE65005D1CCC /* TodoUpdateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */; };
 		71AA3DBE2680D576005D1CCC /* TodoRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */; };
@@ -113,6 +120,13 @@
 		718818AA2690D4410078319F /* AddTodoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoQuery.swift; sourceTree = "<group>"; };
 		71931A98269601D800BB404F /* SpreadSheetFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetFormView.swift; sourceTree = "<group>"; };
 		71931A9A26960DB000BB404F /* SheetColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetColumn.swift; sourceTree = "<group>"; };
+		71931AA02697473000BB404F /* SpreadSheetResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpreadSheetResponses.swift; path = "../New Group/SpreadSheetResponses.swift"; sourceTree = "<group>"; };
+		71931AA226974C4000BB404F /* GoogleAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleAPIClient.swift; path = commit/Common/Entity/GoogleAPIClient.swift; sourceTree = SOURCE_ROOT; };
+		71931AA426974FFE00BB404F /* GoogleAPIClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleAPIClientProtocol.swift; path = commit/Common/Entity/GoogleAPIClientProtocol.swift; sourceTree = SOURCE_ROOT; };
+		71931AA726975EE600BB404F /* GoogleAPIQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIQueries.swift; sourceTree = "<group>"; };
+		71931AA92699B93200BB404F /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		71931AAB2699BC7D00BB404F /* DriveAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DriveAPIManager.swift; path = commit/Common/Enum/DriveAPIManager.swift; sourceTree = SOURCE_ROOT; };
+		71931AAD2699BFF800BB404F /* SheetsAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SheetsAPIManager.swift; path = commit/Common/Enum/SheetsAPIManager.swift; sourceTree = SOURCE_ROOT; };
 		71A190A02680C9B000C6D6E8 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUpdateInteractor.swift; sourceTree = "<group>"; };
 		71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -149,6 +163,7 @@
 			children = (
 				7146C709268C961900ACD588 /* TodoTypes.swift */,
 				71931A9A26960DB000BB404F /* SheetColumn.swift */,
+				71931AA92699B93200BB404F /* HTTPMethod.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -441,6 +456,7 @@
 		717F94602677505600D11C58 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				71931AA6269751DD00BB404F /* API */,
 				71AF451926790DA70084364A /* Todo.swift */,
 				715C2F0B2679178D00DA66F3 /* List.swift */,
 				715C2F1326791F7700DA66F3 /* Tag.swift */,
@@ -504,6 +520,10 @@
 		717F9467267751D400D11C58 /* WebAPI */ = {
 			isa = PBXGroup;
 			children = (
+				71931AA226974C4000BB404F /* GoogleAPIClient.swift */,
+				71931AA426974FFE00BB404F /* GoogleAPIClientProtocol.swift */,
+				71931AAB2699BC7D00BB404F /* DriveAPIManager.swift */,
+				71931AAD2699BFF800BB404F /* SheetsAPIManager.swift */,
 			);
 			path = WebAPI;
 			sourceTree = "<group>";
@@ -514,6 +534,15 @@
 				718818AA2690D4410078319F /* AddTodoQuery.swift */,
 			);
 			path = Struct;
+			sourceTree = "<group>";
+		};
+		71931AA6269751DD00BB404F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				71931AA02697473000BB404F /* SpreadSheetResponses.swift */,
+				71931AA726975EE600BB404F /* GoogleAPIQueries.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		71AA3DB72680CE0C005D1CCC /* View */ = {
@@ -711,8 +740,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71931AA826975EE600BB404F /* GoogleAPIQueries.swift in Sources */,
 				715C2F1C2679AB5500DA66F3 /* Mock.swift in Sources */,
 				716AC22E268725930003A989 /* TodoDetailView.swift in Sources */,
+				71931AAA2699B93300BB404F /* HTTPMethod.swift in Sources */,
 				718818A82690D2580078319F /* TodoCreateInteractor.swift in Sources */,
 				715C2F1426791F7700DA66F3 /* Tag.swift in Sources */,
 				715C2F16267921A700DA66F3 /* Preset.swift in Sources */,
@@ -724,12 +755,14 @@
 				717D0F28269389E000BD4655 /* NormalTodoForm.swift in Sources */,
 				715C2F27267CDFDE00DA66F3 /* TodoListView.swift in Sources */,
 				716AC2302687259E0003A989 /* TodoDetailPresenter.swift in Sources */,
+				71931AAC2699BC7D00BB404F /* DriveAPIManager.swift in Sources */,
 				71AA3DC726814B95005D1CCC /* SpreadSheetTodoAttribute.swift in Sources */,
 				717F944826774ED400D11C58 /* SceneDelegate.swift in Sources */,
 				717D0F2E26946B1000BD4655 /* GoogleAPIInfo.swift in Sources */,
 				718818AB2690D4410078319F /* AddTodoQuery.swift in Sources */,
 				71AA3DC02680DEC2005D1CCC /* TodoListRepository.swift in Sources */,
 				716E8EC4267E5E470088A04D /* TodoListRow.swift in Sources */,
+				71931AA526974FFE00BB404F /* GoogleAPIClientProtocol.swift in Sources */,
 				716AC25A268727B10003A989 /* SettingsInteractor.swift in Sources */,
 				71931A99269601D800BB404F /* SpreadSheetFormView.swift in Sources */,
 				715C2F1E2679B1DB00DA66F3 /* TodoMock.swift in Sources */,
@@ -737,6 +770,7 @@
 				71AA3DC32680DEF3005D1CCC /* MockTodoRepository.swift in Sources */,
 				716AC258268727950003A989 /* SettingsView.swift in Sources */,
 				716AC254268727630003A989 /* SettingsPresenter.swift in Sources */,
+				71931AA326974C4000BB404F /* GoogleAPIClient.swift in Sources */,
 				716AC232268725B70003A989 /* UpdateTodoInteractor.swift in Sources */,
 				716AC24A268727310003A989 /* SpreadSheetAddRegisterInteractor.swift in Sources */,
 				715C2F0C2679178D00DA66F3 /* List.swift in Sources */,
@@ -749,6 +783,8 @@
 				716AC220268593CE0003A989 /* SampleDataGenerator.swift in Sources */,
 				716AC2432687265C0003A989 /* SpreadSheetSearchPresenter.swift in Sources */,
 				71931A9B26960DB000BB404F /* SheetColumn.swift in Sources */,
+				71931AA12697473000BB404F /* SpreadSheetResponses.swift in Sources */,
+				71931AAE2699BFF800BB404F /* SheetsAPIManager.swift in Sources */,
 				71AA3DC92682E773005D1CCC /* ListFetchInteractor.swift in Sources */,
 				715C2F29267CE07F00DA66F3 /* TodoListPresenter.swift in Sources */,
 				717D0F4026947FD700BD4655 /* AppPresenter.swift in Sources */,
