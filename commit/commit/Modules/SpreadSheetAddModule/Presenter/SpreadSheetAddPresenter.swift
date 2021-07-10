@@ -8,7 +8,6 @@
 import Foundation
 import GoogleSignIn
 
-
 class Column: ObservableObject {
 	@Published var start: String = ""
 	@Published var end: String = ""
@@ -23,7 +22,6 @@ class SpreadSheetPreset: ObservableObject {
 }
 
 class UserResources: ObservableObject {
-	// NOTE: Stringではなく、別のEntityになる予定(てか作れよ)
 	@Published var spreadSheetList: [SpreadSheetFile] = []
 	@Published var sheetList: [String] = []
 }
