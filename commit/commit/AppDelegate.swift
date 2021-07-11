@@ -13,7 +13,8 @@ import GoogleSignIn
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 //		SampleDataGenerator.initializeSampleData()
-		
+//		// NOTE: ここはだめ
+		GIDSignIn.sharedInstance().delegate = GoogleOAuthManager.shared
 		return true
 	}
 	
