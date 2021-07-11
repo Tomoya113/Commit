@@ -29,7 +29,7 @@
 		716AC241268726500003A989 /* SpreadSheetSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC240268726500003A989 /* SpreadSheetSearchView.swift */; };
 		716AC2432687265C0003A989 /* SpreadSheetSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC2422687265C0003A989 /* SpreadSheetSearchPresenter.swift */; };
 		716AC2452687267F0003A989 /* SpreadSheetSearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC2442687267F0003A989 /* SpreadSheetSearchInteractor.swift */; };
-		716AC24A268727310003A989 /* SpreadSheetAddRegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC249268727310003A989 /* SpreadSheetAddRegisterInteractor.swift */; };
+		716AC24A268727310003A989 /* SpreadSheetFilesFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC249268727310003A989 /* SpreadSheetFilesFetchInteractor.swift */; };
 		716AC24C2687273B0003A989 /* SpreadSheetAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC24B2687273B0003A989 /* SpreadSheetAddView.swift */; };
 		716AC24E268727430003A989 /* SpreadSheetAddPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC24D268727430003A989 /* SpreadSheetAddPresenter.swift */; };
 		716AC2502687274E0003A989 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC24F2687274E0003A989 /* SettingsRouter.swift */; };
@@ -67,6 +67,8 @@
 		71AA3DC726814B95005D1CCC /* SpreadSheetTodoAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC626814B95005D1CCC /* SpreadSheetTodoAttribute.swift */; };
 		71AA3DC92682E773005D1CCC /* ListFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC82682E773005D1CCC /* ListFetchInteractor.swift */; };
 		71AF451A26790DA70084364A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF451926790DA70084364A /* Todo.swift */; };
+		71CB63D8269A0CAB003C98A8 /* SpreadSheetCellsFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CB63D7269A0CAB003C98A8 /* SpreadSheetCellsFetchInteractor.swift */; };
+		71CB63DA269A0E4C003C98A8 /* SpreadSheetInfoFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CB63D9269A0E4C003C98A8 /* SpreadSheetInfoFetchInteractor.swift */; };
 		9FD5277028064CE4AE7F173A /* Pods_commit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4194718BA40140F9EF0C2D /* Pods_commit.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,7 +97,7 @@
 		716AC240268726500003A989 /* SpreadSheetSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetSearchView.swift; sourceTree = "<group>"; };
 		716AC2422687265C0003A989 /* SpreadSheetSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetSearchPresenter.swift; sourceTree = "<group>"; };
 		716AC2442687267F0003A989 /* SpreadSheetSearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetSearchInteractor.swift; sourceTree = "<group>"; };
-		716AC249268727310003A989 /* SpreadSheetAddRegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetAddRegisterInteractor.swift; sourceTree = "<group>"; };
+		716AC249268727310003A989 /* SpreadSheetFilesFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetFilesFetchInteractor.swift; sourceTree = "<group>"; };
 		716AC24B2687273B0003A989 /* SpreadSheetAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetAddView.swift; sourceTree = "<group>"; };
 		716AC24D268727430003A989 /* SpreadSheetAddPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetAddPresenter.swift; sourceTree = "<group>"; };
 		716AC24F2687274E0003A989 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsRouter.swift; path = commit/Modules/SpreadSheetAddModule/Presenter/SettingsRouter.swift; sourceTree = SOURCE_ROOT; };
@@ -121,12 +123,12 @@
 		71931A98269601D800BB404F /* SpreadSheetFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetFormView.swift; sourceTree = "<group>"; };
 		71931A9A26960DB000BB404F /* SheetColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetColumn.swift; sourceTree = "<group>"; };
 		71931AA02697473000BB404F /* SpreadSheetResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpreadSheetResponses.swift; path = "../New Group/SpreadSheetResponses.swift"; sourceTree = "<group>"; };
-		71931AA226974C4000BB404F /* GoogleAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleAPIClient.swift; path = commit/Common/Entity/GoogleAPIClient.swift; sourceTree = SOURCE_ROOT; };
-		71931AA426974FFE00BB404F /* GoogleAPIClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleAPIClientProtocol.swift; path = commit/Common/Entity/GoogleAPIClientProtocol.swift; sourceTree = SOURCE_ROOT; };
+		71931AA226974C4000BB404F /* GoogleAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleAPIClient.swift; path = commit/Common/WebAPI/GoogleAPIClient.swift; sourceTree = SOURCE_ROOT; };
+		71931AA426974FFE00BB404F /* GoogleAPIClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleAPIClientProtocol.swift; path = commit/Common/WebAPI/GoogleAPIClientProtocol.swift; sourceTree = SOURCE_ROOT; };
 		71931AA726975EE600BB404F /* GoogleAPIQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIQueries.swift; sourceTree = "<group>"; };
 		71931AA92699B93200BB404F /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		71931AAB2699BC7D00BB404F /* DriveAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DriveAPIManager.swift; path = commit/Common/Enum/DriveAPIManager.swift; sourceTree = SOURCE_ROOT; };
-		71931AAD2699BFF800BB404F /* SheetsAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SheetsAPIManager.swift; path = commit/Common/Enum/SheetsAPIManager.swift; sourceTree = SOURCE_ROOT; };
+		71931AAB2699BC7D00BB404F /* DriveAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DriveAPIManager.swift; path = commit/Common/WebAPI/DriveAPIManager.swift; sourceTree = SOURCE_ROOT; };
+		71931AAD2699BFF800BB404F /* SheetsAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SheetsAPIManager.swift; path = commit/Common/WebAPI/SheetsAPIManager.swift; sourceTree = SOURCE_ROOT; };
 		71A190A02680C9B000C6D6E8 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUpdateInteractor.swift; sourceTree = "<group>"; };
 		71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -135,6 +137,8 @@
 		71AA3DC626814B95005D1CCC /* SpreadSheetTodoAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetTodoAttribute.swift; sourceTree = "<group>"; };
 		71AA3DC82682E773005D1CCC /* ListFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFetchInteractor.swift; sourceTree = "<group>"; };
 		71AF451926790DA70084364A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		71CB63D7269A0CAB003C98A8 /* SpreadSheetCellsFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetCellsFetchInteractor.swift; sourceTree = "<group>"; };
+		71CB63D9269A0E4C003C98A8 /* SpreadSheetInfoFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetInfoFetchInteractor.swift; sourceTree = "<group>"; };
 		7B924A41A2AB38982B6AE3C2 /* Pods-commit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-commit.debug.xcconfig"; path = "Target Support Files/Pods-commit/Pods-commit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -266,7 +270,9 @@
 		716AC2462687268B0003A989 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				716AC249268727310003A989 /* SpreadSheetAddRegisterInteractor.swift */,
+				716AC249268727310003A989 /* SpreadSheetFilesFetchInteractor.swift */,
+				71CB63D7269A0CAB003C98A8 /* SpreadSheetCellsFetchInteractor.swift */,
+				71CB63D9269A0E4C003C98A8 /* SpreadSheetInfoFetchInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -389,11 +395,11 @@
 		717F945A26774FE800D11C58 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				71DD31D3269AF1CD00F9BCB1 /* WebAPI */,
 				717D0F32269472FB00BD4655 /* GoogleAPI */,
 				718818A92690D4370078319F /* Struct */,
 				7146C708268C960D00ACD588 /* Enum */,
 				715C2F1A2679AA9300DA66F3 /* Mock */,
-				717F9467267751D400D11C58 /* WebAPI */,
 				717F9466267751BE00D11C58 /* Protocol */,
 				717F94612677505C00D11C58 /* Repository */,
 				717F94602677505600D11C58 /* Entity */,
@@ -517,17 +523,6 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
-		717F9467267751D400D11C58 /* WebAPI */ = {
-			isa = PBXGroup;
-			children = (
-				71931AA226974C4000BB404F /* GoogleAPIClient.swift */,
-				71931AA426974FFE00BB404F /* GoogleAPIClientProtocol.swift */,
-				71931AAB2699BC7D00BB404F /* DriveAPIManager.swift */,
-				71931AAD2699BFF800BB404F /* SheetsAPIManager.swift */,
-			);
-			path = WebAPI;
-			sourceTree = "<group>";
-		};
 		718818A92690D4370078319F /* Struct */ = {
 			isa = PBXGroup;
 			children = (
@@ -578,6 +573,17 @@
 				716AC225268725500003A989 /* SpreadSheetTodoUpdateInteractor.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		71DD31D3269AF1CD00F9BCB1 /* WebAPI */ = {
+			isa = PBXGroup;
+			children = (
+				71931AA426974FFE00BB404F /* GoogleAPIClientProtocol.swift */,
+				71931AA226974C4000BB404F /* GoogleAPIClient.swift */,
+				71931AAB2699BC7D00BB404F /* DriveAPIManager.swift */,
+				71931AAD2699BFF800BB404F /* SheetsAPIManager.swift */,
+			);
+			path = WebAPI;
 			sourceTree = "<group>";
 		};
 		7601617007C297B650C3B68D /* Pods */ = {
@@ -772,17 +778,19 @@
 				716AC254268727630003A989 /* SettingsPresenter.swift in Sources */,
 				71931AA326974C4000BB404F /* GoogleAPIClient.swift in Sources */,
 				716AC232268725B70003A989 /* UpdateTodoInteractor.swift in Sources */,
-				716AC24A268727310003A989 /* SpreadSheetAddRegisterInteractor.swift in Sources */,
+				716AC24A268727310003A989 /* SpreadSheetFilesFetchInteractor.swift in Sources */,
 				715C2F0C2679178D00DA66F3 /* List.swift in Sources */,
 				716AC241268726500003A989 /* SpreadSheetSearchView.swift in Sources */,
 				717D0F3E26947FCC00BD4655 /* AppView.swift in Sources */,
 				71AF451A26790DA70084364A /* Todo.swift in Sources */,
 				7146C70A268C961900ACD588 /* TodoTypes.swift in Sources */,
+				71CB63D8269A0CAB003C98A8 /* SpreadSheetCellsFetchInteractor.swift in Sources */,
 				716AC226268725500003A989 /* SpreadSheetTodoUpdateInteractor.swift in Sources */,
 				717D0F3C26947FC100BD4655 /* AppRouter.swift in Sources */,
 				716AC220268593CE0003A989 /* SampleDataGenerator.swift in Sources */,
 				716AC2432687265C0003A989 /* SpreadSheetSearchPresenter.swift in Sources */,
 				71931A9B26960DB000BB404F /* SheetColumn.swift in Sources */,
+				71CB63DA269A0E4C003C98A8 /* SpreadSheetInfoFetchInteractor.swift in Sources */,
 				71931AA12697473000BB404F /* SpreadSheetResponses.swift in Sources */,
 				71931AAE2699BFF800BB404F /* SheetsAPIManager.swift in Sources */,
 				71AA3DC92682E773005D1CCC /* ListFetchInteractor.swift in Sources */,

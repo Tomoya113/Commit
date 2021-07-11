@@ -97,9 +97,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 			do {
 //				let jsonstr: String = String(data: data, encoding: .utf8)!
 				let response = try decoder.decode(SpreadSheetFiles.self, from: data)
-				DispatchQueue.main.async {
-					completion(.success(response.files))
-				}
+				completion(.success(response.files))
 			} catch {
 				print(error.localizedDescription)
 				completion(.failure(error))
@@ -131,7 +129,6 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 			let decoder = JSONDecoder()
 			
 			do {
-//				let jsonstr: String = String(data: data, encoding: .utf8)!
 				let response = try decoder.decode(Cells.self, from: data)
 				DispatchQueue.main.async {
 					completion(.success(response.values[0]))
@@ -165,11 +162,8 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 			let decoder = JSONDecoder()
 			
 			do {
-//				let jsonstr: String = String(data: data, encoding: .utf8)!
 				let response = try decoder.decode(SpreadSheetInfo.self, from: data)
-				DispatchQueue.main.async {
-					completion(.success(response.sheets))
-				}
+				completion(.success(response.sheets))
 			} catch {
 				print(error.localizedDescription)
 				completion(.failure(error))

@@ -15,6 +15,8 @@ struct DriveAPIManager {
 		]
 		if let sheetName = sheetName {
 			baseQuery["q"] = "(mimeType='application/vnd.google-apps.spreadsheet' and name contains '\(sheetName)')"
+		} else if sheetName == "" {
+			baseQuery["q"] = "mimeType='application/vnd.google-apps.spreadsheet'"
 		} else {
 			baseQuery["q"] = "mimeType='application/vnd.google-apps.spreadsheet'"
 		}
