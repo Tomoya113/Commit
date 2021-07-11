@@ -32,7 +32,7 @@ struct TodoAddView: View {
 						currentSectionId: $presenter.currentSectionId
 					)
 				} else if presenter.currentTodoType == .spreadSheet {
-//					SpreadSheetAddView()
+					SpreadSheetAddView(presenter: SpreadSheetAddPresenter.sample)
 				}
 				Button(action: {
 					didTapSubmitButton()
@@ -56,8 +56,9 @@ struct TodoAddView: View {
 				Spacer()
 			}
 		}
-		.gesture(DragGesture(minimumDistance: 5, coordinateSpace: .local)
+		.gesture(DragGesture(minimumDistance: 5, coordinateSpace: .global)
 					.onEnded({ value in
+						print(value)
 						didSwipe(value)
 					}))
 		.navigationTitle("Todoを追加")

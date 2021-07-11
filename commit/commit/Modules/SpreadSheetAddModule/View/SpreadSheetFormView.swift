@@ -10,6 +10,9 @@ import SwiftUI
 struct SpreadSheetFormView: View {
 	@Binding var spreadSheetPreset: SpreadSheetPreset
 	var spreadSheetList: [SpreadSheetFile]
+	var sheetList: [SheetProperties]
+	let fetchSpreadSheetInfo: (() -> Void)
+	let	fetchSpreadSheetCells: (() -> Void)
     var body: some View {
 		Form {
 			Section(header: Text("プリセット名"), footer: Text("セクション名になります")) {
@@ -21,9 +24,17 @@ struct SpreadSheetFormView: View {
 						Text(file.name)
 					}
 				}
+				.onChange(of: spreadSheetPreset.spreadSheetId) { _ in
+					fetchSpreadSheetInfo()
+				}
+				
 			}
 			Section(header: Text("シート名")) {
-				TextField("シート名", text: $spreadSheetPreset.tabName)
+				Picker("Spread Sheet Id", selection: $spreadSheetPreset.tabName) {
+					ForEach(sheetList, id: \.title) { sheet in
+						Text(sheet.title)
+					}
+				}
 			}
 			Section(header: Text("行"), footer: Text("半角数字でよろ")) {
 				TextField("行", text: $spreadSheetPreset.row)
@@ -47,9 +58,18 @@ struct SpreadSheetFormView: View {
 
 struct SpreadSheetFromView_Previews: PreviewProvider {
 	@State static var spreadSheetPreset = SpreadSheetPreset()
+	static func test() {
+		
+	}
     static var previews: some View {
 		NavigationView {
-			SpreadSheetFormView(spreadSheetPreset: $spreadSheetPreset, spreadSheetList: [])
+			SpreadSheetFormView(
+				spreadSheetPreset: $spreadSheetPreset,
+				spreadSheetList: [],
+				sheetList: [],
+				fetchSpreadSheetInfo: test,
+				fetchSpreadSheetCells: test
+			)
 		}
     }
 }

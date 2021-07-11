@@ -14,15 +14,28 @@ struct SpreadSheetAddView: View {
 	@State var text: String = ""
 	var body: some View {
 		if presenter.authenticated {
-			SpreadSheetFormView(spreadSheetPreset: $presenter.spreadSheetPreset, spreadSheetList: presenter.userResources.spreadSheetList)
+			SpreadSheetFormView(
+				spreadSheetPreset: $presenter.spreadSheetPreset,
+				spreadSheetList: presenter.userResources.spreadSheetList,
+				sheetList: presenter.userResources.sheetList,
+				fetchSpreadSheetInfo: presenter.fetchSpreadSheetInfo,
+				fetchSpreadSheetCells: presenter.fetchSpreadSheetCells
+			)
+			.onAppear {
+				// スプシのファイルを取得する
+				presenter.fetchSpreadSheetFiles()
+			}
 		} else {
 			VStack {
+				Spacer()
 				Button(action: {
 					presenter.googleOAuth()
 				}, label: {
 					Text("SignIn")
 				})
+				Spacer()
 			}
+			.contentShape(Rectangle())
 			.onAppear {
 				GIDSignIn.sharedInstance().presentingViewController = UIApplication.shared.windows.first?.rootViewController
 			}
@@ -31,7 +44,7 @@ struct SpreadSheetAddView: View {
 }
 
 struct SpreadSheetView_Previews: PreviewProvider {
-    static var previews: some View {
-		SpreadSheetAddView(presenter: SpreadSheetAddPresenter())
-    }
+	static var previews: some View {
+		SpreadSheetAddView(presenter: SpreadSheetAddPresenter.sample)
+	}
 }
