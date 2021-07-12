@@ -14,13 +14,13 @@ struct NormalTodoForm: View {
 	@Binding var currentSectionId: String
     var body: some View {
 		Form {
-			Section(header: Text("タスク名 - normal")) {
+			Section(header: Text("タスク名")) {
 				TextField("タスク名", text: $title)
 			}
 			Section(header: Text("説明")) {
 				TextField("タスクの説明", text: $subtitle)
 			}
-			Picker(selection: $currentSectionId, label: Text("Section")) {
+			Picker(selection: $currentSectionId, label: Text("セクション")) {
 				ForEach(sections, id: \.id) { section in
 					Text(section.title)
 				}

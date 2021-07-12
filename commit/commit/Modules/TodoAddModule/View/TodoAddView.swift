@@ -58,7 +58,6 @@ struct TodoAddView: View {
 		}
 		.gesture(DragGesture(minimumDistance: 5, coordinateSpace: .global)
 					.onEnded({ value in
-						print(value)
 						didSwipe(value)
 					}))
 		.navigationTitle("Todoを追加")
