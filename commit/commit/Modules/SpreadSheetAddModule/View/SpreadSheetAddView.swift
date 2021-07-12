@@ -6,38 +6,29 @@
 //
 
 import SwiftUI
-// NOTE: 後で消す
-import GoogleSignIn
 
 struct SpreadSheetAddView: View {
-	@ObservedObject var presenter: SpreadSheetAddPresenter
-	@State var text: String = ""
+	@StateObject var presenter: SpreadSheetAddPresenter
+	@EnvironmentObject var googleDelegate: GoogleOAuthManager
+
 	var body: some View {
-		if presenter.authenticated {
+		// NOTE: この書き方やめろ
+		if googleDelegate.authenticated {
 			SpreadSheetFormView(
 				spreadSheetPreset: $presenter.spreadSheetPreset,
-				spreadSheetList: presenter.userResources.spreadSheetList,
-				sheetList: presenter.userResources.sheetList,
-				fetchSpreadSheetInfo: presenter.fetchSpreadSheetInfo,
-				fetchSpreadSheetCells: presenter.fetchSpreadSheetCells
+				userResources: $presenter.userResources,
+				fetchSpreadSheetInfo: presenter.fetchSpreadSheetInfo
 			)
 			.onAppear {
-				// スプシのファイルを取得する
-				presenter.fetchSpreadSheetFiles()
+				presenter.onAppear()
 			}
 		} else {
-			VStack {
-				Spacer()
-				Button(action: {
-					presenter.googleOAuth()
-				}, label: {
-					Text("SignIn")
-				})
-				Spacer()
+			RequireGoogleOAuthView {
+				presenter.googleOAuth()
 			}
-			.contentShape(Rectangle())
 			.onAppear {
-				GIDSignIn.sharedInstance().presentingViewController = UIApplication.shared.windows.first?.rootViewController
+				presenter.setPresentingViewController()
+
 			}
 		}
 	}

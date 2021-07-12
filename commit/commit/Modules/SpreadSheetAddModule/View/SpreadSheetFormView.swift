@@ -9,48 +9,48 @@ import SwiftUI
 
 struct SpreadSheetFormView: View {
 	@Binding var spreadSheetPreset: SpreadSheetPreset
-	var spreadSheetList: [SpreadSheetFile]
-	var sheetList: [SheetProperties]
+	@Binding var userResources: UserResources
 	let fetchSpreadSheetInfo: (() -> Void)
-	let	fetchSpreadSheetCells: (() -> Void)
     var body: some View {
 		Form {
 			Section(header: Text("プリセット名"), footer: Text("セクション名になります")) {
 				TextField("プリセット名", text: $spreadSheetPreset.title)
 			}
-			Section(header: Text("スプレッドシート名")) {
-				Picker("Spread Sheet Id", selection: $spreadSheetPreset.spreadSheetId) {
-					ForEach(spreadSheetList, id: \.id) { file in
+			
+			Section(header: Text("スプレッドシート")) {
+				Picker("スプレッドシート", selection: $spreadSheetPreset.spreadSheetId) {
+					ForEach(userResources.spreadSheetList, id: \.id) { file in
 						Text(file.name)
 					}
 				}
 				.onChange(of: spreadSheetPreset.spreadSheetId) { _ in
 					fetchSpreadSheetInfo()
 				}
-				
 			}
+			
 			Section(header: Text("シート名")) {
-				Picker("Spread Sheet Id", selection: $spreadSheetPreset.tabName) {
-					ForEach(sheetList, id: \.title) { sheet in
+				Picker("シート", selection: $spreadSheetPreset.tabName) {
+					ForEach(userResources.tabList, id: \.title) { sheet in
 						Text(sheet.title)
 					}
 				}
 			}
-			Section(header: Text("行"), footer: Text("半角数字でよろ")) {
+			Section(header: Text("範囲")) {
 				TextField("行", text: $spreadSheetPreset.row)
-			}
-			Section(header: Text("列")) {
 				// NOTE: A~Cなど
-				Picker("Spread Sheet Column", selection: $spreadSheetPreset.column.start) {
-					ForEach(SheetColumnEnum.allCases, id: \.self) { column in
+				Picker("最初：", selection: $spreadSheetPreset.column.start) {
+					ForEach(SheetColumnEnum.allCases, id: \.self.rawValue) { column in
 						Text(column.rawValue)
 					}
 				}
-				Picker("Spread Sheet Column", selection: $spreadSheetPreset.column.end) {
-					ForEach(SheetColumnEnum.allCases, id: \.self) { column in
+				Picker("最後：", selection: $spreadSheetPreset.column.end) {
+					ForEach(SheetColumnEnum.allCases, id: \.self.rawValue) { column in
 						Text(column.rawValue)
 					}
 				}
+			}
+			Section(header: Text("書き込む行"), footer: Text("TODOを達成した時に書き込む行を指定します")) {
+				TextField("行", text: $spreadSheetPreset.row)
 			}
 		}
     }
@@ -58,17 +58,17 @@ struct SpreadSheetFormView: View {
 
 struct SpreadSheetFromView_Previews: PreviewProvider {
 	@State static var spreadSheetPreset = SpreadSheetPreset()
+	@State static var array = UserResources()
 	static func test() {
-		
+
 	}
-    static var previews: some View {
+	
+	static var previews: some View {
 		NavigationView {
 			SpreadSheetFormView(
 				spreadSheetPreset: $spreadSheetPreset,
-				spreadSheetList: [],
-				sheetList: [],
-				fetchSpreadSheetInfo: test,
-				fetchSpreadSheetCells: test
+				userResources: $array,
+				fetchSpreadSheetInfo: test
 			)
 		}
     }
