@@ -11,14 +11,13 @@ struct DriveAPIManager {
 	static func generateSpreadSheetSearchQueries(_ sheetName: String?) -> [String: String] {
 		var baseQuery = [
 			"supportsTeamDrives": "true",
-			"includeItemsFromAllDrives": "true"
+			"includeItemsFromAllDrives": "true",
+			"orderBy": "viewedByMeTime%20desc"
 		]
-		if let sheetName = sheetName {
+		if let sheetName = sheetName, sheetName != "" {
 			baseQuery["q"] = "(mimeType='application/vnd.google-apps.spreadsheet' and name contains '\(sheetName)')"
-		} else if sheetName == "" {
-			baseQuery["q"] = "mimeType='application/vnd.google-apps.spreadsheet'"
 		} else {
-			baseQuery["q"] = "mimeType='application/vnd.google-apps.spreadsheet'"
+			baseQuery["q"] = "(mimeType='application/vnd.google-apps.spreadsheet')"
 		}
 		return baseQuery
 	}

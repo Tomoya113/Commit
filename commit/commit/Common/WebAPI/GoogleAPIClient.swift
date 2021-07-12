@@ -8,13 +8,13 @@
 import Foundation
 
 struct DriveConfig {
-	let host: URL = URL(string: "https://sheets.googleapis.com")!
-	let fixedPath: String = "/v4/spreadsheets"
+	let host: URL = URL(string: "https://www.googleapis.com")!
+	let fixedPath: String = "/drive/v3"
 }
 
 struct SpreadSheetConfig {
-	let host: URL = URL(string: "https://www.googleapis.com")!
-	let fixedPath: String = "/drive/v3"
+	let host: URL = URL(string: "https://sheets.googleapis.com")!
+	let fixedPath: String = "/v4/spreadsheets"
 }
 
 enum GoogleAPIRequestType {
@@ -51,12 +51,14 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 					return drive.host
 			}
 		}()
+		print(queries, baseQueryItem)
 		
 		let queryItems: [URLQueryItem] =  queries.map { query in
 			URLQueryItem(name: query.key, value: query.value)
 		}
-		
+		print(fixedPath, path)
 		var components: URLComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+		
 		components.percentEncodedPath = fixedPath + path
 		components.percentEncodedQueryItems = queryItems + baseQueryItem
 		
@@ -67,7 +69,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		
 		var request = URLRequest(url: components.url!)
 		request.httpMethod = httpMethod.rawValue
-		request.addValue("Bearer \(API_KEY)", forHTTPHeaderField: "Authorization")
+		request.addValue("Bearer \(GoogleOAuthManager.shared.token)", forHTTPHeaderField: "Authorization")
 		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 		request.addValue("application/json", forHTTPHeaderField: "Accept")
 		
@@ -95,11 +97,10 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 			let decoder = JSONDecoder()
 			
 			do {
-//				let jsonstr: String = String(data: data, encoding: .utf8)!
 				let response = try decoder.decode(SpreadSheetFiles.self, from: data)
 				completion(.success(response.files))
 			} catch {
-				print(error.localizedDescription)
+				print(error)
 				completion(.failure(error))
 			}
 		}
@@ -134,7 +135,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 					completion(.success(response.values[0]))
 				}
 			} catch {
-				print(error.localizedDescription)
+				print(error)
 				completion(.failure(error))
 			}
 		}
@@ -160,12 +161,13 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 				return
 			}
 			let decoder = JSONDecoder()
-			
+			let jsonstr: String = String(data: data, encoding: .utf8)!
+			print(jsonstr)
 			do {
 				let response = try decoder.decode(SpreadSheetInfo.self, from: data)
 				completion(.success(response.sheets))
 			} catch {
-				print(error.localizedDescription)
+				print(error)
 				completion(.failure(error))
 			}
 		}
