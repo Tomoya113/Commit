@@ -18,7 +18,10 @@ class GoogleOAuthManager: NSObject, GIDSignInDelegate, ObservableObject {
 		GIDSignIn.sharedInstance().clientID = GoogleAPIInfo.CLIENT_ID
 		GIDSignIn.sharedInstance().scopes = GoogleAPIInfo.scopes
 		GIDSignIn.sharedInstance().presentingViewController = UIApplication.shared.windows.first?.rootViewController
-		// NOTE: ここで良いかは怪しい
+		
+	}
+	
+	static func signIn() {
 		if GIDSignIn.sharedInstance().hasPreviousSignIn() {
 			GIDSignIn.sharedInstance().restorePreviousSignIn()
 		}
@@ -34,6 +37,7 @@ class GoogleOAuthManager: NSObject, GIDSignInDelegate, ObservableObject {
 		  return
 		}
 		
+		print("logged in")
 		authenticated = true
 		token = GIDSignIn.sharedInstance().currentUser.authentication.accessToken
 	}
