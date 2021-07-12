@@ -24,7 +24,7 @@ struct SpreadSheetInfo: Decodable {
 }
 
 struct Sheet: Decodable {
-	var sheetProperties: SheetProperties
+	var properties: SheetProperties
 }
 
 struct SheetProperties: Decodable {

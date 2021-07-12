@@ -23,7 +23,7 @@ class SpreadSheetPreset: ObservableObject {
 
 class UserResources: ObservableObject {
 	@Published var spreadSheetList: [SpreadSheetFile] = []
-	@Published var sheetList: [SheetProperties] = []
+	@Published var tabList: [SheetProperties] = []
 }
 
 class SpreadSheetAddPresenter: ObservableObject {
@@ -33,8 +33,6 @@ class SpreadSheetAddPresenter: ObservableObject {
 		let spreadSheetInfoFetchInteractor: AnyUseCase<String, [Sheet], Error>
 	}
 	
-	@Published var authenticated: Bool = false
-	@Published var token: String = ""
 	@Published var spreadSheetPreset = SpreadSheetPreset()
 	@Published var userResources = UserResources()
 	
@@ -49,15 +47,24 @@ class SpreadSheetAddPresenter: ObservableObject {
 	}
 	
 	func onAppear() {
-		authenticated = GoogleOAuthManager.shared.authenticated
-		token = GoogleOAuthManager.shared.token
+		if userResources.spreadSheetList.isEmpty {
+			fetchSpreadSheetFiles()
+		}
+	}
+	
+	func setPresentingViewController() {
+		GIDSignIn.sharedInstance().presentingViewController = UIApplication.shared.windows.first?.rootViewController
 	}
 	
 	func fetchSpreadSheetFiles() {
-		dependency.spreadSheetFilesFetchInteractor.execute(spreadSheetPreset.spreadSheetId) { result in
+		dependency.spreadSheetFilesFetchInteractor.execute("") { result in
 			switch result {
 				case .success(let files):
-					self.userResources.spreadSheetList = files
+					DispatchQueue.main.async {
+						// NOTE: もうちょっと良い書き方ありそう
+						self.objectWillChange.send()
+						self.userResources.spreadSheetList = files
+					}
 				case .failure(let error):
 					print(error.localizedDescription)
 			}
@@ -89,8 +96,12 @@ class SpreadSheetAddPresenter: ObservableObject {
 		dependency.spreadSheetInfoFetchInteractor.execute(spreadSheetPreset.spreadSheetId) { result in
 			switch result {
 				case .success(let sheets):
-					let sheetProperties = sheets.map { $0.sheetProperties }
-					self.userResources.sheetList = sheetProperties
+					DispatchQueue.main.async {
+						// NOTE: もうちょっと良い書き方ありそう
+						self.objectWillChange.send()
+						let sheetProperties = sheets.map { $0.properties }
+						self.userResources.tabList = sheetProperties
+					}
 				case .failure(let error):
 					print(error.localizedDescription)
 			}
