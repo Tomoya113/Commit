@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// Create the SwiftUI view that provides the window contents.
 		
 		let todoListPresenter: TodoListPresenter = {
-			let repository = TodoListRepository()
+			let repository = TodoRepository.shared
 			let listFetchInteractor = AnyUseCase(ListFetchInteractor(repository: repository))
 			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor(repository: repository))
 			let dependency = TodoListPresenter.Dependency(

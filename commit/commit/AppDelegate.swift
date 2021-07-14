@@ -12,6 +12,15 @@ import GoogleSignIn
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		// NOTE: これちゃんと理解して書いたほうが良さそう
+		let config = Realm.Configuration(
+			schemaVersion: 1,
+			migrationBlock: nil,
+			// DANGER: これ絶対にやばいわ
+			deleteRealmIfMigrationNeeded: true
+		)
+		
+		Realm.Configuration.defaultConfiguration = config
 //		SampleDataGenerator.initializeSampleData()
 		GIDSignIn.sharedInstance().delegate = GoogleOAuthManager.shared
 		GoogleOAuthManager.signIn()
