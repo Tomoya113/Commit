@@ -8,10 +8,11 @@
 import Foundation
 import RealmSwift
 
-class TodoListRepository: TodoRepositoryProtocol {
+class TodoRepository: TodoRepositoryProtocol {
 	
 	let realm = try! Realm()
 	private var notificationTokens: [NotificationToken] = []
+	static let shared = TodoRepository()
 	
 	func fetchLists(completion: ((Result<[ListRealm], Never>) -> Void )?) {
 		let lists =  realm.objects(ListRealm.self)
