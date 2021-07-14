@@ -56,10 +56,10 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		let queryItems: [URLQueryItem] =  queries.map { query in
 			URLQueryItem(name: query.key, value: query.value)
 		}
-		print(fixedPath, path)
-		var components: URLComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
 		
-		components.percentEncodedPath = fixedPath + path
+		var components: URLComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+		let fullpath: String = fixedPath + path
+		components.percentEncodedPath = fullpath.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
 		components.percentEncodedQueryItems = queryItems + baseQueryItem
 		
 		return components
@@ -107,10 +107,10 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		task?.resume()
 	}
 	
-	func fetchSpreadSheetCells(_ query: FetchSpreadSheetCellsQuery, completion: @escaping (Result<[String], Error>) -> Void) {
-		let startRange = "\(query.column.start):\(query.row)"
-		let endRange = "\(query.column.end):\(query.row)"
-		let path = "\(query.spreadSheetId)/values/\(query.sheetName)!\(startRange):\(endRange)"
+	func fetchSpreadSheetCells(_ query: FetchSheetCellsQuery, completion: @escaping (Result<[String], Error>) -> Void) {
+		let startRange = "\(query.column.start)\(query.row)"
+		let endRange = "\(query.column.end)\(query.row)"
+		let path = "/\(query.spreadSheetId)/values/\(query.sheetName)!\(startRange):\(endRange)"
 		let components = createBaseURLComponents(
 			requestType: .spreadSheet,
 			queries: [:],
@@ -136,6 +136,8 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 				}
 			} catch {
 				print(error)
+				let jsonstr: String = String(data: data, encoding: .utf8)!
+				print("jsonstr", jsonstr)
 				completion(.failure(error))
 			}
 		}
