@@ -8,14 +8,23 @@
 import Foundation
 
 class TodoUpdateInteractor: UseCase {
-	let repository: TodoRepositoryProtocol
+	let todoRepository: TodoRepositoryProtocol
+	let sheetRepository: SheetRepositoryProtocol
 	
-	init(repository: TodoRepositoryProtocol = TodoListRepository()) {
-		self.repository = repository
+	init(
+		todoRepository: TodoRepositoryProtocol = TodoRepository.shared,
+		sheetRepository: SheetRepositoryProtocol = SheetRepository.shared
+	) {
+		self.todoRepository = todoRepository
+		self.sheetRepository = sheetRepository
 	}
 	
-	func execute(_ parameters: String, completion: ((Result<Void, Never>) -> Void )?) {
-		repository.updateTodoStatusById(parameters)
+	func execute(_ parameters: Todo, completion: ((Result<Void, Never>) -> Void )?) {
+		todoRepository.updateTodoStatusById(parameters.id)
+		if parameters.todoType == "googleSheets" {
+			print("googleSheets")
+			sheetRepository.updateSheetTodo(parameters)
+		}
 		completion?(.success(()))
 	}
 	

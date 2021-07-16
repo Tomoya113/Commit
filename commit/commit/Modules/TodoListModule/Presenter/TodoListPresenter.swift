@@ -12,7 +12,7 @@ import SwiftUI
 class TodoListPresenter: ObservableObject {
 	struct Dependency {
 		let listFetchInteractor: AnyUseCase<Void, [ListRealm], Never>
-		let todoUpdateInteractor: AnyUseCase<String, Void, Never>
+		let todoUpdateInteractor: AnyUseCase<Todo, Void, Never>
 	}
 	
 	@Published var lists: [ListRealm] = []
@@ -20,12 +20,9 @@ class TodoListPresenter: ObservableObject {
 	
 	private let dependency: Dependency
 	private let router = TodoListRouter()
-	// NOTE: 絶対個々に書くやつではない
-	private let repository: TodoRepositoryProtocol
 	
-	init(dependency: Dependency, repository: TodoRepositoryProtocol) {
+	init(dependency: Dependency) {
 		self.dependency = dependency
-		self.repository = repository
 	}
 	
 	func onAppear() {
@@ -38,8 +35,8 @@ class TodoListPresenter: ObservableObject {
 		}
 	}
 	
-	func updateTodoStatus(id: String) {
-		dependency.todoUpdateInteractor.execute(id) { result in
+	func updateTodoStatus(todo: Todo) {
+		dependency.todoUpdateInteractor.execute(todo) { result in
 			switch result {
 				case .success:
 					print("updated")
@@ -47,8 +44,10 @@ class TodoListPresenter: ObservableObject {
 		}
 	}
 		
-	func generateTodoRow(todo: Todo, updateTodoStatus: @escaping ((String) -> Void)) -> some View {
-		TodoListRow(todo: todo, updateTodoStatus: updateTodoStatus)
+	func generateTodoRow(todo: Todo, updateTodoStatus: @escaping  () -> Void) -> some View {
+		TodoListRow(todo: todo) {
+			updateTodoStatus()
+		}
 	}
 	
 	func addTodoButtonImage() -> some View {
@@ -77,14 +76,14 @@ class TodoListPresenter: ObservableObject {
 	}
 	
 	func detailViewLinkBuilder<Content: View>(for todo: Todo, @ViewBuilder content: () -> Content) -> some View {
-		NavigationLink(destination: router.generateDetailView(for: todo, repository: repository)) {
+		NavigationLink(destination: router.generateDetailView(for: todo)) {
 			content()
 		}
 	}
 	
 	func todoAddLinkBuidler<Content: View>(sections: [SectionRealm], @ViewBuilder content: () -> Content) -> some View {
 		return (
-			NavigationLink(destination: router.generateTodoAddView(sections: sections, repository: repository)) {
+			NavigationLink(destination: router.generateTodoAddView(sections: sections)) {
 				content()
 			}
 		)
@@ -94,13 +93,13 @@ class TodoListPresenter: ObservableObject {
 #if DEBUG
 	extension TodoListPresenter {
 		static let sample: TodoListPresenter = {
-			let repository = MockTodoRepository()
-			let listFetchInteractor = AnyUseCase(ListFetchInteractor(repository: repository))
-			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor(repository: repository))
+			let todoRepository = MockTodoRepository()
+			let listFetchInteractor = AnyUseCase(ListFetchInteractor())
+			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor(todoRepository: todoRepository))
 			let dependency = TodoListPresenter.Dependency(
 				listFetchInteractor: listFetchInteractor,
 				todoUpdateInteractor: todoUpdateInteractor)
-			return TodoListPresenter(dependency: dependency, repository: repository)
+			return TodoListPresenter(dependency: dependency)
 		}()
 	}
 #endif

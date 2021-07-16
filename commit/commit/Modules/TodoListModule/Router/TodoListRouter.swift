@@ -8,16 +8,16 @@
 import SwiftUI
 
 class TodoListRouter {
-	func generateDetailView(for todo: Todo, repository: TodoRepositoryProtocol) -> some View {
+	func generateDetailView(for todo: Todo) -> some View {
 		let dependency = TodoDetailPresenter.Dependency()
 		let presenter = TodoDetailPresenter(dependency: dependency, todo: todo)
 		return TodoDetailView(presenter: presenter)
 	}
 	
-	func generateTodoAddView(sections: [SectionRealm], repository: TodoRepositoryProtocol) -> some View {
-		let todoCreateInteractor = AnyUseCase(TodoCreateInteractor(repository: repository))
-		let dependency = TodoAddPresenter.Dependency(todoCreateInteractor: todoCreateInteractor)
+	func generateTodoAddView(sections: [SectionRealm]) -> some View {
+		let currentListFetchInteractor = CurrentListFetchInteractor()
+		let dependency = TodoAddPresenter.Dependency(currentListFetchInteractor: AnyUseCase(currentListFetchInteractor))
 		let presenter = TodoAddPresenter(dependency: dependency)
-		return TodoAddView(presenter: presenter, sections: sections)
+		return TodoAddView(presenter: presenter)
 	}
 }
