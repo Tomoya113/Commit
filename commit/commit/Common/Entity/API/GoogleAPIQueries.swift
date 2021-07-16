@@ -9,13 +9,13 @@ import Foundation
 
 struct UpdateSpreadSheetCellQuery {
 	let spreadsheetId: String
-	let sheetName: String
-	let row: String
-	let column: String
+	let tabName: String
+	let targetRow: String
+	let targetColumn: String
 	let text: String
 }
 
-struct FetchSpreadSheetCellsQuery {
+struct FetchSheetCellsQuery {
 	let sheetName: String
 	let spreadSheetId: String
 	let column: QueryColumn
