@@ -61,4 +61,18 @@ enum SheetColumnEnum: String, CaseIterable {
 	case AX
 	case AY
 	case AZ
+	
+	// NOTE: ちゃんと失敗するとき場合のエラーハンドリングをする
+	static func getRange(_ from: Self, _ to: Self) -> [Self] {
+		let rangeList = allCases
+		let from = rangeList.firstIndex(of: from)!
+		let to = rangeList.firstIndex(of: to)!
+		return Array(rangeList[from...to])
+	}
+	
+	static func getRange(_ from: Self) -> [Self] {
+		let rangeList = allCases
+		let from = rangeList.firstIndex(of: from)!
+		return Array(rangeList[from..<allCases.count])
+	}
 }
