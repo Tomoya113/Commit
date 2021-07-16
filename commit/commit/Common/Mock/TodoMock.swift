@@ -67,4 +67,10 @@ class TodoMock {
 		todosA,
 		todosB
 	]
+	static let todoWithoutDetail = Todo(
+		title: "銀行に振り込み",
+		detail: "",
+		displayTag: [],
+		todoType: .normal
+	)
 }
