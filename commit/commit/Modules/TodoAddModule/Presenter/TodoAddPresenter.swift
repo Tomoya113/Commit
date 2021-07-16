@@ -5,51 +5,57 @@
 //  Created by Tomoya Tanaka on 2021/06/26.
 //
 
-import Foundation
+import SwiftUI
 
 class TodoAddPresenter: ObservableObject {
-	struct Dependency {
-		//		let listFetchInteractor: AnyUseCase<Void, [], Never>
-		let todoCreateInteractor: AnyUseCase<AddTodoQuery, Void, Never>
-	}
-	@Published var title: String = ""
-	@Published var subtitle: String = ""
-	@Published var sectionIndex: Int = 0
-	@Published var currentSectionId: String = ""
 	@Published var currentTodoType: TodoTypes = .normal
+	@Published var currentList: ListRealm?
+	@Published var currentSection: [SectionRealm] = []
+	
+	struct Dependency {
+		var currentListFetchInteractor: AnyUseCase<String, ListRealm, Error>
+	}
 	
 	private let dependency: Dependency
+	private let router = TodoAddRouter()
 	
-	// ここにsection書くのよくなさそう
 	init(dependency: Dependency) {
 		self.dependency = dependency
 	}
 	
-	//	func
+	func normalTodoAddLinkBuilder(sections: Binding<[SectionRealm]>) -> some View {
+		router.generateNormalTodoAddView(sections: sections)
+	}
 	
-	func createNewTodo() {
-		let query = AddTodoQuery(
-			sectionId: currentSectionId,
-			todo: Todo(
-				title: title,
-				detail: subtitle,
-				displayTag: [],
-				todoType: .normal)
-			)
-		dependency.todoCreateInteractor.execute(query) { result in
+	func spreadSheetAddLinkBuilder() -> some View {
+		router.generateSpreadSheetAddView()
+	}
+	
+	func onAppear() {
+		if currentSection.isEmpty {
+			fetchCurrentList()
+		}
+	}
+	
+	func fetchCurrentList() {
+		dependency.currentListFetchInteractor.execute("") { result in
 			switch result {
-				case .success(()):
-					print("success")
+				case .success(let list):
+					self.currentList = list
+					self.currentSection = Array(list.sections)
+				case .failure(let error):
+					print(error.localizedDescription)
 			}
 		}
 	}
+	
 }
 
 #if DEBUG
 extension TodoAddPresenter {
+	static let currentListFetchInteractor = CurrentListFetchInteractor()
+	static let dependency = TodoAddPresenter.Dependency(currentListFetchInteractor: AnyUseCase(currentListFetchInteractor))
 	static let sample: TodoAddPresenter = {
-		let dependency = TodoAddPresenter.Dependency(
-			todoCreateInteractor: AnyUseCase(TodoCreateInteractor(repository: MockTodoRepository())))
 		return TodoAddPresenter(dependency: dependency)
 	}()
 }

@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		)
 		
 		Realm.Configuration.defaultConfiguration = config
-//		SampleDataGenerator.initializeSampleData()
+		SampleDataGenerator.generateSampleData()
+		print(Realm.Configuration.defaultConfiguration.fileURL!)
 		GIDSignIn.sharedInstance().delegate = GoogleOAuthManager.shared
 		GoogleOAuthManager.signIn()
 		return true

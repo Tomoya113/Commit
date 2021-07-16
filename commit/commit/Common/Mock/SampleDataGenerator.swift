@@ -10,9 +10,9 @@ import RealmSwift
 
 struct SampleDataGenerator {
 	static func initializeSampleData() {
-//		let realm = try! Realm()
-//		print("Realm is located at:", realm.configuration.fileURL!)
-//		try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
+		let realm = try! Realm()
+		print("Realm is located at:", realm.configuration.fileURL!)
+		try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
 		SampleDataGenerator.generateSampleData()
 	}
 	

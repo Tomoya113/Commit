@@ -26,9 +26,9 @@ struct TodoListView: View {
 									ForEach(section.todos) { todo in
 										presenter.detailViewLinkBuilder(for: todo) {
 											presenter.generateTodoRow(
-												todo: todo,
-												updateTodoStatus: presenter.updateTodoStatus
-											)
+												todo: todo) {
+												presenter.updateTodoStatus(todo: todo)
+											}
 										}
 									}
 								}
@@ -51,7 +51,9 @@ struct TodoListView: View {
 			}
 			// NOTE: こんな感じでout of rangeだったりするとエラーになる
 			.navigationTitle(presenter.currentList?.title ?? "")
-		}.onAppear {
+		}
+		.navigationViewStyle(StackNavigationViewStyle())
+		.onAppear {
 			presenter.onAppear()
 		}
 	}

@@ -9,58 +9,40 @@ import SwiftUI
 import RealmSwift
 
 struct TodoAddView: View {
-	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 	@ObservedObject var presenter: TodoAddPresenter
-	var sections: [SectionRealm]
 	@State private var currentTodoTypeIndex: Int = 0
 	var body: some View {
 		GeometryReader { geometry in
-			
 			VStack {
-				Picker("Current todo type", selection: $currentTodoTypeIndex) {
-					ForEach(TodoTypes.allCases.indices) { i in
-						Text(TodoTypes.allCases[i].rawValue)
-					}
-				}
-				.pickerStyle(SegmentedPickerStyle())
+				todoTypeList()
 				.frame(width: geometry.size.width - 24)
 				if presenter.currentTodoType == .normal {
-					NormalTodoForm(
-						title: $presenter.title,
-						subtitle: $presenter.subtitle,
-						sections: sections,
-						currentSectionId: $presenter.currentSectionId
-					)
+					presenter.normalTodoAddLinkBuilder(sections: $presenter.currentSection)
+
 				} else if presenter.currentTodoType == .spreadSheet {
-					SpreadSheetAddView(presenter: SpreadSheetAddPresenter.sample)
+					presenter.spreadSheetAddLinkBuilder()
 				}
-				Button(action: {
-					didTapSubmitButton()
-				}, label: {
-					Text("更新")
-						.fontWeight(.bold)
-						.frame(minWidth: 0, maxWidth: .infinity)
-						.font(.system(size: 18))
-						.padding()
-						.foregroundColor(.white)
-						.background(Color.green)
-						.cornerRadius(10)
-				})
-				.padding(
-					EdgeInsets(
-						top: -8,
-						leading: 12,
-						bottom: 0,
-						trailing: 12)
-				)
 				Spacer()
 			}
+		}
+		.onAppear {
+			// NOTE: 毎回フェッチすると、子Viewがリロードされてフォームがリセットされるので、onAppearで初回判定をする
+			presenter.onAppear()
 		}
 		.gesture(DragGesture(minimumDistance: 5, coordinateSpace: .global)
 					.onEnded({ value in
 						didSwipe(value)
 					}))
 		.navigationTitle("Todoを追加")
+	}
+	
+	private func todoTypeList() -> some View {
+		Picker("Current todo type", selection: $currentTodoTypeIndex) {
+			ForEach(TodoTypes.allCases.indices) { i in
+				Text(TodoTypes.allCases[i].rawValue)
+			}
+		}
+		.pickerStyle(SegmentedPickerStyle())
 	}
 
 	private func didSwipe(_ value: DragGesture.Value) {
@@ -81,17 +63,12 @@ struct TodoAddView: View {
 			presenter.currentTodoType = TodoTypes.allCases[currentTodoTypeIndex]
 		}
 	}
-	private func didTapSubmitButton() {
-		presentationMode.wrappedValue.dismiss()
-		presenter.createNewTodo()
-	}
 	
 }
 struct TodoAddView_Previews: PreviewProvider {
-	static var sections = ListMock.list1.sections
 	static var previews: some View {
 		NavigationView {
-			TodoAddView(presenter: TodoAddPresenter.sample, sections: Array(sections))
+			TodoAddView(presenter: TodoAddPresenter.sample)
 		}
 	}
 }
