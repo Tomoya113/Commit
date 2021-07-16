@@ -9,9 +9,10 @@ import Foundation
 import RealmSwift
 
 class TodoRepository: TodoRepositoryProtocol {
-	
+
 	let realm = try! Realm()
 	private var notificationTokens: [NotificationToken] = []
+	var currentList: ListRealm?
 	static let shared = TodoRepository()
 	
 	func fetchLists(completion: ((Result<[ListRealm], Never>) -> Void )?) {
@@ -20,6 +21,7 @@ class TodoRepository: TodoRepositoryProtocol {
 			switch change {
 			case let .initial(results):
 				let lists = Array(results)
+				self.currentList = lists[0]
 				completion?(.success(lists))
 			case let .update(results, _, _, _):
 				let lists = Array(results)
@@ -56,17 +58,6 @@ class TodoRepository: TodoRepositoryProtocol {
 		}
 	}
 	
-	func createNewTodo(todo: Todo, completion: ((Result<Void, Never>) -> Void)?) {
-		do {
-			try realm.write {
-				realm.add(todo)
-			}
-			completion?(.success(()))
-		} catch {
-			print(error.localizedDescription)
-		}
-	}
-	
 	func createNewTodo(query: AddTodoQuery, completion: ((Result<Void, Never>) -> Void)?) {
 		let section = realm.object(ofType: SectionRealm.self, forPrimaryKey: query.sectionId)!
 		do {
@@ -78,7 +69,24 @@ class TodoRepository: TodoRepositoryProtocol {
 			print(error.localizedDescription)
 		}
 	}
+	
+	func fetchCurrentList() -> ListRealm? {
+		return currentList
+	}
+	
+	// NOTE: ちゃんと書きましょう
+	func createNewSection(section: SectionRealm) {
+		do {
+			try realm.write {
+				currentList!.sections.append(section)
+			}
+		} catch {
+			print(error.localizedDescription)
+		}
+	}
+	
 	deinit {
 		notificationTokens.forEach { $0.invalidate() }
 	}
+		
 }

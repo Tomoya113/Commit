@@ -13,4 +13,6 @@ protocol TodoRepositoryProtocol {
 	func updateTodoStatusById(_ id: String)
 	func updateTodo(_ todo: Todo)
 	func createNewTodo(query: AddTodoQuery, completion: ((Result<Void, Never>) -> Void)?)
+	func fetchCurrentList() -> ListRealm?
+	func createNewSection(section: SectionRealm)
 }
