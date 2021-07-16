@@ -10,7 +10,7 @@ import Foundation
 class TodoCreateInteractor: UseCase {
 	let repository: TodoRepositoryProtocol
 	
-	init(repository: TodoRepositoryProtocol) {
+	init(repository: TodoRepositoryProtocol = TodoRepository.shared) {
 		self.repository = repository
 	}
 	
