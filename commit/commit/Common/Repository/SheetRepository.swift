@@ -9,22 +9,15 @@ import Foundation
 import RealmSwift
 
 class SheetRepository: SheetRepositoryProtocol {
-	
+		
 	let realm = try! Realm()
+	static let shared = SheetRepository()
+	let googleAPiClient = GoogleAPIClient.shared
 	
-	func createPreset(_ query: SheetPresetQuery) {
-		// HELP: 実体を投げたほうが良いのか、クエリを投げるようにしたほうが良いのかわからん
-		let sheetColumn = SheetColumn(start: query.column.start, end: query.column.end)
-		let range = SheetRange(row: query.row, column: sheetColumn)
-		let preset = Preset(
-			spreadSheetId: query.spreadSheetId,
-			tabName: query.tabName,
-			title: query.title,
-			range: range,
-			targetRow: query.targetRow)
+	func createPreset(_ query: Preset) {
 		do {
 			try realm.write {
-				realm.add(preset)
+				realm.add(query)
 			}
 		} catch {
 			print(error.localizedDescription)
@@ -46,4 +39,28 @@ class SheetRepository: SheetRepositoryProtocol {
 			print(error.localizedDescription)
 		}
 	}
+	
+	func updateSheetTodo(_ todo: Todo) {
+		let sheetAttribute = realm.objects(SpreadSheetTodoAttribute.self).filter("todoId == %@", todo.id).first
+		guard let sheetAttribute = sheetAttribute else {
+			fatalError("sheetAttribute not found")
+		}
+		
+		let preset = realm.object(ofType: Preset.self, forPrimaryKey: sheetAttribute.presetId)
+		guard let preset = preset else {
+			fatalError("preset not found")
+		}
+		
+		let query = UpdateSpreadSheetCellQuery(
+			spreadsheetId: preset.spreadSheetId,
+			tabName: preset.tabName,
+			targetRow: preset.targetRow,
+			targetColumn: sheetAttribute.column,
+			// 後で変えよう
+			text: todo.status!.finished ? "DONE" : ""
+		)
+		
+		googleAPiClient.updateSpreadSheetCell(query)
+	}
+	
 }

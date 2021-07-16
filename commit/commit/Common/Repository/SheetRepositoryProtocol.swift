@@ -8,6 +8,7 @@
 import Foundation
 
 protocol SheetRepositoryProtocol {
-	func createPreset(_ query: SheetPresetQuery)
+	func createPreset(_ query: Preset)
 	func createSheetTodoAttribute(_ query: SheetTodoQuery)
+	func updateSheetTodo(_ todo: Todo)
 }
