@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct SpreadSheetFormView: View {
-	@Binding var spreadSheetPreset: SpreadSheetPreset
+	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+	@Binding var spreadSheetPreset: SheetPreset
 	@Binding var userResources: UserResources
 	let fetchSpreadSheetInfo: (() -> Void)
-    var body: some View {
+	let fetchCells: (() -> Void)
+	var body: some View {
 		Form {
 			Section(header: Text("プリセット名"), footer: Text("セクション名になります")) {
 				TextField("プリセット名", text: $spreadSheetPreset.title)
@@ -19,8 +21,10 @@ struct SpreadSheetFormView: View {
 			
 			Section(header: Text("スプレッドシート")) {
 				Picker("スプレッドシート", selection: $spreadSheetPreset.spreadSheetId) {
-					ForEach(userResources.spreadSheetList, id: \.id) { file in
+					ForEach(userResources.spreadSheetList) { file in
 						Text(file.name)
+							.tag(file.id)
+							.buttonStyle(PlainButtonStyle())
 					}
 				}
 				.onChange(of: spreadSheetPreset.spreadSheetId) { _ in
@@ -39,28 +43,49 @@ struct SpreadSheetFormView: View {
 				TextField("行", text: $spreadSheetPreset.row)
 				// NOTE: A~Cなど
 				Picker("最初：", selection: $spreadSheetPreset.column.start) {
-					ForEach(SheetColumnEnum.allCases, id: \.self.rawValue) { column in
+					ForEach(SheetColumnEnum.allCases, id: \.self) { column in
 						Text(column.rawValue)
+							.tag(column as SheetColumnEnum?)
 					}
 				}
 				Picker("最後：", selection: $spreadSheetPreset.column.end) {
-					ForEach(SheetColumnEnum.allCases, id: \.self.rawValue) { column in
-						Text(column.rawValue)
-					}
+					endRange
 				}
 			}
 			Section(header: Text("書き込む行"), footer: Text("TODOを達成した時に書き込む行を指定します")) {
-				TextField("行", text: $spreadSheetPreset.row)
+				TextField("行", text: $spreadSheetPreset.targetRow)
 			}
 		}
-    }
+		SubmitButton {
+			fetchCells()
+			presentationMode.wrappedValue.dismiss()
+		}
+	}
+	private var endRange: some View {
+		if let start = spreadSheetPreset.column.start {
+			return (
+				ForEach(SheetColumnEnum.getRange(start), id: \.self) { column in
+					Text(column.rawValue)
+						.tag(column as SheetColumnEnum?)
+				}
+			)
+		} else {
+			// NOTE: これはよくなさそう
+			return (
+				ForEach(SheetColumnEnum.allCases, id: \.self) { column in
+					Text(column.rawValue)
+						.tag(column as SheetColumnEnum?)
+				}
+			)
+		}
+	}
 }
 
 struct SpreadSheetFromView_Previews: PreviewProvider {
-	@State static var spreadSheetPreset = SpreadSheetPreset()
+	@State static var spreadSheetPreset = SheetPreset()
 	@State static var array = UserResources()
 	static func test() {
-
+		
 	}
 	
 	static var previews: some View {
@@ -68,8 +93,9 @@ struct SpreadSheetFromView_Previews: PreviewProvider {
 			SpreadSheetFormView(
 				spreadSheetPreset: $spreadSheetPreset,
 				userResources: $array,
-				fetchSpreadSheetInfo: test
+				fetchSpreadSheetInfo: test,
+				fetchCells: test
 			)
 		}
-    }
+	}
 }

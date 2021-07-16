@@ -9,16 +9,17 @@ import Foundation
 import GoogleSignIn
 
 class Column: ObservableObject {
-	@Published var start: String = ""
-	@Published var end: String = ""
+	@Published var start: SheetColumnEnum?
+	@Published var end: SheetColumnEnum?
 }
 // NOTE: 命名微妙じゃない？
-class SpreadSheetPreset: ObservableObject {
+class SheetPreset: ObservableObject {
 	@Published var spreadSheetId: String = ""
 	@Published var title: String = ""
 	@Published var tabName: String = ""
 	@Published var column: Column = Column()
 	@Published var row: String = ""
+	@Published var targetRow: String = ""
 }
 
 class UserResources: ObservableObject {
@@ -28,18 +29,26 @@ class UserResources: ObservableObject {
 
 class SpreadSheetAddPresenter: ObservableObject {
 	struct Dependency {
-		let spreadSheetCellsFetchInteractor: AnyUseCase<FetchSpreadSheetCellsQuery, [String], Error>
+		let spreadSheetCellsFetchInteractor: AnyUseCase<FetchSheetCellsQuery, [String], Error>
 		let spreadSheetFilesFetchInteractor: AnyUseCase<String, [SpreadSheetFile], Error>
 		let spreadSheetInfoFetchInteractor: AnyUseCase<String, [Sheet], Error>
 	}
 	
-	@Published var spreadSheetPreset = SpreadSheetPreset()
+	@Published var sheetPreset = SheetPreset()
 	@Published var userResources = UserResources()
 	
 	let dependency: SpreadSheetAddPresenter.Dependency
+	let todoRepository: TodoRepositoryProtocol
+	let sheetRepository: SheetRepositoryProtocol
 	
-	init(dependency: SpreadSheetAddPresenter.Dependency) {
+	init(
+		dependency: SpreadSheetAddPresenter.Dependency,
+		todoRepository: TodoRepositoryProtocol = TodoRepository.shared,
+		sheetRepository: SheetRepositoryProtocol = SheetRepository()
+	) {
 		self.dependency = dependency
+		self.todoRepository = todoRepository
+		self.sheetRepository = sheetRepository
 	}
 	
 	func googleOAuth() {
@@ -71,21 +80,12 @@ class SpreadSheetAddPresenter: ObservableObject {
 		}
 	}
 	
-	func fetchSpreadSheetCells() {
-		let column = QueryColumn(
-			start: spreadSheetPreset.column.start,
-			end: spreadSheetPreset.column.end
-		)
-		let query = FetchSpreadSheetCellsQuery(
-			sheetName: spreadSheetPreset.tabName,
-			spreadSheetId: spreadSheetPreset.spreadSheetId,
-			column: column,
-			row: spreadSheetPreset.row
-		)
-		dependency.spreadSheetCellsFetchInteractor.execute(query) { result in
+	func fetchCells() {
+		let fetchSheetCellsQuery = generateFetchSheetCellsQuery()
+		dependency.spreadSheetCellsFetchInteractor.execute(fetchSheetCellsQuery) { result in
 			switch result {
 				case .success(let cells):
-					print(cells)
+					self.createData(cells: cells)
 				case .failure(let error):
 					print(error.localizedDescription)
 			}
@@ -93,7 +93,8 @@ class SpreadSheetAddPresenter: ObservableObject {
 	}
 	
 	func fetchSpreadSheetInfo() {
-		dependency.spreadSheetInfoFetchInteractor.execute(spreadSheetPreset.spreadSheetId) { result in
+		// NOTE: 後で書き換える
+		dependency.spreadSheetInfoFetchInteractor.execute(sheetPreset.spreadSheetId) { result in
 			switch result {
 				case .success(let sheets):
 					DispatchQueue.main.async {
@@ -107,12 +108,76 @@ class SpreadSheetAddPresenter: ObservableObject {
 			}
 		}
 	}
+	
+	private func generateFetchSheetCellsQuery() -> FetchSheetCellsQuery {
+		// NOTE: !やめる
+		let column = QueryColumn(
+			start: sheetPreset.column.start!.rawValue,
+			end: sheetPreset.column.end!.rawValue
+		)
+		let query = FetchSheetCellsQuery(
+			sheetName: sheetPreset.tabName,
+			// NOTE: 後で書き換える
+			spreadSheetId: sheetPreset.spreadSheetId,
+			column: column,
+			row: sheetPreset.row
+		)
+		return query
+	}
+	
+	private func createData(cells: [String]) {
+		let sheetColumn = SheetColumn(
+			start: sheetPreset.column.start!.rawValue,
+			end: sheetPreset.column.end!.rawValue
+		)
+		let sheetRange = SheetRange(
+			row: sheetPreset.row,
+			column: sheetColumn
+		)
+		let preset: Preset = Preset(
+			spreadSheetId: sheetPreset.spreadSheetId,
+			tabName: sheetPreset.tabName,
+			title: sheetPreset.title,
+			range: sheetRange,
+			targetRow: sheetPreset.targetRow)
+		sheetRepository.createPreset(preset)
+		
+		let section: SectionRealm = SectionRealm(title: sheetPreset.title, todos: [])
+		todoRepository.createNewSection(section: section)
+		let columnRange = SheetColumnEnum.getRange(
+			sheetPreset.column.start!,
+			sheetPreset.column.end!
+		)
+		
+		for i in 0..<cells.count {
+			let todo: Todo = Todo(
+				title: cells[i].removeWhitespacesAndNewlines,
+				detail: "",
+				displayTag: [],
+				todoType: .googleSheets)
+			let todoQuery: AddTodoQuery = AddTodoQuery(
+				sectionId: section.id,
+				todo: todo
+			)
+			todoRepository.createNewTodo(
+				query: todoQuery) { _ in
+				
+			}
+			let sheetTodoQuery = SheetTodoQuery(
+				todoId: todo.id,
+				presetId: preset.id,
+				column: columnRange[i].rawValue
+			)
+			sheetRepository.createSheetTodoAttribute(sheetTodoQuery)
+		}
+	}
+	
 }
 
 #if DEBUG
 extension SpreadSheetAddPresenter {
 	static let sample: SpreadSheetAddPresenter = {
-		let spreadSheetCellsFetchInteractor = AnyUseCase(SpreadSheetCellsFetchInteractor())
+		let spreadSheetCellsFetchInteractor = AnyUseCase(CellsFetchInteractor())
 		let spreadSheetFilesFetchInteractor = AnyUseCase(SpreadSheetFilesFetchInteractor())
 		let spreadSheetInfoFetchInteractor = AnyUseCase(SpreadSheetInfoFetchInteractor())
 		let dependency = Dependency(

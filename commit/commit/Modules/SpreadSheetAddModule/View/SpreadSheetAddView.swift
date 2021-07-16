@@ -15,9 +15,10 @@ struct SpreadSheetAddView: View {
 		// NOTE: この書き方やめろ
 		if googleDelegate.authenticated {
 			SpreadSheetFormView(
-				spreadSheetPreset: $presenter.spreadSheetPreset,
+				spreadSheetPreset: $presenter.sheetPreset,
 				userResources: $presenter.userResources,
-				fetchSpreadSheetInfo: presenter.fetchSpreadSheetInfo
+				fetchSpreadSheetInfo: presenter.fetchSpreadSheetInfo,
+				fetchCells: presenter.fetchCells
 			)
 			.onAppear {
 				presenter.onAppear()
@@ -28,7 +29,6 @@ struct SpreadSheetAddView: View {
 			}
 			.onAppear {
 				presenter.setPresentingViewController()
-
 			}
 		}
 	}

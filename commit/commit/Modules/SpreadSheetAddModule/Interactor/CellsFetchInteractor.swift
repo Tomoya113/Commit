@@ -7,14 +7,14 @@
 
 import Foundation
 
-class SpreadSheetCellsFetchInteractor: UseCase {
+class CellsFetchInteractor: UseCase {
 	let repository: GoogleAPIClientProtocol
 	
 	init(repository: GoogleAPIClientProtocol = GoogleAPIClient.shared) {
 		self.repository = repository
 	}
 	
-	func execute(_ parameters: FetchSpreadSheetCellsQuery, completion: ((Result<[String], Error>) -> Void )?) {
+	func execute(_ parameters: FetchSheetCellsQuery, completion: ((Result<[String], Error>) -> Void )?) {
 		repository.fetchSpreadSheetCells(parameters) { result in
 			switch result {
 				case .success(let cells):
