@@ -20,18 +20,7 @@ struct TodoListRow: View {
 				}
 			}
 			Spacer()
-			Button(action: {
-				updateTodoStatus()
-			}, label: {
-				Text(
-					Image(
-						systemName: todo.status!.finished ? "checkmark.square" : "circle"
-					)
-				)
-				.font(.system(size: 30))
-				.foregroundColor(.gray)
-			})
-			.buttonStyle(PlainButtonStyle())
+			checkButton()
 		}
 	}
 	
@@ -60,6 +49,42 @@ struct TodoListRow: View {
 					.font(.subheadline).foregroundColor(.gray)
 			)
 		}
+	}
+	
+	private func checkButton() -> some View {
+		return (
+			Button(action: {
+				updateTodoStatus()
+			}, label: {
+				// NOTE: 個々の書き方嫌い
+				if todo.status!.detail != "" {
+					if todo.status!.finished {
+						Text(todo.status!.detail)
+						.strikethrough()
+						.minimumScaleFactor(0.5)
+						.lineLimit(1)
+						.foregroundColor(.gray)
+					} else {
+						Text(todo.status!.detail)
+						.minimumScaleFactor(0.5)
+						.lineLimit(1)
+						.foregroundColor(.gray)
+					}
+					
+				} else {
+					Text(
+						Image(
+							systemName: todo.status!.finished ? "checkmark.square" : "circle"
+						)
+					)
+					.font(.system(size: 30))
+					.foregroundColor(.gray)
+				}
+				
+			})
+			.buttonStyle(PlainButtonStyle())
+		)
+		
 	}
 }
 
