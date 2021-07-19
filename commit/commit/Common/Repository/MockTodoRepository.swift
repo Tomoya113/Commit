@@ -34,5 +34,9 @@ class MockTodoRepository: TodoRepositoryProtocol {
 	func createNewSection(section: SectionRealm) {
 		print("createNewSection")
 	}
+	
+	func delete(_ object: Object) {
+		print("delete")
+	}
 		
 }

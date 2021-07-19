@@ -15,4 +15,5 @@ protocol TodoRepositoryProtocol {
 	func createNewTodo(query: AddTodoQuery, completion: ((Result<Void, Never>) -> Void)?)
 	func fetchCurrentList() -> ListRealm?
 	func createNewSection(section: SectionRealm)
+	func delete(_ object: Object)
 }

@@ -9,13 +9,14 @@ import Foundation
 import RealmSwift
 
 class TodoRepository: TodoRepositoryProtocol {
-
+	
 	let realm = try! Realm()
 	private var notificationTokens: [NotificationToken] = []
 	var currentList: ListRealm?
 	static let shared = TodoRepository()
 	
 	func fetchLists(completion: ((Result<[ListRealm], Never>) -> Void )?) {
+		print("fetchList")
 		let lists =  realm.objects(ListRealm.self)
 		notificationTokens.append(lists.observe { change in
 			switch change {
@@ -79,6 +80,16 @@ class TodoRepository: TodoRepositoryProtocol {
 		do {
 			try realm.write {
 				currentList!.sections.append(section)
+			}
+		} catch {
+			print(error.localizedDescription)
+		}
+	}
+	
+	func delete(_ object: Object) {
+		do {
+			try realm.write {
+				realm.delete(object)
 			}
 		} catch {
 			print(error.localizedDescription)

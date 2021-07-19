@@ -80,6 +80,7 @@
 		71DF39DD269E3E290009A31F /* SheetTodoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF39DC269E3E290009A31F /* SheetTodoQuery.swift */; };
 		71DF39DF269E41710009A31F /* UpdateTodoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF39DE269E41710009A31F /* UpdateTodoQuery.swift */; };
 		71E41742269F1DF7003A75C6 /* CurrentListFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E41741269F1DF7003A75C6 /* CurrentListFetchInteractor.swift */; };
+		71F7FBA726A422F8003C8784 /* DeleteTodoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F7FBA626A422F8003C8784 /* DeleteTodoInteractor.swift */; };
 		9FD5277028064CE4AE7F173A /* Pods_commit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4194718BA40140F9EF0C2D /* Pods_commit.framework */; };
 /* End PBXBuildFile section */
 
@@ -161,6 +162,7 @@
 		71DF39DC269E3E290009A31F /* SheetTodoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetTodoQuery.swift; sourceTree = "<group>"; };
 		71DF39DE269E41710009A31F /* UpdateTodoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTodoQuery.swift; sourceTree = "<group>"; };
 		71E41741269F1DF7003A75C6 /* CurrentListFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentListFetchInteractor.swift; sourceTree = "<group>"; };
+		71F7FBA626A422F8003C8784 /* DeleteTodoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTodoInteractor.swift; sourceTree = "<group>"; };
 		7B924A41A2AB38982B6AE3C2 /* Pods-commit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-commit.debug.xcconfig"; path = "Target Support Files/Pods-commit/Pods-commit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				716AC231268725B70003A989 /* UpdateTodoInteractor.swift */,
+				71F7FBA626A422F8003C8784 /* DeleteTodoInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 				717F944626774ED400D11C58 /* AppDelegate.swift in Sources */,
 				71A190A12680C9B000C6D6E8 /* UseCase.swift in Sources */,
 				716AC23B268726060003A989 /* TodoAddView.swift in Sources */,
+				71F7FBA726A422F8003C8784 /* DeleteTodoInteractor.swift in Sources */,
 				71AA3DBE2680D576005D1CCC /* TodoRepositoryProtocol.swift in Sources */,
 				716AC2452687267F0003A989 /* SpreadSheetSearchInteractor.swift in Sources */,
 				715C2F27267CDFDE00DA66F3 /* TodoListView.swift in Sources */,

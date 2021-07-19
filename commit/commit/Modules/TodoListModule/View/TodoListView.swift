@@ -54,6 +54,7 @@ struct TodoListView: View {
 		}
 		.navigationViewStyle(StackNavigationViewStyle())
 		.onAppear {
+			print("onAppear")
 			presenter.onAppear()
 		}
 	}

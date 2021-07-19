@@ -20,19 +20,24 @@ class TodoListPresenter: ObservableObject {
 	
 	private let dependency: Dependency
 	private let router = TodoListRouter()
+	private var isFirstAppear = false
 	
 	init(dependency: Dependency) {
 		self.dependency = dependency
 	}
 	
 	func onAppear() {
-		dependency.listFetchInteractor.execute(()) { [weak self] result in
-			switch result {
-				case .success(let lists):
-					self?.lists = lists
-					self?.currentList = lists[0]
+		if !isFirstAppear {
+			isFirstAppear = true
+			dependency.listFetchInteractor.execute(()) { [weak self] result in
+				switch result {
+					case .success(let lists):
+						self?.lists = lists
+						self?.currentList = lists[0]
+				}
 			}
 		}
+		
 	}
 	
 	func updateTodoStatus(todo: Todo) {

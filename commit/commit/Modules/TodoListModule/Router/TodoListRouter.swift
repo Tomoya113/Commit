@@ -9,7 +9,10 @@ import SwiftUI
 
 class TodoListRouter {
 	func generateDetailView(for todo: Todo) -> some View {
-		let dependency = TodoDetailPresenter.Dependency()
+		let deleteTodoInteractor = AnyUseCase(DeleteTodoInteractor())
+		let dependency = TodoDetailPresenter.Dependency(
+			deleteTodoInteractor: deleteTodoInteractor
+		)
 		let presenter = TodoDetailPresenter(dependency: dependency, todo: todo)
 		return TodoDetailView(presenter: presenter)
 	}

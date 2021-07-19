@@ -10,24 +10,32 @@ import RealmSwift
 
 class TodoDetailPresenter: ObservableObject {
 	struct Dependency {
-//		let updateTodoInteractor: AnyUseCase<Todo, Void, Never>
+		let deleteTodoInteractor: AnyUseCase<Todo, Void, Never>
 	}
 	
-	@ObservedRealmObject var todo: Todo
+	var todo: Todo
 	private let dependency: Dependency
 	
 	init(dependency: Dependency, todo: Todo) {
-		
 		self.dependency = dependency
 		self.todo = todo
 	}
 	
+	func deleteTodo() {
+		dependency.deleteTodoInteractor.execute(todo) { result in
+			switch result {
+				case .success:
+					print("Delete")
+			}
+		}
+	}
 }
 
 #if DEBUG
-extension TodoDetailPresenter {
+extension TodoDetailPresenter {	
 	static let sample: TodoDetailPresenter = {
-		let dependency = TodoDetailPresenter.Dependency()
+		let deleteTodoInteractor = DeleteTodoInteractor()
+		let dependency = TodoDetailPresenter.Dependency(deleteTodoInteractor: AnyUseCase(deleteTodoInteractor))
 		return TodoDetailPresenter(dependency: dependency, todo: TodoMock.todoA1)
 	}()
 }
