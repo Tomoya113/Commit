@@ -12,11 +12,13 @@ struct RequireGoogleOAuthView: View {
     var body: some View {
 		VStack {
 			Spacer()
-			Button(action: {
-				action()
-			}, label: {
-				Text("SignIn")
-			})
+			HStack(alignment: .center) {
+				Button(action: {
+					action()
+				}, label: {
+					Text("SignIn")
+				})
+			}
 			Spacer()
 		}
 		.contentShape(Rectangle())

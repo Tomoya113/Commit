@@ -10,15 +10,18 @@ import RealmSwift
 
 struct TodoAddView: View {
 	@ObservedObject var presenter: TodoAddPresenter
-	@State private var currentTodoTypeIndex: Int = 0
 	var body: some View {
 		GeometryReader { geometry in
-			VStack {
-				todoTypeList()
-				.frame(width: geometry.size.width - 24)
+			VStack(alignment: .center) {
+				HStack(alignment: .center) {
+					Spacer()
+					todoTypeList()
+						.frame(width: geometry.size.width - 24)
+					Spacer()
+				}
 				if presenter.currentTodoType == .normal {
 					presenter.normalTodoAddLinkBuilder(sections: $presenter.currentSection)
-
+					
 				} else if presenter.currentTodoType == .spreadSheet {
 					presenter.spreadSheetAddLinkBuilder()
 				}
@@ -37,30 +40,31 @@ struct TodoAddView: View {
 	}
 	
 	private func todoTypeList() -> some View {
-		Picker("Current todo type", selection: $currentTodoTypeIndex) {
+		Picker("Current todo type", selection: $presenter.currentTodoType) {
 			ForEach(TodoTypes.allCases.indices) { i in
 				Text(TodoTypes.allCases[i].rawValue)
+					.tag(TodoTypes.allCases[i])
 			}
 		}
 		.pickerStyle(SegmentedPickerStyle())
 	}
-
+	
 	private func didSwipe(_ value: DragGesture.Value) {
 		// 左にスワイプされたとき
 		if value.translation.width < -5 {
-			currentTodoTypeIndex -= 1
-			if currentTodoTypeIndex <= -1 {
-				currentTodoTypeIndex = TodoTypes.allCases.count - 1
+			presenter.currentTodoTypeIndex -= 1
+			if presenter.currentTodoTypeIndex <= -1 {
+				presenter.currentTodoTypeIndex = TodoTypes.allCases.count - 1
 			}
-			presenter.currentTodoType = TodoTypes.allCases[currentTodoTypeIndex]
+			presenter.currentTodoType = TodoTypes.allCases[presenter.currentTodoTypeIndex]
 		}
 		// 右にスワイプされたとき
 		if value.translation.width > 5 {
-			currentTodoTypeIndex += 1
-			if currentTodoTypeIndex >= TodoTypes.allCases.count {
-				currentTodoTypeIndex = 0
+			presenter.currentTodoTypeIndex += 1
+			if presenter.currentTodoTypeIndex >= TodoTypes.allCases.count {
+				presenter.currentTodoTypeIndex = 0
 			}
-			presenter.currentTodoType = TodoTypes.allCases[currentTodoTypeIndex]
+			presenter.currentTodoType = TodoTypes.allCases[presenter.currentTodoTypeIndex]
 		}
 	}
 	

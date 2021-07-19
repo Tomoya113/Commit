@@ -11,6 +11,7 @@ class TodoAddPresenter: ObservableObject {
 	@Published var currentTodoType: TodoTypes = .normal
 	@Published var currentList: ListRealm?
 	@Published var currentSection: [SectionRealm] = []
+	@Published var currentTodoTypeIndex: Int = 0
 	
 	struct Dependency {
 		var currentListFetchInteractor: AnyUseCase<String, ListRealm, Error>

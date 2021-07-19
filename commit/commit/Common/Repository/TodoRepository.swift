@@ -99,5 +99,5 @@ class TodoRepository: TodoRepositoryProtocol {
 	deinit {
 		notificationTokens.forEach { $0.invalidate() }
 	}
-		
+
 }
