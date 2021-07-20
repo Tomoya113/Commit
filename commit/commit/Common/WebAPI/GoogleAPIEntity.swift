@@ -1,10 +1,9 @@
 //
-//  GoogleAPIQueries.swift
+//  GoogleAPIEntity.swift
 //  commit
 //
-//  Created by Tomoya Tanaka on 2021/07/09.
+//  Created by Tomoya Tanaka on 2021/07/20.
 //
-
 import Foundation
 
 struct UpdateSpreadSheetCellQuery {
@@ -15,6 +14,11 @@ struct UpdateSpreadSheetCellQuery {
 	let text: String
 }
 
+struct QueryColumn {
+	let start: String
+	let end: String
+}
+
 struct FetchSheetCellsQuery {
 	let sheetName: String
 	let spreadSheetId: String
@@ -22,7 +26,9 @@ struct FetchSheetCellsQuery {
 	let row: String
 }
 
-struct QueryColumn {
-	let start: String
-	let end: String
+struct FetchSheetCellQuery {
+	let sheetName: String
+	let spreadSheetId: String
+	let column: String
+	let row: String
 }
