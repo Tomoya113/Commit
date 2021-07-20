@@ -9,11 +9,11 @@ import Foundation
 
 class TodoUpdateInteractor: UseCase {
 	let todoRepository: TodoRepositoryProtocol
-	let sheetRepository: SheetRepositoryProtocol
+	let sheetRepository: SheetsRepositoryProtocol
 	
 	init(
 		todoRepository: TodoRepositoryProtocol = TodoRepository.shared,
-		sheetRepository: SheetRepositoryProtocol = SheetRepository.shared
+		sheetRepository: SheetsRepositoryProtocol = SheetsRepository.shared
 	) {
 		self.todoRepository = todoRepository
 		self.sheetRepository = sheetRepository

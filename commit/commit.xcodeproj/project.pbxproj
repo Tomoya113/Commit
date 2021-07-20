@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7146C70A268C961900ACD588 /* TodoTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146C709268C961900ACD588 /* TodoTypes.swift */; };
+		714A47F026A6657200268779 /* GoogleAPIEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A47EF26A6657200268779 /* GoogleAPIEntity.swift */; };
+		714A47F226A66DEF00268779 /* GoogleAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A47F126A66DEF00268779 /* GoogleAPIRequest.swift */; };
+		714A481626A7117D00268779 /* FetchSheetsCellInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A481526A7117D00268779 /* FetchSheetsCellInteractor.swift */; };
 		715C2F0C2679178D00DA66F3 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F0B2679178D00DA66F3 /* List.swift */; };
 		715C2F1426791F7700DA66F3 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F1326791F7700DA66F3 /* Tag.swift */; };
 		715C2F16267921A700DA66F3 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F15267921A700DA66F3 /* Preset.swift */; };
@@ -54,7 +57,6 @@
 		71931AA12697473000BB404F /* SpreadSheetResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AA02697473000BB404F /* SpreadSheetResponses.swift */; };
 		71931AA326974C4000BB404F /* GoogleAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AA226974C4000BB404F /* GoogleAPIClient.swift */; };
 		71931AA526974FFE00BB404F /* GoogleAPIClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AA426974FFE00BB404F /* GoogleAPIClientProtocol.swift */; };
-		71931AA826975EE600BB404F /* GoogleAPIQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AA726975EE600BB404F /* GoogleAPIQueries.swift */; };
 		71931AAA2699B93300BB404F /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AA92699B93200BB404F /* HTTPMethod.swift */; };
 		71931AAC2699BC7D00BB404F /* DriveAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AAB2699BC7D00BB404F /* DriveAPIManager.swift */; };
 		71931AAE2699BFF800BB404F /* SheetsAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AAD2699BFF800BB404F /* SheetsAPIManager.swift */; };
@@ -73,8 +75,8 @@
 		71DF397B269CBDF20009A31F /* TodoAddRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF397A269CBDF20009A31F /* TodoAddRouter.swift */; };
 		71DF39A0269DCD5E0009A31F /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF399F269DCD5E0009A31F /* SubmitButton.swift */; };
 		71DF39D4269E3B300009A31F /* StringProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF39D3269E3B300009A31F /* StringProtocol.swift */; };
-		71DF39D7269E3C470009A31F /* SheetRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF39D6269E3C470009A31F /* SheetRepositoryProtocol.swift */; };
-		71DF39D9269E3C540009A31F /* SheetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF39D8269E3C540009A31F /* SheetRepository.swift */; };
+		71DF39D7269E3C470009A31F /* SheetsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF39D6269E3C470009A31F /* SheetsRepositoryProtocol.swift */; };
+		71DF39D9269E3C540009A31F /* SheetsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF39D8269E3C540009A31F /* SheetsRepository.swift */; };
 		71DF39DB269E3D830009A31F /* SheetPresetQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF39DA269E3D830009A31F /* SheetPresetQuery.swift */; };
 		71DF39DD269E3E290009A31F /* SheetTodoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF39DC269E3E290009A31F /* SheetTodoQuery.swift */; };
 		71DF39DF269E41710009A31F /* UpdateTodoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF39DE269E41710009A31F /* UpdateTodoQuery.swift */; };
@@ -87,6 +89,9 @@
 		0A28657290E5C6EB7881A125 /* Pods-commit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-commit.release.xcconfig"; path = "Target Support Files/Pods-commit/Pods-commit.release.xcconfig"; sourceTree = "<group>"; };
 		3C4194718BA40140F9EF0C2D /* Pods_commit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_commit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7146C709268C961900ACD588 /* TodoTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTypes.swift; sourceTree = "<group>"; };
+		714A47EF26A6657200268779 /* GoogleAPIEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIEntity.swift; sourceTree = "<group>"; };
+		714A47F126A66DEF00268779 /* GoogleAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIRequest.swift; sourceTree = "<group>"; };
+		714A481526A7117D00268779 /* FetchSheetsCellInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSheetsCellInteractor.swift; sourceTree = "<group>"; };
 		715C2F0B2679178D00DA66F3 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		715C2F1326791F7700DA66F3 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		715C2F15267921A700DA66F3 /* Preset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
@@ -132,10 +137,9 @@
 		718D240D269B74610012B1CB /* RequireGoogleOAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequireGoogleOAuthView.swift; sourceTree = "<group>"; };
 		71931A98269601D800BB404F /* SpreadSheetFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetFormView.swift; sourceTree = "<group>"; };
 		71931A9A26960DB000BB404F /* SheetColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetColumn.swift; sourceTree = "<group>"; };
-		71931AA02697473000BB404F /* SpreadSheetResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpreadSheetResponses.swift; path = "../New Group/SpreadSheetResponses.swift"; sourceTree = "<group>"; };
+		71931AA02697473000BB404F /* SpreadSheetResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetResponses.swift; sourceTree = "<group>"; };
 		71931AA226974C4000BB404F /* GoogleAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleAPIClient.swift; path = commit/Common/WebAPI/GoogleAPIClient.swift; sourceTree = SOURCE_ROOT; };
 		71931AA426974FFE00BB404F /* GoogleAPIClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleAPIClientProtocol.swift; path = commit/Common/WebAPI/GoogleAPIClientProtocol.swift; sourceTree = SOURCE_ROOT; };
-		71931AA726975EE600BB404F /* GoogleAPIQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIQueries.swift; sourceTree = "<group>"; };
 		71931AA92699B93200BB404F /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		71931AAB2699BC7D00BB404F /* DriveAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DriveAPIManager.swift; path = commit/Common/WebAPI/DriveAPIManager.swift; sourceTree = SOURCE_ROOT; };
 		71931AAD2699BFF800BB404F /* SheetsAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SheetsAPIManager.swift; path = commit/Common/WebAPI/SheetsAPIManager.swift; sourceTree = SOURCE_ROOT; };
@@ -154,8 +158,8 @@
 		71DF397A269CBDF20009A31F /* TodoAddRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAddRouter.swift; sourceTree = "<group>"; };
 		71DF399F269DCD5E0009A31F /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		71DF39D3269E3B300009A31F /* StringProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProtocol.swift; sourceTree = "<group>"; };
-		71DF39D6269E3C470009A31F /* SheetRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetRepositoryProtocol.swift; sourceTree = "<group>"; };
-		71DF39D8269E3C540009A31F /* SheetRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetRepository.swift; sourceTree = "<group>"; };
+		71DF39D6269E3C470009A31F /* SheetsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetsRepositoryProtocol.swift; sourceTree = "<group>"; };
+		71DF39D8269E3C540009A31F /* SheetsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetsRepository.swift; sourceTree = "<group>"; };
 		71DF39DA269E3D830009A31F /* SheetPresetQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresetQuery.swift; sourceTree = "<group>"; };
 		71DF39DC269E3E290009A31F /* SheetTodoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetTodoQuery.swift; sourceTree = "<group>"; };
 		71DF39DE269E41710009A31F /* UpdateTodoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTodoQuery.swift; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 			children = (
 				716AC231268725B70003A989 /* UpdateTodoInteractor.swift */,
 				71F7FBA626A422F8003C8784 /* DeleteTodoInteractor.swift */,
+				714A481526A7117D00268779 /* FetchSheetsCellInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -488,7 +493,6 @@
 		717F94602677505600D11C58 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				71931AA6269751DD00BB404F /* API */,
 				71AF451926790DA70084364A /* Todo.swift */,
 				715C2F0B2679178D00DA66F3 /* List.swift */,
 				715C2F1326791F7700DA66F3 /* Tag.swift */,
@@ -505,8 +509,8 @@
 				71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */,
 				71AA3DC22680DEF3005D1CCC /* MockTodoRepository.swift */,
 				71AA3DBF2680DEC2005D1CCC /* TodoRepository.swift */,
-				71DF39D6269E3C470009A31F /* SheetRepositoryProtocol.swift */,
-				71DF39D8269E3C540009A31F /* SheetRepository.swift */,
+				71DF39D6269E3C470009A31F /* SheetsRepositoryProtocol.swift */,
+				71DF39D8269E3C540009A31F /* SheetsRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -562,15 +566,6 @@
 			path = Struct;
 			sourceTree = "<group>";
 		};
-		71931AA6269751DD00BB404F /* API */ = {
-			isa = PBXGroup;
-			children = (
-				71931AA02697473000BB404F /* SpreadSheetResponses.swift */,
-				71931AA726975EE600BB404F /* GoogleAPIQueries.swift */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
 		71AA3DB72680CE0C005D1CCC /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -613,6 +608,9 @@
 				71931AA226974C4000BB404F /* GoogleAPIClient.swift */,
 				71931AAB2699BC7D00BB404F /* DriveAPIManager.swift */,
 				71931AAD2699BFF800BB404F /* SheetsAPIManager.swift */,
+				71931AA02697473000BB404F /* SpreadSheetResponses.swift */,
+				714A47EF26A6657200268779 /* GoogleAPIEntity.swift */,
+				714A47F126A66DEF00268779 /* GoogleAPIRequest.swift */,
 			);
 			path = WebAPI;
 			sourceTree = "<group>";
@@ -835,7 +833,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71931AA826975EE600BB404F /* GoogleAPIQueries.swift in Sources */,
 				715C2F1C2679AB5500DA66F3 /* Mock.swift in Sources */,
 				716AC22E268725930003A989 /* TodoDetailView.swift in Sources */,
 				71931AAA2699B93300BB404F /* HTTPMethod.swift in Sources */,
@@ -852,8 +849,10 @@
 				715C2F27267CDFDE00DA66F3 /* TodoListView.swift in Sources */,
 				716AC2302687259E0003A989 /* TodoDetailPresenter.swift in Sources */,
 				71931AAC2699BC7D00BB404F /* DriveAPIManager.swift in Sources */,
+				714A47F226A66DEF00268779 /* GoogleAPIRequest.swift in Sources */,
 				71AA3DC726814B95005D1CCC /* SpreadSheetTodoAttribute.swift in Sources */,
 				717F944826774ED400D11C58 /* SceneDelegate.swift in Sources */,
+				714A481626A7117D00268779 /* FetchSheetsCellInteractor.swift in Sources */,
 				717D0F2E26946B1000BD4655 /* GoogleAPIInfo.swift in Sources */,
 				71DF3978269CB5B70009A31F /* NormalTodoAddView.swift in Sources */,
 				718818AB2690D4410078319F /* AddTodoQuery.swift in Sources */,
@@ -870,13 +869,13 @@
 				71931AA326974C4000BB404F /* GoogleAPIClient.swift in Sources */,
 				71DF39DD269E3E290009A31F /* SheetTodoQuery.swift in Sources */,
 				716AC232268725B70003A989 /* UpdateTodoInteractor.swift in Sources */,
-				71DF39D9269E3C540009A31F /* SheetRepository.swift in Sources */,
+				71DF39D9269E3C540009A31F /* SheetsRepository.swift in Sources */,
 				716AC24A268727310003A989 /* SpreadSheetFilesFetchInteractor.swift in Sources */,
 				715C2F0C2679178D00DA66F3 /* List.swift in Sources */,
 				716AC241268726500003A989 /* SpreadSheetSearchView.swift in Sources */,
 				717D0F3E26947FCC00BD4655 /* AppView.swift in Sources */,
 				71DF39D4269E3B300009A31F /* StringProtocol.swift in Sources */,
-				71DF39D7269E3C470009A31F /* SheetRepositoryProtocol.swift in Sources */,
+				71DF39D7269E3C470009A31F /* SheetsRepositoryProtocol.swift in Sources */,
 				71AF451A26790DA70084364A /* Todo.swift in Sources */,
 				7146C70A268C961900ACD588 /* TodoTypes.swift in Sources */,
 				71CB63D8269A0CAB003C98A8 /* CellsFetchInteractor.swift in Sources */,
@@ -884,6 +883,7 @@
 				716AC226268725500003A989 /* SpreadSheetTodoUpdateInteractor.swift in Sources */,
 				717D0F3C26947FC100BD4655 /* AppRouter.swift in Sources */,
 				716AC220268593CE0003A989 /* SampleDataGenerator.swift in Sources */,
+				714A47F026A6657200268779 /* GoogleAPIEntity.swift in Sources */,
 				716AC2432687265C0003A989 /* SpreadSheetSearchPresenter.swift in Sources */,
 				71931A9B26960DB000BB404F /* SheetColumn.swift in Sources */,
 				71CB63DA269A0E4C003C98A8 /* SpreadSheetInfoFetchInteractor.swift in Sources */,
@@ -1059,7 +1059,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tt.commit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1084,7 +1085,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tt.commit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

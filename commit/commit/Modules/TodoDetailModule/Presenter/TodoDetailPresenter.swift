@@ -11,6 +11,7 @@ import RealmSwift
 class TodoDetailPresenter: ObservableObject {
 	struct Dependency {
 		let deleteTodoInteractor: AnyUseCase<Todo, Void, Never>
+		let fetchSheetsCellInteractor: AnyUseCase<Todo, String, Never>
 	}
 	
 	var todo: Todo
@@ -26,6 +27,20 @@ class TodoDetailPresenter: ObservableObject {
 			switch result {
 				case .success:
 					print("Delete")
+			}
+		}
+	}
+	
+	func updateTodoIfNeeded() {
+		if todo.type != .googleSheets {
+			return
+		}
+		dependency.fetchSheetsCellInteractor.execute(todo) { result in
+			switch result {
+				case .success(let detail):
+					// NOTE: ここtrueにするか怪しい
+					self.todo.status!.finished = true
+					self.todo.status!.detail = detail
 			}
 		}
 	}

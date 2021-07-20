@@ -8,10 +8,10 @@
 import Foundation
 import RealmSwift
 
-class SheetRepository: SheetRepositoryProtocol {
+class SheetsRepository: SheetsRepositoryProtocol {
 		
 	let realm = try! Realm()
-	static let shared = SheetRepository()
+	static let shared = SheetsRepository()
 	let googleAPiClient = GoogleAPIClient.shared
 	
 	func createPreset(_ query: Preset) {
@@ -42,25 +42,29 @@ class SheetRepository: SheetRepositoryProtocol {
 	
 	func updateSheetTodo(_ todo: Todo) {
 		let sheetAttribute = realm.objects(SpreadSheetTodoAttribute.self).filter("todoId == %@", todo.id).first
-		guard let sheetAttribute = sheetAttribute else {
+		guard let attribute = sheetAttribute else {
 			fatalError("sheetAttribute not found")
 		}
 		
-		let preset = realm.object(ofType: Preset.self, forPrimaryKey: sheetAttribute.presetId)
-		guard let preset = preset else {
+		let preset = realm.object(ofType: Preset.self, forPrimaryKey: attribute.presetId)
+		guard let validPreset = preset else {
 			fatalError("preset not found")
 		}
 		
 		let query = UpdateSpreadSheetCellQuery(
-			spreadsheetId: preset.spreadSheetId,
-			tabName: preset.tabName,
-			targetRow: preset.targetRow,
-			targetColumn: sheetAttribute.column,
+			spreadsheetId: validPreset.spreadSheetId,
+			tabName: validPreset.tabName,
+			targetRow: validPreset.targetRow,
+			targetColumn: attribute.column,
 			// 後で変えよう
 			text: todo.status!.finished ? "DONE" : ""
 		)
 		
 		googleAPiClient.updateSpreadSheetCell(query)
+	}
+	
+	func getSheetsAttribute(_ todo: Todo) -> SpreadSheetTodoAttribute {
+		<#code#>
 	}
 	
 }

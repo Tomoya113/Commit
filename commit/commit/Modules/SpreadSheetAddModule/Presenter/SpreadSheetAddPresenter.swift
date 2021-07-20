@@ -39,12 +39,12 @@ class SpreadSheetAddPresenter: ObservableObject {
 	
 	let dependency: SpreadSheetAddPresenter.Dependency
 	let todoRepository: TodoRepositoryProtocol
-	let sheetRepository: SheetRepositoryProtocol
+	let sheetRepository: SheetsRepositoryProtocol
 	
 	init(
 		dependency: SpreadSheetAddPresenter.Dependency,
 		todoRepository: TodoRepositoryProtocol = TodoRepository.shared,
-		sheetRepository: SheetRepositoryProtocol = SheetRepository()
+		sheetRepository: SheetsRepositoryProtocol = SheetsRepository()
 	) {
 		self.dependency = dependency
 		self.todoRepository = todoRepository
