@@ -20,12 +20,15 @@ struct TodoDetailView: View {
 						TextField("サブタイトル", text: $presenter.todo.subtitle)
 					}
 					Section(header: Text("状態"), footer: Text("任意の文字列を設定することが出来ます。\nDoneは") + Text(Image(systemName: "checkmark.square.fill")) + Text("と表示されます。")) {
-						Toggle(presenter.todo.status!.finished ? "DONE" : "未達成", isOn: Binding($presenter.todo.status)!.finished)
-						TextField("任意の説明", text: Binding($presenter.todo.status)!.detail)
+						if presenter.todo.type == .googleSheets {
+							Toggle(presenter.todo.status!.finished ? "DONE" : "未達成", isOn: $presenter.finished)
+							TextField("任意の説明", text: $presenter.detail)
+						} else {
+							Toggle(presenter.todo.status!.finished ? "DONE" : "未達成", isOn: Binding($presenter.todo.status)!.finished)
+							TextField("任意の説明", text: Binding($presenter.todo.status)!.detail)
+						}
 					}
-					
 				}
-				
 			}
 		}
 		.toolbar(content: {
@@ -39,6 +42,9 @@ struct TodoDetailView: View {
 		})
 		.actionSheet(isPresented: $isSheetShowing) {
 			actionSheet()
+		}
+		.onAppear {
+			presenter.updateTodoIfNeeded()
 		}
 	}
 	

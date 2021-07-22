@@ -51,7 +51,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		task?.resume()
 	}
 	
-	func fetchSpreadSheet(_ query: FetchSheetCellQuery, completion: @escaping (Result<String, Error>) -> Void)  {
+	func fetchSpreadSheetCell(_ query: FetchSheetsCellQuery, completion: @escaping (Result<String, Error>) -> Void) {
 		let path = "/\(query.spreadSheetId)/values/\(query.sheetName)!\(query.column)\(query.row)"
 		
 		// NOTE: 絶対命名ゴミなんだよな

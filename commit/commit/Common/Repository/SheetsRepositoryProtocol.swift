@@ -12,4 +12,5 @@ protocol SheetsRepositoryProtocol {
 	func createSheetTodoAttribute(_ query: SheetTodoQuery)
 	func updateSheetTodo(_ todo: Todo)
 	func getSheetsAttribute(_ todo: Todo) -> SpreadSheetTodoAttribute
+	func getSheetsPresetById(_ id: String) -> Preset
 }
