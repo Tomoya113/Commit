@@ -26,7 +26,7 @@ struct FetchSheetCellsQuery {
 	let row: String
 }
 
-struct FetchSheetCellQuery {
+struct FetchSheetsCellQuery {
 	let sheetName: String
 	let spreadSheetId: String
 	let column: String
