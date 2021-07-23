@@ -35,16 +35,16 @@
 		716AC24A268727310003A989 /* SpreadSheetFilesFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC249268727310003A989 /* SpreadSheetFilesFetchInteractor.swift */; };
 		716AC24C2687273B0003A989 /* SpreadSheetAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC24B2687273B0003A989 /* SpreadSheetAddView.swift */; };
 		716AC24E268727430003A989 /* SpreadSheetAddPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC24D268727430003A989 /* SpreadSheetAddPresenter.swift */; };
-		716AC2502687274E0003A989 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC24F2687274E0003A989 /* SettingsRouter.swift */; };
-		716AC254268727630003A989 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC253268727630003A989 /* SettingsPresenter.swift */; };
-		716AC258268727950003A989 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC257268727950003A989 /* SettingsView.swift */; };
-		716AC25A268727B10003A989 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AC259268727B10003A989 /* SettingsInteractor.swift */; };
 		716E8EC4267E5E470088A04D /* TodoListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716E8EC3267E5E470088A04D /* TodoListRow.swift */; };
 		717D0F2E26946B1000BD4655 /* GoogleAPIInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D0F2D26946B1000BD4655 /* GoogleAPIInfo.swift */; };
 		717D0F342694731300BD4655 /* GoogleOAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D0F332694731300BD4655 /* GoogleOAuthManager.swift */; };
 		717D0F3C26947FC100BD4655 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D0F3B26947FC100BD4655 /* AppRouter.swift */; };
 		717D0F3E26947FCC00BD4655 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D0F3D26947FCC00BD4655 /* AppView.swift */; };
 		717D0F4026947FD700BD4655 /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D0F3F26947FD700BD4655 /* AppPresenter.swift */; };
+		717DC99A26AAA23B00687D68 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DC99926AAA23B00687D68 /* SettingsView.swift */; };
+		717DC99D26AAA3F500687D68 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DC99C26AAA3F500687D68 /* WebView.swift */; };
+		717DC99F26AAA5DD00687D68 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DC99E26AAA5DD00687D68 /* SettingsPresenter.swift */; };
+		717DC9A126AAA89E00687D68 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DC9A026AAA89E00687D68 /* SettingsRouter.swift */; };
 		717F944626774ED400D11C58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F944526774ED400D11C58 /* AppDelegate.swift */; };
 		717F944826774ED400D11C58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F944726774ED400D11C58 /* SceneDelegate.swift */; };
 		717F944C26774EE200D11C58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 717F944B26774EE200D11C58 /* Assets.xcassets */; };
@@ -117,16 +117,16 @@
 		716AC249268727310003A989 /* SpreadSheetFilesFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetFilesFetchInteractor.swift; sourceTree = "<group>"; };
 		716AC24B2687273B0003A989 /* SpreadSheetAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetAddView.swift; sourceTree = "<group>"; };
 		716AC24D268727430003A989 /* SpreadSheetAddPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetAddPresenter.swift; sourceTree = "<group>"; };
-		716AC24F2687274E0003A989 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsRouter.swift; path = commit/Modules/SpreadSheetAddModule/Presenter/SettingsRouter.swift; sourceTree = SOURCE_ROOT; };
-		716AC253268727630003A989 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsPresenter.swift; path = commit/Modules/SpreadSheetAddModule/Presenter/SettingsPresenter.swift; sourceTree = SOURCE_ROOT; };
-		716AC257268727950003A989 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = commit/Modules/SpreadSheetAddModule/Presenter/SettingsView.swift; sourceTree = SOURCE_ROOT; };
-		716AC259268727B10003A989 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsInteractor.swift; path = commit/Modules/SpreadSheetAddModule/Presenter/SettingsInteractor.swift; sourceTree = SOURCE_ROOT; };
 		716E8EC3267E5E470088A04D /* TodoListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListRow.swift; sourceTree = "<group>"; };
 		717D0F2D26946B1000BD4655 /* GoogleAPIInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIInfo.swift; sourceTree = "<group>"; };
 		717D0F332694731300BD4655 /* GoogleOAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOAuthManager.swift; sourceTree = "<group>"; };
 		717D0F3B26947FC100BD4655 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		717D0F3D26947FCC00BD4655 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		717D0F3F26947FD700BD4655 /* AppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
+		717DC99926AAA23B00687D68 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		717DC99C26AAA3F500687D68 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		717DC99E26AAA5DD00687D68 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		717DC9A026AAA89E00687D68 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		717F944226774ED400D11C58 /* commit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = commit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		717F944526774ED400D11C58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		717F944726774ED400D11C58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -367,6 +367,31 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		717DC99626AAA21D00687D68 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				717DC9A026AAA89E00687D68 /* SettingsRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		717DC99726AAA22000687D68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				717DC99926AAA23B00687D68 /* SettingsView.swift */,
+				717DC99C26AAA3F500687D68 /* WebView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		717DC99826AAA22200687D68 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				717DC99E26AAA5DD00687D68 /* SettingsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		717F943926774ED400D11C58 = {
 			isa = PBXGroup;
 			children = (
@@ -485,10 +510,9 @@
 		717F945F2677501000D11C58 /* SettingsModule */ = {
 			isa = PBXGroup;
 			children = (
-				717F94652677508400D11C58 /* Router */,
-				717F94642677507700D11C58 /* Interactor */,
-				717F94632677507400D11C58 /* Presenter */,
-				717F94622677507200D11C58 /* View */,
+				717DC99826AAA22200687D68 /* Presenter */,
+				717DC99726AAA22000687D68 /* View */,
+				717DC99626AAA21D00687D68 /* Router */,
 			);
 			path = SettingsModule;
 			sourceTree = "<group>";
@@ -516,38 +540,6 @@
 				71DF39D8269E3C540009A31F /* SheetsRepository.swift */,
 			);
 			path = Repository;
-			sourceTree = "<group>";
-		};
-		717F94622677507200D11C58 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				716AC257268727950003A989 /* SettingsView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		717F94632677507400D11C58 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				716AC253268727630003A989 /* SettingsPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		717F94642677507700D11C58 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				716AC259268727B10003A989 /* SettingsInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		717F94652677508400D11C58 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				716AC24F2687274E0003A989 /* SettingsRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		717F9466267751BE00D11C58 /* Protocol */ = {
@@ -844,6 +836,7 @@
 				715C2F16267921A700DA66F3 /* Preset.swift in Sources */,
 				71DF39A0269DCD5E0009A31F /* SubmitButton.swift in Sources */,
 				717F944626774ED400D11C58 /* AppDelegate.swift in Sources */,
+				717DC9A126AAA89E00687D68 /* SettingsRouter.swift in Sources */,
 				713613C826A86149008B66F8 /* WriteSheetsInteractor.swift in Sources */,
 				71A190A12680C9B000C6D6E8 /* UseCase.swift in Sources */,
 				716AC23B268726060003A989 /* TodoAddView.swift in Sources */,
@@ -863,17 +856,16 @@
 				71AA3DC02680DEC2005D1CCC /* TodoRepository.swift in Sources */,
 				716E8EC4267E5E470088A04D /* TodoListRow.swift in Sources */,
 				71931AA526974FFE00BB404F /* GoogleAPIClientProtocol.swift in Sources */,
-				716AC25A268727B10003A989 /* SettingsInteractor.swift in Sources */,
 				71931A99269601D800BB404F /* SpreadSheetFormView.swift in Sources */,
 				715C2F1E2679B1DB00DA66F3 /* TodoMock.swift in Sources */,
 				715C2F2D267CE0A800DA66F3 /* TodoListRouter.swift in Sources */,
 				71AA3DC32680DEF3005D1CCC /* MockTodoRepository.swift in Sources */,
-				716AC258268727950003A989 /* SettingsView.swift in Sources */,
-				716AC254268727630003A989 /* SettingsPresenter.swift in Sources */,
 				71931AA326974C4000BB404F /* GoogleAPIClient.swift in Sources */,
 				71DF39DD269E3E290009A31F /* SheetTodoQuery.swift in Sources */,
+				717DC99D26AAA3F500687D68 /* WebView.swift in Sources */,
 				71DF39D9269E3C540009A31F /* SheetsRepository.swift in Sources */,
 				716AC24A268727310003A989 /* SpreadSheetFilesFetchInteractor.swift in Sources */,
+				717DC99A26AAA23B00687D68 /* SettingsView.swift in Sources */,
 				715C2F0C2679178D00DA66F3 /* List.swift in Sources */,
 				716AC241268726500003A989 /* SpreadSheetSearchView.swift in Sources */,
 				717D0F3E26947FCC00BD4655 /* AppView.swift in Sources */,
@@ -896,6 +888,7 @@
 				71DF39DB269E3D830009A31F /* SheetPresetQuery.swift in Sources */,
 				713613C626A86024008B66F8 /* UpdateTodoInteractor.swift in Sources */,
 				715C2F29267CE07F00DA66F3 /* TodoListPresenter.swift in Sources */,
+				717DC99F26AAA5DD00687D68 /* SettingsPresenter.swift in Sources */,
 				717D0F4026947FD700BD4655 /* AppPresenter.swift in Sources */,
 				715C2F192679244F00DA66F3 /* SpreadSheetHistory.swift in Sources */,
 				71DF397B269CBDF20009A31F /* TodoAddRouter.swift in Sources */,
@@ -903,7 +896,6 @@
 				71AA3DBC2680CE65005D1CCC /* TodoUpdateInteractor.swift in Sources */,
 				717D0F342694731300BD4655 /* GoogleOAuthManager.swift in Sources */,
 				716AC24C2687273B0003A989 /* SpreadSheetAddView.swift in Sources */,
-				716AC2502687274E0003A989 /* SettingsRouter.swift in Sources */,
 				718D240E269B74610012B1CB /* RequireGoogleOAuthView.swift in Sources */,
 				716AC239268725FA0003A989 /* TodoAddPresenter.swift in Sources */,
 				71DF3974269CB58C0009A31F /* NormalTodoAddPresenter.swift in Sources */,
