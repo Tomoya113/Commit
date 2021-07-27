@@ -14,7 +14,7 @@ class TodoDetailPresenter: ObservableObject {
 		let deleteTodoInteractor: AnyUseCase<Todo, Void, Never>
 		let fetchSheetsCellInteractor: AnyUseCase<Todo, String, Error>
 		// todoだけアップデート
-		let updateTodoInteractor: AnyUseCase<Todo, Void, Never>
+		let todoUpdateInteractor: AnyUseCase<Todo, Void, Never>
 		// NOTE: スプシに書き込み(NeverじゃなくてErrorに書き換えたほうが良さそう)
 		let writeSheetsInteractor: AnyUseCase<Todo, Void, Never>
 	}
@@ -92,7 +92,7 @@ class TodoDetailPresenter: ObservableObject {
 		newTodo.id = todo.id
 		newTodo.status!.detail = detail
 		newTodo.status!.finished = _finished
-		dependency.updateTodoInteractor.execute(newTodo, completion: nil)
+		dependency.todoUpdateInteractor.execute(newTodo, completion: nil)
 		writeSheet(todo: newTodo)
 	}
 	
@@ -106,12 +106,12 @@ extension TodoDetailPresenter {
 	static let sample: TodoDetailPresenter = {
 		let deleteTodoInteractor = AnyUseCase(DeleteTodoInteractor())
 		let fetchSheetsCellInteractor = AnyUseCase(FetchSheetsCellInteractor())
-		let updateTodoInteractor = AnyUseCase(UpdateTodoInteractor())
+		let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor())
 		let writeSheetsInteractor = AnyUseCase(WriteSheetsInteractor())
 		let dependency = TodoDetailPresenter.Dependency(
 			deleteTodoInteractor: deleteTodoInteractor,
 			fetchSheetsCellInteractor: fetchSheetsCellInteractor,
-			updateTodoInteractor: updateTodoInteractor,
+			todoUpdateInteractor: todoUpdateInteractor,
 			writeSheetsInteractor: writeSheetsInteractor
 		)
 		return TodoDetailPresenter(dependency: dependency, todo: TodoMock.todoA1)

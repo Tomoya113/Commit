@@ -9,12 +9,30 @@ import SwiftUI
 
 struct GoogleAccountSettingView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+		List {
+			HStack {
+				Text("title")
+				Spacer()
+				Text("title")
+					.font(.subheadline)
+			}
+			Toggle(isOn: .constant(true)) {
+				Text("Label")
+			}
+			.navigationTitle(Text("アカウント設定"))
+		}
+		.listStyle(GroupedListStyle())
     }
 }
 
 struct GoogleAccountSettingView_Previews: PreviewProvider {
     static var previews: some View {
-        GoogleAccountSettingView()
+		NavigationView {
+			GoogleAccountSettingView()
+				.navigationTitle(
+					Text("Googleアカウント連携")
+				)
+		}
+        
     }
 }

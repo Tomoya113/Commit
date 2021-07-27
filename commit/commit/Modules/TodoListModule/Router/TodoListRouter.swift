@@ -11,12 +11,12 @@ class TodoListRouter {
 	func generateDetailView(for todo: Todo) -> some View {
 		let deleteTodoInteractor = AnyUseCase(DeleteTodoInteractor())
 		let fetchSheetsCellInteractor = AnyUseCase(FetchSheetsCellInteractor())
-		let updateTodoInteractor = AnyUseCase(UpdateTodoInteractor())
+		let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor())
 		let writeSheetsInteractor = AnyUseCase(WriteSheetsInteractor())
 		let dependency = TodoDetailPresenter.Dependency(
 			deleteTodoInteractor: deleteTodoInteractor,
 			fetchSheetsCellInteractor: fetchSheetsCellInteractor,
-			updateTodoInteractor: updateTodoInteractor,
+			todoUpdateInteractor: todoUpdateInteractor,
 			writeSheetsInteractor: writeSheetsInteractor
 		)
 		let presenter = TodoDetailPresenter(dependency: dependency, todo: todo)
