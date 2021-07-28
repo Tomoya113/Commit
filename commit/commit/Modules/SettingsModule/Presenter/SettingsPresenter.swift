@@ -12,6 +12,9 @@ import SwiftUI
 enum CommitSiteURL: String {
 	case termsOfService = "https://www.commit-dev.site/terms-of-service"
 	case privacyPolicy = "https://www.commit-dev.site/privacy-policy"
+	var url: URL {
+		URL(string: self.rawValue)!
+	}
 }
 
 class SettingsPresenter: ObservableObject {

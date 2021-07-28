@@ -18,7 +18,7 @@ class SettingsRouter {
 	
 	func generateWebView(siteType: CommitSiteURL) -> some View {
 		return (
-			WebView(loadURL: siteType.rawValue)
+			SafariView(url: URL(string: siteType.rawValue)!)
 		)
 	}
 }
