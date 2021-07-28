@@ -6,3 +6,16 @@
 //
 
 import Foundation
+import SwiftUI
+
+class AppPresenter: ObservableObject {
+	let router: AppRouter = AppRouter()
+	
+	func todoListView() -> some View {
+		return router.generateTodoListView()
+	}
+	
+	func settingsView() -> some View {
+		return router.generateSettingsView()
+	}
+}
