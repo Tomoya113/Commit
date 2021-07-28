@@ -45,8 +45,6 @@ class GoogleAccountSettingPresenter: ObservableObject, GoogleOAuthManagerProtoco
 		if hasPreviousSignIn {
 			// 未連携→連携の時
 			GIDSignIn.sharedInstance()?.signIn()
-			// NOTE: これいるかも
-//			GIDSignIn.sharedInstance().presentingViewController = UIApplication.shared.windows.first?.rootViewController
 		} else {
 			// 連携→未連携の時
 			GoogleOAuthManager.shared.signOut()
@@ -59,7 +57,6 @@ class GoogleAccountSettingPresenter: ObservableObject, GoogleOAuthManagerProtoco
 	}
 	
 	private func setAlertMessage(_ hasPreviousSignIn: Bool) {
-//		print(hasPreviousSignIn)
 		if hasPreviousSignIn {
 			// 連携する？
 			alert.title = "Googleアカウント連携"
