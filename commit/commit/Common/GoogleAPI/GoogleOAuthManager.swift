@@ -8,9 +8,16 @@
 import Foundation
 import GoogleSignIn
 
+protocol GoogleOAuthManagerProtocol: AnyObject {
+	func didSigninCancelled()
+}
+
 class GoogleOAuthManager: NSObject, GIDSignInDelegate, ObservableObject {
 	@Published var authenticated: Bool = false
 	@Published var token: String = ""
+	@Published var email: String = ""
+	// デリゲートが入れ子になっているので良くない気がする
+	weak var delegate: GoogleOAuthManagerProtocol?
 	static let shared = GoogleOAuthManager()
 	
 	override init() {
@@ -27,19 +34,29 @@ class GoogleOAuthManager: NSObject, GIDSignInDelegate, ObservableObject {
 		}
 	}
 	
+	func signOut() {
+		email = ""
+		GIDSignIn.sharedInstance().signOut()
+	}
+	
 	func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
 		if let error = error {
-		  if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
-			print("The user has not signed in before or they have since signed out.")
-		  } else {
-			print("\(error.localizedDescription)")
-		  }
-		  return
+			// NOTE: ここで良いのか怪しいので後々変える
+			delegate?.didSigninCancelled()
+			if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+				print("The user has not signed in before or they have since signed out.")
+			} else if (error as NSError).code == GIDSignInErrorCode.canceled.rawValue {
+				print("Signin cancelled")
+				
+			} else {
+				print("\(error.localizedDescription)")
+			}
+			return
 		}
 		
-		print("logged in")
 		authenticated = true
 		token = GIDSignIn.sharedInstance().currentUser.authentication.accessToken
+		email = GIDSignIn.sharedInstance().currentUser.profile.email
 	}
 	
 }

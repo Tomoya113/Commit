@@ -20,20 +20,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		// Create the SwiftUI view that provides the window contents.
 		
-		let todoListPresenter: TodoListPresenter = {
-			let repository = TodoRepository.shared
-			let listFetchInteractor = AnyUseCase(ListFetchInteractor(repository: repository))
-			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor())
-			let dependency = TodoListPresenter.Dependency(
-				listFetchInteractor: listFetchInteractor,
-				todoUpdateInteractor: todoUpdateInteractor)
-			return TodoListPresenter(dependency: dependency)
-		}()
-
-		let contentView = TodoListView(presenter: todoListPresenter)
+//		let todoListPresenter: TodoListPresenter = {
+//			let repository = TodoRepository.shared
+//			let listFetchInteractor = AnyUseCase(ListFetchInteractor(repository: repository))
+//			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor())
+//			let dependency = TodoListPresenter.Dependency(
+//				listFetchInteractor: listFetchInteractor,
+//				todoUpdateInteractor: todoUpdateInteractor)
+//			return TodoListPresenter(dependency: dependency)
+//		}()
+//
+//		let contentView = TodoListView(presenter: todoListPresenter)
+//				.environment(\.locale, Locale(identifier: "ja_JP"))
+//				.environmentObject(GoogleOAuthManager.shared)
+		
+		let presenter = GoogleAccountSettingPresenter()
+		let contentView = GoogleAccountSettingView(presenter: presenter)
 				.environment(\.locale, Locale(identifier: "ja_JP"))
 				.environmentObject(GoogleOAuthManager.shared)
-		
+
 		// Use a UIHostingController as window root view controller.
 		if let windowScene = scene as? UIWindowScene {
 		    let window = UIWindow(windowScene: windowScene)
