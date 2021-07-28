@@ -11,21 +11,20 @@ struct SettingsView: View {
 	@ObservedObject var presenter: SettingsPresenter
 	
     var body: some View {
-		List {
-			NavigationLink(
-				destination: Text("Destination"),
-				label: {
+		NavigationView {
+			List {
+				presenter.createGoogleOAuthSettingView {
 					Text("Googleアカウント連携")
 				}
-			)
-			presenter.createWebView(siteType: .termsOfService) {
-				Text("利用規約")
+				presenter.createWebView(siteType: .termsOfService) {
+					Text("利用規約")
+				}
+				presenter.createWebView(siteType: .privacyPolicy) {
+					Text("プライバシーポリシー")
+				}
 			}
-			presenter.createWebView(siteType: .privacyPolicy) {
-				Text("プライバシーポリシー")
-			}
+			.navigationTitle(Text("設定"))
 		}
-		.navigationTitle(Text("設定"))
     }
 }
 

@@ -20,7 +20,16 @@ class SettingsPresenter: ObservableObject {
 	func createWebView<Content: View>(siteType: CommitSiteURL, @ViewBuilder content: () -> Content) -> some View {
 		return (
 			NavigationLink(
-				destination: WebView(loadURL: siteType.rawValue)) {
+				destination: router.generateWebView(siteType: siteType)) {
+					content()
+			}
+		)
+	}
+	
+	func createGoogleOAuthSettingView<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+		return (
+			NavigationLink(
+				destination: router.generateGoogleAccountSettingView()) {
 					content()
 			}
 		)

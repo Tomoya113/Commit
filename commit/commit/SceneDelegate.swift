@@ -33,11 +33,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //		let contentView = TodoListView(presenter: todoListPresenter)
 //				.environment(\.locale, Locale(identifier: "ja_JP"))
 //				.environmentObject(GoogleOAuthManager.shared)
-		
-		let presenter = GoogleAccountSettingPresenter()
-		let contentView = GoogleAccountSettingView(presenter: presenter)
-				.environment(\.locale, Locale(identifier: "ja_JP"))
-				.environmentObject(GoogleOAuthManager.shared)
+		let presenter = SettingsPresenter()
+		let contentView = SettingsView(presenter: presenter)
+			.environment(\.locale, Locale(identifier: "ja_JP"))
+			.environmentObject(GoogleOAuthManager.shared)
 
 		// Use a UIHostingController as window root view controller.
 		if let windowScene = scene as? UIWindowScene {

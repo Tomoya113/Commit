@@ -9,7 +9,16 @@ import Foundation
 import SwiftUI
 
 class SettingsRouter {	
-	func createGoogleAccountSettingView() {
-		
+	func generateGoogleAccountSettingView() -> some View {
+		let presenter = GoogleAccountSettingPresenter()
+		return (
+			GoogleAccountSettingView(presenter: presenter)
+		)
+	}
+	
+	func generateWebView(siteType: CommitSiteURL) -> some View {
+		return (
+			WebView(loadURL: siteType.rawValue)
+		)
 	}
 }
