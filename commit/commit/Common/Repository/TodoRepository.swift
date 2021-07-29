@@ -9,8 +9,9 @@ import Foundation
 import RealmSwift
 
 class TodoRepository: TodoRepositoryProtocol {
-	
+	// swiftlint:disable force_try
 	let realm = try! Realm()
+	// swiftlint:enable force_try
 	private var notificationTokens: [NotificationToken] = []
 	var currentList: ListRealm?
 	static let shared = TodoRepository()

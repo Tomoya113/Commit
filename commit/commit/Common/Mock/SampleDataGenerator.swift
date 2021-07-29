@@ -10,13 +10,16 @@ import RealmSwift
 
 struct SampleDataGenerator {
 	static func initializeSampleData() {
+		// swiftlint:disable force_try
 		let realm = try! Realm()
+		// swiftlint:enable force_try
 		print("Realm is located at:", realm.configuration.fileURL!)
 		try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
 		SampleDataGenerator.generateSampleData()
 	}
 	
 	static func generateSampleData() {
+		// swiftlint:disable force_try
 		let realm = try! Realm()
 		try! realm.write {
 			let todoA1 = Todo(
