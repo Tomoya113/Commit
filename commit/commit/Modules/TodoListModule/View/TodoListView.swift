@@ -10,54 +10,102 @@ import SwiftUI
 struct TodoListView: View {
 	@ObservedObject var presenter: TodoListPresenter
 	@State private var isActionSheetPresented: Bool = false
-	var sectionArray: [SectionRealm] {
-		let sections = presenter.currentList!.sections
-		return Array(sections)
-	}
-
+	@State private var showAlert: Bool = false
+	@State private var selectedSectionIndex: Int = 0
+	
 	var body: some View {
 		NavigationView {
 			ZStack {
 				VStack {
 					List {
-						if presenter.currentList != nil {
-							ForEach(presenter.currentList!.sections) { section in
-								Section(header: Text(section.title)) {
-									ForEach(section.todos) { todo in
-										presenter.detailViewLinkBuilder(for: todo) {
-											presenter.generateTodoRow(
-												todo: todo) {
-												presenter.updateTodoStatus(todo: todo)
-											}
-										}
-									}
-								}
-							}
+						if !presenter.lists.isEmpty {
+							sections()
 						}
-					}.listStyle(GroupedListStyle())
+					}
+					.listStyle(GroupedListStyle())
 				}
-				VStack {
-					Spacer()
-					HStack {
-						Spacer()
-						if presenter.currentList != nil {
-							presenter.todoAddLinkBuidler(sections: sectionArray) {
-								presenter.addTodoButtonImage()
-									.padding()
+				addButton()
+			}
+			.alert(isPresented: $showAlert) {
+				sectionDeleteConfirmationAlert()
+			}
+			// NOTE: こんな感じでout of rangeだったりするとエラーになる
+			.navigationTitle(presenter.lists.isEmpty ? "" : presenter.lists[0].title)
+		}
+		.navigationViewStyle(StackNavigationViewStyle())
+		.onAppear {
+			presenter.onAppear()
+		}
+	}
+	
+	private func sections() -> some View {
+		return (
+			ForEach(presenter.currentSections.indices, id: \.self) { i in
+				Section(header: sectionHeader(title: presenter.currentSections[i].title, index: i)) {
+					ForEach(presenter.currentSections[i].todos) { todo in
+						presenter.detailViewLinkBuilder(for: todo) {
+							presenter.generateTodoRow(
+								todo: todo) {
+								presenter.updateTodoStatus(todo: todo)
 							}
 						}
 					}
 				}
 			}
-			// NOTE: こんな感じでout of rangeだったりするとエラーになる
-			.navigationTitle(presenter.currentList?.title ?? "")
-		}
-		.navigationViewStyle(StackNavigationViewStyle())
-		.onAppear {
-			print("onAppear")
-			presenter.onAppear()
-		}
+		)
 	}
+	
+	private func addButton() -> some View {
+		return (
+			VStack {
+				Spacer()
+				HStack {
+					Spacer()
+					if !presenter.lists.isEmpty {
+						presenter.todoAddLinkBuidler(sections: presenter.currentSections) {
+							presenter.addTodoButtonImage()
+								.padding()
+						}
+					}
+				}
+			}
+		)
+	}
+	
+	private func sectionHeader(title: String, index: Int) -> some View {
+		return (
+			HStack {
+				Text(title)
+				Spacer()
+				Button(action: {
+					showAlert = true
+					selectedSectionIndex = index
+				}, label: {
+					Image(systemName: "trash")
+				})
+			}
+		)
+	}
+	
+	private func sectionDeleteConfirmationAlert() -> Alert {
+		Alert(
+			title: Text("セクションの削除"),
+			message: Text("セクションを削除しますか？"),
+			primaryButton: .cancel(
+				Text("キャンセル"),
+				action: {
+					print("cancel")
+				}
+			),
+			secondaryButton: .destructive(
+				Text("削除"),
+				action: {
+					presenter.deleteSection(selectedSectionIndex)
+				}
+			)
+		)
+	}
+	
 }
 
 extension TodoListView {

@@ -13,10 +13,11 @@ class TodoListPresenter: ObservableObject {
 	struct Dependency {
 		let listFetchInteractor: AnyUseCase<Void, [ListRealm], Never>
 		let todoUpdateInteractor: AnyUseCase<Todo, Void, Never>
+		let deleteSectionInteractor: AnyUseCase<SectionRealm, Void, Never>
 	}
 	
 	@Published var lists: [ListRealm] = []
-	@Published var currentList: ListRealm?
+	@Published var currentSections: [SectionRealm] = []
 	
 	private let dependency: Dependency
 	private let router = TodoListRouter()
@@ -33,7 +34,8 @@ class TodoListPresenter: ObservableObject {
 				switch result {
 					case .success(let lists):
 						self?.lists = lists
-						self?.currentList = lists[0]
+						let sections = lists[0].sections
+						self?.currentSections = Array(sections)
 				}
 			}
 		}
@@ -45,6 +47,20 @@ class TodoListPresenter: ObservableObject {
 			switch result {
 				case .success:
 					print("updated")
+			}
+		}
+	}
+	
+	func deleteSection(_ index: Int) {
+		if !lists.isEmpty {
+			currentSections.remove(at: index)
+			dependency.deleteSectionInteractor.execute(lists[0].sections[index]) { result in
+				switch result {
+					case .success:
+						print("delete")
+//						let sections = self.lists[0].sections
+//						self.currentSections = Array(sections)
+				}
 			}
 		}
 	}
@@ -101,9 +117,12 @@ class TodoListPresenter: ObservableObject {
 			let todoRepository = MockTodoRepository()
 			let listFetchInteractor = AnyUseCase(ListFetchInteractor())
 			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor(todoRepository: todoRepository))
+			let deleteSectionInteractor = AnyUseCase(DeleteSectionInteractor())
 			let dependency = TodoListPresenter.Dependency(
 				listFetchInteractor: listFetchInteractor,
-				todoUpdateInteractor: todoUpdateInteractor)
+				todoUpdateInteractor: todoUpdateInteractor,
+				deleteSectionInteractor: deleteSectionInteractor
+			)
 			return TodoListPresenter(dependency: dependency)
 		}()
 	}

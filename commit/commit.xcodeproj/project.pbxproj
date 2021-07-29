@@ -38,6 +38,7 @@
 		7174876726B1FD50002067E1 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7174876626B1FD50002067E1 /* AppView.swift */; };
 		7174876926B21C7D002067E1 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7174876826B21C7D002067E1 /* RealmRepository.swift */; };
 		7174876B26B21D78002067E1 /* RealmRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7174876A26B21D78002067E1 /* RealmRepositoryProtocol.swift */; };
+		7174876D26B256ED002067E1 /* DeleteSectionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7174876C26B256ED002067E1 /* DeleteSectionInteractor.swift */; };
 		717D0F2E26946B1000BD4655 /* GoogleAPIInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D0F2D26946B1000BD4655 /* GoogleAPIInfo.swift */; };
 		717D0F342694731300BD4655 /* GoogleOAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D0F332694731300BD4655 /* GoogleOAuthManager.swift */; };
 		717D0F3C26947FC100BD4655 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D0F3B26947FC100BD4655 /* AppRouter.swift */; };
@@ -124,6 +125,7 @@
 		7174876626B1FD50002067E1 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		7174876826B21C7D002067E1 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		7174876A26B21D78002067E1 /* RealmRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepositoryProtocol.swift; sourceTree = "<group>"; };
+		7174876C26B256ED002067E1 /* DeleteSectionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSectionInteractor.swift; sourceTree = "<group>"; };
 		717D0F2D26946B1000BD4655 /* GoogleAPIInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIInfo.swift; sourceTree = "<group>"; };
 		717D0F332694731300BD4655 /* GoogleOAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOAuthManager.swift; sourceTree = "<group>"; };
 		717D0F3B26947FC100BD4655 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
@@ -636,6 +638,7 @@
 			children = (
 				71AA3DC82682E773005D1CCC /* ListFetchInteractor.swift */,
 				716AC225268725500003A989 /* SpreadSheetTodoUpdateInteractor.swift */,
+				7174876C26B256ED002067E1 /* DeleteSectionInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -910,6 +913,7 @@
 				71931AA326974C4000BB404F /* GoogleAPIClient.swift in Sources */,
 				71DF39DD269E3E290009A31F /* SheetTodoQuery.swift in Sources */,
 				717DC99D26AAA3F500687D68 /* WebView.swift in Sources */,
+				7174876D26B256ED002067E1 /* DeleteSectionInteractor.swift in Sources */,
 				71DF39D9269E3C540009A31F /* SheetsRepository.swift in Sources */,
 				716AC24A268727310003A989 /* SpreadSheetFilesFetchInteractor.swift in Sources */,
 				717DC99A26AAA23B00687D68 /* SettingsView.swift in Sources */,

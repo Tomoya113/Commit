@@ -14,9 +14,12 @@ class AppRouter {
 			let repository = TodoRepository.shared
 			let listFetchInteractor = AnyUseCase(ListFetchInteractor(repository: repository))
 			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor())
+			let deleteSectionInteractor = AnyUseCase(DeleteSectionInteractor())
 			let dependency = TodoListPresenter.Dependency(
 				listFetchInteractor: listFetchInteractor,
-				todoUpdateInteractor: todoUpdateInteractor)
+				todoUpdateInteractor: todoUpdateInteractor,
+				deleteSectionInteractor: deleteSectionInteractor
+			)
 			return TodoListPresenter(dependency: dependency)
 		}()
 		return (
