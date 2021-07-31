@@ -25,8 +25,10 @@ class RealmRepository<T: Object>: RealmRepositoryProtocol {
 		return realm.objects(T.self).map { $0 }
 	}
 	
-	func find(predicate: NSPredicate) -> Results<T> {
-		return realm.objects(T.self).filter(predicate)
+	func find(predicate: NSPredicate, completion: ((Result<[T], Never>) -> Void )?) {
+		// 中身が空のときはErrorを投げたい
+		let results = realm.objects(T.self).filter(predicate).map { $0 }
+		completion?(.success(Array(results)))
 	}
 	
 	func add(entities: [T]) {

@@ -17,7 +17,7 @@ protocol RealmRepositoryProtocol {
 	func findAll() -> [EntityType]
 	
 	// 条件に一致したデータを取得する
-	func find(predicate: NSPredicate) -> Results<EntityType>
+	func find(predicate: NSPredicate, completion: ((Result<[EntityType], Never>) -> Void )?)
 	
 	// データ追加&更新
 	func add(entities: [EntityType])
