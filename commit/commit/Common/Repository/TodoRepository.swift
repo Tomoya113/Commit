@@ -17,7 +17,6 @@ class TodoRepository: TodoRepositoryProtocol {
 	static let shared = TodoRepository()
 	
 	func fetchLists(completion: ((Result<[ListRealm], Never>) -> Void )?) {
-		print("fetchList")
 		let lists =  realm.objects(ListRealm.self)
 		notificationTokens.append(lists.observe { change in
 			switch change {
