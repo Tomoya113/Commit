@@ -40,13 +40,16 @@ struct TodoListView: View {
 	
 	private func sections() -> some View {
 		return (
+			// NOTE: id無いとどれを削除したら良い変わらんってなってぴえんってなるやつ
 			ForEach(presenter.currentSections.indices, id: \.self) { i in
-				Section(header: sectionHeader(title: presenter.currentSections[i].title, index: i)) {
-					ForEach(presenter.currentSections[i].todos) { todo in
-						presenter.detailViewLinkBuilder(for: todo) {
-							presenter.generateTodoRow(
-								todo: todo) {
-								presenter.updateTodoStatus(todo: todo)
+				if !presenter.currentSections[i].isInvalidated {
+					Section(header: sectionHeader(title: presenter.currentSections[i].title, index: i)) {
+						ForEach(presenter.currentSections[i].todos) { todo in
+							presenter.detailViewLinkBuilder(for: todo) {
+								presenter.generateTodoRow(
+									todo: todo) {
+									presenter.updateTodoStatus(todo: todo)
+								}
 							}
 						}
 					}

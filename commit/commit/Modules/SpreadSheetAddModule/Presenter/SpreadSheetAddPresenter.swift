@@ -134,15 +134,19 @@ class SpreadSheetAddPresenter: ObservableObject {
 			row: sheetPreset.row,
 			column: sheetColumn
 		)
+		
+		let section: SectionRealm = SectionRealm(title: sheetPreset.title, todos: []
+		)
+		
 		let preset: Preset = Preset(
 			spreadSheetId: sheetPreset.spreadSheetId,
+			sectionId: section.id,
 			tabName: sheetPreset.tabName,
 			title: sheetPreset.title,
 			range: sheetRange,
 			targetRow: sheetPreset.targetRow)
 		sheetRepository.createPreset(preset)
 		
-		let section: SectionRealm = SectionRealm(title: sheetPreset.title, todos: [])
 		todoRepository.createNewSection(section: section)
 		let columnRange = SheetColumnEnum.getRange(
 			sheetPreset.column.start!,
