@@ -57,7 +57,6 @@ struct NormalTodoAddView: View {
 							height: 30,
 							alignment: .leading
 						)
-						.background(Color.red)
 				}
 			})
 		)
