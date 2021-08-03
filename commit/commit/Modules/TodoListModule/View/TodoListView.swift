@@ -43,13 +43,23 @@ struct TodoListView: View {
 			// NOTE: id無いとどれを削除したら良い変わらんってなってぴえんってなるやつ
 			ForEach(presenter.currentSections.indices, id: \.self) { i in
 				if !presenter.currentSections[i].isInvalidated {
-					Section(header: sectionHeader(title: presenter.currentSections[i].title, index: i)) {
-						ForEach(presenter.currentSections[i].todos) { todo in
-							presenter.detailViewLinkBuilder(for: todo) {
-								presenter.generateTodoRow(
-									todo: todo) {
-									presenter.updateTodoStatus(todo: todo)
+					if !presenter.currentSections[i].todos.isEmpty {
+						Section(header: sectionHeader(title: presenter.currentSections[i].title, index: i)) {
+							ForEach(presenter.currentSections[i].todos) { todo in
+								presenter.detailViewLinkBuilder(for: todo) {
+									presenter.generateTodoRow(
+										todo: todo) {
+										presenter.updateTodoStatus(todo: todo)
+									}
 								}
+							}
+						}
+					} else {
+						Section(header: sectionHeader(title: presenter.currentSections[i].title, index: i)) {
+							HStack(alignment: .center) {
+								Spacer()
+								Text("タスクがありません！")
+								Spacer()
 							}
 						}
 					}
