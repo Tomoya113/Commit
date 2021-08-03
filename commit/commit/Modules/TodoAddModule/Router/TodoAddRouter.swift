@@ -10,9 +10,14 @@ import SwiftUI
 class TodoAddRouter {
 	func generateNormalTodoAddView(sections: Binding<[SectionRealm]>) -> some View {
 		let todoCreateInteractor = AnyUseCase(TodoCreateInteractor(repository: TodoRepository.shared))
-		let dependency: NormalTodoAddPresenter.Dependency = NormalTodoAddPresenter.Dependency(todoCreateInteractor: todoCreateInteractor)
+		let sectionAddInteractor = AnyUseCase(SectionAddInteractor())
+		let fetchAllSectionInteractor = AnyUseCase(FetchAllSectionsInteractor())
+		let dependency: NormalTodoAddPresenter.Dependency = NormalTodoAddPresenter.Dependency(
+			todoCreateInteractor: todoCreateInteractor,
+			sectionAddInteractor: sectionAddInteractor, fetchAllSectionsInteractor: fetchAllSectionInteractor
+		)
 		let presenter = NormalTodoAddPresenter(dependency: dependency)
-		return NormalTodoAddView(presenter: presenter, sections: sections)
+		return NormalTodoAddView(presenter: presenter)
 	}
 	
 	func generateSpreadSheetAddView() -> some View {

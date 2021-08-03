@@ -6,16 +6,23 @@
 //
 
 import Foundation
+import SwiftUI
 
 class NormalTodoAddPresenter: ObservableObject {
 	struct Dependency {
 		let todoCreateInteractor: AnyUseCase<AddTodoQuery, Void, Never>
+		let sectionAddInteractor: AnyUseCase<SectionRealm, Void, Never>
+		let fetchAllSectionsInteractor: AnyUseCase<String, [SectionRealm], Never>
 	}
 	@Published var title: String = ""
 	@Published var subtitle: String = ""
-	@Published var currentSectionId: String = ""
+	@Published var selectedSectionId: String = ""
+	@Published var isActive: Bool = false
+	@Published var sectionTitle: String = ""
+	@Published var sections: [SectionRealm] = []
 	
 	private let dependency: Dependency
+	private let router = NormalTodoAddRouter()
 	
 	// ここにsection書くのよくなさそう
 	init(dependency: Dependency) {
@@ -24,7 +31,7 @@ class NormalTodoAddPresenter: ObservableObject {
 	
 	func createNewTodo() {
 		let query = AddTodoQuery(
-			sectionId: currentSectionId,
+			sectionId: selectedSectionId,
 			todo: Todo(
 				title: title,
 				detail: subtitle,
@@ -38,13 +45,36 @@ class NormalTodoAddPresenter: ObservableObject {
 			}
 		}
 	}
+	
+	func addSection(title: String) {
+		let section = SectionRealm(title: title, todos: [])
+		selectedSectionId = section.id
+		dependency.sectionAddInteractor.execute(section, completion: nil)
+	}
+	
+	func fetchAllSections() {
+		print("fetchAllSections")
+		dependency.fetchAllSectionsInteractor.execute("") { result in
+			switch result {
+				case .success(let sections):
+//					for section in sections {
+//						self.sections.append(section)
+//					}
+					self.sections = sections
+			}
+		}
+	}
+	
 }
 
 #if DEBUG
 extension NormalTodoAddPresenter {
 	static let sample: NormalTodoAddPresenter = {
 		let dependency = NormalTodoAddPresenter.Dependency(
-			todoCreateInteractor: AnyUseCase(TodoCreateInteractor()))
+			todoCreateInteractor: AnyUseCase(TodoCreateInteractor()),
+			sectionAddInteractor: AnyUseCase(SectionAddInteractor()),
+			fetchAllSectionsInteractor: AnyUseCase(FetchAllSectionsInteractor())
+		)
 		return NormalTodoAddPresenter(dependency: dependency)
 	}()
 }
