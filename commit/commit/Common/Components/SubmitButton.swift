@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct SubmitButton: View {
+	var title: String
 	var action: () -> Void
     var body: some View {
 		Button(action: {
 			action()
 		}, label: {
-			Text("更新")
+			Text(title)
 				.fontWeight(.bold)
 				.frame(minWidth: 0, maxWidth: .infinity)
 				.font(.system(size: 18))
@@ -36,7 +37,7 @@ struct SubmitButton_Previews: PreviewProvider {
 	static func test() {}
 	
     static var previews: some View {
-		SubmitButton {
+		SubmitButton(title: "hoge") {
 			test()
 		}
     }

@@ -56,7 +56,7 @@ struct SpreadSheetFormView: View {
 				TextField("行", text: $spreadSheetPreset.targetRow)
 			}
 		}
-		SubmitButton {
+		SubmitButton(title: "追加") {
 			fetchCells()
 			presentationMode.wrappedValue.dismiss()
 		}

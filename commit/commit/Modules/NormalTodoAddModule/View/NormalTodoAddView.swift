@@ -40,7 +40,7 @@ struct NormalTodoAddView: View {
 				}
 			}
 		}
-		SubmitButton {
+		SubmitButton(title: "追加") {
 			didTapSubmitButton()
 		}
     }
