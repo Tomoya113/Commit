@@ -71,6 +71,7 @@
 		71A9D64926B7B430002A7411 /* SectionAddInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9D64826B7B430002A7411 /* SectionAddInteractor.swift */; };
 		71A9D65126B94117002A7411 /* SectionAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9D65026B94117002A7411 /* SectionAddView.swift */; };
 		71A9D65326B945CE002A7411 /* FetchAllSectionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9D65226B945CE002A7411 /* FetchAllSectionsInteractor.swift */; };
+		71A9D65526BA2BA1002A7411 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9D65426BA2BA1002A7411 /* GoogleSignInButton.swift */; };
 		71AA3DBC2680CE65005D1CCC /* TodoUpdateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */; };
 		71AA3DBE2680D576005D1CCC /* TodoRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */; };
 		71AA3DC02680DEC2005D1CCC /* TodoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBF2680DEC2005D1CCC /* TodoRepository.swift */; };
@@ -164,6 +165,7 @@
 		71A9D64826B7B430002A7411 /* SectionAddInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionAddInteractor.swift; sourceTree = "<group>"; };
 		71A9D65026B94117002A7411 /* SectionAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionAddView.swift; sourceTree = "<group>"; };
 		71A9D65226B945CE002A7411 /* FetchAllSectionsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllSectionsInteractor.swift; sourceTree = "<group>"; };
+		71A9D65426BA2BA1002A7411 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUpdateInteractor.swift; sourceTree = "<group>"; };
 		71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepositoryProtocol.swift; sourceTree = "<group>"; };
 		71AA3DBF2680DEC2005D1CCC /* TodoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepository.swift; sourceTree = "<group>"; };
@@ -723,6 +725,7 @@
 			isa = PBXGroup;
 			children = (
 				71DF399F269DCD5E0009A31F /* SubmitButton.swift */,
+				71A9D65426BA2BA1002A7411 /* GoogleSignInButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -965,6 +968,7 @@
 				717DC99F26AAA5DD00687D68 /* SettingsPresenter.swift in Sources */,
 				717D0F4026947FD700BD4655 /* AppPresenter.swift in Sources */,
 				715C2F192679244F00DA66F3 /* SpreadSheetHistory.swift in Sources */,
+				71A9D65526BA2BA1002A7411 /* GoogleSignInButton.swift in Sources */,
 				71DF397B269CBDF20009A31F /* TodoAddRouter.swift in Sources */,
 				71A9D64326B7B34A002A7411 /* NormalTodoAddRouter.swift in Sources */,
 				716AC24E268727430003A989 /* SpreadSheetAddPresenter.swift in Sources */,

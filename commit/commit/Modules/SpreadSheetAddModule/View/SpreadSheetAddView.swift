@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SpreadSheetAddView: View {
-	@StateObject var presenter: SpreadSheetAddPresenter
+	@ObservedObject var presenter: SpreadSheetAddPresenter
 	@EnvironmentObject var googleDelegate: GoogleOAuthManager
 
 	var body: some View {
