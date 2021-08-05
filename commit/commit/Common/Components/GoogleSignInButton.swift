@@ -6,11 +6,18 @@
 //
 
 import SwiftUI
+import GoogleSignIn
 
-struct GoogleSignInButton: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+struct GoogleSignInButton: UIViewRepresentable {
+	func makeUIView(context: Context) -> GIDSignInButton {
+		let button = GIDSignInButton()
+		button.style = .standard
+		return button
+	}
+
+	func updateUIView(_ uiView: GIDSignInButton, context: Context) {
+		
+	}
 }
 
 struct GoogleSignInButton_Previews: PreviewProvider {
