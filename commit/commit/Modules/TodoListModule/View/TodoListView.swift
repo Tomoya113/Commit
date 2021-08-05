@@ -20,9 +20,17 @@ struct TodoListView: View {
 					List {
 						if !presenter.lists.isEmpty {
 							sections()
+							// NOTE: 下に空白作るためのやつ(もっとほかのいいやり方ありそう)
+							Section {
+								
+							}
+							Section {
+								
+							}
 						}
 					}
 					.listStyle(GroupedListStyle())
+					
 				}
 				addButton()
 			}
@@ -44,7 +52,7 @@ struct TodoListView: View {
 			ForEach(presenter.currentSections.indices, id: \.self) { i in
 				if !presenter.currentSections[i].isInvalidated {
 					if !presenter.currentSections[i].todos.isEmpty {
-						Section(header: sectionHeader(title: presenter.currentSections[i].title, index: i)) {
+						Section(header: sectionHeader(title: $presenter.currentSections[i].title, index: i)) {
 							ForEach(presenter.currentSections[i].todos) { todo in
 								presenter.detailViewLinkBuilder(for: todo) {
 									presenter.generateTodoRow(
@@ -55,7 +63,7 @@ struct TodoListView: View {
 							}
 						}
 					} else {
-						Section(header: sectionHeader(title: presenter.currentSections[i].title, index: i)) {
+						Section(header: sectionHeader(title: $presenter.currentSections[i].title, index: i)) {
 							HStack(alignment: .center) {
 								Spacer()
 								Text("タスクがありません！")
@@ -85,10 +93,10 @@ struct TodoListView: View {
 		)
 	}
 	
-	private func sectionHeader(title: String, index: Int) -> some View {
+	private func sectionHeader(title: Binding<String>, index: Int) -> some View {
 		return (
 			HStack {
-				Text(title)
+				TextField(title.wrappedValue, text: title)
 				Spacer()
 				Button(action: {
 					showAlert = true

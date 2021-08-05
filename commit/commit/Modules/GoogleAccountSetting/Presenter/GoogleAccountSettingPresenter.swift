@@ -39,6 +39,12 @@ class GoogleAccountSettingPresenter: ObservableObject, GoogleOAuthManagerProtoco
 
 	func onAppear() {
 		GIDSignIn.sharedInstance().presentingViewController = UIApplication.shared.windows.first?.rootViewController
+		if hasPreviousSignIn != GoogleOAuthManager.shared.authenticated {
+			// NOTE, HELL: ここのコード地獄すぎ
+			isCancelled = true
+			hasPreviousSignIn = GoogleOAuthManager.shared.authenticated
+			isCancelled = false
+		}
 	}
 	
 	func confirm() {
