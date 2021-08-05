@@ -36,6 +36,7 @@ class GoogleOAuthManager: NSObject, GIDSignInDelegate, ObservableObject {
 	
 	func signOut() {
 		email = ""
+		authenticated = false
 		GIDSignIn.sharedInstance().signOut()
 	}
 	
