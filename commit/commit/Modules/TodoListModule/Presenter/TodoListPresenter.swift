@@ -17,6 +17,7 @@ class TodoListPresenter: ObservableObject {
 	}
 	
 	@Published var lists: [ListRealm] = []
+	@Published var defaultSection: SectionRealm?
 	@Published var currentSections: [SectionRealm] = []
 	
 	private let dependency: Dependency
@@ -33,9 +34,16 @@ class TodoListPresenter: ObservableObject {
 			dependency.listFetchInteractor.execute(()) { [weak self] result in
 				switch result {
 					case .success(let lists):
+						// NOTE: 絶対ここでやるなよ???
 						self?.lists = lists
-						let sections = lists[0].sections
-						self?.currentSections = Array(sections)
+						var sections = lists[0].sections
+						let defaultSection = sections[0]
+						self?.defaultSection = defaultSection
+						if sections.count == 1 {
+							return
+						}
+						let currenSections = sections[1..<sections.count]
+						self?.currentSections = Array(currenSections)
 				}
 			}
 		}
@@ -54,7 +62,7 @@ class TodoListPresenter: ObservableObject {
 	func deleteSection(_ index: Int) {
 		if !lists.isEmpty {
 			currentSections.remove(at: index)
-			dependency.deleteSectionInteractor.execute(lists[0].sections[index]) { result in
+			dependency.deleteSectionInteractor.execute(lists[0].sections[index + 1]) { result in
 				switch result {
 					case .success:
 						print("delete")
