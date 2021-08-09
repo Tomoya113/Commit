@@ -72,6 +72,8 @@
 		71A9D65126B94117002A7411 /* SectionAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9D65026B94117002A7411 /* SectionAddView.swift */; };
 		71A9D65326B945CE002A7411 /* FetchAllSectionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9D65226B945CE002A7411 /* FetchAllSectionsInteractor.swift */; };
 		71A9D65526BA2BA1002A7411 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9D65426BA2BA1002A7411 /* GoogleSignInButton.swift */; };
+		71A9D65826BC464C002A7411 /* UserDataInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9D65726BC464C002A7411 /* UserDataInitializer.swift */; };
+		71A9D67B26C17DBF002A7411 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9D67A26C17DBF002A7411 /* Section.swift */; };
 		71AA3DBC2680CE65005D1CCC /* TodoUpdateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */; };
 		71AA3DBE2680D576005D1CCC /* TodoRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */; };
 		71AA3DC02680DEC2005D1CCC /* TodoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBF2680DEC2005D1CCC /* TodoRepository.swift */; };
@@ -166,6 +168,8 @@
 		71A9D65026B94117002A7411 /* SectionAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionAddView.swift; sourceTree = "<group>"; };
 		71A9D65226B945CE002A7411 /* FetchAllSectionsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllSectionsInteractor.swift; sourceTree = "<group>"; };
 		71A9D65426BA2BA1002A7411 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
+		71A9D65726BC464C002A7411 /* UserDataInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataInitializer.swift; sourceTree = "<group>"; };
+		71A9D67A26C17DBF002A7411 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUpdateInteractor.swift; sourceTree = "<group>"; };
 		71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepositoryProtocol.swift; sourceTree = "<group>"; };
 		71AA3DBF2680DEC2005D1CCC /* TodoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepository.swift; sourceTree = "<group>"; };
@@ -505,6 +509,7 @@
 		717F945A26774FE800D11C58 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				71A9D65626BC4634002A7411 /* Utils */,
 				717DC9AD26B0A45B00687D68 /* Interactor */,
 				71DF39D2269E3B230009A31F /* Extension */,
 				71DF399D269DCD480009A31F /* Components */,
@@ -581,6 +586,7 @@
 				715C2F15267921A700DA66F3 /* Preset.swift */,
 				715C2F182679244F00DA66F3 /* SpreadSheetHistory.swift */,
 				71AA3DC626814B95005D1CCC /* SpreadSheetTodoAttribute.swift */,
+				71A9D67A26C17DBF002A7411 /* Section.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -624,6 +630,14 @@
 				71A9D64226B7B34A002A7411 /* NormalTodoAddRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		71A9D65626BC4634002A7411 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				71A9D65726BC464C002A7411 /* UserDataInitializer.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		71AA3DB72680CE0C005D1CCC /* View */ = {
@@ -898,6 +912,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71A9D67B26C17DBF002A7411 /* Section.swift in Sources */,
 				715C2F1C2679AB5500DA66F3 /* Mock.swift in Sources */,
 				716AC22E268725930003A989 /* TodoDetailView.swift in Sources */,
 				71931AAA2699B93300BB404F /* HTTPMethod.swift in Sources */,
@@ -979,6 +994,7 @@
 				716AC239268725FA0003A989 /* TodoAddPresenter.swift in Sources */,
 				71DF3974269CB58C0009A31F /* NormalTodoAddPresenter.swift in Sources */,
 				71DF39DF269E41710009A31F /* UpdateTodoQuery.swift in Sources */,
+				71A9D65826BC464C002A7411 /* UserDataInitializer.swift in Sources */,
 				71A9D64926B7B430002A7411 /* SectionAddInteractor.swift in Sources */,
 				715C2F20267B64E700DA66F3 /* ListMock.swift in Sources */,
 			);
