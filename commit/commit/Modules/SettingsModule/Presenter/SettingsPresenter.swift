@@ -12,6 +12,7 @@ import SwiftUI
 enum CommitSiteURL: String {
 	case termsOfService = "https://www.commit-dev.site/terms-of-service"
 	case privacyPolicy = "https://www.commit-dev.site/privacy-policy"
+	case inquiryForm = "https://forms.gle/EWkb1jo7EyozDSZW8"
 	var url: URL {
 		URL(string: self.rawValue)!
 	}
@@ -20,12 +21,16 @@ enum CommitSiteURL: String {
 class SettingsPresenter: ObservableObject {
 	let router = SettingsRouter()
 	
-	func createWebView<Content: View>(siteType: CommitSiteURL, @ViewBuilder content: () -> Content) -> some View {
+	func createExternalLinkURLLink(title: String, siteType: CommitSiteURL) -> some View {
 		return (
 			NavigationLink(
-				destination: router.generateWebView(siteType: siteType)) {
-					content()
-			}
+				destination: WebView(url: siteType.url)
+					.navigationBarTitleDisplayMode(.inline)
+					.navigationBarTitle(Text(title))
+				,
+				label: {
+					Text(title)
+				})
 		)
 	}
 	

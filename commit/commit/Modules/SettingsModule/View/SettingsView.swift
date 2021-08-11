@@ -9,32 +9,17 @@ import SwiftUI
 
 struct SettingsView: View {
 	@ObservedObject var presenter: SettingsPresenter
-	@State private var showTermsOfService = false
-	@State private var showPrivacyPolicy = false
     var body: some View {
 		NavigationView {
 			List {
 				presenter.createGoogleOAuthSettingView {
 					Text("Googleアカウント連携")
 				}
-				Button(action: {
-					showTermsOfService.toggle()
-				}, label: {
-					Text("利用規約")
-				})
-				Button(action: {
-					showPrivacyPolicy.toggle()
-				}, label: {
-					Text("プライバシーポリシー")
-				})
+				presenter.createExternalLinkURLLink(title: "利用規約", siteType: CommitSiteURL.termsOfService)
+				presenter.createExternalLinkURLLink(title: "プライバシーポリシー", siteType: CommitSiteURL.privacyPolicy)
+				presenter.createExternalLinkURLLink(title: "お問合せフォーム", siteType: CommitSiteURL.inquiryForm)
 			}
 			.navigationTitle(Text("設定"))
-			.sheet(isPresented: $showTermsOfService) {
-				SafariView(url: CommitSiteURL.termsOfService.url)
-			}
-			.sheet(isPresented: $showPrivacyPolicy) {
-				SafariView(url: CommitSiteURL.privacyPolicy.url)
-			}
 			.listStyle(PlainListStyle())
 		}
     }
