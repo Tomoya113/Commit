@@ -12,6 +12,7 @@
 		714A47F026A6657200268779 /* GoogleAPIEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A47EF26A6657200268779 /* GoogleAPIEntity.swift */; };
 		714A47F226A66DEF00268779 /* GoogleAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A47F126A66DEF00268779 /* GoogleAPIRequest.swift */; };
 		714A481626A7117D00268779 /* FetchSheetsCellInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A481526A7117D00268779 /* FetchSheetsCellInteractor.swift */; };
+		715A3A0426C3EFB5004D14C8 /* CreateSheetDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A3A0326C3EFB5004D14C8 /* CreateSheetDataInteractor.swift */; };
 		715C2F0C2679178D00DA66F3 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F0B2679178D00DA66F3 /* List.swift */; };
 		715C2F1426791F7700DA66F3 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F1326791F7700DA66F3 /* Tag.swift */; };
 		715C2F16267921A700DA66F3 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C2F15267921A700DA66F3 /* Preset.swift */; };
@@ -74,6 +75,7 @@
 		71A9D65526BA2BA1002A7411 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9D65426BA2BA1002A7411 /* GoogleSignInButton.swift */; };
 		71A9D65826BC464C002A7411 /* UserDataInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9D65726BC464C002A7411 /* UserDataInitializer.swift */; };
 		71A9D67B26C17DBF002A7411 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9D67A26C17DBF002A7411 /* Section.swift */; };
+		71A9D67D26C18D3A002A7411 /* DataEraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9D67C26C18D3A002A7411 /* DataEraser.swift */; };
 		71AA3DBC2680CE65005D1CCC /* TodoUpdateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */; };
 		71AA3DBE2680D576005D1CCC /* TodoRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */; };
 		71AA3DC02680DEC2005D1CCC /* TodoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBF2680DEC2005D1CCC /* TodoRepository.swift */; };
@@ -94,6 +96,7 @@
 		71DF39DD269E3E290009A31F /* SheetTodoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF39DC269E3E290009A31F /* SheetTodoQuery.swift */; };
 		71DF39DF269E41710009A31F /* UpdateTodoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF39DE269E41710009A31F /* UpdateTodoQuery.swift */; };
 		71E41742269F1DF7003A75C6 /* CurrentListFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E41741269F1DF7003A75C6 /* CurrentListFetchInteractor.swift */; };
+		71EA251726C42494003CF477 /* SheetConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA251626C42494003CF477 /* SheetConfirmView.swift */; };
 		71F7FBA726A422F8003C8784 /* DeleteTodoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F7FBA626A422F8003C8784 /* DeleteTodoInteractor.swift */; };
 		9FD5277028064CE4AE7F173A /* Pods_commit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4194718BA40140F9EF0C2D /* Pods_commit.framework */; };
 /* End PBXBuildFile section */
@@ -106,6 +109,7 @@
 		714A47EF26A6657200268779 /* GoogleAPIEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIEntity.swift; sourceTree = "<group>"; };
 		714A47F126A66DEF00268779 /* GoogleAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIRequest.swift; sourceTree = "<group>"; };
 		714A481526A7117D00268779 /* FetchSheetsCellInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSheetsCellInteractor.swift; sourceTree = "<group>"; };
+		715A3A0326C3EFB5004D14C8 /* CreateSheetDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSheetDataInteractor.swift; sourceTree = "<group>"; };
 		715C2F0B2679178D00DA66F3 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		715C2F1326791F7700DA66F3 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		715C2F15267921A700DA66F3 /* Preset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 		71A9D65426BA2BA1002A7411 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		71A9D65726BC464C002A7411 /* UserDataInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataInitializer.swift; sourceTree = "<group>"; };
 		71A9D67A26C17DBF002A7411 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		71A9D67C26C18D3A002A7411 /* DataEraser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEraser.swift; sourceTree = "<group>"; };
 		71AA3DBB2680CE65005D1CCC /* TodoUpdateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUpdateInteractor.swift; sourceTree = "<group>"; };
 		71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepositoryProtocol.swift; sourceTree = "<group>"; };
 		71AA3DBF2680DEC2005D1CCC /* TodoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepository.swift; sourceTree = "<group>"; };
@@ -190,6 +195,7 @@
 		71DF39DC269E3E290009A31F /* SheetTodoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetTodoQuery.swift; sourceTree = "<group>"; };
 		71DF39DE269E41710009A31F /* UpdateTodoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTodoQuery.swift; sourceTree = "<group>"; };
 		71E41741269F1DF7003A75C6 /* CurrentListFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentListFetchInteractor.swift; sourceTree = "<group>"; };
+		71EA251626C42494003CF477 /* SheetConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetConfirmView.swift; sourceTree = "<group>"; };
 		71F7FBA626A422F8003C8784 /* DeleteTodoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTodoInteractor.swift; sourceTree = "<group>"; };
 		7B924A41A2AB38982B6AE3C2 /* Pods-commit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-commit.debug.xcconfig"; path = "Target Support Files/Pods-commit/Pods-commit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -325,6 +331,7 @@
 				716AC249268727310003A989 /* SpreadSheetFilesFetchInteractor.swift */,
 				71CB63D7269A0CAB003C98A8 /* CellsFetchInteractor.swift */,
 				71CB63D9269A0E4C003C98A8 /* SpreadSheetInfoFetchInteractor.swift */,
+				715A3A0326C3EFB5004D14C8 /* CreateSheetDataInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -335,6 +342,7 @@
 				716AC24B2687273B0003A989 /* SpreadSheetAddView.swift */,
 				71931A98269601D800BB404F /* SpreadSheetFormView.swift */,
 				718D240D269B74610012B1CB /* RequireGoogleOAuthView.swift */,
+				71EA251626C42494003CF477 /* SheetConfirmView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -636,6 +644,7 @@
 			isa = PBXGroup;
 			children = (
 				71A9D65726BC464C002A7411 /* UserDataInitializer.swift */,
+				71A9D67C26C18D3A002A7411 /* DataEraser.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -923,6 +932,7 @@
 				717F944626774ED400D11C58 /* AppDelegate.swift in Sources */,
 				717DC9A126AAA89E00687D68 /* SettingsRouter.swift in Sources */,
 				713613C826A86149008B66F8 /* WriteSheetsInteractor.swift in Sources */,
+				71EA251726C42494003CF477 /* SheetConfirmView.swift in Sources */,
 				71A190A12680C9B000C6D6E8 /* UseCase.swift in Sources */,
 				716AC23B268726060003A989 /* TodoAddView.swift in Sources */,
 				71F7FBA726A422F8003C8784 /* DeleteTodoInteractor.swift in Sources */,
@@ -943,6 +953,7 @@
 				717DC9A726AAF3E400687D68 /* GoogleAccountSettingPresenter.swift in Sources */,
 				718818AB2690D4410078319F /* AddTodoQuery.swift in Sources */,
 				71AA3DC02680DEC2005D1CCC /* TodoRepository.swift in Sources */,
+				71A9D67D26C18D3A002A7411 /* DataEraser.swift in Sources */,
 				716E8EC4267E5E470088A04D /* TodoListRow.swift in Sources */,
 				71931AA526974FFE00BB404F /* GoogleAPIClientProtocol.swift in Sources */,
 				71931A99269601D800BB404F /* SpreadSheetFormView.swift in Sources */,
@@ -979,6 +990,7 @@
 				71AA3DC92682E773005D1CCC /* ListFetchInteractor.swift in Sources */,
 				71DF39DB269E3D830009A31F /* SheetPresetQuery.swift in Sources */,
 				715C2F29267CE07F00DA66F3 /* TodoListPresenter.swift in Sources */,
+				715A3A0426C3EFB5004D14C8 /* CreateSheetDataInteractor.swift in Sources */,
 				717DC9AC26AAF43400687D68 /* GoogleAccountSettingView.swift in Sources */,
 				717DC99F26AAA5DD00687D68 /* SettingsPresenter.swift in Sources */,
 				717D0F4026947FD700BD4655 /* AppPresenter.swift in Sources */,
@@ -1148,7 +1160,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tt.commit;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tomoya-tanaka.commit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1174,7 +1186,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tt.commit;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tomoya-tanaka.commit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";

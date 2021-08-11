@@ -60,7 +60,8 @@ struct TodoListView: View {
 				sectionDeleteConfirmationAlert()
 			}
 			// NOTE: こんな感じでout of rangeだったりするとエラーになる
-			.navigationTitle(presenter.lists.isEmpty ? "" : presenter.lists[0].title)
+//			.navigationTitle(presenter.lists.isEmpty ? "" : presenter.lists[0].title)
+			.navigationTitle("TODO")
 		}
 		.navigationViewStyle(StackNavigationViewStyle())
 		.onAppear {
@@ -119,6 +120,7 @@ struct TodoListView: View {
 		return (
 			HStack {
 				TextField($presenter.currentSections[index].title.wrappedValue, text: $presenter.currentSections[index].title)
+					.foregroundColor(Color.blue)
 				Spacer()
 				Button(action: {
 					showAlert = true
