@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct SpreadSheetFormView: View {
-	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 	@Binding var spreadSheetPreset: SheetPreset
 	@Binding var userResources: UserResources
+	@Binding var sheetData: SheetData
+	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+	@State private var showConfirmView = false
 	let fetchSpreadSheetInfo: (() -> Void)
 	let fetchCells: (() -> Void)
+	let saveData: (() -> Void)
 	var body: some View {
 		Form {
 			Section(header: Text("プリセット名"), footer: Text("セクション名になります")) {
@@ -56,11 +59,28 @@ struct SpreadSheetFormView: View {
 				TextField("行", text: $spreadSheetPreset.targetRow)
 			}
 		}
-		SubmitButton(title: "追加") {
-			fetchCells()
-			presentationMode.wrappedValue.dismiss()
-		}
+		
+		NavigationLink(
+			destination:
+				SheetConfirmView {
+					showConfirmView = false
+					saveData()
+				}
+				.environmentObject(sheetData)
+				.onDisappear {
+					presentationMode.wrappedValue.dismiss()
+				},
+			isActive: $showConfirmView,
+			label: {
+				SubmitButton(title: "次へ") {
+					fetchCells()
+					showConfirmView = true
+				}
+			}
+		)
+		
 	}
+
 	private var endRange: some View {
 		if let start = spreadSheetPreset.column.start {
 			return (
@@ -84,8 +104,13 @@ struct SpreadSheetFormView: View {
 struct SpreadSheetFromView_Previews: PreviewProvider {
 	@State static var spreadSheetPreset = SheetPreset()
 	@State static var array = UserResources()
+	@State static var sheetData = SheetData()
 	static func test() {
 		
+	}
+	
+	static func hoge(_ completion: () -> Void) {
+		completion()
 	}
 	
 	static var previews: some View {
@@ -93,8 +118,10 @@ struct SpreadSheetFromView_Previews: PreviewProvider {
 			SpreadSheetFormView(
 				spreadSheetPreset: $spreadSheetPreset,
 				userResources: $array,
+				sheetData: $sheetData,
 				fetchSpreadSheetInfo: test,
-				fetchCells: test
+				fetchCells: test,
+				saveData: test
 			)
 		}
 	}

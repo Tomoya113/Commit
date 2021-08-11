@@ -27,15 +27,23 @@ class UserResources: ObservableObject {
 	@Published var tabList: [SheetProperties] = []
 }
 
+class SheetData: ObservableObject {
+	@Published var preset: Preset = Preset()
+	@Published var section: SectionRealm = SectionRealm()
+	@Published var sheetAttributes: [SpreadSheetTodoAttribute] = []
+}
+
 class SpreadSheetAddPresenter: ObservableObject {
 	struct Dependency {
 		let spreadSheetCellsFetchInteractor: AnyUseCase<FetchSheetCellsQuery, [String], Error>
 		let spreadSheetFilesFetchInteractor: AnyUseCase<String, [SpreadSheetFile], Error>
 		let spreadSheetInfoFetchInteractor: AnyUseCase<String, [Sheet], Error>
+		let createSheetDataInteractor: AnyUseCase<CreateSheetDataQuery, Void, Error>
 	}
 	
 	@Published var sheetPreset = SheetPreset()
 	@Published var userResources = UserResources()
+	@Published var sheetData = SheetData()
 	
 	let dependency: SpreadSheetAddPresenter.Dependency
 	let todoRepository: TodoRepositoryProtocol
@@ -125,6 +133,16 @@ class SpreadSheetAddPresenter: ObservableObject {
 		return query
 	}
 	
+	func saveData() {
+		if sheetData.sheetAttributes.isEmpty {
+			print("attribute not found")
+			return
+		}
+		let createSheetDataQuery = CreateSheetDataQuery(
+			preset: sheetData.preset, section: sheetData.section, sheetAttributes: sheetData.sheetAttributes)
+		dependency.createSheetDataInteractor.execute(createSheetDataQuery, completion: nil)
+	}
+	
 	private func createData(cells: [String]) {
 		let sheetColumn = SheetColumn(
 			start: sheetPreset.column.start!.rawValue,
@@ -135,23 +153,19 @@ class SpreadSheetAddPresenter: ObservableObject {
 			column: sheetColumn
 		)
 		
-		let section: SectionRealm = SectionRealm(title: sheetPreset.title, todos: []
-		)
-		
-		let preset: Preset = Preset(
-			spreadSheetId: sheetPreset.spreadSheetId,
-			sectionId: section.id,
-			tabName: sheetPreset.tabName,
-			title: sheetPreset.title,
-			range: sheetRange,
-			targetRow: sheetPreset.targetRow)
-		sheetRepository.createPreset(preset)
-		
-		todoRepository.createNewSection(section: section)
 		let columnRange = SheetColumnEnum.getRange(
 			sheetPreset.column.start!,
 			sheetPreset.column.end!
 		)
+		
+		sheetData.section.title = sheetPreset.title
+		
+		sheetData.preset.spreadSheetId = sheetPreset.spreadSheetId
+		sheetData.preset.sectionId = sheetData.section.id
+		sheetData.preset.tabName = sheetPreset.tabName
+		sheetData.preset.title = sheetPreset.title
+		sheetData.preset.range = sheetRange
+		sheetData.preset.targetRow = sheetPreset.targetRow
 		
 		for i in 0..<cells.count {
 			let todo: Todo = Todo(
@@ -159,20 +173,10 @@ class SpreadSheetAddPresenter: ObservableObject {
 				detail: "",
 				displayTag: [],
 				todoType: .googleSheets)
-			let todoQuery: AddTodoQuery = AddTodoQuery(
-				sectionId: section.id,
-				todo: todo
-			)
-			todoRepository.createNewTodo(
-				query: todoQuery) { _ in
-				
-			}
-			let sheetTodoQuery = SheetTodoQuery(
-				todoId: todo.id,
-				presetId: preset.id,
-				column: columnRange[i].rawValue
-			)
-			sheetRepository.createSheetTodoAttribute(sheetTodoQuery)
+			sheetData.section.todos.append(todo)
+
+			let sheetTodo = SpreadSheetTodoAttribute(todoId: todo.id, presetId: sheetData.preset.id, column: columnRange[i].rawValue)
+			sheetData.sheetAttributes.append(sheetTodo)
 		}
 	}
 	
@@ -184,10 +188,12 @@ extension SpreadSheetAddPresenter {
 		let spreadSheetCellsFetchInteractor = AnyUseCase(CellsFetchInteractor())
 		let spreadSheetFilesFetchInteractor = AnyUseCase(SpreadSheetFilesFetchInteractor())
 		let spreadSheetInfoFetchInteractor = AnyUseCase(SpreadSheetInfoFetchInteractor())
+		let createSheetDataInteractor = AnyUseCase(CreateSheetDataInteractor())
 		let dependency = Dependency(
 			spreadSheetCellsFetchInteractor: spreadSheetCellsFetchInteractor,
 			spreadSheetFilesFetchInteractor: spreadSheetFilesFetchInteractor,
-			spreadSheetInfoFetchInteractor: spreadSheetInfoFetchInteractor
+			spreadSheetInfoFetchInteractor: spreadSheetInfoFetchInteractor,
+			createSheetDataInteractor: createSheetDataInteractor
 		)
 		return SpreadSheetAddPresenter(dependency: dependency)
 	}()

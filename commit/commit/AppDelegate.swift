@@ -19,21 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			// DANGER: これ絶対にやばいわ
 			deleteRealmIfMigrationNeeded: true
 		)
-		
-		let IS_FIRST_VISIT: String = "isFirstVisit"
-		
 		Realm.Configuration.defaultConfiguration = config
-		try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
-		let appDomain = Bundle.main.bundleIdentifier
-		UserDefaults.standard.removePersistentDomain(forName: appDomain!)
-//		UserDataInitializer.generateInitialUserData()
-//		SampleDataGenerator.generateSampleData()
+
+//		#if DEBUG
+//			DataEraser.execute()
+//		#endif
+		print(Realm.Configuration.defaultConfiguration.fileURL!)
+		let IS_FIRST_VISIT: String = "isFirstVisit"
 		if UserDefaults.standard.object(forKey: IS_FIRST_VISIT) == nil {
 			UserDataInitializer.generateInitialUserData()
 			UserDefaults.standard.set(true, forKey: IS_FIRST_VISIT)
-			print(UserDefaults.standard.object(forKey: IS_FIRST_VISIT))
 		}
-		print(Realm.Configuration.defaultConfiguration.fileURL!)
 		GIDSignIn.sharedInstance().delegate = GoogleOAuthManager.shared
 		GoogleOAuthManager.signIn()
 		return true

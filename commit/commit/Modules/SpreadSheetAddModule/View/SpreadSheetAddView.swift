@@ -17,8 +17,10 @@ struct SpreadSheetAddView: View {
 			SpreadSheetFormView(
 				spreadSheetPreset: $presenter.sheetPreset,
 				userResources: $presenter.userResources,
+				sheetData: $presenter.sheetData,
 				fetchSpreadSheetInfo: presenter.fetchSpreadSheetInfo,
-				fetchCells: presenter.fetchCells
+				fetchCells: presenter.fetchCells,
+				saveData: presenter.saveData
 			)
 			.onAppear {
 				presenter.onAppear()
