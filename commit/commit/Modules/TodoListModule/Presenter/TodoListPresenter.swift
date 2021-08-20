@@ -66,8 +66,6 @@ class TodoListPresenter: ObservableObject {
 				switch result {
 					case .success:
 						print("delete")
-//						let sections = self.lists[0].sections
-//						self.currentSections = Array(sections)
 				}
 			}
 		}
@@ -75,6 +73,9 @@ class TodoListPresenter: ObservableObject {
 		
 	func generateTodoRow(todo: Todo, updateTodoStatus: @escaping  () -> Void) -> some View {
 		TodoListRow(todo: todo) {
+			let generator = UIImpactFeedbackGenerator(style: .light)
+			generator.impactOccurred()
+			print("update todo")
 			updateTodoStatus()
 		}
 	}

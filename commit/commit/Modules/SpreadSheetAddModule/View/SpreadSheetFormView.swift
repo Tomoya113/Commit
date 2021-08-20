@@ -13,6 +13,7 @@ struct SpreadSheetFormView: View {
 	@Binding var sheetData: SheetData
 	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 	@State private var showConfirmView = false
+	@State private var afterSaveData = false
 	let fetchSpreadSheetInfo: (() -> Void)
 	let fetchCells: (() -> Void)
 	let saveData: (() -> Void)
@@ -58,27 +59,32 @@ struct SpreadSheetFormView: View {
 			Section(header: Text("書き込む行"), footer: Text("TODOを達成した時に書き込む行を指定します")) {
 				TextField("行", text: $spreadSheetPreset.targetRow)
 			}
+			NavigationLink(
+				destination:
+					SheetConfirmView {
+						showConfirmView = false
+						afterSaveData = true
+						saveData()
+					}
+					.environmentObject(sheetData)
+					.onDisappear {
+						if afterSaveData {
+							presentationMode.wrappedValue.dismiss()
+						}
+					},
+				isActive: $showConfirmView,
+				label: {
+					Button(action: {
+						fetchCells()
+						showConfirmView = true
+					}, label: {
+						Text("次へ")
+							.multilineTextAlignment(.center)
+							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+					})
+				}
+			)
 		}
-		
-		NavigationLink(
-			destination:
-				SheetConfirmView {
-					showConfirmView = false
-					saveData()
-				}
-				.environmentObject(sheetData)
-				.onDisappear {
-					presentationMode.wrappedValue.dismiss()
-				},
-			isActive: $showConfirmView,
-			label: {
-				SubmitButton(title: "次へ") {
-					fetchCells()
-					showConfirmView = true
-				}
-			}
-		)
-		
 	}
 
 	private var endRange: some View {

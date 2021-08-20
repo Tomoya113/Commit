@@ -63,6 +63,7 @@ struct TodoDetailView: View {
 	}
 }
 
+#if DEBUG
 struct TodoDetailView_Previews: PreviewProvider {
 	static var previews: some View {
 		NavigationView {
@@ -73,3 +74,4 @@ struct TodoDetailView_Previews: PreviewProvider {
 		}
 	}
 }
+#endif

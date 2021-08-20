@@ -8,6 +8,7 @@
 import UIKit
 import RealmSwift
 import GoogleSignIn
+import CoreHaptics
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			deleteRealmIfMigrationNeeded: true
 		)
 		Realm.Configuration.defaultConfiguration = config
-
+		let hapticCapability = CHHapticEngine.capabilitiesForHardware()
+		print(hapticCapability.supportsHaptics)
 //		#if DEBUG
 //			DataEraser.execute()
 //		#endif

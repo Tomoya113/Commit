@@ -25,7 +25,7 @@ struct TodoListView: View {
 										presenter.detailViewLinkBuilder(for: todo) {
 											presenter.generateTodoRow(
 												todo: todo) {
-												presenter.updateTodoStatus(todo: todo)
+												updateTodoStatus(todo)
 											}
 										}
 									}
@@ -67,6 +67,10 @@ struct TodoListView: View {
 		.onAppear {
 			presenter.onAppear()
 		}
+	}
+	
+	private func updateTodoStatus(_ todo: Todo) {
+		presenter.updateTodoStatus(todo: todo)
 	}
 	
 	private func sections() -> some View {
@@ -164,9 +168,11 @@ extension TodoListView {
 	}
 }
 
+#if DEBUG
 struct TodoListView_Previews: PreviewProvider {
 	static var previews: some View {
 		TodoListView(presenter: TodoListPresenter.sample)
 			.environment(\.locale, Locale(identifier: "ja_JP"))
 	}
 }
+#endif

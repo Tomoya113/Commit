@@ -51,7 +51,7 @@ struct TodoAddView: View {
 	
 	private func didSwipe(_ value: DragGesture.Value) {
 		// 左にスワイプされたとき
-		if value.translation.width < -5 {
+		if value.translation.width < -150 {
 			presenter.currentTodoTypeIndex -= 1
 			if presenter.currentTodoTypeIndex <= -1 {
 				presenter.currentTodoTypeIndex = TodoTypes.allCases.count - 1
@@ -59,7 +59,7 @@ struct TodoAddView: View {
 			presenter.currentTodoType = TodoTypes.allCases[presenter.currentTodoTypeIndex]
 		}
 		// 右にスワイプされたとき
-		if value.translation.width > 5 {
+		if value.translation.width > 150 {
 			presenter.currentTodoTypeIndex += 1
 			if presenter.currentTodoTypeIndex >= TodoTypes.allCases.count {
 				presenter.currentTodoTypeIndex = 0
@@ -69,6 +69,8 @@ struct TodoAddView: View {
 	}
 	
 }
+
+#if DEBUG
 struct TodoAddView_Previews: PreviewProvider {
 	static var previews: some View {
 		NavigationView {
@@ -76,3 +78,4 @@ struct TodoAddView_Previews: PreviewProvider {
 		}
 	}
 }
+#endif

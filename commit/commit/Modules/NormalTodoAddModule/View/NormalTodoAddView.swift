@@ -18,30 +18,38 @@ struct NormalTodoAddView: View {
 			Section(header: Text("説明")) {
 				TextField("タスクの説明", text: $presenter.subtitle)
 			}
-			Picker(selection: $presenter.selectedSectionId, label: Text("セクション")) {
-				ForEach(presenter.sections, id: \.id) { section in
-					Text(section.title)
-				}
-				NavigationLink(
-					destination: SectionAddView(
-						sectionTitle: $presenter.sectionTitle,
-						action: {
-							presenter.isActive = false
-							presenter.addSection(title: presenter.sectionTitle)
-						}
-					),
-					isActive: $presenter.isActive,
-					label: {
-						sectionAddButton()
+			
+			Section(header: Text("セクション")) {
+				Picker(selection: $presenter.selectedSectionId, label: Text("セクション")) {
+					ForEach(presenter.sections, id: \.id) { section in
+						Text(section.title)
 					}
-				)
-				.onAppear {
-					presenter.fetchAllSections()
+					NavigationLink(
+						destination: SectionAddView(
+							sectionTitle: $presenter.sectionTitle,
+							action: {
+								presenter.isActive = false
+								presenter.addSection(title: presenter.sectionTitle)
+							}
+						),
+						isActive: $presenter.isActive,
+						label: {
+							sectionAddButton()
+						}
+					)
+					.onAppear {
+						presenter.fetchAllSections()
+					}
 				}
 			}
-		}
-		SubmitButton(title: "追加") {
-			didTapSubmitButton()
+			
+			Button(action: {
+				didTapSubmitButton()
+			}, label: {
+				Text("追加")
+					.multilineTextAlignment(.center)
+					.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+			})
 		}
     }
 	
@@ -68,6 +76,7 @@ struct NormalTodoAddView: View {
 	}
 }
 
+#if DEBUG
 struct NormalTodoAddView_Previews: PreviewProvider {
 	@State static var sections: [SectionRealm] = []
     static var previews: some View {
@@ -76,3 +85,4 @@ struct NormalTodoAddView_Previews: PreviewProvider {
 		}
     }
 }
+#endif

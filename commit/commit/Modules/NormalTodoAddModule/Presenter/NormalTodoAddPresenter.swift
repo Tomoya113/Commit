@@ -57,6 +57,7 @@ class NormalTodoAddPresenter: ObservableObject {
 		dependency.fetchAllSectionsInteractor.execute("") { result in
 			switch result {
 				case .success(let sections):
+//					self.selectedSectionId = sections[0].id
 //					for section in sections {
 //						self.sections.append(section)
 //					}
