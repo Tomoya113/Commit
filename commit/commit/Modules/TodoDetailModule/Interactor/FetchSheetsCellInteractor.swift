@@ -9,25 +9,48 @@ import Foundation
 
 class FetchSheetsCellInteractor: UseCase {
 	let todoRepository: TodoRepositoryProtocol
-	let sheetsRepository: SheetsRepositoryProtocol
+	let spreadSheetTodoAttributeRepository = RealmRepository<SpreadSheetTodoAttribute>()
+	let sheetPresetRepository = RealmRepository<Preset>()
 	
 	init(
-		todoRepository: TodoRepositoryProtocol = TodoRepository.shared,
-		sheetsRepository: SheetsRepositoryProtocol = SheetsRepository.shared
+		todoRepository: TodoRepositoryProtocol = TodoRepository.shared
 	) {
 		self.todoRepository = todoRepository
-		self.sheetsRepository = sheetsRepository
 	}
 	
 	func execute(_ parameters: Todo, completion: ((Result<String, Error>) -> Void )?) {
 		// ちゃんとエラーハンドリングしようね
-		let sheetsAttribute = sheetsRepository.getSheetsAttribute(parameters)
-		let sheetsPreset = sheetsRepository.getSheetsPresetById(sheetsAttribute.presetId)
+		var attribute: SpreadSheetTodoAttribute?
+		let predicate = NSPredicate(format: "todoId == %@", argumentArray: [parameters.id])
+		spreadSheetTodoAttributeRepository.find(predicate: predicate) { result in
+			switch result {
+				case .success(let attributes):
+					guard let foundAttribute = attributes.first else {
+						fatalError("sheetAttribute not found")
+					}
+					attribute = foundAttribute
+				default:
+					fatalError("sheetAttribute not found")
+			}
+		}
+		
+		guard let validAttribute = attribute else {
+			print("attribute not found")
+			return
+		}
+		
+		let preset: Preset? = sheetPresetRepository.findByPrimaryKey(validAttribute.presetId)
+
+		guard let validPreset = preset else {
+			print("preset not found")
+			return
+		}
+		
 		let fetchSheetsCellQuery: FetchSheetsCellQuery = FetchSheetsCellQuery(
-			sheetName: sheetsPreset.tabName,
-			spreadSheetId: sheetsPreset.spreadSheetId,
-			column: sheetsAttribute.column,
-			row: sheetsPreset.targetRow
+			sheetName: validPreset.tabName,
+			spreadSheetId: validPreset.spreadSheetId,
+			column: validAttribute.column,
+			row: validPreset.targetRow
 		)
 		GoogleAPIClient.shared.fetchSpreadSheetCell(fetchSheetsCellQuery) { result in
 			switch result {
