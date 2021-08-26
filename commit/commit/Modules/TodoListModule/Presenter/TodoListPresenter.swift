@@ -125,7 +125,7 @@ class TodoListPresenter: ObservableObject {
 		static let sample: TodoListPresenter = {
 			let todoRepository = MockTodoRepository()
 			let listFetchInteractor = AnyUseCase(ListFetchInteractor())
-			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor(todoRepository: todoRepository))
+			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor())
 			let deleteSectionInteractor = AnyUseCase(DeleteSectionInteractor())
 			let dependency = TodoListPresenter.Dependency(
 				listFetchInteractor: listFetchInteractor,

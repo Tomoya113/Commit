@@ -8,18 +8,14 @@
 import Foundation
 
 class TodoUpdateInteractor: UseCase {
-	let todoRepository: TodoRepositoryProtocol
+	let todoRepository = RealmRepository<Todo>()
 	let sheetsTodoAttributeRepository = RealmRepository<SheetsTodoAttribute>()
 	let sheetPresetRepository = RealmRepository<Preset>()
 	
-	init(
-		todoRepository: TodoRepositoryProtocol = TodoRepository.shared
-	) {
-		self.todoRepository = todoRepository
-	}
-	
 	func execute(_ parameters: Todo, completion: ((Result<Void, Never>) -> Void )?) {
-		todoRepository.updateTodoStatusById(parameters.id)
+		todoRepository.transaction {
+			parameters.status!.finished.toggle()
+		}
 		if parameters.todoType == "googleSheets" {
 			print("googleSheets")
 			updateSheetTodo(parameters)
