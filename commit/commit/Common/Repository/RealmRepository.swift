@@ -26,7 +26,7 @@ class RealmRepository<T: Object>: RealmRepositoryProtocol {
 	}
 	
 	func find(predicate: NSPredicate, completion: ((Result<[T], Never>) -> Void )?) {
-		// 中身が空のときはErrorを投げたい
+		//NOTE: 中身が空のときはErrorを投げたい
 		let results = realm.objects(T.self).filter(predicate).map { $0 }
 		completion?(.success(Array(results)))
 	}

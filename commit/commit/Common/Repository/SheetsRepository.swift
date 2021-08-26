@@ -50,6 +50,7 @@ class SheetsRepository: SheetsRepositoryProtocol {
 		guard let validPreset = preset else {
 			fatalError("preset not found")
 		}
+		
 		let doneOrNot = todo.status!.finished ? "DONE" : ""
 		let text = todo.status!.detail != "" ? todo.status!.detail : doneOrNot
 		let query = UpdateSpreadSheetCellQuery(
