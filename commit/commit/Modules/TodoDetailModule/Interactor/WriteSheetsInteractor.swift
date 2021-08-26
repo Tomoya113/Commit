@@ -9,14 +9,13 @@ import Foundation
 
 class WriteSheetsInteractor: UseCase {
 	let todoRepository: TodoRepositoryProtocol
-	let sheetRepository: SheetsRepositoryProtocol
+	let spreadSheetTodoAttributeRepository = RealmRepository<SpreadSheetTodoAttribute>()
+	let sheetPresetRepository = RealmRepository<Preset>()
 	
 	init(
-		todoRepository: TodoRepositoryProtocol = TodoRepository.shared,
-		sheetRepository: SheetsRepositoryProtocol = SheetsRepository.shared
+		todoRepository: TodoRepositoryProtocol = TodoRepository.shared
 	) {
 		self.todoRepository = todoRepository
-		self.sheetRepository = sheetRepository
 	}
 	
 	func execute(_ parameters: Todo, completion: ((Result<Void, Never>) -> Void )?) {
@@ -24,11 +23,54 @@ class WriteSheetsInteractor: UseCase {
 			print("This is not sheet Todo")
 			return
 		}
-		sheetRepository.updateSheetTodo(parameters)
+		updateSheetTodo(parameters)
 		completion?(.success(()))
 	}
 	
 	func cancel() {
 		
 	}
+	
+	func updateSheetTodo(_ todo: Todo) {
+		// NOTE: もうちょっと上手く書けないかな
+		var attribute: SpreadSheetTodoAttribute?
+		let predicate = NSPredicate(format: "todoId == %@", argumentArray: [todo.id])
+		spreadSheetTodoAttributeRepository.find(predicate: predicate) { result in
+			switch result {
+				case .success(let attributes):
+					guard let foundAttribute = attributes.first else {
+						fatalError("sheetAttribute not found")
+					}
+					attribute = foundAttribute
+				default:
+					fatalError("sheetAttribute not found")
+			}
+		}
+		
+		guard let validAttribute = attribute else {
+			print("attribute not found")
+			return
+		}
+		
+		let preset: Preset? = sheetPresetRepository.findByPrimaryKey(validAttribute.presetId)
+
+		guard let validPreset = preset else {
+			print("preset not found")
+			return
+		}
+		
+		let doneOrNot = todo.status!.finished ? "DONE" : ""
+		let text = todo.status!.detail != "" ? todo.status!.detail : doneOrNot
+		let query = UpdateSpreadSheetCellQuery(
+			spreadsheetId: validPreset.spreadSheetId,
+			tabName: validPreset.tabName,
+			targetRow: validPreset.targetRow,
+			targetColumn: validAttribute.column,
+			text: text
+		)
+		
+		GoogleAPIClient.shared.updateSpreadSheetCell(query)
+	}
+	
+	
 }
