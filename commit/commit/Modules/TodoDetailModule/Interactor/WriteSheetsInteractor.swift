@@ -8,15 +8,8 @@
 import Foundation
 
 class WriteSheetsInteractor: UseCase {
-	let todoRepository: TodoRepositoryProtocol
 	let sheetsTodoAttributeRepository = RealmRepository<SheetsTodoAttribute>()
 	let sheetPresetRepository = RealmRepository<Preset>()
-	
-	init(
-		todoRepository: TodoRepositoryProtocol = TodoRepository.shared
-	) {
-		self.todoRepository = todoRepository
-	}
 	
 	func execute(_ parameters: Todo, completion: ((Result<Void, Never>) -> Void )?) {
 		if parameters.todoType != "googleSheets" {
