@@ -47,16 +47,13 @@ class SpreadSheetAddPresenter: ObservableObject {
 	
 	let dependency: SpreadSheetAddPresenter.Dependency
 	let todoRepository: TodoRepositoryProtocol
-	let sheetRepository: SheetsRepositoryProtocol
 	
 	init(
 		dependency: SpreadSheetAddPresenter.Dependency,
-		todoRepository: TodoRepositoryProtocol = TodoRepository.shared,
-		sheetRepository: SheetsRepositoryProtocol = SheetsRepository()
+		todoRepository: TodoRepositoryProtocol = TodoRepository.shared
 	) {
 		self.dependency = dependency
 		self.todoRepository = todoRepository
-		self.sheetRepository = sheetRepository
 	}
 	
 	func googleOAuth() {
