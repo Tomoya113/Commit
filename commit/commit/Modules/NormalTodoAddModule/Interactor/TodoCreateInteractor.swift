@@ -8,16 +8,18 @@
 import Foundation
 
 class TodoCreateInteractor: UseCase {
-	let repository: TodoRepositoryProtocol
-	
-	init(repository: TodoRepositoryProtocol = TodoRepository.shared) {
-		self.repository = repository
-	}
+	let sectionRepository = RealmRepository<SectionRealm>()
+	let todoRepository = RealmRepository<Todo>()
 	
 	func execute(_ parameters: AddTodoQuery, completion: ((Result<Void, Never>) -> Void )?) {
-		repository.createNewTodo(query: parameters) { _ in
-			completion?(.success(()))
+		// NOTE: Neverじゃないだろ
+		guard let section = sectionRepository.findByPrimaryKey(parameters.sectionId) else {
+			fatalError("section not found")
 		}
+		sectionRepository.transaction {
+			section.todos.append(parameters.todo)
+		}
+		completion?(.success(()))
 	}
 	
 	func cancel() {
