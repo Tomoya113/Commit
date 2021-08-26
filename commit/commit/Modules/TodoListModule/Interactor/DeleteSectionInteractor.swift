@@ -8,7 +8,7 @@
 import Foundation
 
 class DeleteSectionInteractor: UseCase {
-	let sheetAttributeRepository = RealmRepository<SpreadSheetTodoAttribute>()
+	let sheetsTodoAttributeRepository = RealmRepository<SheetsTodoAttribute>()
 	let presetRepository = RealmRepository<Preset>()
 	let sectionRepository = RealmRepository<SectionRealm>()
 	let todoRepository = RealmRepository<Todo>()
@@ -38,11 +38,11 @@ class DeleteSectionInteractor: UseCase {
 	
 	private func deleteSheetAttribute(id: String) {
 		let predicate = NSPredicate(format: "presetId = %@", argumentArray: [id])
-		sheetAttributeRepository.find(predicate: predicate) { result in
+		sheetsTodoAttributeRepository.find(predicate: predicate) { result in
 			switch result {
 				case .success(let attributes):
 					print(attributes)
-					self.sheetAttributeRepository.delete(entities: attributes)
+					self.sheetsTodoAttributeRepository.delete(entities: attributes)
 			}
 		}
 	}

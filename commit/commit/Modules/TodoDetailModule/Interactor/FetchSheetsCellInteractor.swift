@@ -9,7 +9,7 @@ import Foundation
 
 class FetchSheetsCellInteractor: UseCase {
 	let todoRepository: TodoRepositoryProtocol
-	let spreadSheetTodoAttributeRepository = RealmRepository<SpreadSheetTodoAttribute>()
+	let sheetsTodoAttributeRepository = RealmRepository<SheetsTodoAttribute>()
 	let sheetPresetRepository = RealmRepository<Preset>()
 	
 	init(
@@ -20,21 +20,21 @@ class FetchSheetsCellInteractor: UseCase {
 	
 	func execute(_ parameters: Todo, completion: ((Result<String, Error>) -> Void )?) {
 		// ちゃんとエラーハンドリングしようね
-		var attribute: SpreadSheetTodoAttribute?
+		var sheetsTodoAttribute: SheetsTodoAttribute?
 		let predicate = NSPredicate(format: "todoId == %@", argumentArray: [parameters.id])
-		spreadSheetTodoAttributeRepository.find(predicate: predicate) { result in
+		sheetsTodoAttributeRepository.find(predicate: predicate) { result in
 			switch result {
 				case .success(let attributes):
 					guard let foundAttribute = attributes.first else {
 						fatalError("sheetAttribute not found")
 					}
-					attribute = foundAttribute
+					sheetsTodoAttribute = foundAttribute
 				default:
 					fatalError("sheetAttribute not found")
 			}
 		}
 		
-		guard let validAttribute = attribute else {
+		guard let validAttribute = sheetsTodoAttribute else {
 			print("attribute not found")
 			return
 		}

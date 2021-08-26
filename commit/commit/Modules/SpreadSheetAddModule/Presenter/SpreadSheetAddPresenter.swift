@@ -30,7 +30,7 @@ class UserResources: ObservableObject {
 class SheetData: ObservableObject {
 	@Published var preset: Preset = Preset()
 	@Published var section: SectionRealm = SectionRealm()
-	@Published var sheetAttributes: [SpreadSheetTodoAttribute] = []
+	@Published var sheetsTodoAttributes: [SheetsTodoAttribute] = []
 }
 
 class SpreadSheetAddPresenter: ObservableObject {
@@ -131,12 +131,12 @@ class SpreadSheetAddPresenter: ObservableObject {
 	}
 	
 	func saveData() {
-		if sheetData.sheetAttributes.isEmpty {
+		if sheetData.sheetsTodoAttributes.isEmpty {
 			print("attribute not found")
 			return
 		}
 		let createSheetDataQuery = CreateSheetDataQuery(
-			preset: sheetData.preset, section: sheetData.section, sheetAttributes: sheetData.sheetAttributes)
+			preset: sheetData.preset, section: sheetData.section, sheetsAttributes: sheetData.sheetsTodoAttributes)
 		dependency.createSheetDataInteractor.execute(createSheetDataQuery, completion: nil)
 	}
 	
@@ -172,8 +172,8 @@ class SpreadSheetAddPresenter: ObservableObject {
 				todoType: .googleSheets)
 			sheetData.section.todos.append(todo)
 
-			let sheetTodo = SpreadSheetTodoAttribute(todoId: todo.id, presetId: sheetData.preset.id, column: columnRange[i].rawValue)
-			sheetData.sheetAttributes.append(sheetTodo)
+			let sheetsTodoAttribute = SheetsTodoAttribute(todoId: todo.id, presetId: sheetData.preset.id, column: columnRange[i].rawValue)
+			sheetData.sheetsTodoAttributes.append(sheetsTodoAttribute)
 		}
 	}
 	

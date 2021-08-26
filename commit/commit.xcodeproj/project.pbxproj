@@ -80,7 +80,7 @@
 		71AA3DBE2680D576005D1CCC /* TodoRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */; };
 		71AA3DC02680DEC2005D1CCC /* TodoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DBF2680DEC2005D1CCC /* TodoRepository.swift */; };
 		71AA3DC32680DEF3005D1CCC /* MockTodoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC22680DEF3005D1CCC /* MockTodoRepository.swift */; };
-		71AA3DC726814B95005D1CCC /* SpreadSheetTodoAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC626814B95005D1CCC /* SpreadSheetTodoAttribute.swift */; };
+		71AA3DC726814B95005D1CCC /* SheetsTodoAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC626814B95005D1CCC /* SheetsTodoAttribute.swift */; };
 		71AA3DC92682E773005D1CCC /* ListFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC82682E773005D1CCC /* ListFetchInteractor.swift */; };
 		71AF451A26790DA70084364A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF451926790DA70084364A /* Todo.swift */; };
 		71CB63D8269A0CAB003C98A8 /* CellsFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CB63D7269A0CAB003C98A8 /* CellsFetchInteractor.swift */; };
@@ -177,7 +177,7 @@
 		71AA3DBD2680D576005D1CCC /* TodoRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepositoryProtocol.swift; sourceTree = "<group>"; };
 		71AA3DBF2680DEC2005D1CCC /* TodoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepository.swift; sourceTree = "<group>"; };
 		71AA3DC22680DEF3005D1CCC /* MockTodoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTodoRepository.swift; sourceTree = "<group>"; };
-		71AA3DC626814B95005D1CCC /* SpreadSheetTodoAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetTodoAttribute.swift; sourceTree = "<group>"; };
+		71AA3DC626814B95005D1CCC /* SheetsTodoAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetsTodoAttribute.swift; sourceTree = "<group>"; };
 		71AA3DC82682E773005D1CCC /* ListFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFetchInteractor.swift; sourceTree = "<group>"; };
 		71AF451926790DA70084364A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		71CB63D7269A0CAB003C98A8 /* CellsFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsFetchInteractor.swift; sourceTree = "<group>"; };
@@ -589,7 +589,7 @@
 				715C2F1326791F7700DA66F3 /* Tag.swift */,
 				715C2F15267921A700DA66F3 /* Preset.swift */,
 				715C2F182679244F00DA66F3 /* SpreadSheetHistory.swift */,
-				71AA3DC626814B95005D1CCC /* SpreadSheetTodoAttribute.swift */,
+				71AA3DC626814B95005D1CCC /* SheetsTodoAttribute.swift */,
 				71A9D67A26C17DBF002A7411 /* Section.swift */,
 			);
 			path = Entity;
@@ -939,7 +939,7 @@
 				71931AAC2699BC7D00BB404F /* DriveAPIManager.swift in Sources */,
 				714A47F226A66DEF00268779 /* GoogleAPIRequest.swift in Sources */,
 				717DC9AF26B1334C00687D68 /* SafariView.swift in Sources */,
-				71AA3DC726814B95005D1CCC /* SpreadSheetTodoAttribute.swift in Sources */,
+				71AA3DC726814B95005D1CCC /* SheetsTodoAttribute.swift in Sources */,
 				717F944826774ED400D11C58 /* SceneDelegate.swift in Sources */,
 				714A481626A7117D00268779 /* FetchSheetsCellInteractor.swift in Sources */,
 				717D0F2E26946B1000BD4655 /* GoogleAPIInfo.swift in Sources */,

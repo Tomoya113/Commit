@@ -9,7 +9,7 @@ import Foundation
 
 class TodoUpdateInteractor: UseCase {
 	let todoRepository: TodoRepositoryProtocol
-	let spreadSheetTodoAttributeRepository = RealmRepository<SpreadSheetTodoAttribute>()
+	let sheetsTodoAttributeRepository = RealmRepository<SheetsTodoAttribute>()
 	let sheetPresetRepository = RealmRepository<Preset>()
 	
 	init(
@@ -33,9 +33,9 @@ class TodoUpdateInteractor: UseCase {
 	
 	func updateSheetTodo(_ todo: Todo) {
 		// NOTE: もうちょっと上手く書けないかな
-		var attribute: SpreadSheetTodoAttribute?
+		var attribute: SheetsTodoAttribute?
 		let predicate = NSPredicate(format: "todoId == %@", argumentArray: [todo.id])
-		spreadSheetTodoAttributeRepository.find(predicate: predicate) { result in
+		sheetsTodoAttributeRepository.find(predicate: predicate) { result in
 			switch result {
 				case .success(let attributes):
 					guard let foundAttribute = attributes.first else {

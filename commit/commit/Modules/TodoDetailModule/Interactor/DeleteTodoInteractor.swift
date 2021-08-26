@@ -8,17 +8,17 @@
 import Foundation
 
 class DeleteTodoInteractor: UseCase {
-	let sheetAttributeRepository = RealmRepository<SpreadSheetTodoAttribute>()
+	let sheetsTodoAttributeRepository = RealmRepository<SheetsTodoAttribute>()
 	let todoRepository = RealmRepository<Todo>()
 	
 	func execute(_ parameters: Todo, completion: ((Result<Void, Never>) -> Void )?) {
 		if parameters.type == .googleSheets {
 			let predicate = NSPredicate(format: "todoId = %@", argumentArray: [parameters.id])
-			sheetAttributeRepository.find(predicate: predicate) { result in
+			sheetsTodoAttributeRepository.find(predicate: predicate) { result in
 				switch result {
 					case .success(let attributes):
 						print(attributes)
-						self.sheetAttributeRepository.delete(entities: attributes)
+						self.sheetsTodoAttributeRepository.delete(entities: attributes)
 					case .failure:
 						print("failure")
 				}
