@@ -154,7 +154,7 @@ class SpreadSheetAddPresenter: ObservableObject {
 		
 		sheetData.section.title = sheetPreset.title
 		
-		sheetData.preset.spreadSheetId = sheetPreset.spreadSheetId
+		sheetData.preset.sheetsId = sheetPreset.spreadSheetId
 		sheetData.preset.sectionId = sheetData.section.id
 		sheetData.preset.tabName = sheetPreset.tabName
 		sheetData.preset.title = sheetPreset.title

@@ -41,7 +41,7 @@ class FetchSheetsCellInteractor: UseCase {
 		
 		let fetchSheetsCellQuery: FetchSheetsCellQuery = FetchSheetsCellQuery(
 			sheetName: validPreset.tabName,
-			sheetsId: validPreset.spreadSheetId,
+			sheetsId: validPreset.sheetsId,
 			column: validAttribute.column,
 			row: validPreset.targetRow
 		)

@@ -10,7 +10,7 @@ import RealmSwift
 class Preset: Object, ObjectKeyIdentifiable {
 	@objc dynamic var id: String = UUID().uuidString
 	@objc dynamic var sectionId: String = ""
-	@objc dynamic var spreadSheetId: String = ""
+	@objc dynamic var sheetsId: String = ""
 	@objc dynamic var tabName: String = ""
 	@objc dynamic var title: String = ""
 	@objc dynamic var range: SheetRange?
@@ -23,7 +23,7 @@ class Preset: Object, ObjectKeyIdentifiable {
 	
 	convenience init(spreadSheetId: String, sectionId: String, tabName: String, title: String, range: SheetRange, targetRow: String) {
 		self.init()
-		self.spreadSheetId = spreadSheetId
+		self.sheetsId = spreadSheetId
 		self.sectionId = sectionId
 		self.tabName = tabName
 		self.title = title
