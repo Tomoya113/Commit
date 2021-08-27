@@ -9,6 +9,12 @@ import Foundation
 import RealmSwift
 import SwiftUI
 
+class DisplayData: ObservableObject {
+	@Published var lists: [ListRealm] = []
+	@Published var defaultSection: SectionRealm?
+	@Published var currentSections: [SectionRealm] = []
+}
+
 class TodoListPresenter: ObservableObject {
 	struct Dependency {
 		let listFetchInteractor: AnyUseCase<Void, [ListRealm], Never>
@@ -16,10 +22,9 @@ class TodoListPresenter: ObservableObject {
 		let deleteSectionInteractor: AnyUseCase<SectionRealm, Void, Never>
 	}
 	
-	@Published var lists: [ListRealm] = []
-	@Published var defaultSection: SectionRealm?
-	@Published var currentSections: [SectionRealm] = []
+	@Published var displayData = DisplayData()
 	
+	private var notificationTokens: [NotificationToken] = []
 	private let dependency: Dependency
 	private let router = TodoListRouter()
 	private var isFirstAppear = false
@@ -29,25 +34,40 @@ class TodoListPresenter: ObservableObject {
 	}
 	
 	func onAppear() {
-		if !isFirstAppear {
-			isFirstAppear = true
-			dependency.listFetchInteractor.execute(()) { [weak self] result in
-				switch result {
-					case .success(let lists):
-						// NOTE: 絶対ここでやるなよ???
-						self?.lists = lists
-						var sections = lists[0].sections
-						let defaultSection = sections[0]
-						self?.defaultSection = defaultSection
-						if sections.count == 1 {
-							return
-						}
-						let currenSections = sections[1..<sections.count]
-						self?.currentSections = Array(currenSections)
-				}
+		
+		dependency.listFetchInteractor.execute(()) { [weak self] result in
+			switch result {
+				case .success(let lists):
+					self?.setSection(from: lists)
+					self?.objectWillChange.send()
 			}
 		}
 		
+		notificationTokens.append(displayData.lists[0].observe { change in
+			switch change {
+				case let .change(result, _):
+					self.setSection(from: [result as! ListRealm])
+					self.objectWillChange.send()
+				case let .error(error):
+					print(error.localizedDescription)
+				case .deleted:
+					print("deleted")
+			}
+		})
+	}
+	
+	private func setSection(from lists: [ListRealm]) {
+		// NOTE: 絶対ここでやるなよ???
+		print("setSection")
+		displayData.lists = lists
+		let sections = lists[0].sections
+		let defaultSection = sections[0]
+		displayData.defaultSection = defaultSection
+		if sections.count == 1 {
+			return
+		}
+		let currentSections = sections[1..<sections.count]
+		displayData.currentSections = Array(currentSections)
 	}
 	
 	func updateTodoStatus(todo: Todo) {
@@ -60,9 +80,9 @@ class TodoListPresenter: ObservableObject {
 	}
 	
 	func deleteSection(_ index: Int) {
-		if !lists.isEmpty {
-			currentSections.remove(at: index)
-			dependency.deleteSectionInteractor.execute(lists[0].sections[index + 1]) { result in
+		if !displayData.lists.isEmpty {
+			displayData.currentSections.remove(at: index)
+			dependency.deleteSectionInteractor.execute(displayData.lists[0].sections[index + 1]) { result in
 				switch result {
 					case .success:
 						print("delete")
@@ -111,11 +131,12 @@ class TodoListPresenter: ObservableObject {
 		}
 	}
 	
-	func todoAddLinkBuidler<Content: View>(sections: [SectionRealm], @ViewBuilder content: () -> Content) -> some View {
+	func todoAddLinkBuilder<Content: View>(sections: [SectionRealm], @ViewBuilder content: () -> Content) -> some View {
 		return (
 			NavigationLink(destination: router.generateTodoAddView(sections: sections)) {
 				content()
 			}
+			
 		)
 	}
 }
@@ -123,7 +144,6 @@ class TodoListPresenter: ObservableObject {
 #if DEBUG
 	extension TodoListPresenter {
 		static let sample: TodoListPresenter = {
-			let todoRepository = MockTodoRepository()
 			let listFetchInteractor = AnyUseCase(ListFetchInteractor())
 			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor())
 			let deleteSectionInteractor = AnyUseCase(DeleteSectionInteractor())

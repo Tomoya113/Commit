@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TodoListView: View {
-	@ObservedObject var presenter: TodoListPresenter
+	@StateObject var presenter: TodoListPresenter
 	@State private var isActionSheetPresented: Bool = false
 	@State private var showAlert: Bool = false
 	@State private var selectedSectionIndex: Int = 0
@@ -18,10 +18,10 @@ struct TodoListView: View {
 			ZStack {
 				VStack {
 					List {
-						if presenter.defaultSection != nil {
-							if !presenter.defaultSection!.todos.isEmpty {
-								Section(header: Text(presenter.defaultSection!.title)) {
-									ForEach(presenter.defaultSection!.todos) { todo in
+						if presenter.displayData.defaultSection != nil {
+							if !presenter.displayData.defaultSection!.todos.isEmpty {
+								Section(header: Text(presenter.displayData.defaultSection!.title)) {
+									ForEach(presenter.displayData.defaultSection!.todos) { todo in
 										presenter.detailViewLinkBuilder(for: todo) {
 											presenter.generateTodoRow(
 												todo: todo) {
@@ -31,7 +31,7 @@ struct TodoListView: View {
 									}
 								}
 							} else {
-								Section(header: Text(presenter.defaultSection!.title)) {
+								Section(header: Text(presenter.displayData.defaultSection!.title)) {
 									HStack(alignment: .center) {
 										Spacer()
 										Text("タスクがありません！")
@@ -40,7 +40,7 @@ struct TodoListView: View {
 								}
 							}
 						}
-						if !presenter.lists.isEmpty {
+						if !presenter.displayData.lists.isEmpty {
 							sections()
 							// NOTE: 下に空白作るためのやつ(もっとほかのいいやり方ありそう)
 							Section {
@@ -59,8 +59,6 @@ struct TodoListView: View {
 			.alert(isPresented: $showAlert) {
 				sectionDeleteConfirmationAlert()
 			}
-			// NOTE: こんな感じでout of rangeだったりするとエラーになる
-//			.navigationTitle(presenter.lists.isEmpty ? "" : presenter.lists[0].title)
 			.navigationTitle("TODO")
 		}
 		.navigationViewStyle(StackNavigationViewStyle())
@@ -76,11 +74,11 @@ struct TodoListView: View {
 	private func sections() -> some View {
 		return (
 			// NOTE: id無いとどれを削除したら良い変わらんってなってぴえんってなるやつ
-			ForEach(presenter.currentSections.indices, id: \.self) { i in
-				if !presenter.currentSections[i].isInvalidated {
-					if !presenter.currentSections[i].todos.isEmpty {
+			ForEach(presenter.displayData.currentSections.indices, id: \.self) { i in
+				if !presenter.displayData.currentSections[i].isInvalidated {
+					if !presenter.displayData.currentSections[i].todos.isEmpty {
 						Section(header: sectionHeader(index: i)) {
-							ForEach(presenter.currentSections[i].todos) { todo in
+							ForEach(presenter.displayData.currentSections[i].todos) { todo in
 								presenter.detailViewLinkBuilder(for: todo) {
 									presenter.generateTodoRow(
 										todo: todo) {
@@ -109,8 +107,8 @@ struct TodoListView: View {
 				Spacer()
 				HStack {
 					Spacer()
-					if !presenter.lists.isEmpty {
-						presenter.todoAddLinkBuidler(sections: presenter.currentSections) {
+					if !presenter.displayData.lists.isEmpty {
+						presenter.todoAddLinkBuilder(sections: presenter.displayData.currentSections) {
 							presenter.addTodoButtonImage()
 								.padding()
 						}
@@ -123,7 +121,7 @@ struct TodoListView: View {
 	private func sectionHeader(index: Int) -> some View {
 		return (
 			HStack {
-				TextField($presenter.currentSections[index].title.wrappedValue, text: $presenter.currentSections[index].title)
+				TextField($presenter.displayData.currentSections[index].title.wrappedValue, text: $presenter.displayData.currentSections[index].title)
 					.foregroundColor(Color.blue)
 				Spacer()
 				Button(action: {
