@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SpreadSheetFiles: Decodable {
+struct SheetsFiles: Decodable {
 	let kind: String
 	let files: [SheetsFile]
 }

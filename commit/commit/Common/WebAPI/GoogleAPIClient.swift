@@ -41,7 +41,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 			let decoder = JSONDecoder()
 			
 			do {
-				let response = try decoder.decode(SpreadSheetFiles.self, from: newData)
+				let response = try decoder.decode(SheetsFiles.self, from: newData)
 				completion(.success(response.files))
 			} catch {
 				print(error)
