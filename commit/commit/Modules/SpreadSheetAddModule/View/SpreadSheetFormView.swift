@@ -24,14 +24,14 @@ struct SpreadSheetFormView: View {
 			}
 			
 			Section(header: Text("スプレッドシート")) {
-				Picker("スプレッドシート", selection: $spreadSheetPreset.spreadSheetId) {
+				Picker("スプレッドシート", selection: $spreadSheetPreset.sheetsId) {
 					ForEach(userResources.spreadSheetList) { file in
 						Text(file.name)
 							.tag(file.id)
 							.buttonStyle(PlainButtonStyle())
 					}
 				}
-				.onChange(of: spreadSheetPreset.spreadSheetId) { _ in
+				.onChange(of: spreadSheetPreset.sheetsId) { _ in
 					fetchSpreadSheetInfo()
 				}
 			}

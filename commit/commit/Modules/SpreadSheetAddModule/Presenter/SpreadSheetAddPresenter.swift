@@ -14,7 +14,7 @@ class Column: ObservableObject {
 }
 // NOTE: 命名微妙じゃない？
 class SheetPreset: ObservableObject {
-	@Published var spreadSheetId: String = ""
+	@Published var sheetsId: String = ""
 	@Published var title: String = ""
 	@Published var tabName: String = ""
 	@Published var column: Column = Column()
@@ -96,7 +96,7 @@ class SpreadSheetAddPresenter: ObservableObject {
 	
 	func fetchSpreadSheetInfo() {
 		// NOTE: 後で書き換える
-		dependency.spreadSheetInfoFetchInteractor.execute(sheetPreset.spreadSheetId) { result in
+		dependency.spreadSheetInfoFetchInteractor.execute(sheetPreset.sheetsId) { result in
 			switch result {
 				case .success(let sheets):
 					DispatchQueue.main.async {
@@ -120,7 +120,7 @@ class SpreadSheetAddPresenter: ObservableObject {
 		let query = FetchSheetCellsQuery(
 			sheetName: sheetPreset.tabName,
 			// NOTE: 後で書き換える
-			sheetsId: sheetPreset.spreadSheetId,
+			sheetsId: sheetPreset.sheetsId,
 			column: column,
 			row: sheetPreset.row
 		)
@@ -154,7 +154,7 @@ class SpreadSheetAddPresenter: ObservableObject {
 		
 		sheetData.section.title = sheetPreset.title
 		
-		sheetData.preset.sheetsId = sheetPreset.spreadSheetId
+		sheetData.preset.sheetsId = sheetPreset.sheetsId
 		sheetData.preset.sectionId = sheetData.section.id
 		sheetData.preset.tabName = sheetPreset.tabName
 		sheetData.preset.title = sheetPreset.title
