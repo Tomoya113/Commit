@@ -8,7 +8,7 @@
 import Foundation
 
 struct SheetPresetQuery {
-	var spreadSheetId: String
+	var sheetsId: String
 	var title: String
 	var tabName: String
 	var column: SheetPresetQueryColumn
