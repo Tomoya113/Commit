@@ -15,7 +15,4 @@ class ListFetchInteractor: UseCase {
 		completion?(.success(lists))
 	}
 	
-	func cancel() {
-		
-	}
 }

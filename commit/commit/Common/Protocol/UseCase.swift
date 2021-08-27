@@ -27,8 +27,7 @@ protocol UseCase where Failure: Error {
 		_ parameters: Parameters,
 		completion: ( (Result<Success, Failure>) -> Void )?
 	)
-	
-	func cancel()
+
 }
 
 final class AnyUseCase<Parameters, Success, Failure: Error>: UseCase {
@@ -45,10 +44,7 @@ final class AnyUseCase<Parameters, Success, Failure: Error>: UseCase {
 	func execute(_ parameters: Parameters, completion: ((Result<Success, Failure>) -> Void )?) {
 		box.execute(parameters, completion: completion)
 	}
-	
-	func cancel() {
-		box.cancel()
-	}
+
 }
 
 // AnyUseCaseさえ知っていればいい情報なためprivate extensionとしている
@@ -63,9 +59,6 @@ private extension AnyUseCase {
 			fatalError()
 		}
 		
-		func cancel() {
-			fatalError()
-		}
 	}
 	
 	// ジェネリクスの型パラメータとしてT: UseCaseを持つクラスとして定義。
@@ -80,10 +73,6 @@ private extension AnyUseCase {
 		
 		override func execute(_ parameters: T.Parameters, completion: ((Result<T.Success, T.Failure>) -> Void )?) {
 			base.execute(parameters, completion: completion)
-		}
-		
-		override func cancel() {
-			base.cancel()
 		}
 		
 	}

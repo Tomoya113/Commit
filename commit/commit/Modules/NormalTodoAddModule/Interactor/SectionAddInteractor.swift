@@ -18,7 +18,5 @@ class SectionAddInteractor: UseCase {
 			completion?(.success(()))
 		}
 	}
-	
-	func cancel() {
-	}
+
 }

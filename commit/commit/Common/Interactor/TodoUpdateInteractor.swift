@@ -23,10 +23,6 @@ class TodoUpdateInteractor: UseCase {
 		completion?(.success(()))
 	}
 	
-	func cancel() {
-		
-	}
-	
 	func updateSheetTodo(_ todo: Todo) {
 		// NOTE: もうちょっと上手く書けないかな
 		var attribute: SheetsTodoAttribute?

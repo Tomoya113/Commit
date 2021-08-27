@@ -30,7 +30,4 @@ class CreateSheetDataInteractor: UseCase {
 		}
 	}
 	
-	func cancel() {
-		
-	}
 }

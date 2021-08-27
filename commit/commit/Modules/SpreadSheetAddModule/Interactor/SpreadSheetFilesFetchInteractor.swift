@@ -24,8 +24,5 @@ class SpreadSheetFilesFetchInteractor: UseCase {
 			}
 		}
 	}
-	
-	func cancel() {
-		
-	}
+
 }

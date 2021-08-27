@@ -24,8 +24,4 @@ class CellsFetchInteractor: UseCase {
 			}
 		}
 	}
-	
-	func cancel() {
-		
-	}
 }

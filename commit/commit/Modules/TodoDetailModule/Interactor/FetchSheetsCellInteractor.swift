@@ -55,8 +55,4 @@ class FetchSheetsCellInteractor: UseCase {
 		}
 	}
 	
-	func cancel() {
-		
-	}
-	
 }

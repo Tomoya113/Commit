@@ -21,8 +21,4 @@ class TodoCreateInteractor: UseCase {
 		}
 		completion?(.success(()))
 	}
-	
-	func cancel() {
-		
-	}
 }

@@ -47,7 +47,4 @@ class DeleteSectionInteractor: UseCase {
 		}
 	}
 	
-	func cancel() {
-		
-	}
 }

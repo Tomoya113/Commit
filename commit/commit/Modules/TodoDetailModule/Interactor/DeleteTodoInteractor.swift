@@ -28,8 +28,4 @@ class DeleteTodoInteractor: UseCase {
 		completion?(.success(()))
 	}
 	
-	func cancel() {
-		
-	}
-	
 }

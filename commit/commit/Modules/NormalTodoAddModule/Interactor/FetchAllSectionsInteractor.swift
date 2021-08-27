@@ -17,6 +17,4 @@ class FetchAllSectionsInteractor: UseCase {
 		}
 	}
 	
-	func cancel() {
-	}
 }
