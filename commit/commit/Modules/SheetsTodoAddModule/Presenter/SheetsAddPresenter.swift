@@ -1,5 +1,5 @@
 //
-//  SpreadSheetPresenter.swift
+//  SheetsAddPresenter.swift
 //  commit
 //
 //  Created by Tomoya Tanaka on 2021/06/26.
@@ -33,7 +33,7 @@ class SheetData: ObservableObject {
 	@Published var sheetsTodoAttributes: [SheetsTodoAttribute] = []
 }
 
-class SpreadSheetAddPresenter: ObservableObject {
+class SheetsAddPresenter: ObservableObject {
 	struct Dependency {
 		let spreadSheetCellsFetchInteractor: AnyUseCase<FetchSheetCellsQuery, [String], Error>
 		let spreadSheetFilesFetchInteractor: AnyUseCase<String, [SheetsFile], Error>
@@ -45,10 +45,10 @@ class SpreadSheetAddPresenter: ObservableObject {
 	@Published var userResources = UserResources()
 	@Published var sheetData = SheetData()
 	
-	let dependency: SpreadSheetAddPresenter.Dependency
+	let dependency: SheetsAddPresenter.Dependency
 	
 	init(
-		dependency: SpreadSheetAddPresenter.Dependency
+		dependency: SheetsAddPresenter.Dependency
 	) {
 		self.dependency = dependency
 	}
@@ -177,11 +177,11 @@ class SpreadSheetAddPresenter: ObservableObject {
 }
 
 #if DEBUG
-extension SpreadSheetAddPresenter {
-	static let sample: SpreadSheetAddPresenter = {
+extension SheetsAddPresenter {
+	static let sample: SheetsAddPresenter = {
 		let spreadSheetCellsFetchInteractor = AnyUseCase(CellsFetchInteractor())
-		let spreadSheetFilesFetchInteractor = AnyUseCase(SpreadSheetFilesFetchInteractor())
-		let spreadSheetInfoFetchInteractor = AnyUseCase(SpreadSheetInfoFetchInteractor())
+		let spreadSheetFilesFetchInteractor = AnyUseCase(SheetsFilesFetchInteractor())
+		let spreadSheetInfoFetchInteractor = AnyUseCase(SheetsInfoFetchInteractor())
 		let createSheetDataInteractor = AnyUseCase(CreateSheetDataInteractor())
 		let dependency = Dependency(
 			spreadSheetCellsFetchInteractor: spreadSheetCellsFetchInteractor,
@@ -189,7 +189,7 @@ extension SpreadSheetAddPresenter {
 			spreadSheetInfoFetchInteractor: spreadSheetInfoFetchInteractor,
 			createSheetDataInteractor: createSheetDataInteractor
 		)
-		return SpreadSheetAddPresenter(dependency: dependency)
+		return SheetsAddPresenter(dependency: dependency)
 	}()
 }
 #endif

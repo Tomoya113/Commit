@@ -1,5 +1,5 @@
 //
-//  SpreadSheetFilesFetchInteractor.swift
+//  SheetsFilesFetchInteractor.swift
 //  commit
 //
 //  Created by Tomoya Tanaka on 2021/06/26.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SpreadSheetFilesFetchInteractor: UseCase {
+class SheetsFilesFetchInteractor: UseCase {
 	let repository: GoogleAPIClientProtocol
 	
 	init(repository: GoogleAPIClientProtocol = GoogleAPIClient.shared) {

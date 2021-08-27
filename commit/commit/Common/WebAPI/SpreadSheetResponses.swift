@@ -19,7 +19,7 @@ struct SheetsFile: Decodable, Identifiable {
 	var name: String
 }
 
-struct SpreadSheetInfo: Decodable {
+struct SheetsInfo: Decodable {
 	var sheets: [Sheet]
 }
 

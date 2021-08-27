@@ -171,7 +171,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 			let jsonstr: String = String(data: newData, encoding: .utf8)!
 			print(jsonstr)
 			do {
-				let response = try decoder.decode(SpreadSheetInfo.self, from: newData)
+				let response = try decoder.decode(SheetsInfo.self, from: newData)
 				completion(.success(response.sheets))
 			} catch {
 				print(error)

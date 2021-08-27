@@ -22,16 +22,16 @@ class TodoAddRouter {
 	
 	func generateSpreadSheetAddView() -> some View {
 		let spreadSheetCellsFetchInteractor = AnyUseCase(CellsFetchInteractor())
-		let spreadSheetFilesFetchInteractor = AnyUseCase(SpreadSheetFilesFetchInteractor())
-		let spreadSheetInfoFetchInteractor = AnyUseCase(SpreadSheetInfoFetchInteractor())
+		let spreadSheetFilesFetchInteractor = AnyUseCase(SheetsFilesFetchInteractor())
+		let spreadSheetInfoFetchInteractor = AnyUseCase(SheetsInfoFetchInteractor())
 		let createSheetDataInteractor = AnyUseCase(CreateSheetDataInteractor())
-		let dependency = SpreadSheetAddPresenter.Dependency(
+		let dependency = SheetsAddPresenter.Dependency(
 			spreadSheetCellsFetchInteractor: spreadSheetCellsFetchInteractor,
 			spreadSheetFilesFetchInteractor: spreadSheetFilesFetchInteractor,
 			spreadSheetInfoFetchInteractor: spreadSheetInfoFetchInteractor,
 			createSheetDataInteractor: createSheetDataInteractor
 		)
-		let presenter: SpreadSheetAddPresenter = SpreadSheetAddPresenter(dependency: dependency)
+		let presenter: SheetsAddPresenter = SheetsAddPresenter(dependency: dependency)
 		return SpreadSheetAddView(presenter: presenter)
 	}
 }
