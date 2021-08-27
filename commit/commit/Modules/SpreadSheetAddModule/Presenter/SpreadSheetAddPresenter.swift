@@ -120,7 +120,7 @@ class SpreadSheetAddPresenter: ObservableObject {
 		let query = FetchSheetCellsQuery(
 			sheetName: sheetPreset.tabName,
 			// NOTE: 後で書き換える
-			spreadSheetId: sheetPreset.spreadSheetId,
+			sheetsId: sheetPreset.spreadSheetId,
 			column: column,
 			row: sheetPreset.row
 		)

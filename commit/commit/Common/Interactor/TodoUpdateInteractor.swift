@@ -54,7 +54,7 @@ class TodoUpdateInteractor: UseCase {
 		let doneOrNot = todo.status!.finished ? "DONE" : ""
 		let text = todo.status!.detail != "" ? todo.status!.detail : doneOrNot
 		let query = UpdateSheetsCellQuery(
-			spreadsheetId: validPreset.spreadSheetId,
+			sheetsId: validPreset.spreadSheetId,
 			tabName: validPreset.tabName,
 			targetRow: validPreset.targetRow,
 			targetColumn: validAttribute.column,

@@ -7,7 +7,7 @@
 import Foundation
 
 struct UpdateSheetsCellQuery {
-	let spreadsheetId: String
+	let sheetsId: String
 	let tabName: String
 	let targetRow: String
 	let targetColumn: String
@@ -21,14 +21,14 @@ struct QueryColumn {
 
 struct FetchSheetCellsQuery {
 	let sheetName: String
-	let spreadSheetId: String
+	let sheetsId: String
 	let column: QueryColumn
 	let row: String
 }
 
 struct FetchSheetsCellQuery {
 	let sheetName: String
-	let spreadSheetId: String
+	let sheetsId: String
 	let column: String
 	let row: String
 }

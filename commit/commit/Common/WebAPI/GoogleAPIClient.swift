@@ -52,7 +52,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 	}
 	
 	func fetchSpreadSheetCell(_ query: FetchSheetsCellQuery, completion: @escaping (Result<String, Error>) -> Void) {
-		let path = "/\(query.spreadSheetId)/values/\(query.sheetName)!\(query.column)\(query.row)"
+		let path = "/\(query.sheetsId)/values/\(query.sheetName)!\(query.column)\(query.row)"
 		
 		// NOTE: 絶対命名ゴミなんだよな
 		let baseRequest = GoogleAPIRequest.sheets
@@ -107,7 +107,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 	func fetchSheetsCells(_ query: FetchSheetCellsQuery, completion: @escaping (Result<[String], Error>) -> Void) {
 		let startRange = "\(query.column.start)\(query.row)"
 		let endRange = "\(query.column.end)\(query.row)"
-		let path = "/\(query.spreadSheetId)/values/\(query.sheetName)!\(startRange):\(endRange)"
+		let path = "/\(query.sheetsId)/values/\(query.sheetName)!\(startRange):\(endRange)"
 		
 		let baseRequest = GoogleAPIRequest.sheets
 		
@@ -183,7 +183,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 	
 	func updateSheetsCell(_ query: UpdateSheetsCellQuery) {
 		let queries: [String: String] = SheetsAPIManager.generateSpreadSheetUpdateQueries()
-		let path: String =  "/\(query.spreadsheetId)/values/\(query.tabName)!\(query.targetColumn)\(query.targetRow)"
+		let path: String =  "/\(query.sheetsId)/values/\(query.tabName)!\(query.targetColumn)\(query.targetRow)"
 		
 		let baseRequest = GoogleAPIRequest.sheets
 		// 別のところにかけたら良さそう
