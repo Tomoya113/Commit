@@ -8,12 +8,12 @@
 import RealmSwift
 
 class SpreadSheetHistory: Object, ObjectKeyIdentifiable {
-	@objc dynamic var sheetId: String = ""
+	@objc dynamic var sheetsId: String = ""
 	@objc dynamic var title: String = ""
 	
-	convenience init(sheetId: String, title: String) {
+	convenience init(sheetsId: String, title: String) {
 		self.init()
-		self.sheetId = sheetId
+		self.sheetsId = sheetsId
 		self.title = title
 	}
 	
