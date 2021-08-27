@@ -21,11 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			deleteRealmIfMigrationNeeded: true
 		)
 		Realm.Configuration.defaultConfiguration = config
-		let hapticCapability = CHHapticEngine.capabilitiesForHardware()
-		print(hapticCapability.supportsHaptics)
-//		#if DEBUG
-//			DataEraser.execute()
-//		#endif
+		#if DEBUG
+			DataEraser.execute()
+		#endif
 		print(Realm.Configuration.defaultConfiguration.fileURL!)
 		let IS_FIRST_VISIT: String = "isFirstVisit"
 		if UserDefaults.standard.object(forKey: IS_FIRST_VISIT) == nil {
