@@ -50,7 +50,7 @@ class WriteSheetsInteractor: UseCase {
 		
 		let doneOrNot = todo.status!.finished ? "DONE" : ""
 		let text = todo.status!.detail != "" ? todo.status!.detail : doneOrNot
-		let query = UpdateSpreadSheetCellQuery(
+		let query = UpdateSheetsCellQuery(
 			spreadsheetId: validPreset.spreadSheetId,
 			tabName: validPreset.tabName,
 			targetRow: validPreset.targetRow,

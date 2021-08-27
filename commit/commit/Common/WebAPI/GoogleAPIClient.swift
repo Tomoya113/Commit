@@ -181,7 +181,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		task?.resume()
 	}
 	
-	func updateSheetsCell(_ query: UpdateSpreadSheetCellQuery) {
+	func updateSheetsCell(_ query: UpdateSheetsCellQuery) {
 		let queries: [String: String] = SheetsAPIManager.generateSpreadSheetUpdateQueries()
 		let path: String =  "/\(query.spreadsheetId)/values/\(query.tabName)!\(query.targetColumn)\(query.targetRow)"
 		

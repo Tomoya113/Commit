@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct UpdateSpreadSheetCellQuery {
+struct UpdateSheetsCellQuery {
 	let spreadsheetId: String
 	let tabName: String
 	let targetRow: String
