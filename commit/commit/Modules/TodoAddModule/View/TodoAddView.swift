@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct TodoAddView: View {
-	@ObservedObject var presenter: TodoAddPresenter
+	@StateObject var presenter: TodoAddPresenter
 	var body: some View {
 		GeometryReader { geometry in
 			VStack(alignment: .center) {
@@ -21,7 +21,6 @@ struct TodoAddView: View {
 				}
 				if presenter.currentTodoType == .normal {
 					presenter.normalTodoAddLinkBuilder(sections: $presenter.currentSection)
-					
 				} else if presenter.currentTodoType == .spreadSheet {
 					presenter.spreadSheetAddLinkBuilder()
 				}

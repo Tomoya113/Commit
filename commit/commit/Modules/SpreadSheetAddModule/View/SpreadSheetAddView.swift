@@ -31,6 +31,7 @@ struct SpreadSheetAddView: View {
 			}
 			.onAppear {
 				presenter.setPresentingViewController()
+				
 			}
 		}
 	}

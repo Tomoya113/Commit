@@ -59,6 +59,7 @@ struct SpreadSheetFormView: View {
 			Section(header: Text("書き込む行"), footer: Text("TODOを達成した時に書き込む行を指定します")) {
 				TextField("行", text: $spreadSheetPreset.targetRow)
 			}
+			// https://stackoverflow.com/questions/63839821/swiftui-navigationlink-is-not-working-with-a-button
 			NavigationLink(
 				destination:
 					SheetConfirmView {
@@ -74,16 +75,17 @@ struct SpreadSheetFormView: View {
 					},
 				isActive: $showConfirmView,
 				label: {
-					Button(action: {
-						fetchCells()
-						showConfirmView = true
-					}, label: {
-						Text("次へ")
-							.multilineTextAlignment(.center)
-							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-					})
+					Text("次へ")
+						.multilineTextAlignment(.center)
+						.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+						.foregroundColor(.blue)
 				}
 			)
+			.simultaneousGesture(TapGesture().onEnded {
+				print("fetchcells")
+				fetchCells()
+				showConfirmView = true
+			})
 		}
 	}
 

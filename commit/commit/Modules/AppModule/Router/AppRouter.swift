@@ -11,8 +11,7 @@ import SwiftUI
 class AppRouter {
 	func generateTodoListView() -> some View {
 		let presenter: TodoListPresenter = {
-			let repository = TodoRepository.shared
-			let listFetchInteractor = AnyUseCase(ListFetchInteractor(repository: repository))
+			let listFetchInteractor = AnyUseCase(ListFetchInteractor())
 			let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor())
 			let deleteSectionInteractor = AnyUseCase(DeleteSectionInteractor())
 			let dependency = TodoListPresenter.Dependency(
