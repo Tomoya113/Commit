@@ -8,7 +8,7 @@
 import Foundation
 
 struct DriveAPIManager {
-	static func generateSpreadSheetSearchQueries(_ sheetName: String?) -> [String: String] {
+	static func generateSheetsSearchQueries(_ sheetName: String?) -> [String: String] {
 		var baseQuery = [
 			"supportsTeamDrives": "true",
 			"includeItemsFromAllDrives": "true",

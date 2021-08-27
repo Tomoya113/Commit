@@ -9,5 +9,5 @@ import Foundation
 
 enum TodoTypes: String, CaseIterable {
 	case normal
-	case spreadSheet
+	case sheets
 }

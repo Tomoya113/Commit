@@ -1,5 +1,5 @@
 //
-//  SpreadSheetRegisterInteractor.swift
+//  SheetsRegisterInteractor.swift
 //  commit
 //
 //  Created by Tomoya Tanaka on 2021/06/26.

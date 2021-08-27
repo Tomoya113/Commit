@@ -19,7 +19,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 	func fetchSheetsFiles(contains sheetName: String?, completion: @escaping (Result<[SheetsFile], Error>) -> Void) {
 		let baseRequest = GoogleAPIRequest.drive
 		
-		let queries = DriveAPIManager.generateSpreadSheetSearchQueries(sheetName)
+		let queries = DriveAPIManager.generateSheetsSearchQueries(sheetName)
 		
 		let request = baseRequest.createRequest(
 			queries: queries,
@@ -51,7 +51,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		task?.resume()
 	}
 	
-	func fetchSpreadSheetCell(_ query: FetchSheetsCellQuery, completion: @escaping (Result<String, Error>) -> Void) {
+	func fetchSheetsCell(_ query: FetchSheetsCellQuery, completion: @escaping (Result<String, Error>) -> Void) {
 		let path = "/\(query.sheetsId)/values/\(query.sheetName)!\(query.column)\(query.row)"
 		
 		// NOTE: 絶対命名ゴミなんだよな
@@ -182,7 +182,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 	}
 	
 	func updateSheetsCell(_ query: UpdateSheetsCellQuery) {
-		let queries: [String: String] = SheetsAPIManager.generateSpreadSheetUpdateQueries()
+		let queries: [String: String] = SheetsAPIManager.generateSheetsUpdateQueries()
 		let path: String =  "/\(query.sheetsId)/values/\(query.tabName)!\(query.targetColumn)\(query.targetRow)"
 		
 		let baseRequest = GoogleAPIRequest.sheets

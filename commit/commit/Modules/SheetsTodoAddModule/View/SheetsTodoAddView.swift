@@ -1,5 +1,5 @@
 //
-//  SpreadSheetView.swift
+//  SheetsTodoAddView.swift
 //  commit
 //
 //  Created by Tomoya Tanaka on 2021/06/26.
@@ -7,18 +7,18 @@
 
 import SwiftUI
 
-struct SpreadSheetAddView: View {
+struct SheetsTodoAddView: View {
 	@StateObject var presenter: SheetsAddPresenter
 	@EnvironmentObject var googleDelegate: GoogleOAuthManager
 
 	var body: some View {
 		// NOTE: この書き方やめろ
 		if googleDelegate.authenticated {
-			SpreadSheetFormView(
-				spreadSheetPreset: $presenter.sheetPreset,
+			SheetsTodoAddFormView(
+				sheetsPreset: $presenter.sheetPreset,
 				userResources: $presenter.userResources,
 				sheetData: $presenter.sheetData,
-				fetchSpreadSheetInfo: presenter.fetchSpreadSheetInfo,
+				fetchSheetsInfo: presenter.fetchSheetsInfo,
 				fetchCells: presenter.fetchCells,
 				saveData: presenter.saveData
 			)
@@ -39,9 +39,9 @@ struct SpreadSheetAddView: View {
 
 #if DEBUG
 
-struct SpreadSheetView_Previews: PreviewProvider {
+struct SheetsTodoAddView_Previews: PreviewProvider {
 	static var previews: some View {
-		SpreadSheetAddView(presenter: SheetsAddPresenter.sample)
+		SheetsTodoAddView(presenter: SheetsAddPresenter.sample)
 	}
 }
 #endif

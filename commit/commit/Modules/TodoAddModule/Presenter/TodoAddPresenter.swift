@@ -28,8 +28,8 @@ class TodoAddPresenter: ObservableObject {
 		router.generateNormalTodoAddView(sections: sections)
 	}
 	
-	func spreadSheetAddLinkBuilder() -> some View {
-		router.generateSpreadSheetAddView()
+	func sheetsTodoAddLinkBuilder() -> some View {
+		router.generateSheetsTodoAddView()
 	}
 	
 	func onAppear() {

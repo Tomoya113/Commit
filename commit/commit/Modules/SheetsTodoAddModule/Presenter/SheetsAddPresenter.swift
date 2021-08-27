@@ -23,7 +23,7 @@ class SheetPreset: ObservableObject {
 }
 
 class UserResources: ObservableObject {
-	@Published var spreadSheetList: [SheetsFile] = []
+	@Published var sheetsList: [SheetsFile] = []
 	@Published var tabList: [SheetProperties] = []
 }
 
@@ -35,10 +35,10 @@ class SheetData: ObservableObject {
 
 class SheetsAddPresenter: ObservableObject {
 	struct Dependency {
-		let spreadSheetCellsFetchInteractor: AnyUseCase<FetchSheetCellsQuery, [String], Error>
-		let spreadSheetFilesFetchInteractor: AnyUseCase<String, [SheetsFile], Error>
-		let spreadSheetInfoFetchInteractor: AnyUseCase<String, [Sheet], Error>
-		let createSheetDataInteractor: AnyUseCase<CreateSheetDataQuery, Void, Error>
+		let sheetsCellsFetchInteractor: AnyUseCase<FetchSheetCellsQuery, [String], Error>
+		let sheetsFilesFetchInteractor: AnyUseCase<String, [SheetsFile], Error>
+		let sheetsInfoFetchInteractor: AnyUseCase<String, [Sheet], Error>
+		let createSheetsDataInteractor: AnyUseCase<CreateSheetDataQuery, Void, Error>
 	}
 	
 	@Published var sheetPreset = SheetPreset()
@@ -58,8 +58,8 @@ class SheetsAddPresenter: ObservableObject {
 	}
 	
 	func onAppear() {
-		if userResources.spreadSheetList.isEmpty {
-			fetchSpreadSheetFiles()
+		if userResources.sheetsList.isEmpty {
+			fetchSheetsFiles()
 		}
 	}
 	
@@ -67,14 +67,14 @@ class SheetsAddPresenter: ObservableObject {
 		GIDSignIn.sharedInstance().presentingViewController = UIApplication.shared.windows.first?.rootViewController
 	}
 	
-	func fetchSpreadSheetFiles() {
-		dependency.spreadSheetFilesFetchInteractor.execute("") { result in
+	func fetchSheetsFiles() {
+		dependency.sheetsFilesFetchInteractor.execute("") { result in
 			switch result {
 				case .success(let files):
 					DispatchQueue.main.async {
 						// NOTE: もうちょっと良い書き方ありそう
 						self.objectWillChange.send()
-						self.userResources.spreadSheetList = files
+						self.userResources.sheetsList = files
 					}
 				case .failure(let error):
 					print(error.localizedDescription)
@@ -84,7 +84,7 @@ class SheetsAddPresenter: ObservableObject {
 	
 	func fetchCells() {
 		let fetchSheetCellsQuery = generateFetchSheetCellsQuery()
-		dependency.spreadSheetCellsFetchInteractor.execute(fetchSheetCellsQuery) { result in
+		dependency.sheetsCellsFetchInteractor.execute(fetchSheetCellsQuery) { result in
 			switch result {
 				case .success(let cells):
 					self.createData(cells: cells)
@@ -94,9 +94,9 @@ class SheetsAddPresenter: ObservableObject {
 		}
 	}
 	
-	func fetchSpreadSheetInfo() {
+	func fetchSheetsInfo() {
 		// NOTE: 後で書き換える
-		dependency.spreadSheetInfoFetchInteractor.execute(sheetPreset.sheetsId) { result in
+		dependency.sheetsInfoFetchInteractor.execute(sheetPreset.sheetsId) { result in
 			switch result {
 				case .success(let sheets):
 					DispatchQueue.main.async {
@@ -134,7 +134,7 @@ class SheetsAddPresenter: ObservableObject {
 		}
 		let createSheetDataQuery = CreateSheetDataQuery(
 			preset: sheetData.preset, section: sheetData.section, sheetsAttributes: sheetData.sheetsTodoAttributes)
-		dependency.createSheetDataInteractor.execute(createSheetDataQuery, completion: nil)
+		dependency.createSheetsDataInteractor.execute(createSheetDataQuery, completion: nil)
 	}
 	
 	private func createData(cells: [String]) {
@@ -179,15 +179,15 @@ class SheetsAddPresenter: ObservableObject {
 #if DEBUG
 extension SheetsAddPresenter {
 	static let sample: SheetsAddPresenter = {
-		let spreadSheetCellsFetchInteractor = AnyUseCase(CellsFetchInteractor())
-		let spreadSheetFilesFetchInteractor = AnyUseCase(SheetsFilesFetchInteractor())
-		let spreadSheetInfoFetchInteractor = AnyUseCase(SheetsInfoFetchInteractor())
-		let createSheetDataInteractor = AnyUseCase(CreateSheetDataInteractor())
+		let sheetsCellsFetchInteractor = AnyUseCase(SheetsCellsFetchInteractor())
+		let sheetsFilesFetchInteractor = AnyUseCase(SheetsFilesFetchInteractor())
+		let sheetsInfoFetchInteractor = AnyUseCase(SheetsInfoFetchInteractor())
+		let createSheetsDataInteractor = AnyUseCase(CreateSheetDataInteractor())
 		let dependency = Dependency(
-			spreadSheetCellsFetchInteractor: spreadSheetCellsFetchInteractor,
-			spreadSheetFilesFetchInteractor: spreadSheetFilesFetchInteractor,
-			spreadSheetInfoFetchInteractor: spreadSheetInfoFetchInteractor,
-			createSheetDataInteractor: createSheetDataInteractor
+			sheetsCellsFetchInteractor: sheetsCellsFetchInteractor,
+			sheetsFilesFetchInteractor: sheetsFilesFetchInteractor,
+			sheetsInfoFetchInteractor: sheetsInfoFetchInteractor,
+			createSheetsDataInteractor: createSheetsDataInteractor
 		)
 		return SheetsAddPresenter(dependency: dependency)
 	}()

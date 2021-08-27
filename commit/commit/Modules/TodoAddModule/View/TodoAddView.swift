@@ -21,8 +21,8 @@ struct TodoAddView: View {
 				}
 				if presenter.currentTodoType == .normal {
 					presenter.normalTodoAddLinkBuilder(sections: $presenter.currentSection)
-				} else if presenter.currentTodoType == .spreadSheet {
-					presenter.spreadSheetAddLinkBuilder()
+				} else if presenter.currentTodoType == .sheets {
+					presenter.sheetsTodoAddLinkBuilder()
 				}
 				Spacer()
 			}

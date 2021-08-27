@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TodoListView: View {
 	@StateObject var presenter: TodoListPresenter
-	@State private var isActionSheetPresented: Bool = false
 	@State private var showAlert: Bool = false
 	@State private var selectedSectionIndex: Int = 0
 	

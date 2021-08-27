@@ -20,18 +20,18 @@ class TodoAddRouter {
 		return NormalTodoAddView(presenter: presenter)
 	}
 	
-	func generateSpreadSheetAddView() -> some View {
-		let spreadSheetCellsFetchInteractor = AnyUseCase(CellsFetchInteractor())
-		let spreadSheetFilesFetchInteractor = AnyUseCase(SheetsFilesFetchInteractor())
-		let spreadSheetInfoFetchInteractor = AnyUseCase(SheetsInfoFetchInteractor())
+	func generateSheetsTodoAddView() -> some View {
+		let sheetsCellsFetchInteractor = AnyUseCase(SheetsCellsFetchInteractor())
+		let sheetsFilesFetchInteractor = AnyUseCase(SheetsFilesFetchInteractor())
+		let sheetsInfoFetchInteractor = AnyUseCase(SheetsInfoFetchInteractor())
 		let createSheetDataInteractor = AnyUseCase(CreateSheetDataInteractor())
 		let dependency = SheetsAddPresenter.Dependency(
-			spreadSheetCellsFetchInteractor: spreadSheetCellsFetchInteractor,
-			spreadSheetFilesFetchInteractor: spreadSheetFilesFetchInteractor,
-			spreadSheetInfoFetchInteractor: spreadSheetInfoFetchInteractor,
-			createSheetDataInteractor: createSheetDataInteractor
+			sheetsCellsFetchInteractor: sheetsCellsFetchInteractor,
+			sheetsFilesFetchInteractor: sheetsFilesFetchInteractor,
+			sheetsInfoFetchInteractor: sheetsInfoFetchInteractor,
+			createSheetsDataInteractor: createSheetDataInteractor
 		)
 		let presenter: SheetsAddPresenter = SheetsAddPresenter(dependency: dependency)
-		return SpreadSheetAddView(presenter: presenter)
+		return SheetsTodoAddView(presenter: presenter)
 	}
 }

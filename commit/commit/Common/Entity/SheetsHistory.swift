@@ -1,5 +1,5 @@
 //
-//  SpreadSheetHistory.swift
+//  SheetsHistory.swift
 //  commit
 //
 //  Created by Tomoya Tanaka on 2021/06/16.
@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class SpreadSheetHistory: Object, ObjectKeyIdentifiable {
+class SheetsHistory: Object, ObjectKeyIdentifiable {
 	@objc dynamic var sheetsId: String = ""
 	@objc dynamic var title: String = ""
 	

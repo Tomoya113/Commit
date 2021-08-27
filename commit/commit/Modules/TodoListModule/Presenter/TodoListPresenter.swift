@@ -109,22 +109,6 @@ class TodoListPresenter: ObservableObject {
 			.clipShape(Circle())
 	}
 	
-	func actionSheet() -> ActionSheet {
-		ActionSheet(
-			title: Text("Todoの追加"),
-			message: Text("追加するTodoの種類を選んでください"),
-			buttons: [
-				.default(Text("Normal"), action: {
-					print("normal")
-				}),
-				.default(Text("SpreadSheetと連携"), action: {
-					print("SpreadSheet")
-				}),
-				.cancel(Text("キャンセル"))
-			]
-		)
-	}
-	
 	func detailViewLinkBuilder<Content: View>(for todo: Todo, @ViewBuilder content: () -> Content) -> some View {
 		NavigationLink(destination: router.generateDetailView(for: todo)) {
 			content()
