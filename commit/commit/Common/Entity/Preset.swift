@@ -21,9 +21,9 @@ class Preset: Object, ObjectKeyIdentifiable {
 		return "id"
 	}
 	
-	convenience init(spreadSheetId: String, sectionId: String, tabName: String, title: String, range: SheetRange, targetRow: String) {
+	convenience init(sheetId: String, sectionId: String, tabName: String, title: String, range: SheetRange, targetRow: String) {
 		self.init()
-		self.sheetsId = spreadSheetId
+		self.sheetsId = sheetId
 		self.sectionId = sectionId
 		self.tabName = tabName
 		self.title = title
