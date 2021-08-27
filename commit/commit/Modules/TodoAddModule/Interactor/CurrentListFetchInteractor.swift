@@ -8,19 +8,15 @@
 import Foundation
 
 class CurrentListFetchInteractor: UseCase {
-	let repository: TodoRepositoryProtocol
-	
-	init(repository: TodoRepositoryProtocol = TodoRepository.shared) {
-		self.repository = repository
-	}
+	let listRepository = RealmRepository<ListRealm>()
 	
 	// NOTE: Stringではないので変えたい
 	func execute(_ parameters: String, completion: ((Result<ListRealm, Error>) -> Void )?) {
-		let currentList = repository.fetchCurrentList()
-		if let currentList = currentList {
-			completion?(.success(currentList))
-		} else {
+		let lists = listRepository.findAll()
+		if lists.isEmpty {
 			completion?(.failure(NSError(domain: "", code: 400, userInfo: nil)))
+		} else {
+			completion?(.success(lists[0]))
 		}
 	}
 	

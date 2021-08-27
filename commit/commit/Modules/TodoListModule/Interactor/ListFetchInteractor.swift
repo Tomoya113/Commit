@@ -8,19 +8,11 @@
 import Foundation
 
 class ListFetchInteractor: UseCase {
-	let repository: TodoRepositoryProtocol
-	
-	init(repository: TodoRepositoryProtocol = TodoRepository.shared) {
-		self.repository = repository
-	}
+	let listRepository = RealmRepository<ListRealm>()
 	
 	func execute(_ parameters: Void, completion: ((Result<[ListRealm], Never>) -> Void )?) {
-		repository.fetchLists { result in
-			switch result {
-				case .success(let lists):
-					completion?(.success(lists))
-			}
-		}
+		let lists = listRepository.findAll()
+		completion?(.success(lists))
 	}
 	
 	func cancel() {
