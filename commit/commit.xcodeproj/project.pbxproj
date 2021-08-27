@@ -60,7 +60,7 @@
 		718D240E269B74610012B1CB /* RequireGoogleOAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D240D269B74610012B1CB /* RequireGoogleOAuthView.swift */; };
 		71931A99269601D800BB404F /* SpreadSheetFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931A98269601D800BB404F /* SpreadSheetFormView.swift */; };
 		71931A9B26960DB000BB404F /* SheetColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931A9A26960DB000BB404F /* SheetColumn.swift */; };
-		71931AA12697473000BB404F /* SpreadSheetResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AA02697473000BB404F /* SpreadSheetResponses.swift */; };
+		71931AA12697473000BB404F /* SheetsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AA02697473000BB404F /* SheetsResponse.swift */; };
 		71931AA326974C4000BB404F /* GoogleAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AA226974C4000BB404F /* GoogleAPIClient.swift */; };
 		71931AA526974FFE00BB404F /* GoogleAPIClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AA426974FFE00BB404F /* GoogleAPIClientProtocol.swift */; };
 		71931AAA2699B93300BB404F /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71931AA92699B93200BB404F /* HTTPMethod.swift */; };
@@ -153,7 +153,7 @@
 		718D240D269B74610012B1CB /* RequireGoogleOAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequireGoogleOAuthView.swift; sourceTree = "<group>"; };
 		71931A98269601D800BB404F /* SpreadSheetFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetFormView.swift; sourceTree = "<group>"; };
 		71931A9A26960DB000BB404F /* SheetColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetColumn.swift; sourceTree = "<group>"; };
-		71931AA02697473000BB404F /* SpreadSheetResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetResponses.swift; sourceTree = "<group>"; };
+		71931AA02697473000BB404F /* SheetsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetsResponse.swift; sourceTree = "<group>"; };
 		71931AA226974C4000BB404F /* GoogleAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleAPIClient.swift; path = commit/Common/WebAPI/GoogleAPIClient.swift; sourceTree = SOURCE_ROOT; };
 		71931AA426974FFE00BB404F /* GoogleAPIClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleAPIClientProtocol.swift; path = commit/Common/WebAPI/GoogleAPIClientProtocol.swift; sourceTree = SOURCE_ROOT; };
 		71931AA92699B93200BB404F /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -673,7 +673,7 @@
 				71931AA226974C4000BB404F /* GoogleAPIClient.swift */,
 				71931AAB2699BC7D00BB404F /* DriveAPIManager.swift */,
 				71931AAD2699BFF800BB404F /* SheetsAPIManager.swift */,
-				71931AA02697473000BB404F /* SpreadSheetResponses.swift */,
+				71931AA02697473000BB404F /* SheetsResponse.swift */,
 				714A47EF26A6657200268779 /* GoogleAPIEntity.swift */,
 				714A47F126A66DEF00268779 /* GoogleAPIRequest.swift */,
 			);
@@ -960,7 +960,7 @@
 				7174876726B1FD50002067E1 /* AppView.swift in Sources */,
 				71931A9B26960DB000BB404F /* SheetColumn.swift in Sources */,
 				71CB63DA269A0E4C003C98A8 /* SheetsInfoFetchInteractor.swift in Sources */,
-				71931AA12697473000BB404F /* SpreadSheetResponses.swift in Sources */,
+				71931AA12697473000BB404F /* SheetsResponse.swift in Sources */,
 				71A9D65126B94117002A7411 /* SectionAddView.swift in Sources */,
 				71931AAE2699BFF800BB404F /* SheetsAPIManager.swift in Sources */,
 				71AA3DC92682E773005D1CCC /* ListFetchInteractor.swift in Sources */,
