@@ -16,7 +16,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		self.urlSession = urlSession
 	}
 	
-	func fetchSpreadSheetFiles(contains sheetName: String?, completion: @escaping (Result<[SpreadSheetFile], Error>) -> Void) {
+	func fetchSheetsFiles(contains sheetName: String?, completion: @escaping (Result<[SpreadSheetFile], Error>) -> Void) {
 		let baseRequest = GoogleAPIRequest.drive
 		
 		let queries = DriveAPIManager.generateSpreadSheetSearchQueries(sheetName)
@@ -104,7 +104,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		task?.resume()
 	}
 	
-	func fetchSpreadSheetCells(_ query: FetchSheetCellsQuery, completion: @escaping (Result<[String], Error>) -> Void) {
+	func fetchSheetsCells(_ query: FetchSheetCellsQuery, completion: @escaping (Result<[String], Error>) -> Void) {
 		let startRange = "\(query.column.start)\(query.row)"
 		let endRange = "\(query.column.end)\(query.row)"
 		let path = "/\(query.spreadSheetId)/values/\(query.sheetName)!\(startRange):\(endRange)"
@@ -146,7 +146,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		
 	}
 	
-	func fetchSpreadSheetInfo(id: String, completion: @escaping (Result<[Sheet], Error>) -> Void) {
+	func fetchSheetsInfo(id: String, completion: @escaping (Result<[Sheet], Error>) -> Void) {
 		
 		let baseRequest = GoogleAPIRequest.sheets
 		
@@ -181,7 +181,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		task?.resume()
 	}
 	
-	func updateSpreadSheetCell(_ query: UpdateSpreadSheetCellQuery) {
+	func updateSheetsCell(_ query: UpdateSpreadSheetCellQuery) {
 		let queries: [String: String] = SheetsAPIManager.generateSpreadSheetUpdateQueries()
 		let path: String =  "/\(query.spreadsheetId)/values/\(query.tabName)!\(query.targetColumn)\(query.targetRow)"
 		

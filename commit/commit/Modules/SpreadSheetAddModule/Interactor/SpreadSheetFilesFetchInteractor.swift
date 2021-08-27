@@ -15,7 +15,7 @@ class SpreadSheetFilesFetchInteractor: UseCase {
 	}
 	
 	func execute(_ parameters: String, completion: ((Result<[SpreadSheetFile], Error>) -> Void )?) {
-		repository.fetchSpreadSheetFiles(contains: parameters) { result in
+		repository.fetchSheetsFiles(contains: parameters) { result in
 			switch result {
 				case .success(let files):
 					completion?(.success(files))

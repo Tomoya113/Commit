@@ -15,7 +15,7 @@ class SpreadSheetInfoFetchInteractor: UseCase {
 	}
 	
 	func execute(_ parameters: String, completion: ((Result<[Sheet], Error>) -> Void )?) {
-		repository.fetchSpreadSheetInfo(id: parameters) { result in
+		repository.fetchSheetsInfo(id: parameters) { result in
 			switch result {
 				case .success(let sheets):
 					completion?(.success(sheets))

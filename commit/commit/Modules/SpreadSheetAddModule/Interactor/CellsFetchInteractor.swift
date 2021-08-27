@@ -15,7 +15,7 @@ class CellsFetchInteractor: UseCase {
 	}
 	
 	func execute(_ parameters: FetchSheetCellsQuery, completion: ((Result<[String], Error>) -> Void )?) {
-		repository.fetchSpreadSheetCells(parameters) { result in
+		repository.fetchSheetsCells(parameters) { result in
 			switch result {
 				case .success(let cells):
 					completion?(.success(cells))

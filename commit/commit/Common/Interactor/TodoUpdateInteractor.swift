@@ -61,6 +61,6 @@ class TodoUpdateInteractor: UseCase {
 			text: text
 		)
 		
-		GoogleAPIClient.shared.updateSpreadSheetCell(query)
+		GoogleAPIClient.shared.updateSheetsCell(query)
 	}
 }
