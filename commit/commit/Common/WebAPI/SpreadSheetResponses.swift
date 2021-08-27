@@ -9,10 +9,10 @@ import Foundation
 
 struct SpreadSheetFiles: Decodable {
 	let kind: String
-	let files: [SpreadSheetFile]
+	let files: [SheetsFile]
 }
 
-struct SpreadSheetFile: Decodable, Identifiable {
+struct SheetsFile: Decodable, Identifiable {
 	var mimeType: String
 	var id: String
 	var kind: String

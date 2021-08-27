@@ -16,7 +16,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		self.urlSession = urlSession
 	}
 	
-	func fetchSheetsFiles(contains sheetName: String?, completion: @escaping (Result<[SpreadSheetFile], Error>) -> Void) {
+	func fetchSheetsFiles(contains sheetName: String?, completion: @escaping (Result<[SheetsFile], Error>) -> Void) {
 		let baseRequest = GoogleAPIRequest.drive
 		
 		let queries = DriveAPIManager.generateSpreadSheetSearchQueries(sheetName)

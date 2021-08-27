@@ -23,7 +23,7 @@ class SheetPreset: ObservableObject {
 }
 
 class UserResources: ObservableObject {
-	@Published var spreadSheetList: [SpreadSheetFile] = []
+	@Published var spreadSheetList: [SheetsFile] = []
 	@Published var tabList: [SheetProperties] = []
 }
 
@@ -36,7 +36,7 @@ class SheetData: ObservableObject {
 class SpreadSheetAddPresenter: ObservableObject {
 	struct Dependency {
 		let spreadSheetCellsFetchInteractor: AnyUseCase<FetchSheetCellsQuery, [String], Error>
-		let spreadSheetFilesFetchInteractor: AnyUseCase<String, [SpreadSheetFile], Error>
+		let spreadSheetFilesFetchInteractor: AnyUseCase<String, [SheetsFile], Error>
 		let spreadSheetInfoFetchInteractor: AnyUseCase<String, [Sheet], Error>
 		let createSheetDataInteractor: AnyUseCase<CreateSheetDataQuery, Void, Error>
 	}
