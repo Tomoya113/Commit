@@ -37,7 +37,7 @@ struct TodoListView: View {
 				
 			},
 			content: {
-				Text("hoge")
+				presenter.todoAddLinkBuilder()
 			}
 		)
 		.alert(isPresented: $showAlert) {
