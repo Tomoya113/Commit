@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+class PresentationObject: ObservableObject {
+	@Published var presentationMode: Binding<PresentationMode>
+	
+	init(presentationMode: Binding<PresentationMode>) {
+		self.presentationMode = presentationMode
+	}
+}
+
 class TodoAddPresenter: ObservableObject {
 	@Published var currentTodoType: TodoTypes = .normal
 	@Published var currentTodoTypeIndex: Int = 0
@@ -24,8 +32,8 @@ class TodoAddPresenter: ObservableObject {
 		self.dependency = dependency
 	}
 	
-	func normalTodoAddLinkBuilder(sections: Binding<[SectionRealm]>) -> some View {
-		router.generateNormalTodoAddView(sections: sections)
+	func normalTodoAddLinkBuilder() -> some View {
+		router.generateNormalTodoAddView()
 	}
 	
 	func sheetsTodoAddLinkBuilder() -> some View {
