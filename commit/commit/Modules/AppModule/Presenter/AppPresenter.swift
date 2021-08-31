@@ -12,7 +12,12 @@ class AppPresenter: ObservableObject {
 	let router: AppRouter = AppRouter()
 	
 	func todoListView() -> some View {
-		return router.generateTodoListView()
+		return (
+			NavigationView {
+				router.generateTodoListView()
+			}
+			.navigationViewStyle(StackNavigationViewStyle())
+		)
 	}
 	
 	func settingsView() -> some View {

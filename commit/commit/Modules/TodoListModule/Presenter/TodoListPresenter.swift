@@ -100,15 +100,6 @@ class TodoListPresenter: ObservableObject {
 		}
 	}
 	
-	func addTodoButtonImage() -> some View {
-		Image(systemName: "pencil")
-			.frame(width: 60, height: 60)
-			.imageScale(.large)
-			.background(Color.green)
-			.foregroundColor(.white)
-			.clipShape(Circle())
-	}
-	
 	func detailViewLinkBuilder<Content: View>(for todo: Todo, @ViewBuilder content: () -> Content) -> some View {
 		NavigationLink(destination: router.generateDetailView(for: todo)) {
 			content()
