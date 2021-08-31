@@ -9,24 +9,26 @@ import SwiftUI
 import RealmSwift
 
 struct TodoAddView: View {
+	let horizontalPadding: CGFloat = 16
 	@StateObject var presenter: TodoAddPresenter
+	@Environment(\.presentationMode) var presentationMode
 	var body: some View {
-		GeometryReader { geometry in
-			VStack(alignment: .center) {
-				HStack(alignment: .center) {
-					Spacer()
-					todoTypeList()
-						.frame(width: geometry.size.width - 24)
-					Spacer()
-				}
-				if presenter.currentTodoType == .normal {
-					presenter.normalTodoAddLinkBuilder(sections: $presenter.currentSection)
-				} else if presenter.currentTodoType == .sheets {
-					presenter.sheetsTodoAddLinkBuilder()
-				}
+		VStack(alignment: .center) {
+			HStack(alignment: .center) {
+				Spacer()
+				todoTypeList()
+					.padding(.horizontal, horizontalPadding)
 				Spacer()
 			}
+			if presenter.currentTodoType == .normal {
+				presenter.normalTodoAddLinkBuilder()
+			} else if presenter.currentTodoType == .sheets {
+				presenter.sheetsTodoAddLinkBuilder()
+			}
+			Spacer()
+			
 		}
+		.environmentObject(PresentationObject(presentationMode: presentationMode))
 		.onAppear {
 			// NOTE: 毎回フェッチすると、子Viewがリロードされてフォームがリセットされるので、onAppearで初回判定をする
 			presenter.onAppear()
