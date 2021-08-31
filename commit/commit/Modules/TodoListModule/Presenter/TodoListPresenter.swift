@@ -106,12 +106,11 @@ class TodoListPresenter: ObservableObject {
 		}
 	}
 	
-	func todoAddLinkBuilder<Content: View>(sections: [SectionRealm], @ViewBuilder content: () -> Content) -> some View {
+	func todoAddLinkBuilder() -> some View {
 		return (
-			NavigationLink(destination: router.generateTodoAddView(sections: sections)) {
-				content()
+			NavigationView {
+				router.generateTodoAddView()
 			}
-			
 		)
 	}
 }

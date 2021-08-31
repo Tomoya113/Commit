@@ -23,7 +23,7 @@ class TodoListRouter {
 		return TodoDetailView(presenter: presenter)
 	}
 	
-	func generateTodoAddView(sections: [SectionRealm]) -> some View {
+	func generateTodoAddView() -> some View {
 		let currentListFetchInteractor = CurrentListFetchInteractor()
 		let dependency = TodoAddPresenter.Dependency(currentListFetchInteractor: AnyUseCase(currentListFetchInteractor))
 		let presenter = TodoAddPresenter(dependency: dependency)
