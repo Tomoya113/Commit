@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NormalTodoAddView: View {
 	@StateObject var presenter: NormalTodoAddPresenter
-	@EnvironmentObject var presentationObject: PresentationObject
+	@EnvironmentObject var presentationState: TodoAddPresenter.PresentationState
     var body: some View {
 		Form {
 			Section(header: Text("タスク名")) {
@@ -45,7 +45,7 @@ struct NormalTodoAddView: View {
 			}
 			
 			Button(action: {
-				presentationObject.presentationMode.wrappedValue.dismiss()
+				presentationState.dismiss()
 				didTapSubmitButton()
 			}, label: {
 				Text("追加")

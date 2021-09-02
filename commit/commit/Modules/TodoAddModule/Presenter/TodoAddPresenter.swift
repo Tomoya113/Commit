@@ -7,15 +7,8 @@
 
 import SwiftUI
 
-class PresentationObject: ObservableObject {
-	@Published var presentationMode: Binding<PresentationMode>
-	
-	init(presentationMode: Binding<PresentationMode>) {
-		self.presentationMode = presentationMode
-	}
-}
-
 class TodoAddPresenter: ObservableObject {
+	
 	@Published var currentTodoType: TodoTypes = .normal
 	@Published var currentTodoTypeIndex: Int = 0
 	@Published var currentList: ListRealm?

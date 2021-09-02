@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		712E978326E15C7900292C7D /* PresentationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712E978226E15C7900292C7D /* PresentationState.swift */; };
 		713613C826A86149008B66F8 /* WriteSheetsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713613C726A86149008B66F8 /* WriteSheetsInteractor.swift */; };
 		7146C70A268C961900ACD588 /* TodoTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146C709268C961900ACD588 /* TodoTypes.swift */; };
 		714A47F026A6657200268779 /* GoogleAPIEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A47EF26A6657200268779 /* GoogleAPIEntity.swift */; };
@@ -104,6 +105,7 @@
 /* Begin PBXFileReference section */
 		0A28657290E5C6EB7881A125 /* Pods-commit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-commit.release.xcconfig"; path = "Target Support Files/Pods-commit/Pods-commit.release.xcconfig"; sourceTree = "<group>"; };
 		3C4194718BA40140F9EF0C2D /* Pods_commit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_commit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		712E978226E15C7900292C7D /* PresentationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationState.swift; sourceTree = "<group>"; };
 		713613C726A86149008B66F8 /* WriteSheetsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteSheetsInteractor.swift; sourceTree = "<group>"; };
 		7146C709268C961900ACD588 /* TodoTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTypes.swift; sourceTree = "<group>"; };
 		714A47EF26A6657200268779 /* GoogleAPIEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIEntity.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				716AC238268725FA0003A989 /* TodoAddPresenter.swift */,
+				712E978226E15C7900292C7D /* PresentationState.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -1008,6 +1011,7 @@
 				71DF39DF269E41710009A31F /* UpdateTodoQuery.swift in Sources */,
 				71A9D65826BC464C002A7411 /* UserDataInitializer.swift in Sources */,
 				71A9D64926B7B430002A7411 /* SectionAddInteractor.swift in Sources */,
+				712E978326E15C7900292C7D /* PresentationState.swift in Sources */,
 				715C2F20267B64E700DA66F3 /* ListMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

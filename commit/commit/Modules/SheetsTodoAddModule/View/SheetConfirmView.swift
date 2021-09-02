@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SheetConfirmView: View {
 	@EnvironmentObject var sheetData: SheetData
-	@EnvironmentObject var presentationObject: PresentationObject
+	@EnvironmentObject var presentatioState: TodoAddPresenter.PresentationState
 	var action: () -> Void
 	
 	var body: some View {
@@ -26,7 +26,7 @@ struct SheetConfirmView: View {
 				}
 			}
 			SubmitButton(title: "追加") {
-				presentationObject.presentationMode.wrappedValue.dismiss()
+				presentatioState.dismiss()
 				action()
 			}
 			Spacer()

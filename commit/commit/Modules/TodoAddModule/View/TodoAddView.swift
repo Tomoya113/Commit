@@ -12,6 +12,7 @@ struct TodoAddView: View {
 	let TODO_TYPE_TAB_PADDING: CGFloat = 16
 	@StateObject var presenter: TodoAddPresenter
 	@Environment(\.presentationMode) var presentationMode
+	
 	var body: some View {
 		VStack(alignment: .center) {
 			HStack(alignment: .center) {
@@ -28,7 +29,8 @@ struct TodoAddView: View {
 			Spacer()
 			
 		}
-		.environmentObject(PresentationObject(presentationMode: presentationMode))
+		.environmentObject(
+			TodoAddPresenter.PresentationState(presentationMode: presentationMode))
 		.onAppear {
 			// NOTE: 毎回フェッチすると、子Viewがリロードされてフォームがリセットされるので、onAppearで初回判定をする
 			presenter.onAppear()
