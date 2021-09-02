@@ -9,15 +9,15 @@ import SwiftUI
 import RealmSwift
 
 struct TodoAddView: View {
-	let horizontalPadding: CGFloat = 16
+	let TODO_TYPE_TAB_PADDING: CGFloat = 16
 	@StateObject var presenter: TodoAddPresenter
 	@Environment(\.presentationMode) var presentationMode
 	var body: some View {
 		VStack(alignment: .center) {
 			HStack(alignment: .center) {
 				Spacer()
-				todoTypeList()
-					.padding(.horizontal, horizontalPadding)
+				todoTypeTab()
+					.padding(TODO_TYPE_TAB_PADDING)
 				Spacer()
 			}
 			if presenter.currentTodoType == .normal {
@@ -37,10 +37,25 @@ struct TodoAddView: View {
 					.onEnded({ value in
 						didSwipe(value)
 					}))
-		.navigationTitle("Todoを追加")
+		.navigationBarTitle("TODOを追加", displayMode: .inline)
+		.navigationBarItems(
+			leading:
+				Button(
+					action: {
+						dismiss()
+					},
+					label: {
+						Text("キャンセル")
+					}
+				)
+		)
 	}
 	
-	private func todoTypeList() -> some View {
+	private func dismiss() {
+		presentationMode.wrappedValue.dismiss()
+	}
+	
+	private func todoTypeTab() -> some View {
 		Picker("Current todo type", selection: $presenter.currentTodoType) {
 			ForEach(TodoTypes.allCases.indices) { i in
 				Text(TodoTypes.allCases[i].rawValue)

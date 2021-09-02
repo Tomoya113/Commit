@@ -31,10 +31,10 @@ struct TodoListView: View {
 		.onAppear {
 			presenter.onAppear()
 		}
-		.sheet(
+		.fullScreenCover(
 			isPresented: $isSheetPresented,
 			onDismiss: {
-				
+			
 			},
 			content: {
 				presenter.todoAddLinkBuilder()
