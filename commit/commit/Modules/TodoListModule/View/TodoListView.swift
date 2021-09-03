@@ -34,7 +34,7 @@ struct TodoListView: View {
 		.fullScreenCover(
 			isPresented: $isSheetPresented,
 			onDismiss: {
-			
+				presenter.onDismiss()
 			},
 			content: {
 				presenter.todoAddLinkBuilder()

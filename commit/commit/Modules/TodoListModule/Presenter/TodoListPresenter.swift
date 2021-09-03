@@ -34,7 +34,6 @@ class TodoListPresenter: ObservableObject {
 	}
 	
 	func onAppear() {
-		
 		dependency.listFetchInteractor.execute(()) { [weak self] result in
 			switch result {
 				case .success(let lists):
@@ -54,6 +53,16 @@ class TodoListPresenter: ObservableObject {
 					print("deleted")
 			}
 		})
+	}
+	
+	func onDismiss() {
+		dependency.listFetchInteractor.execute(()) { [weak self] result in
+			switch result {
+				case .success(let lists):
+					self?.setSection(from: lists)
+					self?.objectWillChange.send()
+			}
+		}
 	}
 	
 	private func setSection(from lists: [ListRealm]) {
