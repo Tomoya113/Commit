@@ -9,18 +9,20 @@ import SwiftUI
 import RealmSwift
 
 struct TodoListRow: View {
-	var todo: Todo
+	@ObservedRealmObject var todo: Todo
 	let updateTodoStatus: () -> Void
 	var body: some View {
 		HStack(alignment: .center) {
-			VStack(alignment: .leading, spacing: 8) {
-				title()
-				if todo.subtitle != "" {
-					subtitle()
+			if !todo.isInvalidated {
+				VStack(alignment: .leading, spacing: 8) {
+					title()
+					if todo.subtitle != "" {
+						subtitle()
+					}
 				}
+				Spacer()
+				checkButton()
 			}
-			Spacer()
-			checkButton()
 		}
 	}
 	
@@ -55,6 +57,8 @@ struct TodoListRow: View {
 		return (
 			Button(action: {
 				updateTodoStatus()
+				print(todo.status!.finished)
+
 			}, label: {
 				// NOTE: 個々の書き方嫌い
 				if todo.status!.detail != "" {
