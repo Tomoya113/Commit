@@ -8,7 +8,6 @@
 import UIKit
 import RealmSwift
 import GoogleSignIn
-import CoreHaptics
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
