@@ -23,29 +23,55 @@ class TodoListPresenter: ObservableObject {
 	}
 	
 	@Published var displayData = DisplayData()
+	private let dependency: Dependency
+	private let router: TodoListRouter = TodoListRouter()
 	
 	private var notificationTokens: [NotificationToken] = []
-	private let dependency: Dependency
-	private let router = TodoListRouter()
-	private var isFirstAppear = false
+	private var isFirstAppear: Bool = true
 	
 	init(dependency: Dependency) {
 		self.dependency = dependency
 	}
 	
 	func onAppear() {
-		dependency.listFetchInteractor.execute(()) { [weak self] result in
+		if !isFirstAppear {
+			return
+		}
+		self.isFirstAppear = false
+		fetchList { lists in
+			self.setSection(from: lists)
+			self.objectWillChange.send()
+			self.addNotificationTokens()
+		}
+	}
+	
+	private func fetchList(completion: ((_ lists: [ListRealm]) -> Void)? ) {
+		dependency.listFetchInteractor.execute(()) { result in
 			switch result {
 				case .success(let lists):
-					self?.setSection(from: lists)
-					self?.objectWillChange.send()
+					completion?(lists)
 			}
 		}
-		
+	}
+	
+	private func addNotificationTokens() {
 		notificationTokens.append(displayData.lists[0].observe { change in
 			switch change {
 				case let .change(result, _):
+					print("displayData.lists[0]")
 					self.setSection(from: [result as! ListRealm])
+				case let .error(error):
+					print(error.localizedDescription)
+				case .deleted:
+					print("deleted")
+			}
+		})
+		
+		notificationTokens.append(displayData.defaultSection!.observe { change in
+			switch change {
+				case let .change(result, _):
+					self.displayData.defaultSection = result as! SectionRealm
+					// これが大事
 					self.objectWillChange.send()
 				case let .error(error):
 					print(error.localizedDescription)
@@ -56,12 +82,9 @@ class TodoListPresenter: ObservableObject {
 	}
 	
 	func onDismiss() {
-		dependency.listFetchInteractor.execute(()) { [weak self] result in
-			switch result {
-				case .success(let lists):
-					self?.setSection(from: lists)
-					self?.objectWillChange.send()
-			}
+		fetchList { result in
+			self.setSection(from: result)
+			self.objectWillChange.send()
 		}
 	}
 	
@@ -100,15 +123,18 @@ class TodoListPresenter: ObservableObject {
 		}
 	}
 		
-	func generateTodoRow(todo: Todo, updateTodoStatus: @escaping  () -> Void) -> some View {
+	func generateTodoRow(todo: Todo) -> some View {
 		TodoListRow(todo: todo) {
 			let generator = UIImpactFeedbackGenerator(style: .light)
 			generator.impactOccurred()
-			print("update todo")
-			updateTodoStatus()
+			self.updateTodoStatus(todo: todo)
+			self.objectWillChange.send()
 		}
 	}
-	
+}
+
+// Router周り
+extension TodoListPresenter {
 	func detailViewLinkBuilder<Content: View>(for todo: Todo, @ViewBuilder content: () -> Content) -> some View {
 		NavigationLink(destination: router.generateDetailView(for: todo)) {
 			content()

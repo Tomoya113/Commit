@@ -53,11 +53,11 @@ class TodoDetailPresenter: ObservableObject {
 			.store(in: &cancellables)
 	}
 	
-	func deleteTodo() {
+	func deleteTodo(action: (() -> Void)?) {
 		dependency.deleteTodoInteractor.execute(todo) { result in
 			switch result {
 				case .success:
-					print("Delete")
+					action?()
 			}
 		}
 	}

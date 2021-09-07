@@ -54,8 +54,9 @@ struct TodoDetailView: View {
 			message: Text("本当にTODOを削除しますか？"),
 			buttons: [
 				.destructive(Text("削除")) {
-					presenter.deleteTodo()
-					self.presentationMode.wrappedValue.dismiss()
+					presenter.deleteTodo {
+						self.presentationMode.wrappedValue.dismiss()
+					}
 				},
 				.cancel(Text("キャンセル"))
 			]
