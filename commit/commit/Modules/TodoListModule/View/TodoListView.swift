@@ -87,10 +87,7 @@ extension TodoListView {
 		return (
 			ForEach(todos) { todo in
 				presenter.detailViewLinkBuilder(for: todo) {
-					presenter.generateTodoRow(
-						todo: todo) {
-						presenter.updateTodoStatus(todo: todo)
-					}
+					presenter.generateTodoRow(todo: todo)
 				}
 			}
 		)
