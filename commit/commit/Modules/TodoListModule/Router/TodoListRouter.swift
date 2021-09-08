@@ -7,8 +7,14 @@
 
 import SwiftUI
 
-class TodoListRouter {
-	func generateDetailView(for todo: Todo) -> some View {
+protocol TodoListWireframe {
+	func generateDetailView(for todo: Todo) -> TodoDetailView
+	func generateTodoAddView() -> TodoAddView
+}
+
+class TodoListRouter: TodoListWireframe {
+	
+	func generateDetailView(for todo: Todo) -> TodoDetailView {
 		let deleteTodoInteractor = AnyUseCase(DeleteTodoInteractor())
 		let fetchSheetsCellInteractor = AnyUseCase(FetchSheetsCellInteractor())
 		let todoUpdateInteractor = AnyUseCase(TodoUpdateInteractor())
@@ -23,7 +29,7 @@ class TodoListRouter {
 		return TodoDetailView(presenter: presenter)
 	}
 	
-	func generateTodoAddView() -> some View {
+	func generateTodoAddView() -> TodoAddView {
 		let currentListFetchInteractor = CurrentListFetchInteractor()
 		let dependency = TodoAddPresenter.Dependency(currentListFetchInteractor: AnyUseCase(currentListFetchInteractor))
 		let presenter = TodoAddPresenter(dependency: dependency)
