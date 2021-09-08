@@ -17,7 +17,7 @@ class AppRouter {
 			let dependency = TodoListPresenter.Dependency(
 				listFetchInteractor: listFetchInteractor,
 				todoUpdateInteractor: todoUpdateInteractor,
-				deleteSectionInteractor: deleteSectionInteractor
+				deleteSectionInteractor: deleteSectionInteractor, wireframe: TodoListRouter()
 			)
 			return TodoListPresenter(dependency: dependency)
 		}()
