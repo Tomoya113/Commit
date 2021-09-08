@@ -15,34 +15,36 @@ class DisplayData: ObservableObject {
 	@Published var currentSections: [SectionRealm] = []
 }
 
-class TodoListPresenter: ObservableObject {
+protocol TodoListPresentation: ObservableObject {
+	associatedtype DetailViewLink: View
+	associatedtype TodoAddViewLink: View
+	
+	var displayData: DisplayData { get set }
+	func onAppear()
+	func onDismiss()
+	func updateTodoStatus(todo: Todo)
+	func deleteSection(_ index: Int)
+	func detailViewLinkBuilder(for todo: Todo) -> DetailViewLink
+	func todoAddViewLinkBuilder() -> TodoAddViewLink
+}
+
+class TodoListPresenter {
 	struct Dependency {
 		let listFetchInteractor: AnyUseCase<Void, [ListRealm], Never>
 		let todoUpdateInteractor: AnyUseCase<Todo, Void, Never>
 		let deleteSectionInteractor: AnyUseCase<SectionRealm, Void, Never>
+		let wireframe: TodoListWireframe
 	}
 	
 	@Published var displayData = DisplayData()
 	private let dependency: Dependency
-	private let router: TodoListRouter = TodoListRouter()
-	
+
 	private var notificationTokens: [NotificationToken] = []
+
 	private var isFirstAppear: Bool = true
 	
 	init(dependency: Dependency) {
 		self.dependency = dependency
-	}
-	
-	func onAppear() {
-		if !isFirstAppear {
-			return
-		}
-		self.isFirstAppear = false
-		fetchList { lists in
-			self.setSection(from: lists)
-			self.objectWillChange.send()
-			self.addNotificationTokens()
-		}
 	}
 	
 	private func fetchList(completion: ((_ lists: [ListRealm]) -> Void)? ) {
@@ -58,8 +60,11 @@ class TodoListPresenter: ObservableObject {
 		notificationTokens.append(displayData.lists[0].observe { change in
 			switch change {
 				case let .change(result, _):
-					print("displayData.lists[0]")
-					self.setSection(from: [result as! ListRealm])
+					guard let list = result as? [ListRealm] else {
+						print("error")
+						return
+					}
+					self.setSection(from: list)
 				case let .error(error):
 					print(error.localizedDescription)
 				case .deleted:
@@ -80,17 +85,9 @@ class TodoListPresenter: ObservableObject {
 			}
 		})
 	}
-	
-	func onDismiss() {
-		fetchList { result in
-			self.setSection(from: result)
-			self.objectWillChange.send()
-		}
-	}
-	
+
 	private func setSection(from lists: [ListRealm]) {
 		// NOTE: 絶対ここでやるなよ???
-		print("setSection")
 		displayData.lists = lists
 		let sections = lists[0].sections
 		let defaultSection = sections[0]
@@ -102,49 +99,53 @@ class TodoListPresenter: ObservableObject {
 		displayData.currentSections = Array(currentSections)
 	}
 	
-	func updateTodoStatus(todo: Todo) {
-		dependency.todoUpdateInteractor.execute(todo) { result in
-			switch result {
-				case .success:
-					print("updated")
-			}
+}
+
+extension TodoListPresenter: TodoListPresentation {
+	func onAppear() {
+		if !isFirstAppear {
+			return
 		}
+		self.isFirstAppear = false
+		fetchList { lists in
+			self.setSection(from: lists)
+			self.objectWillChange.send()
+			self.addNotificationTokens()
+		}
+	}
+	
+	func onDismiss() {
+		fetchList { result in
+			self.setSection(from: result)
+			self.objectWillChange.send()
+		}
+	}
+	
+	func updateTodoStatus(todo: Todo) {
+		dependency.todoUpdateInteractor.execute(todo, completion: nil)
 	}
 	
 	func deleteSection(_ index: Int) {
 		if !displayData.lists.isEmpty {
 			displayData.currentSections.remove(at: index)
-			dependency.deleteSectionInteractor.execute(displayData.lists[0].sections[index + 1]) { result in
-				switch result {
-					case .success:
-						print("delete")
-				}
-			}
-		}
-	}
-		
-	func generateTodoRow(todo: Todo) -> some View {
-		TodoListRow(todo: todo) {
-			let generator = UIImpactFeedbackGenerator(style: .light)
-			generator.impactOccurred()
-			self.updateTodoStatus(todo: todo)
-			self.objectWillChange.send()
-		}
-	}
-}
-
-// Router周り
-extension TodoListPresenter {
-	func detailViewLinkBuilder<Content: View>(for todo: Todo, @ViewBuilder content: () -> Content) -> some View {
-		NavigationLink(destination: router.generateDetailView(for: todo)) {
-			content()
+			dependency.deleteSectionInteractor.execute(displayData.lists[0].sections[index + 1], completion: nil)
 		}
 	}
 	
-	func todoAddLinkBuilder() -> some View {
+	func detailViewLinkBuilder(for todo: Todo) -> some View {
+		NavigationLink(destination: dependency.wireframe.generateDetailView(for: todo)) {
+			TodoListRow(todo: todo) {
+				UIFeedbackManager.shared.lightImpact()
+				self.updateTodoStatus(todo: todo)
+				self.objectWillChange.send()
+			}
+		}
+	}
+	
+	func todoAddViewLinkBuilder() -> some View {
 		return (
 			NavigationView {
-				router.generateTodoAddView()
+				dependency.wireframe.generateTodoAddView()
 			}
 		)
 	}
@@ -159,7 +160,8 @@ extension TodoListPresenter {
 			let dependency = TodoListPresenter.Dependency(
 				listFetchInteractor: listFetchInteractor,
 				todoUpdateInteractor: todoUpdateInteractor,
-				deleteSectionInteractor: deleteSectionInteractor
+				deleteSectionInteractor: deleteSectionInteractor,
+				wireframe: TodoListRouter()
 			)
 			return TodoListPresenter(dependency: dependency)
 		}()
