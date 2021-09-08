@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct TodoListView: View {
-	@StateObject var presenter: TodoListPresenter
+struct TodoListView<Presenter>: View where Presenter: TodoListPresentation {
+	@StateObject var presenter: Presenter
 	@State private var showAlert: Bool = false
 	@State private var isSheetPresented: Bool = false
 	@State private var selectedSectionIndex: Int = 0
@@ -37,7 +37,7 @@ struct TodoListView: View {
 				presenter.onDismiss()
 			},
 			content: {
-				presenter.todoAddLinkBuilder()
+				presenter.todoAddViewLinkBuilder()
 			}
 		)
 		.alert(isPresented: $showAlert) {
@@ -86,9 +86,7 @@ extension TodoListView {
 	private func todoList(_ todos: [Todo]) -> some View {
 		return (
 			ForEach(todos) { todo in
-				presenter.detailViewLinkBuilder(for: todo) {
-					presenter.generateTodoRow(todo: todo)
-				}
+				presenter.detailViewLinkBuilder(for: todo)
 			}
 		)
 	}
@@ -112,10 +110,10 @@ extension TodoListView {
 }
 
 #if DEBUG
-struct TodoListView_Previews: PreviewProvider {
-	static var previews: some View {
-		TodoListView(presenter: TodoListPresenter.sample)
-			.environment(\.locale, Locale(identifier: "ja_JP"))
-	}
-}
+// struct TodoListView_Previews: PreviewProvider {
+//	 static var previews: some View {
+//		 TodoListView(presenter: TodoListPresenter.sample)
+//			 .environment(\.locale, Locale(identifier: "ja_JP"))
+//	 }
+// }
 #endif

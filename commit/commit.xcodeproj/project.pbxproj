@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7125873226E8A09200E23369 /* UIFeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125873126E8A09200E23369 /* UIFeedbackManager.swift */; };
 		712E978326E15C7900292C7D /* PresentationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712E978226E15C7900292C7D /* PresentationState.swift */; };
 		713613C826A86149008B66F8 /* WriteSheetsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713613C726A86149008B66F8 /* WriteSheetsInteractor.swift */; };
 		7146C70A268C961900ACD588 /* TodoTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146C709268C961900ACD588 /* TodoTypes.swift */; };
@@ -105,6 +106,7 @@
 /* Begin PBXFileReference section */
 		0A28657290E5C6EB7881A125 /* Pods-commit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-commit.release.xcconfig"; path = "Target Support Files/Pods-commit/Pods-commit.release.xcconfig"; sourceTree = "<group>"; };
 		3C4194718BA40140F9EF0C2D /* Pods_commit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_commit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7125873126E8A09200E23369 /* UIFeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFeedbackManager.swift; sourceTree = "<group>"; };
 		712E978226E15C7900292C7D /* PresentationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationState.swift; sourceTree = "<group>"; };
 		713613C726A86149008B66F8 /* WriteSheetsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteSheetsInteractor.swift; sourceTree = "<group>"; };
 		7146C709268C961900ACD588 /* TodoTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTypes.swift; sourceTree = "<group>"; };
@@ -643,6 +645,7 @@
 			children = (
 				71A9D65726BC464C002A7411 /* UserDataInitializer.swift */,
 				71A9D67C26C18D3A002A7411 /* DataEraser.swift */,
+				7125873126E8A09200E23369 /* UIFeedbackManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -990,6 +993,7 @@
 				71931AA12697473000BB404F /* SheetsResponse.swift in Sources */,
 				71A9D65126B94117002A7411 /* SectionAddView.swift in Sources */,
 				71931AAE2699BFF800BB404F /* SheetsAPIManager.swift in Sources */,
+				7125873226E8A09200E23369 /* UIFeedbackManager.swift in Sources */,
 				71AA3DC92682E773005D1CCC /* ListFetchInteractor.swift in Sources */,
 				71DF39DB269E3D830009A31F /* SheetPresetQuery.swift in Sources */,
 				715C2F29267CE07F00DA66F3 /* TodoListPresenter.swift in Sources */,
