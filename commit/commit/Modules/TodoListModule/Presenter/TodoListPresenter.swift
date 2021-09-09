@@ -40,7 +40,6 @@ class TodoListPresenter {
 	private let dependency: Dependency
 
 	private var notificationTokens: [NotificationToken] = []
-
 	private var isFirstAppear: Bool = true
 	
 	init(dependency: Dependency) {
@@ -56,32 +55,33 @@ class TodoListPresenter {
 		}
 	}
 	
+	private func refreshList() {
+		fetchList { lists in
+			self.updateList(lists: lists)
+		}
+	}
+	
+	private func updateList(lists: [ListRealm]) {
+		setSection(from: lists)
+		self.objectWillChange.send()
+	}
+	
 	private func addNotificationTokens() {
 		notificationTokens.append(displayData.lists[0].observe { change in
 			switch change {
-				case let .change(result, _):
-					guard let list = result as? [ListRealm] else {
-						print("error")
-						return
-					}
-					self.setSection(from: list)
 				case let .error(error):
 					print(error.localizedDescription)
-				case .deleted:
-					print("deleted")
+				default:
+					self.refreshList()
 			}
 		})
 		
 		notificationTokens.append(displayData.defaultSection!.observe { change in
 			switch change {
-				case let .change(result, _):
-					self.displayData.defaultSection = result as! SectionRealm
-					// これが大事
-					self.objectWillChange.send()
 				case let .error(error):
 					print(error.localizedDescription)
-				case .deleted:
-					print("deleted")
+				default:
+					self.refreshList()
 			}
 		})
 	}
@@ -108,17 +108,13 @@ extension TodoListPresenter: TodoListPresentation {
 		}
 		self.isFirstAppear = false
 		fetchList { lists in
-			self.setSection(from: lists)
-			self.objectWillChange.send()
+			self.updateList(lists: lists)
 			self.addNotificationTokens()
 		}
 	}
 	
 	func onDismiss() {
-		fetchList { result in
-			self.setSection(from: result)
-			self.objectWillChange.send()
-		}
+		refreshList()
 	}
 	
 	func updateTodoStatus(todo: Todo) {
