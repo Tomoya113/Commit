@@ -103,16 +103,16 @@ class TodoListPresenter {
 
 extension TodoListPresenter: TodoListPresentation {
 	func onAppear() {
-		if !isFirstAppear {
-			return
-		}
-		self.isFirstAppear = false
-		fetchList { lists in
-			self.updateList(lists: lists)
-			self.addNotificationTokens()
+		// 初回のOnAppearの時だけ呼ばれて欲しい
+		if isFirstAppear {
+			self.isFirstAppear = false
+			fetchList { lists in
+				self.updateList(lists: lists)
+				self.addNotificationTokens()
+			}
 		}
 	}
-	
+
 	func onDismiss() {
 		refreshList()
 	}
