@@ -10,7 +10,11 @@ import RealmSwift
 
 class DataEraser {
 	static func execute() {
-		try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
+		do {
+			try FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
+		} catch {
+			print(error.localizedDescription)
+		}
 		let appDomain = Bundle.main.bundleIdentifier
 		UserDefaults.standard.removePersistentDomain(forName: appDomain!)
 	}
