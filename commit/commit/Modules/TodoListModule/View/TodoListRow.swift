@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct TodoListRow: View {
-	@ObservedRealmObject var todo: Todo
+	var todo: Todo
 	let updateTodoStatus: () -> Void
 	var body: some View {
 		HStack(alignment: .center) {
