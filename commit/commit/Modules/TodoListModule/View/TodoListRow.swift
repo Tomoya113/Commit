@@ -56,9 +56,8 @@ struct TodoListRow: View {
 	private func checkButton() -> some View {
 		return (
 			Button(action: {
+				UIFeedbackManager.shared.lightImpact()
 				updateTodoStatus()
-				print(todo.status!.finished)
-
 			}, label: {
 				// NOTE: 個々の書き方嫌い
 				if todo.status!.detail != "" {

@@ -131,7 +131,6 @@ extension TodoListPresenter: TodoListPresentation {
 	func detailViewLinkBuilder(for todo: Todo) -> some View {
 		NavigationLink(destination: dependency.wireframe.generateDetailView(for: todo)) {
 			TodoListRow(todo: todo) {
-				UIFeedbackManager.shared.lightImpact()
 				self.updateTodoStatus(todo: todo)
 				self.objectWillChange.send()
 			}
