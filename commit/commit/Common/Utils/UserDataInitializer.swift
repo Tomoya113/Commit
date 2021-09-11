@@ -24,5 +24,4 @@ class UserDataInitializer {
 			realm.add(list)
 		}
 	}
-
 }

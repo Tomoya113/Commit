@@ -14,9 +14,7 @@ class DeleteSectionInteractor: UseCase {
 	let todoRepository = RealmRepository<Todo>()
 	
 	func execute(_ parameters: SectionRealm, completion: ((Result<Void, Never>) -> Void )?) {
-		let todos = parameters.todos
 		deletePreset(id: parameters.id)
-		todoRepository.delete(entities: Array(todos))
 		sectionRepository.delete(entities: [parameters])
 		completion?(.success(()))
 	}
