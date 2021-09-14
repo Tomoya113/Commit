@@ -59,6 +59,7 @@ struct TodoListRow: View {
 				UIFeedbackManager.shared.lightImpact()
 				updateTodoStatus()
 			}, label: {
+				
 				// NOTE: 個々の書き方嫌い
 				if todo.status!.detail != "" {
 					if todo.status!.finished {
