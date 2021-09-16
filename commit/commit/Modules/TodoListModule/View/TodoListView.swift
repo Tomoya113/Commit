@@ -17,15 +17,14 @@ struct TodoListView<Presenter>: View where Presenter: TodoListPresentation {
 		ZStack {
 			VStack {
 				List {
-					if presenter.displayData.defaultSection != nil {
-						todoList(presenter.displayData.defaultSection!.todos.map { $0 })
-					}
 					sections()
 					SectionSpacer()
 				}
 				.listStyle(GroupedListStyle())
 			}
-			addButton()
+			addButton {
+				isSheetPresented.toggle()
+			}
 		}
 		.navigationTitle("TODO")
 		.onAppear {
@@ -54,27 +53,47 @@ extension TodoListView {
 	private func sections() -> some View {
 		return (
 			// NOTE: id無いとどれを削除したら良い変わらんってなってぴえんってなるやつ
-			ForEach(presenter.displayData.currentSections.indices, id: \.self) { i in
-				if !presenter.displayData.currentSections[i].isInvalidated {
-					todoSection(i) {
-						todoList(presenter.displayData.currentSections[i].todos.map { $0 })
-					}
-				} else {
-					todoSection(i) {
-						EmptySectionView()
-					}
+			ForEach(presenter.displayData.sections.indices, id: \.self) { i in
+				if !presenter.displayData.sections[i].isInvalidated {
+					AnyView(
+						todoSection(
+							title: $presenter.displayData.sections[i].title,
+							action: {
+								showAlert = true
+								selectedSectionIndex = 1
+							},
+							content: {
+								todoList(presenter.displayData.sections[i].todos.map { $0 })
+							}
+						)
+					)
 				}
 			}
+			// NOTE: この方法でやるならdeBounceとか使う必要ありそう
+//			ForEach(presenter.displayData.sections, id: \.self) { section in
+//				if !section.isInvalidated {
+//					AnyView(
+//						todoSection(
+//							title: .constant(section.title),
+//							action: {
+//								showAlert = true
+//								selectedSectionIndex = 1
+//						    },
+//							content: {
+//								todoList(section.todos.map { $0 })
+//							})
+//					)
+//				}
+//			}
 		)
 	}
 	
-	private func todoSection<Content: View>(_ index: Int, @ViewBuilder content: () -> Content) -> some View {
+	private func todoSection<Content: View>(title: Binding<String>, action: (() -> Void)?, @ViewBuilder content: () -> Content) -> some View {
 		return (
 			TodoSection(
-				title: $presenter.displayData.currentSections[index].title,
+				title: title,
 				action: {
-					showAlert = true
-					selectedSectionIndex = index
+					action?()
 				},
 				content: {
 					content()
@@ -91,14 +110,14 @@ extension TodoListView {
 		)
 	}
 	
-	private func addButton() -> some View {
+	private func addButton(action: @escaping () -> Void) -> some View {
 		return (
 			VStack {
 				Spacer()
 				HStack {
 					Spacer()
 					Button(action: {
-						isSheetPresented.toggle()
+						action()
 					}, label: {
 						TodoAddButton()
 					})

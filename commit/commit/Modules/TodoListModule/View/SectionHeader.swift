@@ -11,15 +11,25 @@ struct SectionHeader: View {
 	@Binding var sectionTitle: String
 	var action: () -> Void
     var body: some View {
-		HStack {
-			TextField($sectionTitle.wrappedValue, text: $sectionTitle)
-				.foregroundColor(Color.blue)
-			Spacer()
-			Button(action: {
-				action()
-			}, label: {
-				Image(systemName: "trash")
-			})
+		if $sectionTitle.wrappedValue == "未分類" {
+			AnyView(
+				HStack {
+					Text($sectionTitle.wrappedValue)
+				}
+			)
+		} else {
+			AnyView(
+				HStack {
+					TextField($sectionTitle.wrappedValue, text: $sectionTitle)
+						.foregroundColor(Color.blue)
+					Spacer()
+					Button(action: {
+						action()
+					}, label: {
+						Image(systemName: "trash")
+					})
+				}
+			)
 		}
     }
 }

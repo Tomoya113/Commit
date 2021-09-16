@@ -11,8 +11,7 @@ import SwiftUI
 
 class DisplayData: ObservableObject {
 	@Published var lists: [ListRealm] = []
-	@Published var defaultSection: SectionRealm?
-	@Published var currentSections: [SectionRealm] = []
+	@Published var sections: [SectionRealm] = []
 }
 
 protocol TodoListPresentation: ObservableObject {
@@ -75,28 +74,14 @@ class TodoListPresenter {
 					self.refreshList()
 			}
 		})
-		
-		notificationTokens.append(displayData.defaultSection!.observe { change in
-			switch change {
-				case let .error(error):
-					print(error.localizedDescription)
-				default:
-					self.refreshList()
-			}
-		})
 	}
 
 	private func setSection(from lists: [ListRealm]) {
-		// NOTE: 絶対ここでやるなよ???
 		displayData.lists = lists
-		let sections = lists[0].sections
-		let defaultSection = sections[0]
-		displayData.defaultSection = defaultSection
-		if sections.count == 1 {
-			return
-		}
-		let currentSections = sections[1..<sections.count]
-		displayData.currentSections = Array(currentSections)
+		let originSections = lists[0].sections
+		displayData.sections = Array(originSections)
+		print(originSections)
+		objectWillChange.send()
 	}
 	
 }
@@ -123,7 +108,7 @@ extension TodoListPresenter: TodoListPresentation {
 	
 	func deleteSection(_ index: Int) {
 		if !displayData.lists.isEmpty {
-			displayData.currentSections.remove(at: index)
+//			displayData.currentSections.remove(at: index)
 			dependency.deleteSectionInteractor.execute(displayData.lists[0].sections[index + 1], completion: nil)
 		}
 	}
