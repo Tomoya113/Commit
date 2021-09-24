@@ -80,6 +80,8 @@
 		71AA3DC726814B95005D1CCC /* SheetsTodoAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC626814B95005D1CCC /* SheetsTodoAttribute.swift */; };
 		71AA3DC92682E773005D1CCC /* ListFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA3DC82682E773005D1CCC /* ListFetchInteractor.swift */; };
 		71AF451A26790DA70084364A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF451926790DA70084364A /* Todo.swift */; };
+		71B09EBE26FDA5D400BAF592 /* SheetAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B09EBD26FDA5D400BAF592 /* SheetAPIError.swift */; };
+		71B09EC026FDA5DE00BAF592 /* DriveAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B09EBF26FDA5DE00BAF592 /* DriveAPIError.swift */; };
 		71CB63D8269A0CAB003C98A8 /* SheetsCellsFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CB63D7269A0CAB003C98A8 /* SheetsCellsFetchInteractor.swift */; };
 		71CB63DA269A0E4C003C98A8 /* SheetsInfoFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CB63D9269A0E4C003C98A8 /* SheetsInfoFetchInteractor.swift */; };
 		71DF3974269CB58C0009A31F /* NormalTodoAddPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF3973269CB58C0009A31F /* NormalTodoAddPresenter.swift */; };
@@ -180,6 +182,8 @@
 		71AA3DC626814B95005D1CCC /* SheetsTodoAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetsTodoAttribute.swift; sourceTree = "<group>"; };
 		71AA3DC82682E773005D1CCC /* ListFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFetchInteractor.swift; sourceTree = "<group>"; };
 		71AF451926790DA70084364A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		71B09EBD26FDA5D400BAF592 /* SheetAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetAPIError.swift; sourceTree = "<group>"; };
+		71B09EBF26FDA5DE00BAF592 /* DriveAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveAPIError.swift; sourceTree = "<group>"; };
 		71CB63D7269A0CAB003C98A8 /* SheetsCellsFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetsCellsFetchInteractor.swift; sourceTree = "<group>"; };
 		71CB63D9269A0E4C003C98A8 /* SheetsInfoFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetsInfoFetchInteractor.swift; sourceTree = "<group>"; };
 		71DF3973269CB58C0009A31F /* NormalTodoAddPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalTodoAddPresenter.swift; sourceTree = "<group>"; };
@@ -691,6 +695,8 @@
 			isa = PBXGroup;
 			children = (
 				71931AA92699B93200BB404F /* HTTPMethod.swift */,
+				71B09EBD26FDA5D400BAF592 /* SheetAPIError.swift */,
+				71B09EBF26FDA5DE00BAF592 /* DriveAPIError.swift */,
 			);
 			path = APIClient_v2;
 			sourceTree = "<group>";
@@ -957,6 +963,7 @@
 				71931AAC2699BC7D00BB404F /* DriveAPIManager.swift in Sources */,
 				714A47F226A66DEF00268779 /* GoogleAPIRequest.swift in Sources */,
 				717DC9AF26B1334C00687D68 /* SafariView.swift in Sources */,
+				71B09EC026FDA5DE00BAF592 /* DriveAPIError.swift in Sources */,
 				71AA3DC726814B95005D1CCC /* SheetsTodoAttribute.swift in Sources */,
 				717F944826774ED400D11C58 /* SceneDelegate.swift in Sources */,
 				714A481626A7117D00268779 /* FetchSheetsCellInteractor.swift in Sources */,
@@ -1009,6 +1016,7 @@
 				71A9D65526BA2BA1002A7411 /* GoogleSignInButton.swift in Sources */,
 				71DF397B269CBDF20009A31F /* TodoAddRouter.swift in Sources */,
 				71A9D64326B7B34A002A7411 /* NormalTodoAddRouter.swift in Sources */,
+				71B09EBE26FDA5D400BAF592 /* SheetAPIError.swift in Sources */,
 				716AC24E268727430003A989 /* SheetsAddPresenter.swift in Sources */,
 				71AA3DBC2680CE65005D1CCC /* TodoUpdateInteractor.swift in Sources */,
 				717D0F342694731300BD4655 /* GoogleOAuthManager.swift in Sources */,

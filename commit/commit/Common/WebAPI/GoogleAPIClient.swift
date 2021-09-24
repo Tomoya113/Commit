@@ -24,7 +24,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		let request = baseRequest.createRequest(
 			queries: queries,
 			additonalPath: "/files",
-			httpMethod: .GET,
+			httpMethod: .get,
 			httpBody: nil
 		)
 		
@@ -60,7 +60,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		let request = baseRequest.createRequest(
 			queries: [:],
 			additonalPath: path,
-			httpMethod: .GET,
+			httpMethod: .get,
 			httpBody: nil)
 		
 		task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -114,7 +114,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		let request = baseRequest.createRequest(
 			queries: [:],
 			additonalPath: path,
-			httpMethod: .GET,
+			httpMethod: .get,
 			httpBody: nil
 		)
 		
@@ -153,7 +153,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		let request = baseRequest.createRequest(
 			queries: [:],
 			additonalPath: "/\(id)",
-			httpMethod: .GET,
+			httpMethod: .get,
 			httpBody: nil
 		)
 		
@@ -192,7 +192,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		let request = baseRequest.createRequest(
 			queries: queries,
 			additonalPath: path,
-			httpMethod: .PUT,
+			httpMethod: .put,
 			httpBody: body
 		)
 		
