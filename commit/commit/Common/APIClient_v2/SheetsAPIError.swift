@@ -1,5 +1,5 @@
 //
-//  SheetAPIError.swift
+//  SheetsAPIError.swift
 //  commit
 //
 //  Created by Tomoya Tanaka on 2021/09/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SheetAPIError: Decodable, Error {
+struct SheetsAPIError: Decodable, Error {
 	var code: Int
 	var message: String
 	var status: String
