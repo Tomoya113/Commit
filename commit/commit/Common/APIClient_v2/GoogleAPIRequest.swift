@@ -34,7 +34,8 @@ extension GoogleAPIRequest {
 		
 		switch method {
 			case .get:
-				components?.queryItems = queryItems
+				// NOTE: ここ大丈夫そう？
+				components?.percentEncodedQueryItems = queryItems
 			default:
 				fatalError("Unsupported method \(method)")
 		}
@@ -42,9 +43,9 @@ extension GoogleAPIRequest {
 		var urlRequest = URLRequest(url: url)
 		urlRequest.url = components?.url
 		urlRequest.httpMethod = method.rawValue
-		urlRequest.addValue("Bearer \(token)", forHTTPHeaderField: HTTPField.AUTHORIZATION.rawValue)
-		urlRequest.addValue("application/json", forHTTPHeaderField: HTTPField.CONTENT_TYPE.rawValue)
-		urlRequest.addValue("application/json", forHTTPHeaderField: HTTPField.ACCEPT.rawValue)
+		urlRequest.addValue("Bearer \(token)", forHTTPHeaderField: HTTPField.authorization.rawValue)
+		urlRequest.addValue("application/json", forHTTPHeaderField: HTTPField.contentType.rawValue)
+		urlRequest.addValue("application/json", forHTTPHeaderField: HTTPField.accept.rawValue)
 		
 		if let body = body {
 			do {
