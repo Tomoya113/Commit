@@ -9,7 +9,7 @@ import Foundation
 
 enum HTTPField: String {
 	// NOTE: 使ってるやつだけ
-	case AUTHORIZATION = "Authorization"
-	case CONTENT_TYPE = "Content-Type"
-	case ACCEPT = "Accept"
+	case authorization = "Authorization"
+	case contentType = "Content-Type"
+	case accept = "Accept"
 }
