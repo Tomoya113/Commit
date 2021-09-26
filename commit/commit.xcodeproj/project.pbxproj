@@ -85,6 +85,8 @@
 		71B09EC626FDADAE00BAF592 /* SheetCellsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B09EC526FDADAE00BAF592 /* SheetCellsResponse.swift */; };
 		71B09EC826FFB82D00BAF592 /* DriveResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B09EC726FFB82C00BAF592 /* DriveResponse.swift */; };
 		71B09ECA26FFB84800BAF592 /* SheetDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B09EC926FFB84800BAF592 /* SheetDataResponse.swift */; };
+		71B09ECC26FFE35500BAF592 /* GoogleAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B09ECB26FFE35400BAF592 /* GoogleAPIRequest.swift */; };
+		71B09ECE26FFFB9900BAF592 /* HTTPField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B09ECD26FFFB9900BAF592 /* HTTPField.swift */; };
 		71CB63D8269A0CAB003C98A8 /* SheetsCellsFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CB63D7269A0CAB003C98A8 /* SheetsCellsFetchInteractor.swift */; };
 		71CB63DA269A0E4C003C98A8 /* SheetsInfoFetchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CB63D9269A0E4C003C98A8 /* SheetsInfoFetchInteractor.swift */; };
 		71DF3974269CB58C0009A31F /* NormalTodoAddPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF3973269CB58C0009A31F /* NormalTodoAddPresenter.swift */; };
@@ -190,6 +192,8 @@
 		71B09EC526FDADAE00BAF592 /* SheetCellsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetCellsResponse.swift; sourceTree = "<group>"; };
 		71B09EC726FFB82C00BAF592 /* DriveResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveResponse.swift; sourceTree = "<group>"; };
 		71B09EC926FFB84800BAF592 /* SheetDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetDataResponse.swift; sourceTree = "<group>"; };
+		71B09ECB26FFE35400BAF592 /* GoogleAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIRequest.swift; sourceTree = "<group>"; };
+		71B09ECD26FFFB9900BAF592 /* HTTPField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPField.swift; sourceTree = "<group>"; };
 		71CB63D7269A0CAB003C98A8 /* SheetsCellsFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetsCellsFetchInteractor.swift; sourceTree = "<group>"; };
 		71CB63D9269A0E4C003C98A8 /* SheetsInfoFetchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetsInfoFetchInteractor.swift; sourceTree = "<group>"; };
 		71DF3973269CB58C0009A31F /* NormalTodoAddPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalTodoAddPresenter.swift; sourceTree = "<group>"; };
@@ -706,6 +710,8 @@
 				71B09EC526FDADAE00BAF592 /* SheetCellsResponse.swift */,
 				71B09EC726FFB82C00BAF592 /* DriveResponse.swift */,
 				71B09EC926FFB84800BAF592 /* SheetDataResponse.swift */,
+				71B09ECB26FFE35400BAF592 /* GoogleAPIRequest.swift */,
+				71B09ECD26FFFB9900BAF592 /* HTTPField.swift */,
 			);
 			path = APIClient_v2;
 			sourceTree = "<group>";
@@ -1025,6 +1031,7 @@
 				717D0F4026947FD700BD4655 /* AppPresenter.swift in Sources */,
 				71B09ECA26FFB84800BAF592 /* SheetDataResponse.swift in Sources */,
 				715C2F192679244F00DA66F3 /* SheetsHistory.swift in Sources */,
+				71B09ECE26FFFB9900BAF592 /* HTTPField.swift in Sources */,
 				71A9D65526BA2BA1002A7411 /* GoogleSignInButton.swift in Sources */,
 				71DF397B269CBDF20009A31F /* TodoAddRouter.swift in Sources */,
 				71A9D64326B7B34A002A7411 /* NormalTodoAddRouter.swift in Sources */,
@@ -1039,6 +1046,7 @@
 				71DF39DF269E41710009A31F /* UpdateTodoQuery.swift in Sources */,
 				71A9D65826BC464C002A7411 /* UserDataInitializer.swift in Sources */,
 				71A9D64926B7B430002A7411 /* SectionAddInteractor.swift in Sources */,
+				71B09ECC26FFE35500BAF592 /* GoogleAPIRequest.swift in Sources */,
 				712E978326E15C7900292C7D /* PresentationState.swift in Sources */,
 				715C2F20267B64E700DA66F3 /* ListMock.swift in Sources */,
 			);
