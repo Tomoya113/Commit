@@ -1,5 +1,5 @@
 //
-//  GoogleAPIRequest.swift
+//  OldGoogleAPIRequest.swift
 //  commit
 //
 //  Created by Tomoya Tanaka on 2021/07/20.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GoogleAPIRequest {
+enum OldGoogleAPIRequest {
 	case sheets
 	case drive
 	

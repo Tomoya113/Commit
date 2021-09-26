@@ -17,7 +17,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 	}
 	
 	func fetchSheetsFiles(contains sheetName: String?, completion: @escaping (Result<[SheetsFile], Error>) -> Void) {
-		let baseRequest = GoogleAPIRequest.drive
+		let baseRequest = OldGoogleAPIRequest.drive
 		
 		let queries = DriveAPIManager.generateSheetsSearchQueries(sheetName)
 		
@@ -55,7 +55,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		let path = "/\(query.sheetsId)/values/\(query.sheetName)!\(query.column)\(query.row)"
 		
 		// NOTE: 絶対命名ゴミなんだよな
-		let baseRequest = GoogleAPIRequest.sheets
+		let baseRequest = OldGoogleAPIRequest.sheets
 		
 		let request = baseRequest.createRequest(
 			queries: [:],
@@ -109,7 +109,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		let endRange = "\(query.column.end)\(query.row)"
 		let path = "/\(query.sheetsId)/values/\(query.sheetName)!\(startRange):\(endRange)"
 		
-		let baseRequest = GoogleAPIRequest.sheets
+		let baseRequest = OldGoogleAPIRequest.sheets
 		
 		let request = baseRequest.createRequest(
 			queries: [:],
@@ -148,7 +148,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 	
 	func fetchSheetsInfo(id: String, completion: @escaping (Result<[Sheet], Error>) -> Void) {
 		
-		let baseRequest = GoogleAPIRequest.sheets
+		let baseRequest = OldGoogleAPIRequest.sheets
 		
 		let request = baseRequest.createRequest(
 			queries: [:],
@@ -185,7 +185,7 @@ class GoogleAPIClient: GoogleAPIClientProtocol {
 		let queries: [String: String] = SheetsAPIManager.generateSheetsUpdateQueries()
 		let path: String =  "/\(query.sheetsId)/values/\(query.tabName)!\(query.targetColumn)\(query.targetRow)"
 		
-		let baseRequest = GoogleAPIRequest.sheets
+		let baseRequest = OldGoogleAPIRequest.sheets
 		// 別のところにかけたら良さそう
 		let body: [String: Any] = ["values": [[query.text]]]
 		
