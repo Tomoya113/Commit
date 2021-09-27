@@ -8,8 +8,7 @@
 import Foundation
 
 public protocol HTTPClient {
-	func sendRequest(_ urlRequest: URLRequest,
-					 completion: @escaping (Result<(Data, HTTPURLResponse), Error>) -> Void )
+	func sendRequest(_ urlRequest: URLRequest, completion: @escaping (Result<(Data, HTTPURLResponse), Error>) -> Void )
 }
 
 extension URLSession: HTTPClient {

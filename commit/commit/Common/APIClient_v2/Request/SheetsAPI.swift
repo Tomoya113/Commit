@@ -40,6 +40,9 @@ final class SheetsAPI {
 			self.sheetId = sheetId
 			self.retreavingRange = retreavingRange
 		}
+	}
+
+	struct UpdateCell: GoogleAPIRequest {
 		
 	}
 }

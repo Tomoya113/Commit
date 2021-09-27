@@ -47,9 +47,9 @@ extension GoogleAPIRequest {
 		urlRequest.addValue("application/json", forHTTPHeaderField: HTTPField.contentType.rawValue)
 		urlRequest.addValue("application/json", forHTTPHeaderField: HTTPField.accept.rawValue)
 		
-		if let body = body {
+		if let httpBody = body {
 			do {
-				urlRequest.httpBody = try JSONSerialization.data(withJSONObject: body)
+				urlRequest.httpBody = try JSONSerialization.data(withJSONObject: httpBody)
 			} catch {
 				print("Something went wrong")
 				fatalError(error.localizedDescription)
