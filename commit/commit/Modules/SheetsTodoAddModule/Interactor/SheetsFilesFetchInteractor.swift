@@ -8,9 +8,9 @@
 import Foundation
 
 class SheetsFilesFetchInteractor: UseCase {
-	let repository: GoogleAPIClientProtocol
+	let repository: OldGoogleAPIClientProtocol
 	
-	init(repository: GoogleAPIClientProtocol = GoogleAPIClient.shared) {
+	init(repository: OldGoogleAPIClientProtocol = OldGoogleAPIClient.shared) {
 		self.repository = repository
 	}
 	

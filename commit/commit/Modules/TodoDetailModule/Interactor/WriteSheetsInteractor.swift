@@ -58,7 +58,7 @@ class WriteSheetsInteractor: UseCase {
 			text: text
 		)
 		
-		GoogleAPIClient.shared.updateSheetsCell(query)
+		OldGoogleAPIClient.shared.updateSheetsCell(query)
 	}
 		
 }
