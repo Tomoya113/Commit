@@ -1,5 +1,5 @@
 //
-//  GoogleAPIClient.swift
+//  OldGoogleAPIClient.swift
 //  commit
 //
 //  Created by Tomoya Tanaka on 2021/07/09.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-class GoogleAPIClient: GoogleAPIClientProtocol {
+class OldGoogleAPIClient: OldGoogleAPIClientProtocol {
 	
-	static let shared = GoogleAPIClient()
+	static let shared = OldGoogleAPIClient()
 	let urlSession: URLSession
 	var task: URLSessionTask?
 	init(urlSession: URLSession = URLSession.shared) {

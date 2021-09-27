@@ -45,7 +45,7 @@ class FetchSheetsCellInteractor: UseCase {
 			column: validAttribute.column,
 			row: validPreset.targetRow
 		)
-		GoogleAPIClient.shared.fetchSheetsCell(fetchSheetsCellQuery) { result in
+		OldGoogleAPIClient.shared.fetchSheetsCell(fetchSheetsCellQuery) { result in
 			switch result {
 				case .success(let cell):
 					completion?(.success(cell))
