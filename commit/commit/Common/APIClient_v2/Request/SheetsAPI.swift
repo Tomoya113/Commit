@@ -10,7 +10,7 @@ import Foundation
 final class SheetsAPI {
 	struct FetchSheetCell: GoogleAPIRequest {
 
-		let sheetId: String
+		let spreadsheetId: String
 		let retreavingRange: String
 		
 		typealias Response = SheetCellsResponse
@@ -21,14 +21,14 @@ final class SheetsAPI {
 		}
 		
 		var path: String {
-			return "/v4/spreadsheets/\(sheetId)/values/\(retreavingRange)"
+			return "/v4/spreadsheets/\(spreadsheetId)/values/\(retreavingRange)"
 		}
 		
 		var body: [String: Any]? {
 			return nil
 		}
 		
-		public var queryItems: [URLQueryItem] {
+		var queryItems: [URLQueryItem] {
 			return [URLQueryItem(name: "key", value: GoogleAPIInfo.API_KEY)]
 		}
 
@@ -37,12 +37,80 @@ final class SheetsAPI {
 		}
 		
 		init(sheetId: String, retreavingRange: String) {
-			self.sheetId = sheetId
+			self.spreadsheetId = sheetId
 			self.retreavingRange = retreavingRange
+		}
+	}
+	
+	struct FetchSpreadSheetProperties: GoogleAPIRequest {
+		
+		let spreadsheetId: String
+		
+		typealias Response = SheetsPropertiesResponse
+
+		typealias APIError = SheetsAPIError
+
+		var baseURL: URL {
+			return URL(string: "https://sheets.googleapis.com")!
+		}
+
+		var path: String {
+			return "/v4/spreadsheets/\(spreadsheetId)"
+		}
+
+		var body: [String: Any]? {
+			return nil
+		}
+
+		var queryItems: [URLQueryItem] {
+			return [URLQueryItem(name: "key", value: GoogleAPIInfo.API_KEY)]
+		}
+
+		var method: HTTPMethod {
+			return .get
 		}
 	}
 
 	struct UpdateCell: GoogleAPIRequest {
+
+		let spreadsheetId: String
+		let targetRange: String
+		let value: String
 		
+		typealias Response = SheetUpdateResponse
+		typealias APIError = SheetsAPIError
+		
+		var baseURL: URL {
+			return URL(string: "https://sheets.googleapis.com")!
+		}
+		
+		var path: String {
+			return "/v4/spreadsheets/\(spreadsheetId)/values/\(targetRange)"
+		}
+		
+		var method: HTTPMethod {
+			return .put
+		}
+		
+		var body: [String: Any]? {
+			return ["values": [
+				value
+				]
+			]
+		}
+		
+		var queryItems: [URLQueryItem] {
+			return [
+				URLQueryItem(name: "key", value: GoogleAPIInfo.API_KEY),
+				URLQueryItem(name: "valueInputOption", value: "RAW")
+			]
+		}
+		
+		init(sheetId: String, targetRange: String, value: String) {
+			self.spreadsheetId = sheetId
+			self.targetRange = targetRange
+			self.value = value
+		}
 	}
+	
 }

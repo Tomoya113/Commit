@@ -8,9 +8,12 @@
 import Foundation
 
 struct SheetsAPIError: Decodable, Error {
-	var code: Int
-	var message: String
-	var status: String
+	var error: Body
+	struct Body: Decodable, Error {
+		var code: Int
+		var message: String
+		var status: String
+	}
 }
 
 // NOTE: エラーの内容はこちら→ https://mixedanalytics.com/knowledge-base/api-connector-error-messages/
